@@ -3,6 +3,7 @@ import './globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Nav from '@/components/nav/_nav'
+import Typing from '@/components/typing/typing'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <header>
           <Header>
-            <h1>Lukasz&nbsp;Baldyga</h1>
+            <h1><Typing text={"Lukasz Baldyga"} interval={16} iterCount={100}/></h1>
             <Nav />
           </Header>
         </header>

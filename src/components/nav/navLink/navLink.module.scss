@@ -4,6 +4,11 @@
 
     a {
         color: white;
+        text-decoration-color: white;
+        transition: text-decoration-color 0.1s ease;
 
+        &:hover {
+            text-decoration-color: transparent;
+        }
     }
 }
