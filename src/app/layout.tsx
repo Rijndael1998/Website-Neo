@@ -2,7 +2,7 @@ import Header from '@/components/header/_header'
 import './globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
+import Nav from '@/components/nav/_nav'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,17 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <link rel="icon" type="image/png" href="/favico.png"/>
+      <link rel="icon" type="image/png" href="/favico.png" />
       <body className={inter.className}>
         <header>
-          <Header title='Lukasz&nbsp;Baldyga'/>
+          <Header>
+            <h1>Lukasz&nbsp;Baldyga</h1>
+            <Nav />
+          </Header>
         </header>
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/contact">Contact</Link>      
-          <Link href="/cv">CV</Link>      
-          <Link href="/fun">Portfolio</Link>
-        </nav>
         <main>
           {children}
         </main>

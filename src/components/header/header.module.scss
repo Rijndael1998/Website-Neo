@@ -2,16 +2,16 @@
     overflow: hidden;
     position: relative;
 
-    //background-color: red;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+
     margin: 0;
     margin-bottom: 2em;
 
     h1 {
         margin: 0;
         padding: 0.5ch 2ch;
-        background:  linear-gradient(90deg, black 75%, transparent 100%);;
-        //backdrop-filter: blur(.1em);
+        background:  linear-gradient(90deg, black 75%, transparent 100%);
         width: min-content;
     }
 }
