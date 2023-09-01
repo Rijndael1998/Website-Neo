@@ -7,27 +7,31 @@ export type TypingInterface = {
     iterCount?: number,
 }
 
-export default function Typing({text, interval, iterCount}: TypingInterface) {
-    const [originalText, setOriginalText] = useState<string>("");
+export default function Typing({ text, interval, iterCount }: TypingInterface) {
+    const [originalText, setOriginalText] = useState<string>();
     const [originalInterval, setOriginalInterval] = useState<number>();
     const [originalIterCount, setOriginalIterCount] = useState<number>();
 
     const [currentText, setCurrentText] = useState<string>();
     const [iteration, setIteration] = useState<number>(0);
 
+    const [isClient, setIsClient] = useState(false);
+
     const getRandomizedText = (text: string, changes: number) => {
-        if(!changes)
-            return "";
-
         let newText = "";
-        const probability = 1 - changes / text.length;
+        const probability = 1 - (changes == 0 ? 1 : changes) / text.length;
 
-        for(let character of text)
-            if(Math.random() > probability)
-                newText += character;
-        
-        return newText;
+        while (text.length > newText.length)
+            for (let character of text)
+                if (Math.random() > probability)
+                    newText += character;
+
+        return newText.substring(0, text.length);
     }
+
+    useEffect(() => {
+        setIsClient(true)
+    }, []);
 
     useEffect(() => {
         setOriginalText(text);
@@ -42,7 +46,7 @@ export default function Typing({text, interval, iterCount}: TypingInterface) {
     }, [iterCount, text.length])
 
     useEffect(() => {
-        if(!originalIterCount || !originalInterval || !originalText || originalIterCount < iteration)
+        if (!originalIterCount || !originalInterval || !originalText || originalIterCount < iteration)
             return;
 
         const timer = setInterval(() => {
@@ -55,6 +59,6 @@ export default function Typing({text, interval, iterCount}: TypingInterface) {
     }, [originalInterval, iteration, originalText, originalIterCount]);
 
     return <>
-        {currentText}
+        {currentText == undefined && isClient ? getRandomizedText(text, 1): currentText}
     </>
 }

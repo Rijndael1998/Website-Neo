@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Nav from '@/components/nav/_nav'
 import Typing from '@/components/typing/typing'
+import Title from '@/components/header/title/_title'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <header>
           <Header>
-            <h1><Typing text={"Lukasz Baldyga"} interval={16} iterCount={100}/></h1>
+            <Title text="Lukasz Baldyga"/>
             <Nav />
           </Header>
         </header>
