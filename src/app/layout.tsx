@@ -1,6 +1,7 @@
 import './globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" type="image/png" href="/favico.png"/>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header>
+          
+        </header>
+        <nav>
+          <Link href="/">Home</Link>
+          <Link href="/contact">Contact</Link>      
+          <Link href="/cv">CV</Link>      
+          <Link href="/fun">Portfolio</Link>
+        </nav>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
