@@ -26,7 +26,7 @@ export default function Typing({ text, interval, iterCount }: TypingInterface) {
                 if (Math.random() > probability)
                     newText += character;
 
-        return newText.substring(0, text.length);
+        return newText.substring(0, text.length).substring(0, changes ** 3);
     }
 
     useEffect(() => {
@@ -59,6 +59,6 @@ export default function Typing({ text, interval, iterCount }: TypingInterface) {
     }, [originalInterval, iteration, originalText, originalIterCount]);
 
     return <>
-        {currentText == undefined && isClient ? getRandomizedText(text, 1): currentText}
+        {currentText == undefined && isClient ? "": currentText}
     </>
 }
