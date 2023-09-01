@@ -1,3 +1,4 @@
+import Header from '@/components/header/_header'
 import './globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -20,7 +21,7 @@ export default function RootLayout({
       <link rel="icon" type="image/png" href="/favico.png"/>
       <body className={inter.className}>
         <header>
-          
+          <Header title='Lukasz&nbsp;Baldyga'/>
         </header>
         <nav>
           <Link href="/">Home</Link>
