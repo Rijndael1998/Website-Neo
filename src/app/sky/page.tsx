@@ -1,4 +1,4 @@
-export default function Fun() {
+export default function Sky() {
     return <>
         
     </>
