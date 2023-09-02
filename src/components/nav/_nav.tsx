@@ -11,7 +11,7 @@ export default function Nav() {
             <NavLink href="/contact"><Typing text="Contact" interval={interval} iterCount={iterCount}/></NavLink>
             <NavLink href="/cv"><Typing text="CV" interval={interval} iterCount={iterCount}/></NavLink>
             <NavLink href="/fun"><Typing text="Portfolio" interval={interval} iterCount={iterCount}/></NavLink>
-            <NavLink href="/sky"><Typing text="Sky" interval={interval} iterCount={iterCount}/></NavLink>
+            {/*<NavLink href="/sky"><Typing text="Sky" interval={interval} iterCount={iterCount}/></NavLink>*/}
         </nav>
     </>
 }
