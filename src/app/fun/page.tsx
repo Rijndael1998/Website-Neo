@@ -1,3 +1,8 @@
+/* would be good to:
+    - Have a data source, like a json file
+    - Populate a portfolio tag
+    - Have a dedicated folder for each.
+*/
 export default function Fun() {
     return <>
         <h1>Portfolio</h1>
