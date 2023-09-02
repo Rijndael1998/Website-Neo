@@ -1,6 +1,6 @@
 import NavLink from "./navLink/_navLink";
 import style from "./nav.module.scss";
-import Typing from "../typing/typing";
+import Typing from "../../typing/typing";
 
 export default function Nav() {
     const [interval, iterCount] = [100, 14];

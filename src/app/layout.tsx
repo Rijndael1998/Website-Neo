@@ -1,9 +1,9 @@
-import Header from '@/components/header/_header'
+import Header from '@/components/app/header/_header'
 import './globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Nav from '@/components/nav/_nav'
-import Title from '@/components/header/title/_title'
+import Nav from '@/components/app/nav/_nav'
+import Title from '@/components/app/header/title/_title'
 
 const inter = Inter({ subsets: ['latin'] })
 
