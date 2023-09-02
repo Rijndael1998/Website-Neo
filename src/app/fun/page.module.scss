@@ -1,0 +1,8 @@
+.content {
+    $gapping: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(50ch - $gapping), calc(1fr  - $gapping)));
+    gap: $gapping;
+    padding: 0 $gapping;
+    width: calc(100% - $gapping * 2);
+}

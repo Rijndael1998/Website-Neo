@@ -1,0 +1,26 @@
+.button {
+    display: block;
+    margin: 0 0 0 auto;
+    //background-color: red;
+    //padding: .5em;
+
+    text-align: center;
+    max-width: min-content;
+
+    a {
+        width: 100%;
+        height: 100%;
+
+        div {
+            display: grid;
+            width: 100%;
+            height: 4ex;
+            // background-color: red;
+
+            p {
+                margin: auto 0 auto auto;
+            }
+        }
+    }
+    
+}
