@@ -23,6 +23,7 @@ export const content: Array<PortfolioPreviewContent> =
             desc: "The Internet Nomad password manager is built upon research into encryption types. It focuses on the fact that a person maybe have one or more identities online. It also offers unconventional recovery methods to allow users to recover from catastrophe.",
             isDemo: false,
             url: preURL + "",
+            image: imageFolder + "password_manager.png",
         },
         {
             title: "Langrage Demo",
