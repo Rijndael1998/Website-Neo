@@ -30,6 +30,7 @@ export const content: Array<PortfolioPreviewContent> =
             desc: "",
             isDemo: false,
             url: preURL + "",
+            image: imageFolder + "lagrange.png"
         },
         {
             title: "Sudoku Solver",
