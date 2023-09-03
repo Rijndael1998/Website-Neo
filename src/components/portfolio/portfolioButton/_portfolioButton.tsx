@@ -1,4 +1,4 @@
-import NavLink from "@/components/app/nav/navLink/_navLink";
+import NavLink from "@/components/app/nav/navLinkCollection/navLink/_navLink";
 import styles from "./button.module.scss";
 
 export default function PortfolioButton({ text, url }: { text: string, url: string }) {

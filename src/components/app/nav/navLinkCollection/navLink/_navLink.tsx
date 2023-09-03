@@ -1,6 +1,6 @@
 import Link from "next/link";
 import style from "./navLink.module.scss";
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export default function NavLink({ href, children }: { href: string, children: ReactNode }) {
     return <>
