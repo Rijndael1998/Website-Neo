@@ -9,13 +9,11 @@
 @media screen and (max-width: $navBreak) {
     .nav {
         &.isOpen {
-            background-color: red;
-            //transform: translateY(0%);
+            transform: translateX(0%);
         }
 
         &.isClosed {
-            transform: translateY(100%);
-            background-color: pink !important;
+            transform: translateX(100%);
         }
 
         position: fixed;
@@ -27,6 +25,8 @@
 
         z-index: 1;
         flex-direction: column;
+
+        transition: transform ease 0.4s;
 
         // background: black;
     }

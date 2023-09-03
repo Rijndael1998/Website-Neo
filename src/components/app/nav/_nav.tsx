@@ -10,8 +10,8 @@ export default function Nav() {
 
     return <>
         <nav className={`${style.nav} ${isOpen ? style.isOpen : style.isClosed}`}>
-            <NavLinkCollection />
             <Hamburger crossed={isOpen} onClick={() => setIsOpen(!isOpen)} />
+            <NavLinkCollection onSelection={() => setIsOpen(false)} />
         </nav>
         <Hamburger crossed={isOpen} onClick={() => setIsOpen(!isOpen)} />
     </>
