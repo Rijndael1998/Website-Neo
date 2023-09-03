@@ -1,3 +1,5 @@
+@import "./../../../../vars";
+
 .navLink {
     display: flex;
     margin: auto 1ch;
@@ -10,5 +12,11 @@
         &:hover {
             text-decoration-color: transparent;
         }
+    }
+}
+
+@media screen and (max-width: $navBreak) {
+    .navLink {
+        margin: auto;
     }
 }

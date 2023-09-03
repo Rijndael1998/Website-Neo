@@ -1,5 +1,33 @@
+@import "./../../vars";
+
 .nav {
     display: flex;
     padding: 0.5ch 2ch;
     background: linear-gradient(90deg, transparent 0%, black 25%);
+}
+
+@media screen and (max-width: $navBreak) {
+    .nav {
+        &.isOpen {
+            background-color: red;
+            //transform: translateY(0%);
+        }
+
+        &.isClosed {
+            transform: translateY(100%);
+            background-color: pink !important;
+        }
+
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        z-index: 1;
+        flex-direction: column;
+
+        // background: black;
+    }
 }

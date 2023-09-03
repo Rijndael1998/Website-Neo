@@ -1,0 +1,23 @@
+@import "./../../../vars";
+
+.hamburger {
+    display: none;
+
+    margin: auto;
+    height: 5ch;
+    width: 5ch;
+    background-color: red;
+
+    cursor: pointer;
+
+    &.crossed {
+        background-color: green;
+    }
+}
+
+@media screen and (max-width: $navBreak) {
+    .hamburger {
+        display: block;
+        margin: auto;
+    }
+}
