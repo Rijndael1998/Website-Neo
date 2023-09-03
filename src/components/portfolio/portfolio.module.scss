@@ -4,11 +4,15 @@
     flex-direction: column;
     max-width: 100%;
 
-    padding: 0.5em;
     border-radius: 5px;
     overflow: hidden;
 
-    h2 {
-        margin: 0.5em 0;
+    div.portfolioMainContent {
+        height: auto;
+        padding: 0.5em;
+
+        * {
+            margin: 0 0 0.5em 0;
+        }
     }
 }

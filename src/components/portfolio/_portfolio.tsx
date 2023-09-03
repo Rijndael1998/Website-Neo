@@ -11,14 +11,16 @@ export type PortfolioProps = {
 export default function Portfolio({ portfolio }: PortfolioProps) {
     return <div className={styles.portfolio}>
         {
-            portfolio.image && <PortfolioImage image={portfolio.image}/>
+            portfolio.image && <PortfolioImage image={portfolio.image} />
         }
-        <h2>
-            {portfolio.title}
-        </h2>
-        <p>
-            {portfolio.desc}
-        </p>
+        <div className={styles.portfolioMainContent}>
+            <h2>
+                {portfolio.title}
+            </h2>
+            <p>
+                {portfolio.desc}
+            </p>
+        </div>
         <PortfolioButton url={portfolio.url} text="Details" />
     </div>
 }
