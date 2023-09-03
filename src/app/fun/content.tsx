@@ -27,33 +27,37 @@ export const content: Array<PortfolioPreviewContent> =
         },
         {
             title: "Langrage Demo",
-            desc: "",
+            desc: "A simple demonstration of how Langrage polynomials work. You can place points anywhere along the screen and the curve will recalculate, passing through all of the points made.",
             isDemo: false,
             url: preURL + "",
             image: imageFolder + "lagrange.png"
         },
         {
             title: "Sudoku Solver",
-            desc: "",
+            desc: "I have made a Sudoku solver. The brute-force Backtracking algorithm is the major solving algorithm in this Sudoku solver with a supporting algorithm that helps remove singles from the graph.",
             isDemo: false,
             url: preURL + "",
+            image: imageFolder + "sudoku_solver.png",
         },
         {
             title: "Drawing Project",
-            desc: "",
+            desc: "It is a simple drawing program that uses a programming language designed for this project. The program can let you draw anything that you might like using this specialty language.",
             isDemo: false,
             url: preURL + "",
+            image: imageFolder + "drawing_program.png",
         },
         {
             title: "A*",
-            desc: "",
+            desc: "I have made a path finding solver. It is available on GitHub and you can see the demo here. This program implements the A* algorithm. ",
             isDemo: false,
             url: preURL + "a-star",
+            image: imageFolder + "a*.png",
         },
         // {
         //     title:"",
         //     desc: "",
         //     isDemo: false,
         //     url: preURL + "",
+        //     image: imageFolder + "",
         // },
     ]
