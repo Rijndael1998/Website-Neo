@@ -1,0 +1,10 @@
+@import "./../../vars";
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: $footerHeight;
+    background-color: rgb(255, 255, 255, 0.1);
+
+    bottom: 0;
+}
