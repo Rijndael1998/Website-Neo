@@ -8,7 +8,14 @@ export default function Title({ text }: { text: string }) {
             {/* <div>
                 <Image src="/favico.png" fill={true} alt="logo" />
             </div> */}
-            <h1><Typing text={"Lukasz Baldyga"} interval={100} iterCount={14} /></h1>
+            <h1>{
+                text.split(" ").map((word, index) => {
+                    return <span className={styles.span} key={index}>
+                        <Typing text={word} interval={100} iterCount={14} />
+                    </span>
+                })
+            }
+            </h1>
         </div>
     </>
 } 

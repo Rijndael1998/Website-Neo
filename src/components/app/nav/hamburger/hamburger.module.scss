@@ -1,23 +1,41 @@
 @import "./../../../vars";
 
-.hamburger {
-    display: none;
+.hamburgerWrapper {
+    display: flex;
 
-    margin: auto;
-    height: 5ch;
-    width: 5ch;
-    background-color: red;
+    font-size: 0;
+    margin: auto 1em auto 2em;
+    overflow: hidden;
 
-    cursor: pointer;
+    height: 0%;
+    aspect-ratio: 1;
 
-    &.crossed {
-        background-color: green;
+    background-color: black;
+
+    transition: all 0.4s ease;
+
+    &.onTop {
+        z-index: 2;
     }
-}
 
-@media screen and (max-width: $navBreak) {
     .hamburger {
         display: block;
         margin: auto;
+        height: 5ch;
+        width: 5ch;
+        background-color: red;
+    
+        cursor: pointer;
+    
+        &.crossed {
+            background-color: green;
+        }
+    }    
+}
+
+@media screen and (max-width: $navBreak) {
+    .hamburgerWrapper {
+        height: 100%;
+        font-size: 1rem;
     }
 }

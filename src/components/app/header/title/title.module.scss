@@ -1,3 +1,5 @@
+@import "./../../../vars";
+
 .wrapper {
     display: flex;
     background: linear-gradient(90deg, black 75%, transparent 100%);
@@ -14,9 +16,33 @@
 
     h1 {
         margin: auto;
-        padding: 0.5ch 2ch;
 
         width: min-content;
         white-space: nowrap;
+    }
+
+    span {
+        padding-left: 1ch;
+        transition: font-size 0.2s ease;
+
+        &:nth-child(1) {
+            padding-left: 2ch;
+        }
+    }
+}
+
+@media screen and (max-width: $titleBreak) {
+    .span {
+        &:not(:nth-child(1)) {
+            font-size: 0px;
+        }
+    }
+}
+
+@media screen and (max-width: $titleBreakNone) {
+    .span {
+        &:nth-child(1) {
+            font-size: 0px;
+        }
     }
 }

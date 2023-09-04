@@ -1,33 +1,44 @@
 @import "./../../vars";
 
-.nav {
+.nav, .menu {
     display: flex;
     padding: 0.5ch 2ch;
     background: linear-gradient(90deg, transparent 0%, black 25%);
+    transition: transform ease 0.4s, font-size ease 0.4s;
+
+    overflow: hidden;
+}
+
+.nav {
+    justify-content: space-between;
+}
+
+.menu {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 1;
+    flex-direction: column;
+
+    &.isOpen {
+        transform: translateX(0%);
+    }
+
+    &.isClosed {
+        transform: translateX(100%);
+    }
+
+    * {
+        margin: auto;
+    }
 }
 
 @media screen and (max-width: $navBreak) {
     .nav {
-        &.isOpen {
-            transform: translateX(0%);
-        }
-
-        &.isClosed {
-            transform: translateX(100%);
-        }
-
-        position: fixed;
-
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-
-        z-index: 1;
-        flex-direction: column;
-
-        transition: transform ease 0.4s;
-
-        // background: black;
+        font-size: 0px;
     }
 }
