@@ -11,9 +11,9 @@ function chooseState() {
 
 const makeGrid = () => {
     const state: Array<Array<GridItemState>> = [];
-    for(let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
         state.push([]);
-        for(let _ = 0; _ < 4; _++) {
+        for (let _ = 0; _ < 4; _++) {
             state[i].push(chooseState());
         }
     }
@@ -23,19 +23,27 @@ const makeGrid = () => {
 
 export default function A_Star() {
     const [state, setState] = useState<GridState>([]);
+    const [callback, setCallback] = useState<(x: number, y: number) => void>();
 
     useEffect(() => {
         setState(makeGrid());
     }, []);
 
-    const callback = (x: number, y: number) => {
-        console.log("cb", x, y);
-    }
+    useEffect(() => {
+        const newState = [...state.map((col) => [... col])];
+        const newCallback = (x: number, y: number) => {
+            newState[y][x] = newState[y][x] == GridItemState.ON ? GridItemState.OFF : GridItemState.ON;
+            console.log("cb", x, y);
+            setState(newState);
+        }
+
+        setCallback(() => newCallback);
+    }, [state]);
 
     return <>
         <h1>
             A* Algorithm
         </h1>
-        <Grid state={state} callback={callback}/>
+        <Grid state={state} callback={callback} />
     </>
 }
