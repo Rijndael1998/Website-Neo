@@ -1,38 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GridItemState, GridState } from "../../../components/algorithms/grid/gridState"
+import { GridState } from "../../../components/algorithms/grid/gridState"
 import Grid from "../../../components/algorithms/grid/_grid";
+import { AStarStates, AStarStyleMap } from "@/components/algorithms/a*/_a*";
 
-
-function chooseState() {
-    return Math.random() > 0.5 ? GridItemState.ON : GridItemState.OFF;
-}
-
-const makeGrid = () => {
-    const state: Array<Array<GridItemState>> = [];
-    for (let i = 0; i < 4; i++) {
-        state.push([]);
-        for (let _ = 0; _ < 4; _++) {
-            state[i].push(chooseState());
-        }
-    }
-
-    return state;
-}
 
 export default function A_Star() {
-    const [state, setState] = useState<GridState>([]);
+    const [state, setState] = useState<GridState<AStarStates>>(new GridState(4, 4, AStarStyleMap, AStarStates.Node));
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
 
     useEffect(() => {
-        setState(makeGrid());
-    }, []);
-
-    useEffect(() => {
-        const newState = [...state.map((col) => [... col])];
+        const newState = state.new();
         const newCallback = (x: number, y: number) => {
-            newState[y][x] = newState[y][x] == GridItemState.ON ? GridItemState.OFF : GridItemState.ON;
+            newState.setState(x, y, AStarStates.Wall);
             console.log("cb", x, y);
             setState(newState);
         }

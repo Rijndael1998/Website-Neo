@@ -4,8 +4,8 @@ import styles from "./grid.module.scss";
 
 export type GridCallback = (x: number, y: number) => void;
 
-export type GridProps = {
-    state: GridState,
+export type GridProps<T> = {
+    state: GridState<T>,
     callback?: GridCallback,
 }
 
@@ -17,10 +17,10 @@ function callbackGenerator(x: number, y: number, callback?: GridCallback) {
     return () => callback(x, y);
 }
 
-export default function Grid({ state, callback }: GridProps) {
+export default function Grid<T>({ state, callback }: GridProps<T>) {
     return <div>
         {
-            state.map(
+            state.getStyledGridState().map(
                 (columnItems, col) => <div className={styles.col} key={col}>
                     {
                         columnItems.map(
