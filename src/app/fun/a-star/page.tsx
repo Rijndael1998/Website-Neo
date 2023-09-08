@@ -17,7 +17,7 @@ AStarStyleMap.set(AStarStates.End, styles.End);
 
 export enum AStarStages {
     Start,
-    Finish,
+    End,
     Wall,
 }
 
@@ -40,13 +40,14 @@ export default function A_Star() {
 
     useEffect(() => {
         const newCallback = (x: number, y: number) => {
-            const newState = AS.toggleWall(x, y)
+            const [newState, newStage] = AS.interaction(x, y, stage);
             console.log("cb", x, y);
             setState(newState);
+            setStage(newStage);
         }
 
         setCallback(() => newCallback);
-    }, [AS]);
+    }, [AS, stage]);
 
     useEffect(() => {
         console.log("state changed");
@@ -67,7 +68,7 @@ export default function A_Star() {
         </div>
         <div className={styles.stageButtons}>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
-            <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Finish)} selected={stage == AStarStages.Finish}><p>Select end</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
         </div>
         <Grid className={styles.grid} state={AS} callback={callback} />

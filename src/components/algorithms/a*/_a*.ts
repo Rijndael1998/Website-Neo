@@ -1,3 +1,4 @@
+import { AStarStages } from "@/app/fun/a-star/page";
 import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
 
@@ -19,7 +20,7 @@ class AStarNode {
      * The distance from the starting node
      */
     get gCost(): number {
-        if(!this.bestRoute) 
+        if (!this.bestRoute)
             return Infinity;
 
         return this.bestRoute.gCost + this.distance(this.bestRoute);
@@ -66,38 +67,38 @@ export default class AStar implements StyledGridState {
     }
 
     generate() {
-        for(let y = 0; y < this.state.state.length; y++) {
+        for (let y = 0; y < this.state.state.length; y++) {
             this.all.push([]);
 
-            for(let x = 0; x < this.state.state.length; x++) {
+            for (let x = 0; x < this.state.state.length; x++) {
                 const item: AStarStates = this.state.state[x][y];
                 const node: AStarNode = new AStarNode(x, y);
 
                 this.all[y].push(node);
 
-                if(item == AStarStates.Start)
+                if (item == AStarStates.Start)
                     this.start = node;
 
-                if(item == AStarStates.End)
+                if (item == AStarStates.End)
                     this.end = node;
             }
         }
 
         // something's wrong
-        if(this.canContinue() === undefined)
+        if (this.canContinue() === undefined)
             return;
-        
+
         this.open.push(this.start)
     }
 
     canContinue() {
-        if(this.start === undefined)
+        if (this.start === undefined)
             return "Start is not defined";
 
-        if(this.end === undefined)
+        if (this.end === undefined)
             return "End is not defined";
 
-        if(this.start == this.end)
+        if (this.start == this.end)
             return "The start can't be the same as the end";
     }
 
@@ -117,8 +118,33 @@ export default class AStar implements StyledGridState {
         this.state.state[y][x] = state;
     }
 
-    toggleWall(x: number, y: number) {
-        if(this.canChange(this.getElementState(x, y)))
+    interaction(x: number, y: number, stage: AStarStages): [GridState<AStarStates>, AStarStages] {
+        console.log(stage)
+        switch (stage) {
+            case AStarStages.Wall: {
+                return [this.toggleWall(x, y), stage];
+            }
+
+            case AStarStages.Start: {
+                return [this.clearAndSet(x, y, AStarStates.Start), AStarStages.End];
+            }
+
+            case AStarStages.End: {
+                return [this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall];
+            }
+        }
+    }
+
+    private clearAndSet(x: number, y: number, state: AStarStates) {
+        // find old start
+        this.state.state = this.state.state.map((col) => col.map(item => item == state ? AStarStates.Node : item));
+        this.setElementState(x, y, state);
+
+        return this.state.new();
+    }
+
+    private toggleWall(x: number, y: number) {
+        if (this.canChange(this.getElementState(x, y)))
             this.setElementState(x, y, this.getElementState(x, y) === AStarStates.Node ? AStarStates.Wall : AStarStates.Node);
 
         return this.state.new();
