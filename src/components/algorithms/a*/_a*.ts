@@ -11,10 +11,13 @@ export enum AStarStates {
 }
 
 class AStarNode {
-    /**
-     * Wether the node is set (can't get better)
-     */
-    removed: boolean = false;
+    bestRoute?: AStarNode;
+    cachedHCost?: number;
+
+    // /**
+    //  * Wether the node is set (can't get better)
+    //  */
+    // removed: boolean = false;
 
     /**
      * The distance from the starting node
@@ -29,11 +32,15 @@ class AStarNode {
     /**
      * The distance from the end node
      */
-    hCost: number = Infinity;
+    getHCost(): number {
+        if (this.end === undefined)
+            throw new Error("end is not defined");
 
-    bestRoute?: AStarNode;
+        if (this.cachedHCost === undefined)
+            this.cachedHCost = this.distance(this.end);
 
-    constructor(public x: number, public y: number) { }
+        return this.cachedHCost;
+    }
 
     /**
      * Get the distance between this node and another
@@ -50,6 +57,8 @@ class AStarNode {
     get fCost(): number {
         return this.gCost + this.fCost;
     }
+
+    constructor(public x: number, public y: number, public end?: AStarNode) { }
 }
 
 export class AStarResult {
@@ -67,22 +76,33 @@ export default class AStar implements StyledGridState {
     all: Array<Array<AStarNode>> = [];
     open: Array<AStarNode> = [];
     closed: Array<AStarNode> = [];
-    start!: AStarNode;
-    end!: AStarNode;
+    start?: AStarNode;
+    end?: AStarNode;
+
+    steps: number = 0;
 
     constructor(state: GridState<AStarStates>) {
         this.state = state;
-
         this.generate();
     }
 
-    generate() {
+    private generate() {
+        console.log("pregen", this);
+        console.log("generated");
+        this.all = [];
+        this.open = [];
+        this.closed = [];
+        this.start = undefined;
+        this.end = undefined;
+
         for (let y = 0; y < this.state.state.length; y++) {
             this.all.push([]);
 
             for (let x = 0; x < this.state.state.length; x++) {
-                const item: AStarStates = this.state.state[x][y];
+                const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
+
+                // console.log(item, node);
 
                 this.all[y].push(node);
 
@@ -94,11 +114,14 @@ export default class AStar implements StyledGridState {
             }
         }
 
+        console.log("postgen", this);
+
         // something's wrong
         if (!this.canContinue())
             return;
 
-        this.open.push(this.start)
+        if (this.start)
+            this.open.push(this.start);
     }
 
     canContinueReason() {
@@ -136,15 +159,15 @@ export default class AStar implements StyledGridState {
         console.log(stage)
         switch (stage) {
             case AStarStages.Wall: {
-                return new AStarResult(this.toggleWall(x, y), stage, this.canContinue(), );
+                return new AStarResult(this.toggleWall(x, y), stage, this.canContinue(),);
             }
 
             case AStarStages.Start: {
-                return new AStarResult(this.clearAndSet(x, y, AStarStates.Start), AStarStages.End, this.canContinue(), );
+                return new AStarResult(this.clearAndSet(x, y, AStarStates.Start), AStarStages.End, this.canContinue(),);
             }
 
             case AStarStages.End: {
-                return new AStarResult(this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall, this.canContinue(), );
+                return new AStarResult(this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall, this.canContinue(),);
             }
         }
     }
@@ -153,12 +176,14 @@ export default class AStar implements StyledGridState {
         // find old start
         this.state.state = this.state.state.map((col) => col.map(item => item == state ? AStarStates.Node : item));
         this.setElementState(x, y, state);
-        
-        if(state === AStarStates.Start)
+
+        if (state === AStarStates.Start)
             this.start = this.all[x][y];
 
-        if(state === AStarStates.End)
+        if (state === AStarStates.End)
             this.end = this.all[x][y];
+
+        this.generate();
 
         return this.state.new();
     }
@@ -167,10 +192,38 @@ export default class AStar implements StyledGridState {
         if (this.canChange(this.getElementState(x, y)))
             this.setElementState(x, y, this.getElementState(x, y) === AStarStates.Node ? AStarStates.Wall : AStarStates.Node);
 
-        return this.state.new();
+        const newState = this.state.new();
+        console.log("state compare", this.state, newState);
+        return newState;
+    }
+
+    public getSurrounding(x: number, y: number) {
+        // check on x file
+        const nodes = [];
+
+        for(    let i = x == 0 ? x : x - 1; i <= x + 1 && i < this.all.length; i++)
+            for(let j = y == 0 ? y : y - 1; j <= y + 1 && j < this.all[x].length; j++)
+                if(!(x == i && y == j))
+                    nodes.push(this.all[i][j]);
+
+        return nodes;
     }
 
     step() {
+        console.log(this);
+        if (!this.canContinue())
+            return;
 
+        // find the lowest element
+        const node =
+            this.open.reduce(
+                (prev, curr) =>
+                    prev === undefined ? curr :
+                        prev.getHCost() > curr.getHCost() ? curr : prev
+            );
+
+        // explore around
+        const possibleNodes = this.getSurrounding(node.x, node.y);
+        console.log(possibleNodes);
     }
 }

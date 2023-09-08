@@ -32,7 +32,7 @@ export default function A_Star() {
 
     
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
-    const [AS, setAS] = useState<AStar>(new AStar(generateGridState(initialSize, initialSize)));
+    const [AS, setAS] = useState<AStar>();
 
     const [state, setState] = useState<GridState<AStarStates>>(generateGridState(initialSize, initialSize));
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
@@ -42,6 +42,13 @@ export default function A_Star() {
     const [InputHeight, setInputHeight] = useState<number>(initialSize);
 
     useEffect(() => {
+        setAS(new AStar(generateGridState(initialSize, initialSize)));
+    }, []);
+
+    useEffect(() => {
+        if(!AS)
+            return;
+
         const newCallback = (x: number, y: number) => {
             const result = AS.interaction(x, y, stage);
             console.log("cb", x, y);
@@ -62,6 +69,7 @@ export default function A_Star() {
             Width: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} />
             Height: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} />
             <GenericButton className={classNames(styles.stageButton, styles.inline)} onClick={() => {
+                console.log("button???")
                 setAS(new AStar(generateGridState(InputWidth, InputHeight)));
                 setStage(AStarStages.Start);
             }}>New Grid</GenericButton>
@@ -72,7 +80,7 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
         </div>
         <div className={styles.stageButtons}>
-            <GenericButton className={styles.stageButton} selected={canStep}><p>Step</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => AS?.step()} selected={canStep}><p>Step</p></GenericButton>
             <GenericButton className={styles.stageButton}><p>Finish</p></GenericButton>
         </div>
         <Grid className={styles.grid} state={state} callback={callback} />
