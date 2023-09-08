@@ -52,6 +52,14 @@ class AStarNode {
     }
 }
 
+export class AStarResult {
+    constructor(
+        public readonly gridState: GridState<AStarStates>,
+        public readonly gridStage: AStarStages,
+        public readonly canContinue: boolean,
+    ) { }
+}
+
 export default class AStar implements StyledGridState {
 
     state: GridState<AStarStates>
@@ -64,6 +72,8 @@ export default class AStar implements StyledGridState {
 
     constructor(state: GridState<AStarStates>) {
         this.state = state;
+
+        this.generate();
     }
 
     generate() {
@@ -85,13 +95,13 @@ export default class AStar implements StyledGridState {
         }
 
         // something's wrong
-        if (this.canContinue() === undefined)
+        if (!this.canContinue())
             return;
 
         this.open.push(this.start)
     }
 
-    canContinue() {
+    canContinueReason() {
         if (this.start === undefined)
             return "Start is not defined";
 
@@ -100,6 +110,10 @@ export default class AStar implements StyledGridState {
 
         if (this.start == this.end)
             return "The start can't be the same as the end";
+    }
+
+    canContinue() {
+        return this.canContinueReason() === undefined;
     }
 
     getStyledGridState(): string[][] {
@@ -118,19 +132,19 @@ export default class AStar implements StyledGridState {
         this.state.state[y][x] = state;
     }
 
-    interaction(x: number, y: number, stage: AStarStages): [GridState<AStarStates>, AStarStages] {
+    interaction(x: number, y: number, stage: AStarStages): AStarResult {
         console.log(stage)
         switch (stage) {
             case AStarStages.Wall: {
-                return [this.toggleWall(x, y), stage];
+                return new AStarResult(this.toggleWall(x, y), stage, this.canContinue(), );
             }
 
             case AStarStages.Start: {
-                return [this.clearAndSet(x, y, AStarStates.Start), AStarStages.End];
+                return new AStarResult(this.clearAndSet(x, y, AStarStates.Start), AStarStages.End, this.canContinue(), );
             }
 
             case AStarStages.End: {
-                return [this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall];
+                return new AStarResult(this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall, this.canContinue(), );
             }
         }
     }
@@ -139,6 +153,12 @@ export default class AStar implements StyledGridState {
         // find old start
         this.state.state = this.state.state.map((col) => col.map(item => item == state ? AStarStates.Node : item));
         this.setElementState(x, y, state);
+        
+        if(state === AStarStates.Start)
+            this.start = this.all[x][y];
+
+        if(state === AStarStates.End)
+            this.end = this.all[x][y];
 
         return this.state.new();
     }

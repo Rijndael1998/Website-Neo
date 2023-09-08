@@ -30,29 +30,29 @@ export default function A_Star() {
     const initialSize = 10;
     const maxSize = 40;
 
+    
+    const [callback, setCallback] = useState<(x: number, y: number) => void>();
+    const [AS, setAS] = useState<AStar>(new AStar(generateGridState(initialSize, initialSize)));
+
     const [state, setState] = useState<GridState<AStarStates>>(generateGridState(initialSize, initialSize));
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
-    const [callback, setCallback] = useState<(x: number, y: number) => void>();
-    const [AS, setAS] = useState<AStar>(new AStar(state));
+    const [canStep, setCanStep] = useState<boolean>(false);
 
     const [InputWidth, setInputWidth] = useState<number>(initialSize);
     const [InputHeight, setInputHeight] = useState<number>(initialSize);
 
     useEffect(() => {
         const newCallback = (x: number, y: number) => {
-            const [newState, newStage] = AS.interaction(x, y, stage);
+            const result = AS.interaction(x, y, stage);
             console.log("cb", x, y);
-            setState(newState);
-            setStage(newStage);
+            setStage(result.gridStage);
+            setState(result.gridState);
+            setCanStep(result.canContinue);
         }
 
         setCallback(() => newCallback);
     }, [AS, stage]);
 
-    useEffect(() => {
-        console.log("state changed");
-        setAS(new AStar(state))
-    }, [state]);
 
     return <>
         <h1>
@@ -62,7 +62,7 @@ export default function A_Star() {
             Width: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} />
             Height: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} />
             <GenericButton className={classNames(styles.stageButton, styles.inline)} onClick={() => {
-                setState(generateGridState(InputWidth, InputHeight));
+                setAS(new AStar(generateGridState(InputWidth, InputHeight)));
                 setStage(AStarStages.Start);
             }}>New Grid</GenericButton>
         </div>
@@ -71,6 +71,10 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
         </div>
-        <Grid className={styles.grid} state={AS} callback={callback} />
+        <div className={styles.stageButtons}>
+            <GenericButton className={styles.stageButton} selected={canStep}><p>Step</p></GenericButton>
+            <GenericButton className={styles.stageButton}><p>Finish</p></GenericButton>
+        </div>
+        <Grid className={styles.grid} state={state} callback={callback} />
     </>
 }
