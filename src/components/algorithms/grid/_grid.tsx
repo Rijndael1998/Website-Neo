@@ -1,11 +1,15 @@
-import { GridState } from "./gridState";
 import GridItem from "./gridItem/_gridItem";
 import styles from "./grid.module.scss";
 
+export interface StyledGridState {
+    getStyledGridState(): Array<Array<string>>;
+}
+
 export type GridCallback = (x: number, y: number) => void;
 
-export type GridProps<T> = {
-    state: GridState<T>,
+export type GridProps = {
+    state: StyledGridState,
+    className?: string,
     callback?: GridCallback,
 }
 
@@ -17,8 +21,8 @@ function callbackGenerator(x: number, y: number, callback?: GridCallback) {
     return () => callback(x, y);
 }
 
-export default function Grid<T>({ state, callback }: GridProps<T>) {
-    return <div>
+export default function Grid({ state, className, callback }: GridProps) {
+    return <div className={className}>
         {
             state.getStyledGridState().map(
                 (columnItems, col) => <div className={styles.col} key={col}>

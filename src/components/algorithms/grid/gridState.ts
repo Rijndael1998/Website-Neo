@@ -1,5 +1,7 @@
+import { StyledGridState } from "./_grid";
+
 // Take in an array of 
-export class GridState<T> {
+export class GridState<T> implements StyledGridState {
 
     state: Array<Array<T>>;
 
