@@ -123,8 +123,6 @@ export default class AStar implements StyledGridState {
         if (this.inProgress)
             this.reset();
 
-        console.log(this);
-
         switch (stage) {
             case AStarStages.Wall: {
                 const res = this.toggleWall(x, y);
