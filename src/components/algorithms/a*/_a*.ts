@@ -110,6 +110,7 @@ export default class AStar implements StyledGridState {
         this.state = this.originalState.new();
         this.inProgress = false;
         this.foundEnd = false;
+        this.generate();
         return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason());
     }
 
