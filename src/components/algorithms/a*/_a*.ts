@@ -98,9 +98,14 @@ export default class AStar implements StyledGridState {
 
     private setElementState(x: number, y: number, state: AStarStates) {
         const node = this.state.state[y][x];
-        if (state == AStarStates.Explored && (
-            node == AStarStates.Start
-            || node == AStarStates.End)
+        if (
+            (
+                state == AStarStates.Explored ||
+                state == AStarStates.Removed
+            ) && (
+                node == AStarStates.Start ||
+                node == AStarStates.End
+            )
         ) return;
 
         this.state.state[y][x] = state;
@@ -115,7 +120,7 @@ export default class AStar implements StyledGridState {
     }
 
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
-        if (this.inProgress) 
+        if (this.inProgress)
             this.reset();
 
         console.log(this);
