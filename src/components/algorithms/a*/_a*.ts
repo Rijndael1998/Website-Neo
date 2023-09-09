@@ -1,8 +1,8 @@
-import { AStarStages } from "@/app/fun/a-star/page";
 import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
 import { AStarNode } from "./a*node";
 import { AStarResult } from "./utils/a*result";
+import { AStarStages } from "./utils/a*stages.enum";
 import { AStarStates } from "./utils/a*states.enum";
 
 export default class AStar implements StyledGridState {

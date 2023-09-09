@@ -1,5 +1,5 @@
-import { AStarStages } from "@/app/fun/a-star/page";
 import { GridState } from "../../grid/gridState";
+import { AStarStages } from "./a*stages.enum";
 import { AStarStates } from "./a*states.enum";
 
 

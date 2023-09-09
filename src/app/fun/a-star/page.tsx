@@ -11,12 +11,7 @@ import classNames from "classnames";
 import { AStarResult } from "@/components/algorithms/a*/utils/a*result";
 import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
 import { AStarStates } from "@/components/algorithms/a*/utils/a*states.enum";
-
-export enum AStarStages {
-    Start,
-    End,
-    Wall,
-}
+import { AStarStages } from "@/components/algorithms/a*/utils/a*stages.enum";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
