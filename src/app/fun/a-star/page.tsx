@@ -8,6 +8,7 @@ import styles from "./a*.module.scss";
 import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
+import { AStarResult } from "@/components/algorithms/a*/a*result";
 
 export const AStarStyleMap: Map<AStarStates, string> = new Map();
 AStarStyleMap.set(AStarStates.Node, styles.Node);
@@ -40,9 +41,18 @@ export default function A_Star() {
     const [state, setState] = useState<GridState<AStarStates>>(generateGridState(initialSize, initialSize));
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
     const [canStep, setCanStep] = useState<boolean>(false);
+    const [canStepReason, setCanStepReason] = useState<string>();
 
     const [InputWidth, setInputWidth] = useState<number>(initialSize);
     const [InputHeight, setInputHeight] = useState<number>(initialSize);
+
+    const applyResult = (result: AStarResult) => {
+        console.log(result);
+        setStage(result.gridStage);
+        setState(result.gridState);
+        setCanStep(result.canContinue);
+        setCanStepReason(result.canContinueReason);
+    }
 
     useEffect(() => {
         setAS(new AStar(generateGridState(initialSize, initialSize)));
@@ -55,9 +65,7 @@ export default function A_Star() {
         const newCallback = (x: number, y: number) => {
             const result = AS.interaction(x, y, stage);
             console.log("cb", x, y);
-            setStage(result.gridStage);
-            setState(result.gridState);
-            setCanStep(result.canContinue);
+            applyResult(result);
         }
 
         setCallback(() => newCallback);
@@ -72,7 +80,6 @@ export default function A_Star() {
             Width: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} />
             Height: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} />
             <GenericButton className={classNames(styles.stageButton, styles.inline)} onClick={() => {
-                console.log("button???")
                 const newAS = new AStar(generateGridState(InputWidth, InputHeight));
                 setAS(newAS);
                 setStage(AStarStages.Start);
@@ -88,11 +95,14 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => {
                 const newState = AS?.step();
                 if(newState)
-                    setState(newState);
+                    applyResult(newState);
             }
             } selected={canStep}><p>Step</p></GenericButton>
             <GenericButton className={styles.stageButton}><p>Finish</p></GenericButton>
         </div>
+        <p>
+            {canStepReason === undefined? "All ok" : canStepReason}
+        </p>
         <Grid className={styles.grid} state={state} callback={callback} />
     </>
 }

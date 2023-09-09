@@ -120,19 +120,19 @@ export default class AStar implements StyledGridState {
             case AStarStages.Wall: {
                 const res = this.toggleWall(x, y);
                 this.generate();
-                return new AStarResult(res, stage, this.canContinue(),);
+                return new AStarResult(res, stage, this.canContinue(), this.canContinueReason());
             }
 
             case AStarStages.Start: {
                 const res = this.clearAndSet(x, y, AStarStates.Start);
                 this.generate();
-                return new AStarResult(res, AStarStages.End, this.canContinue(),);
+                return new AStarResult(res, AStarStages.End, this.canContinue(), this.canContinueReason());
             }
 
             case AStarStages.End: {
                 const res = this.clearAndSet(x, y, AStarStates.End);
                 this.generate();
-                return new AStarResult(res, AStarStages.Wall, this.canContinue(),);
+                return new AStarResult(res, AStarStages.Wall, this.canContinue(), this.canContinueReason());
             }
         }
     }
@@ -182,9 +182,9 @@ export default class AStar implements StyledGridState {
         return nodes;
     }
 
-    step() {
+    step(): AStarResult {
         if (!this.canContinue())
-            return;
+            return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
 
         // find the lowest element
         const node =
@@ -231,6 +231,6 @@ export default class AStar implements StyledGridState {
             }
         }
 
-        return this.state.new();
+        return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
     }
 }

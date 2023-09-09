@@ -7,5 +7,6 @@ export class AStarResult {
         public readonly gridState: GridState<AStarStates>,
         public readonly gridStage: AStarStages,
         public readonly canContinue: boolean,
+        public readonly canContinueReason: string | undefined,
     ) { }
 }
