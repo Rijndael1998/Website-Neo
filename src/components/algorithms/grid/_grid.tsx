@@ -8,7 +8,7 @@ export interface StyledGridState {
 export type GridCallback = (x: number, y: number) => void;
 
 export type GridProps = {
-    state: StyledGridState,
+    state?: StyledGridState,
     className?: string,
     callback?: GridCallback,
 }
@@ -24,7 +24,7 @@ function callbackGenerator(x: number, y: number, callback?: GridCallback) {
 export default function Grid({ state, className, callback }: GridProps) {
     return <div className={className}>
         {
-            state.getStyledGridState().map(
+            state && state.getStyledGridState().map(
                 (columnItems, col) => <div className={styles.col} key={col}>
                     {
                         columnItems.map(

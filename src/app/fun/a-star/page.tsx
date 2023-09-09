@@ -26,7 +26,7 @@ export default function A_Star() {
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
     const [AS, setAS] = useState<AStar>();
 
-    const [state, setState] = useState<GridState<AStarStates>>(generateGridState(initialSize, initialSize));
+    const [state, setState] = useState<GridState<AStarStates>>();
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
     const [canStep, setCanStep] = useState<boolean>(false);
     const [canStepReason, setCanStepReason] = useState<string>();
@@ -47,13 +47,15 @@ export default function A_Star() {
     }
 
     const refreshState = () => {
-        const newState = AS?.step();
+        const newState = AS?.run();
         if (newState)
             applyResult(newState);
     }
 
     useEffect(() => {
-        setAS(new AStar(generateGridState(initialSize, initialSize)));
+        const as = new AStar(generateGridState(initialSize, initialSize));
+        setAS(as);
+        setState(as.state);
     }, []);
 
     useEffect(() => {
@@ -69,6 +71,10 @@ export default function A_Star() {
         setCallback(() => newCallback);
     }, [AS, stage]);
 
+    useEffect(() => {
+        if(AS)
+            applyResult(AS.setAuto(auto));
+    }, [AS, auto]);
 
     return <>
         <h1>
@@ -93,7 +99,7 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => {refreshState()}} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step</p></GenericButton>
         </div>
-        <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true}><p>Reset Progress</p></GenericButton>
+        <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Progress</p></GenericButton>
         <p>
             {canStepReason === undefined ? "All ok" : canStepReason}
         </p>

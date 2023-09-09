@@ -17,7 +17,7 @@ export default class AStar implements StyledGridState {
     steps: number = 0;
     foundEnd: boolean = false;
     inProgress: boolean = false;
-    auto: boolean = false;
+    private auto: boolean = false;
 
     constructor(state: GridState<AStarStates>) {
         this.originalState = this.state = state;
@@ -30,28 +30,30 @@ export default class AStar implements StyledGridState {
         this.closed = [];
         this.start = undefined;
         this.end = undefined;
+        this.steps = 0;
 
         for (let y = 0; y < this.state.state.length; y++) {
             this.all.push([]);
 
-            for (let x = 0; x < this.state.state.length; x++) {
+            for (let x = 0; x < this.state.state[y].length; x++) {
                 const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
+
+                console.log(item, node, this);
 
                 if (item == AStarStates.Wall)
                     node.removed = true;
 
                 this.all[y].push(node);
 
-                if (item == AStarStates.Start)
+                if (item == AStarStates.Start) {
                     this.start = node;
+                }
 
                 if (item == AStarStates.End)
                     this.end = node;
             }
         }
-
-
 
         if (this.start) {
             this.open.push(this.start);
@@ -61,7 +63,11 @@ export default class AStar implements StyledGridState {
         // something's wrong
         if (!this.canContinue())
             return;
+    }
 
+    setAuto(auto: boolean) {
+        this.auto = auto;
+        return this.postInteraction(this.originalState.new());
     }
 
     canContinueReason() {
@@ -76,6 +82,8 @@ export default class AStar implements StyledGridState {
 
         if (this.foundEnd)
             return "Path was found";
+
+        console.log(this);
 
         if (this.open.length == 0)
             return "Impossible pathing."
@@ -120,10 +128,14 @@ export default class AStar implements StyledGridState {
         return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason());
     }
 
-    private postInteraction(res: GridState<AStarStates>, nextStage?:AStarStages) {
+    private postInteraction(res: GridState<AStarStates>, nextStage?: AStarStages) {
         this.generate();
         this.originalState = res.new();
-        return new AStarResult(res, nextStage, this.canContinue(), this.canContinueReason());
+
+        if (this.auto)
+            this.run();
+
+        return new AStarResult(this.state.new(), nextStage, this.canContinue(), this.canContinueReason());
     }
 
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
@@ -151,10 +163,10 @@ export default class AStar implements StyledGridState {
         this.setElementState(x, y, state);
 
         if (state === AStarStates.Start)
-            this.start = this.all[x][y];
+            this.start = this.all[y][x];
 
         if (state === AStarStates.End)
-            this.end = this.all[x][y];
+            this.end = this.all[y][x];
 
         return this.state.new();
     }
@@ -172,11 +184,12 @@ export default class AStar implements StyledGridState {
 
         // will result in 8 elements or less...
         const xStart = Math.max(x - 1, 0);
-        const xEnd = Math.min(x + 2, this.all.length);
+        const xEnd = Math.min(x + 2, this.all[0].length);
 
         const yStart = Math.max(y - 1, 0);
-        const yEnd = Math.min(y + 2, this.all[xStart].length);
+        const yEnd = Math.min(y + 2, this.all.length);
 
+        debugger;
 
         for (let i = xStart; i < xEnd; i++)
             for (let j = yStart; j < yEnd; j++)
