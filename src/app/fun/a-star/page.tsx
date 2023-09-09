@@ -73,8 +73,10 @@ export default function A_Star() {
             Height: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} />
             <GenericButton className={classNames(styles.stageButton, styles.inline)} onClick={() => {
                 console.log("button???")
-                setAS(new AStar(generateGridState(InputWidth, InputHeight)));
+                const newAS = new AStar(generateGridState(InputWidth, InputHeight));
+                setAS(newAS);
                 setStage(AStarStages.Start);
+                setState(newAS.state);
             }}>New Grid</GenericButton>
         </div>
         <div className={styles.stageButtons}>
