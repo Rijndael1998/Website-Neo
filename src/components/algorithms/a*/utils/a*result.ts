@@ -1,6 +1,7 @@
 import { AStarStages } from "@/app/fun/a-star/page";
 import { GridState } from "../../grid/gridState";
-import { AStarStates } from "../_a*";
+import { AStarStates } from "./a*states.enum";
+
 
 export class AStarResult {
     constructor(

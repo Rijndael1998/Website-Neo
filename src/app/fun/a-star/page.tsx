@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { GridState } from "../../../components/algorithms/grid/gridState"
 import Grid from "../../../components/algorithms/grid/_grid";
-import AStar, { AStarStates } from "@/components/algorithms/a*/_a*";
+import AStar from "@/components/algorithms/a*/_a*";
 import styles from "./a*.module.scss";
 import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
 import { AStarResult } from "@/components/algorithms/a*/utils/a*result";
 import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
+import { AStarStates } from "@/components/algorithms/a*/utils/a*states.enum";
 
 export enum AStarStages {
     Start,
