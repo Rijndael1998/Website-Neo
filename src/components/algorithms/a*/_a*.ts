@@ -2,6 +2,7 @@ import { AStarStages } from "@/app/fun/a-star/page";
 import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
 import { AStarNode } from "./a*node";
+import { AStarResult } from "./a*result";
 
 export enum AStarStates {
     Node,
@@ -11,14 +12,6 @@ export enum AStarStates {
     Path,
     Explored,
     Removed,
-}
-
-export class AStarResult {
-    constructor(
-        public readonly gridState: GridState<AStarStates>,
-        public readonly gridStage: AStarStages,
-        public readonly canContinue: boolean,
-    ) { }
 }
 
 export default class AStar implements StyledGridState {
@@ -32,6 +25,7 @@ export default class AStar implements StyledGridState {
     end?: AStarNode;
 
     steps: number = 0;
+    foundEnd: boolean = false;
 
     constructor(state: GridState<AStarStates>) {
         this.state = state;
@@ -81,7 +75,7 @@ export default class AStar implements StyledGridState {
             this.open.push(this.start);
             this.start.isStart = true;
         }
-            
+
     }
 
     canContinueReason() {
@@ -93,6 +87,9 @@ export default class AStar implements StyledGridState {
 
         if (this.start == this.end)
             return "The start can't be the same as the end";
+
+        if (this.foundEnd)
+            return "Path was found";
     }
 
     canContinue() {
@@ -211,24 +208,22 @@ export default class AStar implements StyledGridState {
         });
         console.log(possibleNodes);
 
-        let foundEnd = false;
-
         // saturate the cells
         possibleNodes.forEach((cell) => {
             cell.end = this!.end;
 
-            if(cell.bestRoute === undefined || cell.gCost > node.gCost + cell.distance(node))
+            if (cell.bestRoute === undefined || cell.gCost > node.gCost + cell.distance(node))
                 cell.bestRoute = node;
-            
+
 
             this.setElementState(cell.x, cell.y, AStarStates.Explored);
 
-            if(cell == this.end)
-                foundEnd = true;
+            if (cell == this.end)
+                this.foundEnd = true;
 
             // remove them from the open list if they are found
             const index = this.open.indexOf(cell);
-            if(index != -1)
+            if (index != -1)
                 this.open.splice(index, 1);
         });
 
@@ -237,9 +232,9 @@ export default class AStar implements StyledGridState {
 
         this.open.splice(this.open.indexOf(node), 1, ...possibleNodes);
 
-        if(foundEnd) {
+        if (this.foundEnd) {
             let cell = this.end!.bestRoute!;
-            while(cell != this.start || !cell) {
+            while (cell != this.start || !cell) {
                 this.setElementState(cell.x, cell.y, AStarStates.Path);
                 cell = cell.bestRoute!;
             }
