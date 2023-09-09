@@ -17,6 +17,7 @@ export default class AStar implements StyledGridState {
     steps: number = 0;
     foundEnd: boolean = false;
     inProgress: boolean = false;
+    auto: boolean = false;
 
     constructor(state: GridState<AStarStates>) {
         this.originalState = this.state = state;
@@ -119,30 +120,27 @@ export default class AStar implements StyledGridState {
         return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason());
     }
 
+    private postInteraction(res: GridState<AStarStates>, nextStage?:AStarStages) {
+        this.generate();
+        this.originalState = res.new();
+        return new AStarResult(res, nextStage, this.canContinue(), this.canContinueReason());
+    }
+
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
         if (this.inProgress)
             this.reset();
 
         switch (stage) {
             case AStarStages.Wall: {
-                const res = this.toggleWall(x, y);
-                this.generate();
-                this.originalState = res.new();
-                return new AStarResult(res, stage, this.canContinue(), this.canContinueReason());
+                return this.postInteraction(this.toggleWall(x, y), stage);
             }
 
             case AStarStages.Start: {
-                const res = this.clearAndSet(x, y, AStarStates.Start);
-                this.generate();
-                this.originalState = res.new();
-                return new AStarResult(res, AStarStages.End, this.canContinue(), this.canContinueReason());
+                return this.postInteraction(this.clearAndSet(x, y, AStarStates.Start), AStarStages.End);
             }
 
             case AStarStages.End: {
-                const res = this.clearAndSet(x, y, AStarStates.End);
-                this.generate();
-                this.originalState = res.new();
-                return new AStarResult(res, AStarStages.Wall, this.canContinue(), this.canContinueReason());
+                return this.postInteraction(this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall);
             }
         }
     }
@@ -245,5 +243,17 @@ export default class AStar implements StyledGridState {
         this.steps++;
 
         return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
+    }
+
+    run(): AStarResult {
+        let res: AStarResult;
+        if (this.auto && this.canContinue())
+            while (this.canContinue())
+                res = this.step();
+
+        else
+            res = this.step();
+
+        return res!;
     }
 }

@@ -22,7 +22,7 @@ export default function A_Star() {
     const initialSize = 10;
     const maxSize = 40;
 
-    
+
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
     const [AS, setAS] = useState<AStar>();
 
@@ -30,6 +30,7 @@ export default function A_Star() {
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
     const [canStep, setCanStep] = useState<boolean>(false);
     const [canStepReason, setCanStepReason] = useState<string>();
+    const [auto, setAuto] = useState<boolean>(false);
 
     const [InputWidth, setInputWidth] = useState<number>(initialSize);
     const [InputHeight, setInputHeight] = useState<number>(initialSize);
@@ -37,7 +38,7 @@ export default function A_Star() {
     const applyResult = (result: AStarResult) => {
         console.log(result);
 
-        if(result.gridStage !== undefined)
+        if (result.gridStage !== undefined)
             setStage(result.gridStage);
 
         setState(result.gridState);
@@ -45,12 +46,18 @@ export default function A_Star() {
         setCanStepReason(result.canContinueReason);
     }
 
+    const refreshState = () => {
+        const newState = AS?.step();
+        if (newState)
+            applyResult(newState);
+    }
+
     useEffect(() => {
         setAS(new AStar(generateGridState(initialSize, initialSize)));
     }, []);
 
     useEffect(() => {
-        if(!AS)
+        if (!AS)
             return;
 
         const newCallback = (x: number, y: number) => {
@@ -81,19 +88,14 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
-            <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true}><p>Reset Progress</p></GenericButton>
         </div>
         <div className={styles.stageButtons}>
-            <GenericButton className={styles.stageButton} onClick={() => {
-                const newState = AS?.step();
-                if(newState)
-                    applyResult(newState);
-            }
-            } selected={canStep}><p>Step</p></GenericButton>
-            <GenericButton className={styles.stageButton}><p>Finish</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => {refreshState()}} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step</p></GenericButton>
         </div>
+        <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true}><p>Reset Progress</p></GenericButton>
         <p>
-            {canStepReason === undefined? "All ok" : canStepReason}
+            {canStepReason === undefined ? "All ok" : canStepReason}
         </p>
         <Grid className={styles.grid} state={state} callback={callback} />
     </>
