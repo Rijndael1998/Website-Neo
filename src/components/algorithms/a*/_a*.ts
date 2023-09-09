@@ -8,16 +8,17 @@ export enum AStarStates {
     Start,
     End,
     Path,
+    Explored,
 }
 
 class AStarNode {
     bestRoute?: AStarNode;
     cachedHCost?: number;
 
-    // /**
-    //  * Wether the node is set (can't get better)
-    //  */
-    // removed: boolean = false;
+    /**
+     * Wether the node is set (can't get better)
+     */
+    removed: boolean = false;
 
     /**
      * The distance from the starting node
@@ -152,6 +153,12 @@ export default class AStar implements StyledGridState {
     }
 
     private setElementState(x: number, y: number, state: AStarStates) {
+        const node = this.state.state[y][x];
+        if (state == AStarStates.Explored && (
+            node == AStarStates.Start
+            || node == AStarStates.End)
+        ) return;
+
         this.state.state[y][x] = state;
     }
 
@@ -200,11 +207,24 @@ export default class AStar implements StyledGridState {
     public getSurrounding(x: number, y: number) {
         // check on x file
         const nodes = [];
+        console.log("surrounding", x, y);
 
-        for(    let i = x == 0 ? x : x - 1; i <= x + 1 && i < this.all.length; i++)
-            for(let j = y == 0 ? y : y - 1; j <= y + 1 && j < this.all[x].length; j++)
-                if(!(x == i && y == j))
-                    nodes.push(this.all[i][j]);
+        // will result in 8 elements or less...
+        const xStart = Math.max(x - 1, 0);
+        const xEnd = Math.min(x + 2, this.all.length);
+
+        const yStart = Math.max(y - 1, 0);
+        const yEnd = Math.min(y + 2, this.all[xStart].length);
+
+
+        for (let i = xStart; i < xEnd; i++)
+            for (let j = yStart; j < yEnd; j++)
+                if (!(x == i && y == j)) {
+                    const node = this.all[j][i];
+                    if(!node.removed)
+                        nodes.push(node);
+                }
+                    
 
         return nodes;
     }
@@ -225,5 +245,18 @@ export default class AStar implements StyledGridState {
         // explore around
         const possibleNodes = this.getSurrounding(node.x, node.y);
         console.log(possibleNodes);
+
+        // saturate the cells
+        possibleNodes.forEach((cell) => {
+            cell.end = this!.end;
+            cell.bestRoute = node;
+            this.setElementState(cell.x, cell.y, AStarStates.Explored);
+        });
+
+        node.removed = true;
+
+        this.open.splice(this.open.indexOf(node), 1, ...possibleNodes);
+
+        return this.state.new();
     }
 }

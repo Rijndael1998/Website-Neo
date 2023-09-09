@@ -14,6 +14,8 @@ AStarStyleMap.set(AStarStates.Node, styles.Node);
 AStarStyleMap.set(AStarStates.Wall, styles.Wall);
 AStarStyleMap.set(AStarStates.Start, styles.Start);
 AStarStyleMap.set(AStarStates.End, styles.End);
+AStarStyleMap.set(AStarStates.Path, styles.Path);
+AStarStyleMap.set(AStarStates.Explored, styles.Explored);
 
 export enum AStarStages {
     Start,
@@ -80,7 +82,12 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
         </div>
         <div className={styles.stageButtons}>
-            <GenericButton className={styles.stageButton} onClick={() => AS?.step()} selected={canStep}><p>Step</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => {
+                const newState = AS?.step();
+                if(newState)
+                    setState(newState);
+            }
+            } selected={canStep}><p>Step</p></GenericButton>
             <GenericButton className={styles.stageButton}><p>Finish</p></GenericButton>
         </div>
         <Grid className={styles.grid} state={state} callback={callback} />
