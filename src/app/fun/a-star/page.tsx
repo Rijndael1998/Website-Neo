@@ -48,7 +48,10 @@ export default function A_Star() {
 
     const applyResult = (result: AStarResult) => {
         console.log(result);
-        setStage(result.gridStage);
+
+        if(result.gridStage !== undefined)
+            setStage(result.gridStage);
+
         setState(result.gridState);
         setCanStep(result.canContinue);
         setCanStepReason(result.canContinueReason);
@@ -90,6 +93,7 @@ export default function A_Star() {
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true}><p>Reset Progress</p></GenericButton>
         </div>
         <div className={styles.stageButtons}>
             <GenericButton className={styles.stageButton} onClick={() => {

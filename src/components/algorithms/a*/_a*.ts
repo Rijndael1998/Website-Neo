@@ -115,12 +115,16 @@ export default class AStar implements StyledGridState {
         this.state.state[y][x] = state;
     }
 
+    reset() {
+        this.state = this.originalState.new();
+        this.inProgress = false;
+        this.foundEnd = false;
+        return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason());
+    }
+
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
-        if (this.inProgress) {
-            this.state = this.originalState.new();
-            this.inProgress = false;
-            this.foundEnd = false;
-        }
+        if (this.inProgress) 
+            this.reset();
 
         console.log(this);
 

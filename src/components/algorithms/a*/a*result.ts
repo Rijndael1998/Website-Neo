@@ -5,7 +5,7 @@ import { AStarStates } from "./_a*";
 export class AStarResult {
     constructor(
         public readonly gridState: GridState<AStarStates>,
-        public readonly gridStage: AStarStages,
+        public readonly gridStage: AStarStages | undefined,
         public readonly canContinue: boolean,
         public readonly canContinueReason: string | undefined,
     ) { }
