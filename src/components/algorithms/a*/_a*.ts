@@ -15,9 +15,7 @@ export enum AStarStates {
 }
 
 export default class AStar implements StyledGridState {
-
     state: GridState<AStarStates>
-    // arrays is x, y
     all: Array<Array<AStarNode>> = [];
     open: Array<AStarNode> = [];
     closed: Array<AStarNode> = [];
@@ -33,8 +31,8 @@ export default class AStar implements StyledGridState {
     }
 
     private generate() {
-        console.log("pregen", this);
-        console.log("generated");
+
+
         this.all = [];
         this.open = [];
         this.closed = [];
@@ -48,12 +46,8 @@ export default class AStar implements StyledGridState {
                 const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
 
-                // console.log(item, node)
-
                 if (item == AStarStates.Wall)
                     node.removed = true;
-
-                // console.log(item, node);
 
                 this.all[y].push(node);
 
@@ -65,7 +59,7 @@ export default class AStar implements StyledGridState {
             }
         }
 
-        console.log("postgen", this);
+
 
         if (this.start) {
             this.open.push(this.start);
@@ -122,7 +116,6 @@ export default class AStar implements StyledGridState {
     }
 
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
-        console.log(stage)
         switch (stage) {
             case AStarStages.Wall: {
                 const res = this.toggleWall(x, y);
@@ -162,15 +155,12 @@ export default class AStar implements StyledGridState {
         if (this.canChange(this.getElementState(x, y)))
             this.setElementState(x, y, this.getElementState(x, y) === AStarStates.Node ? AStarStates.Wall : AStarStates.Node);
 
-        const newState = this.state.new();
-        console.log("state compare", this.state, newState);
-        return newState;
+        return this.state.new();
     }
 
     public getSurrounding(x: number, y: number) {
         // check on x file
         const nodes = [];
-        console.log("surrounding", x, y);
 
         // will result in 8 elements or less...
         const xStart = Math.max(x - 1, 0);
@@ -193,7 +183,6 @@ export default class AStar implements StyledGridState {
     }
 
     step() {
-        console.log(this);
         if (!this.canContinue())
             return;
 
@@ -209,7 +198,6 @@ export default class AStar implements StyledGridState {
         const possibleNodes = this.getSurrounding(node.x, node.y).filter((cell) => {
             return !cell.removed;
         });
-        console.log(possibleNodes);
 
         // saturate the cells
         possibleNodes.forEach((cell) => {
@@ -242,9 +230,6 @@ export default class AStar implements StyledGridState {
                 cell = cell.bestRoute!;
             }
         }
-
-        console.log(this);
-        console.log(this.open.map((value) => value.fCost));
 
         return this.state.new();
     }
