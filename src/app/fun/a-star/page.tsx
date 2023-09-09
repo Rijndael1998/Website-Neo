@@ -16,6 +16,7 @@ AStarStyleMap.set(AStarStates.Start, styles.Start);
 AStarStyleMap.set(AStarStates.End, styles.End);
 AStarStyleMap.set(AStarStates.Path, styles.Path);
 AStarStyleMap.set(AStarStates.Explored, styles.Explored);
+AStarStyleMap.set(AStarStates.Removed, styles.Removed);
 
 export enum AStarStages {
     Start,

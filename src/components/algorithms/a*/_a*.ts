@@ -10,6 +10,7 @@ export enum AStarStates {
     End,
     Path,
     Explored,
+    Removed,
 }
 
 export class AStarResult {
@@ -53,7 +54,7 @@ export default class AStar implements StyledGridState {
                 const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
 
-                console.log(item, node)
+                // console.log(item, node)
 
                 if (item == AStarStates.Wall)
                     node.removed = true;
@@ -76,8 +77,11 @@ export default class AStar implements StyledGridState {
         if (!this.canContinue())
             return;
 
-        if (this.start)
+        if (this.start) {
             this.open.push(this.start);
+            this.start.isStart = true;
+        }
+            
     }
 
     canContinueReason() {
@@ -198,7 +202,7 @@ export default class AStar implements StyledGridState {
             this.open.reduce(
                 (prev, curr) =>
                     prev === undefined ? curr :
-                        prev.getHCost() > curr.getHCost() ? curr : prev
+                        prev.fCost > curr.fCost ? curr : prev
             );
 
         // explore around // filter removed cells
@@ -212,14 +216,24 @@ export default class AStar implements StyledGridState {
         // saturate the cells
         possibleNodes.forEach((cell) => {
             cell.end = this!.end;
-            cell.bestRoute = node;
+
+            if(cell.bestRoute === undefined || cell.gCost > node.gCost + cell.distance(node))
+                cell.bestRoute = node;
+            
+
             this.setElementState(cell.x, cell.y, AStarStates.Explored);
 
             if(cell == this.end)
                 foundEnd = true;
+
+            // remove them from the open list if they are found
+            const index = this.open.indexOf(cell);
+            if(index != -1)
+                this.open.splice(index, 1);
         });
 
         node.removed = true;
+        this.setElementState(node.x, node.y, AStarStates.Removed);
 
         this.open.splice(this.open.indexOf(node), 1, ...possibleNodes);
 
@@ -230,6 +244,9 @@ export default class AStar implements StyledGridState {
                 cell = cell.bestRoute!;
             }
         }
+
+        console.log(this);
+        console.log(this.open.map((value) => value.fCost));
 
         return this.state.new();
     }

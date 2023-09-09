@@ -1,6 +1,7 @@
 export class AStarNode {
     bestRoute?: AStarNode;
     cachedHCost?: number;
+    isStart = false;
 
     /**
      * Wether the node is set (can't get better)
@@ -11,6 +12,9 @@ export class AStarNode {
      * The distance from the starting node
      */
     get gCost(): number {
+        if(this.isStart)
+            return 0;
+        
         if (!this.bestRoute)
             return Infinity;
 
@@ -43,7 +47,7 @@ export class AStarNode {
      * generates the sum of the costs (heuristic)
      */
     get fCost(): number {
-        return this.gCost + this.fCost;
+        return this.gCost + this.getHCost();
     }
 
     constructor(public x: number, public y: number, public end?: AStarNode) { }
