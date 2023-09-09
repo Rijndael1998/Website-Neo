@@ -103,6 +103,11 @@ export default class AStar implements StyledGridState {
                 const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
 
+                console.log(item, node)
+
+                if (item == AStarStates.Wall)
+                    node.removed = true;
+
                 // console.log(item, node);
 
                 this.all[y].push(node);
@@ -166,15 +171,21 @@ export default class AStar implements StyledGridState {
         console.log(stage)
         switch (stage) {
             case AStarStages.Wall: {
-                return new AStarResult(this.toggleWall(x, y), stage, this.canContinue(),);
+                const res = this.toggleWall(x, y);
+                this.generate();
+                return new AStarResult(res, stage, this.canContinue(),);
             }
 
             case AStarStages.Start: {
-                return new AStarResult(this.clearAndSet(x, y, AStarStates.Start), AStarStages.End, this.canContinue(),);
+                const res = this.clearAndSet(x, y, AStarStates.Start);
+                this.generate();
+                return new AStarResult(res, AStarStages.End, this.canContinue(),);
             }
 
             case AStarStages.End: {
-                return new AStarResult(this.clearAndSet(x, y, AStarStates.End), AStarStages.Wall, this.canContinue(),);
+                const res = this.clearAndSet(x, y, AStarStates.End);
+                this.generate();
+                return new AStarResult(res, AStarStages.Wall, this.canContinue(),);
             }
         }
     }
@@ -189,8 +200,6 @@ export default class AStar implements StyledGridState {
 
         if (state === AStarStates.End)
             this.end = this.all[x][y];
-
-        this.generate();
 
         return this.state.new();
     }
@@ -221,10 +230,10 @@ export default class AStar implements StyledGridState {
             for (let j = yStart; j < yEnd; j++)
                 if (!(x == i && y == j)) {
                     const node = this.all[j][i];
-                    if(!node.removed)
+                    if (!node.removed)
                         nodes.push(node);
                 }
-                    
+
 
         return nodes;
     }
@@ -242,20 +251,35 @@ export default class AStar implements StyledGridState {
                         prev.getHCost() > curr.getHCost() ? curr : prev
             );
 
-        // explore around
-        const possibleNodes = this.getSurrounding(node.x, node.y);
+        // explore around // filter removed cells
+        const possibleNodes = this.getSurrounding(node.x, node.y).filter((cell) => {
+            return !cell.removed;
+        });
         console.log(possibleNodes);
+
+        let foundEnd = false;
 
         // saturate the cells
         possibleNodes.forEach((cell) => {
             cell.end = this!.end;
             cell.bestRoute = node;
             this.setElementState(cell.x, cell.y, AStarStates.Explored);
+
+            if(cell == this.end)
+                foundEnd = true;
         });
 
         node.removed = true;
 
         this.open.splice(this.open.indexOf(node), 1, ...possibleNodes);
+
+        if(foundEnd) {
+            let cell = this.end!.bestRoute!;
+            while(cell != this.start || !cell) {
+                this.setElementState(cell.x, cell.y, AStarStates.Path);
+                cell = cell.bestRoute!;
+            }
+        }
 
         return this.state.new();
     }
