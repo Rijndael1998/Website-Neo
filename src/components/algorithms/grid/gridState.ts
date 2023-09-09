@@ -32,6 +32,6 @@ export class GridState<T> implements StyledGridState {
     }
 
     new() {
-        return new GridState<T>(this.width, this.height, this.styles, this.defaultState, this.state);
+        return new GridState<T>(this.width, this.height, this.styles, this.defaultState, [...this.state.map(cells => [...cells])]);
     }
 }

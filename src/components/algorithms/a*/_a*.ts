@@ -15,7 +15,8 @@ export enum AStarStates {
 }
 
 export default class AStar implements StyledGridState {
-    state: GridState<AStarStates>
+    state: GridState<AStarStates>;
+    originalState: GridState<AStarStates>;
     all: Array<Array<AStarNode>> = [];
     open: Array<AStarNode> = [];
     closed: Array<AStarNode> = [];
@@ -24,15 +25,14 @@ export default class AStar implements StyledGridState {
 
     steps: number = 0;
     foundEnd: boolean = false;
+    inProgress: boolean = false;
 
     constructor(state: GridState<AStarStates>) {
-        this.state = state;
+        this.originalState = this.state = state;
         this.generate();
     }
 
     private generate() {
-
-
         this.all = [];
         this.open = [];
         this.closed = [];
@@ -116,22 +116,33 @@ export default class AStar implements StyledGridState {
     }
 
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
+        if (this.inProgress) {
+            this.state = this.originalState.new();
+            this.inProgress = false;
+            this.foundEnd = false;
+        }
+
+        console.log(this);
+
         switch (stage) {
             case AStarStages.Wall: {
                 const res = this.toggleWall(x, y);
                 this.generate();
+                this.originalState = res.new();
                 return new AStarResult(res, stage, this.canContinue(), this.canContinueReason());
             }
 
             case AStarStages.Start: {
                 const res = this.clearAndSet(x, y, AStarStates.Start);
                 this.generate();
+                this.originalState = res.new();
                 return new AStarResult(res, AStarStages.End, this.canContinue(), this.canContinueReason());
             }
 
             case AStarStages.End: {
                 const res = this.clearAndSet(x, y, AStarStates.End);
                 this.generate();
+                this.originalState = res.new();
                 return new AStarResult(res, AStarStages.Wall, this.canContinue(), this.canContinueReason());
             }
         }
@@ -183,6 +194,7 @@ export default class AStar implements StyledGridState {
     }
 
     step(): AStarResult {
+        this.inProgress = true;
         if (!this.canContinue())
             return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
 
@@ -230,6 +242,8 @@ export default class AStar implements StyledGridState {
                 cell = cell.bestRoute!;
             }
         }
+
+        this.steps++;
 
         return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
     }
