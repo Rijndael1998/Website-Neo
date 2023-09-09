@@ -8,8 +8,8 @@ import styles from "./a*.module.scss";
 import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
-import { AStarResult } from "@/components/algorithms/a*/a*result";
-import { AStarStyleMap } from "@/components/algorithms/a*/a*StyleMap";
+import { AStarResult } from "@/components/algorithms/a*/utils/a*result";
+import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
 
 export enum AStarStages {
     Start,

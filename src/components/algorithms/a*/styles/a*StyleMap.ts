@@ -1,4 +1,4 @@
-import { AStarStates } from "./_a*";
+import { AStarStates } from "../_a*";
 import styles from "./a*StyleMap.module.scss";
 
 export const AStarStyleMap: Map<AStarStates, string> = new Map();

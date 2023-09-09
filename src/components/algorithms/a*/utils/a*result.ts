@@ -1,6 +1,6 @@
 import { AStarStages } from "@/app/fun/a-star/page";
-import { GridState } from "../grid/gridState";
-import { AStarStates } from "./_a*";
+import { GridState } from "../../grid/gridState";
+import { AStarStates } from "../_a*";
 
 export class AStarResult {
     constructor(

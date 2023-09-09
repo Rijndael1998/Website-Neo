@@ -2,7 +2,7 @@ import { AStarStages } from "@/app/fun/a-star/page";
 import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
 import { AStarNode } from "./a*node";
-import { AStarResult } from "./a*result";
+import { AStarResult } from "./utils/a*result";
 
 export enum AStarStates {
     Node,
