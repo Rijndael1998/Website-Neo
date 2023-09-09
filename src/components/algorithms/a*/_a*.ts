@@ -67,14 +67,14 @@ export default class AStar implements StyledGridState {
 
         console.log("postgen", this);
 
-        // something's wrong
-        if (!this.canContinue())
-            return;
-
         if (this.start) {
             this.open.push(this.start);
             this.start.isStart = true;
         }
+
+        // something's wrong
+        if (!this.canContinue())
+            return;
 
     }
 
@@ -90,6 +90,9 @@ export default class AStar implements StyledGridState {
 
         if (this.foundEnd)
             return "Path was found";
+
+        if (this.open.length == 0)
+            return "Impossible pathing."
     }
 
     canContinue() {
