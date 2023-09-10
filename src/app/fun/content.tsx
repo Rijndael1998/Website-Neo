@@ -36,7 +36,7 @@ export const content: Array<PortfolioPreviewContent> =
             title: "Sudoku Solver",
             desc: "I have made a Sudoku solver. The brute-force Backtracking algorithm is the major solving algorithm in this Sudoku solver with a supporting algorithm that helps remove singles from the graph.",
             isDemo: false,
-            url: preURL + "",
+            url: preURL + "sudoku",
             image: imageFolder + "sudoku_solver.png",
         },
         {
