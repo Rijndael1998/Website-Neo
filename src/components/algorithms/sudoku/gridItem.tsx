@@ -14,17 +14,11 @@ export default function GridItem({ value, possible, callback }: GridItemProps) {
     values.sort((a, b) => a - b);
 
     return <div>
-        <select>
+        <select value={value} onChange={(e) => callback(Number.parseInt((e.target as HTMLSelectElement).value))}>
             {
                 values.map((possibleValue) => {
-                    // console.log(value, possibleValue, value == possibleValue);
-                    return <option key={possibleValue}
-                        value={possibleValue}
-                        onClick={() => callback(possibleValue)}
-                        selected={value == possibleValue}>
-
+                    return <option key={possibleValue} value={possibleValue}>
                         {possibleValue == 0 ? "" : possibleValue}
-
                     </option>
                 })
             }
