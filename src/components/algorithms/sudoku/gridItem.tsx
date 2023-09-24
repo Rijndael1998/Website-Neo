@@ -7,17 +7,22 @@ export interface GridItemProps {
 }
 
 export default function GridItem({ value, possible, callback }: GridItemProps) {
-
+    const values = [0, value, ...possible].sort((a, b) => a - b);
     return <div>
-            {value}
-            <select>
-                {
-                    [0, ...possible].map((value) => {
-                        return <option key={value} value={value} onClick={() => callback(value)}>
-                            {value == 0 ? "" : value}
-                        </option>
-                    })
-                }
-            </select>
-        </div>
+        <select>
+            {
+                values.map((possibleValue) => {
+                    // console.log(value, possibleValue, value == possibleValue);
+                    return <option key={possibleValue}
+                        value={possibleValue}
+                        onClick={() => callback(possibleValue)}
+                        selected={value == possibleValue}>
+
+                        {possibleValue == 0 ? "" : possibleValue}
+
+                    </option>
+                })
+            }
+        </select>
+    </div>
 }

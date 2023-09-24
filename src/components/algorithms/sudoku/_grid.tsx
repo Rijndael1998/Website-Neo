@@ -1,7 +1,8 @@
 "use client";
 
-import GridItem from "./gridItem"
-import { findPossibleSummary } from "./sudokuWorker"
+import GridItem from "./gridItem";
+import { findPossibleSummary } from "./sudokuWorker";
+import styles from "./grid.module.scss";
 
 export interface SudokuGridProps {
     grid: Array<Array<number>>,
@@ -9,15 +10,19 @@ export interface SudokuGridProps {
 }
 
 export default function SudokuGrid({ grid, callback }: SudokuGridProps) {
-    return <>
+    return <div className={styles.grid}>
         {grid.map((rows, y) => {
-            return rows.map((item, x) => {
-                return <GridItem
-                    key={`${x},${y}`} 
-                    value={item} 
-                    possible={findPossibleSummary(grid, y, x)} 
-                    callback={(v) => callback(y, x, v)} />
-            })
+            return <div key={`${y}`} className={styles.row}>
+                {
+                    rows.map((item, x) => {
+                        return <GridItem
+                            key={`${x},${y}`}
+                            value={item}
+                            possible={findPossibleSummary(grid, y, x)}
+                            callback={(v) => callback(y, x, v)} />
+                    })
+                }
+            </div>
         })}
-    </>
+    </div>
 }

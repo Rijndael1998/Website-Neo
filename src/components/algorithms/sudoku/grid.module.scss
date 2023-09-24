@@ -1,0 +1,33 @@
+.grid {
+    --gridSize: 5ch;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 80ch;
+    max-width: 100%;
+    justify-content: center;
+
+    margin: auto;
+
+    .row {
+        div {
+            select {
+                width: var(--gridSize);
+                height: var(--gridSize);
+            }
+
+            margin-bottom: calc(var(--gridSize) / 8);
+
+            &:nth-child(3n) {
+                margin-bottom: calc(var(--gridSize) / 2);
+            }
+        }
+
+        margin-right: calc(var(--gridSize) / 8);
+
+        &:nth-child(3n) {
+            margin-right: calc(var(--gridSize) / 2);
+        }
+    }
+}

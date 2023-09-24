@@ -7,7 +7,7 @@ import { useState } from "react";
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
     for (let i = 0; i < 9; i++) {
-        grid.push([0, 0, 0, 0, 0, 0, 0, 0, 0])
+        grid.push([0, 0, 0, 0, 0, 0, 0, 0, 0]);
     }
 
     return grid;
@@ -29,8 +29,7 @@ export default function Sudoku() {
 
     return <>
         <h1>Sudoku Solver</h1>
-        <div>
-            <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
-        </div>
+        <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
+
     </>
 }
