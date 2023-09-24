@@ -1,6 +1,11 @@
+@import "./../../../components/vars";
+
 .controlWrapper {
     display: flex;
     flex-direction: row;
+
+    max-width: 80ch;
+    margin: auto;
 
     .buttonWrapper {
         display: flex;
@@ -12,6 +17,43 @@
             width: 10ch;
             padding: 3ch;
             text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: $navBreak) {
+    .controlWrapper {
+        flex-direction: column;
+
+        .buttonWrapper {
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+            gap: 1ch;
+
+            .button {
+                justify-self: center;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: $titleBreak) {
+    .controlWrapper {
+
+        .buttonWrapper {
+            width: 100%;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(1fr, 4);
+
+            .button {
+                max-width: 100%;
+                margin: 1ch auto;
+            }
         }
     }
 }

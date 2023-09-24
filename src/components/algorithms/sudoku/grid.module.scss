@@ -1,43 +1,52 @@
-.grid {
-    --gridSize: 5ch;
-    --smallGap: calc(var(--gridSize) / 8);
-    --bigGap: calc(var(--gridSize) / 2);
+@import "./../../vars";
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 80ch;
-    max-width: 100%;
-    justify-content: center;
-
-    margin: auto;
-
-    .row {
-        div {
-            select {
-                width: var(--gridSize);
-                height: var(--gridSize);
+.gridWrapper {
+    .grid {
+        --gridSize: 5ch;
+        --smallGap: calc(var(--gridSize) / 8);
+        --bigGap: calc(var(--gridSize) / 2);
+    
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 50ch;
+        justify-content: center;
+    
+        margin: auto;
+    
+        .row {
+            div {
+                select {
+                    width: var(--gridSize);
+                    height: var(--gridSize);
+                }
+    
+                margin-bottom: var(--smallGap);
+    
+                &:nth-child(3n) {
+                    margin-bottom: var(--bigGap);
+                }
+    
+                &:nth-child(1) {
+                    margin-top: var(--bigGap);
+                }
             }
-
-            margin-bottom: var(--smallGap);
-
+    
+            margin-right: var(--smallGap);
+    
             &:nth-child(3n) {
-                margin-bottom: var(--bigGap);
+                margin-right: var(--bigGap);
             }
-
+    
             &:nth-child(1) {
-                margin-top: var(--bigGap);
+                margin-left: var(--bigGap);
             }
         }
+    }
+}
 
-        margin-right: var(--smallGap);
-
-        &:nth-child(3n) {
-            margin-right: var(--bigGap);
-        }
-
-        &:nth-child(1) {
-            margin-left: var(--bigGap);
-        }
+@media screen and (max-width: $titleBreak) {
+    .gridWrapper {
+        overflow-y: auto;
     }
 }

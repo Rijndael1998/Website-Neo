@@ -10,19 +10,21 @@ export interface SudokuGridProps {
 }
 
 export default function SudokuGrid({ grid, callback }: SudokuGridProps) {
-    return <div className={styles.grid}>
-        {grid.map((rows, y) => {
-            return <div key={`${y}`} className={styles.row}>
-                {
-                    rows.map((item, x) => {
-                        return <GridItem
-                            key={`${x},${y}`}
-                            value={item}
-                            possible={findPossibleSummary(grid, y, x)}
-                            callback={(v) => callback(y, x, v)} />
-                    })
-                }
-            </div>
-        })}
+    return <div className={styles.gridWrapper}>
+        <div className={styles.grid}>
+            {grid.map((rows, y) => {
+                return <div key={`${y}`} className={styles.row}>
+                    {
+                        rows.map((item, x) => {
+                            return <GridItem
+                                key={`${x},${y}`}
+                                value={item}
+                                possible={findPossibleSummary(grid, y, x)}
+                                callback={(v) => callback(y, x, v)} />
+                        })
+                    }
+                </div>
+            })}
+        </div>
     </div>
 }
