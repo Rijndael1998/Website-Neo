@@ -1,5 +1,7 @@
 .grid {
     --gridSize: 5ch;
+    --smallGap: calc(var(--gridSize) / 8);
+    --bigGap: calc(var(--gridSize) / 2);
 
     display: flex;
     flex-direction: row;
@@ -17,17 +19,25 @@
                 height: var(--gridSize);
             }
 
-            margin-bottom: calc(var(--gridSize) / 8);
+            margin-bottom: var(--smallGap);
 
             &:nth-child(3n) {
-                margin-bottom: calc(var(--gridSize) / 2);
+                margin-bottom: var(--bigGap);
+            }
+
+            &:nth-child(1) {
+                margin-top: var(--bigGap);
             }
         }
 
-        margin-right: calc(var(--gridSize) / 8);
+        margin-right: var(--smallGap);
 
         &:nth-child(3n) {
-            margin-right: calc(var(--gridSize) / 2);
+            margin-right: var(--bigGap);
+        }
+
+        &:nth-child(1) {
+            margin-left: var(--bigGap);
         }
     }
 }
