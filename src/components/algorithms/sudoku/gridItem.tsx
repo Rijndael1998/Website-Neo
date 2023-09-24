@@ -7,7 +7,12 @@ export interface GridItemProps {
 }
 
 export default function GridItem({ value, possible, callback }: GridItemProps) {
-    const values = [0, value, ...possible].sort((a, b) => a - b);
+    const values = [value, ...possible];
+    if(value != 0)
+        values.push(0);
+
+    values.sort((a, b) => a - b);
+
     return <div>
         <select>
             {
