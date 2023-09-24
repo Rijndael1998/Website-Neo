@@ -37,7 +37,7 @@ function findPossibleQua(grid: Array<Array<number>>, row: number, col: number) {
 
 //combines the possible numbers to get the possible numbers
 //from the row, column, and quadrant.
-function findPossibleSummary(grid: Array<Array<number>>, row: number, col: number) {    
+export function findPossibleSummary(grid: Array<Array<number>>, row: number, col: number) {    
     let rowVals = findPossibleRow(grid[row]);    
     let colVals = findPossibleCol(grid, col);    
     let quaVals = findPossibleQua(grid, Math.floor(row / 3), Math.floor(col / 3));
@@ -56,8 +56,12 @@ function findPossibleSummary(grid: Array<Array<number>>, row: number, col: numbe
 //it's called local because it does not interfere with the global `possible` array.
 function findAllPossibleLocal(grid: Array<Array<number>>) {   
     const possibleLocal: Array<Array<Array<number>>> = [];
+
     for (let i = 0; i < 9; i++) {
-        possibleLocal[i].push(new Array(9)); //populate arrays
+        possibleLocal.push([]); //populate arrays
+        for(let ii = 0; ii < 9; ii++) {
+            possibleLocal[i].push([]);
+        }
     }
 
     for (let row = 0; row < grid.length; row++) {
@@ -97,9 +101,10 @@ function checkSolved(grid: Array<Array<number>>) {
     
     return true;
 }
+
 //by using the backtracking algorithm recursively, the grid slowly is filled up with more items.
 //it starts at [0][0] on the grid, then increases in the column, then the row, until the grid is solved.
-function backtracking(grid: Array<Array<number>>, iteration: number): false | Array<Array<number>> {                   
+export function backtracking(grid: Array<Array<number>>, iteration: number): false | Array<Array<number>> {                   
     let row = Math.floor(iteration/9);
     let col = iteration % 9;
     
@@ -217,19 +222,3 @@ function checkPossible(grid: Array<Array<number>>) {
 
     return true;
 }
-
-//where the worker receives instructions. 
-function solve(e: MessageEvent<any>) { 
-    let grid = e.data;
-    if(checkPossible(grid)) {
-        grid = reduce(grid);
-        if(!checkSolved(grid)) grid = backtracking(grid, 0);
-    } 
-
-    else grid = false;
-
-    self.postMessage(grid);
-}
-
-//adds a listener to receive instructions
-self.addEventListener('message', solve, false); 
