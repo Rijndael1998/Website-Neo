@@ -1,0 +1,17 @@
+.controlWrapper {
+    display: flex;
+    flex-direction: row;
+
+    .buttonWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 40ch;
+    
+        .button {
+            margin: auto;
+            width: 10ch;
+            padding: 3ch;
+            text-align: center;
+        }
+    }
+}
