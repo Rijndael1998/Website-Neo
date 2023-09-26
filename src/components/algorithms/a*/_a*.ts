@@ -189,8 +189,6 @@ export default class AStar implements StyledGridState {
         const yStart = Math.max(y - 1, 0);
         const yEnd = Math.min(y + 2, this.all.length);
 
-        debugger;
-
         for (let i = xStart; i < xEnd; i++)
             for (let j = yStart; j < yEnd; j++)
                 if (!(x == i && y == j)) {

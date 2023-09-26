@@ -15,8 +15,12 @@ html {
     color: white;
 
     main {
-      h1 {
-        margin: 0 auto 1em 2em;
+      & > h1, & > p {
+        margin: 0 auto 2rem 2.5rem;
+      }
+
+      & > p {
+        max-width: 50ch;
       }
     }
   }
