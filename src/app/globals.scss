@@ -15,7 +15,14 @@ html {
     color: white;
 
     main {
-      & > h1, & > p {
+      & > h1, 
+      & > h2,
+      & > h3,
+      & > h4,
+      & > h5,
+      & > h6, 
+      & > p
+      {
         margin: 0 auto 2rem 2.5rem;
       }
 

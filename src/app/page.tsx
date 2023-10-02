@@ -1,21 +1,47 @@
-import Typing from "@/components/typing/typing";
+import { about, contact, main, uglyElements } from "./../content/Home";
+import styles from "./page.module.scss";
 
-const text = `Hi, this is my website. 
-It's currently a work in progress and my old website is getting massively deprecated. 
-The goal of this website is to unify all of my projects under one hood, inside one app, 
-rather than it being a central hub for everything. 
-Please bear with me while I update this page with everything I had before.`;
 
 export default function Home() {
   return (
     <>
-      <h1>
-        Hi!
-      </h1>
+      <div className={styles.page}>
+        <div className={styles.item}>
+          <h1>
+            Hi!
+          </h1>
 
-      <p>
-        {text}
-      </p>
+          <p>
+            {main}
+          </p>
+
+          <h4>{`What's the deal with the ugly elements?`}</h4>
+
+          <p>
+            {uglyElements}
+          </p>
+        </div>
+
+        <div className={styles.item}>
+          <h2>
+            About Me
+          </h2>
+
+          <p>
+            {about}
+          </p>
+        </div>
+
+        <div className={styles.item}>
+          <h2>
+            Contact
+          </h2>
+
+          <p>
+            {contact}
+          </p>
+        </div>
+      </div>
     </>
   )
 }
