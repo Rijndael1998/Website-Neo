@@ -53,6 +53,13 @@ export const content: Array<PortfolioPreviewContent> =
             url: preURL + "a-star",
             image: imageFolder + "a*.png",
         },
+        {
+            title: "Hobbies",
+            desc: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
+            isDemo: false,
+            url: preURL + "hobbies",
+            image: imageFolder + "crab_rave.png",
+        },
         // {
         //     title:"",
         //     desc: "",

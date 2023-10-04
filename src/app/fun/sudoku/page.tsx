@@ -7,6 +7,7 @@ import { useState } from "react";
 import styles from "./sudoku.module.scss";
 import { EasyGrid, HardGrid } from "@/components/algorithms/sudoku/testGrids";
 import { backtracking } from "@/components/algorithms/sudoku/sudokuWorker";
+import Lazy from "@/components/lazy/_lazy";
 
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
@@ -52,7 +53,7 @@ export default function Sudoku() {
         setGrid(result);
     }
 
-    return <>
+    return <Lazy>
         <h1>Sudoku Solver</h1>
         <div className={styles.controlWrapper}>
             <div className={styles.buttonWrapper}>
@@ -63,5 +64,5 @@ export default function Sudoku() {
             </div>
             <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
         </div>
-    </>
+    </Lazy>
 }
