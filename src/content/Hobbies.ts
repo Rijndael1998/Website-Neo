@@ -34,7 +34,7 @@ export const AIContent2 = `I started off by doing some basic prompting: `
 
 const prefix = "/fun/hobbies/ai/";
 export const AIImagesPrompts: Array<string> = [];
-for(let i = 0; i <= 10; i++) AIImagesPrompts.push(`${prefix}${i}.png`);
+for(let i = 1; i <= 10; i++) AIImagesPrompts.push(`${prefix}${i}.png`);
 
 export const AIContent3 = `As you can see, prompting is a gradual process. It really helps if you understand what the model might be 
 misinterpreting or misunderstanding`

@@ -50,7 +50,9 @@ export default function Hobbies() {
         </p>
 
         {
-            // images go here
+            AIImagesPrompts.map((item) => {
+                return <LazyImage key={item} aspectRatio={469 / 928} src={item} alt={"Image prompt"} />
+            })
         }
 
         <p>
@@ -66,21 +68,25 @@ export default function Hobbies() {
             }
         </p>
 
+        <LazyImage alt="Final Picture" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod1.png" />
+        <LazyImage alt="Final Picture" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod2.png" />
+
         <p>
             {
                 AIContent5
             }
         </p>
 
-        {
-            // images go here
-        }
+        <LazyImage alt="Final Picture" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
 
         <h3>{AISub3}</h3>
+
         <p>
             {
                 AIContent6
             }
         </p>
+
+        <LazyImage alt="Final Picture" aspectRatio={1} src="/fun/crab_rave.png" />
     </Lazy>
 }
