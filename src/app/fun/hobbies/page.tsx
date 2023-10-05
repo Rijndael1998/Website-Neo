@@ -53,15 +53,12 @@ export default function Hobbies() {
             }
         </p>
 
-        {/* <LazyCollapse>
-            <LazyRow aspectRatio={469 / 928} >
-                {
-                    AIImagesPrompts.map((item) => {
-                        return <LazyImage key={item} aspectRatio={469 / 928} src={item} alt={"Image prompt"} />
-                    })
-                }
-            </LazyRow>
-        </LazyCollapse> */}
+
+        {
+            AIImagesPrompts.map((item) => {
+                return <LazyImage key={item} aspectRatio={469 / 928} src={item} alt={"Image prompt"} />
+            })
+        }
 
         <p>
             {
