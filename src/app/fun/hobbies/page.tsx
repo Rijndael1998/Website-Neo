@@ -1,6 +1,10 @@
+"use client";
+
 import Lazy from "@/components/lazy/_lazy";
+import LazyCollapse from "@/components/lazy/_lazyCollapse";
 import LazyImage from "@/components/lazy/_lazyImage";
 import LazyList from "@/components/lazy/_lazyList";
+import LazyRow from "@/components/lazy/_lazyRow";
 import { AIContent1, AIContent2, AIContent3, AIContent4, AIContent5, AIContent6, AIImagesPrompts, AISub1, AISub2, AISub3, AITitle, MusicDesc1, MusicDesc2, MusicDesc3, MusicDesc4, MusicICanPlay } from "@/content/Hobbies";
 
 export default function Hobbies() {
@@ -49,11 +53,15 @@ export default function Hobbies() {
             }
         </p>
 
-        {
-            AIImagesPrompts.map((item) => {
-                return <LazyImage key={item} aspectRatio={469 / 928} src={item} alt={"Image prompt"} />
-            })
-        }
+        {/* <LazyCollapse>
+            <LazyRow aspectRatio={469 / 928} >
+                {
+                    AIImagesPrompts.map((item) => {
+                        return <LazyImage key={item} aspectRatio={469 / 928} src={item} alt={"Image prompt"} />
+                    })
+                }
+            </LazyRow>
+        </LazyCollapse> */}
 
         <p>
             {

@@ -8,3 +8,46 @@
         max-width: calc(100% - 2.5rem);
     }
 }
+
+.lazyCollapse {
+    margin: auto;
+    overflow: hidden;
+    height: 0;
+    transition: all ease-in 1s;
+
+    &.open {
+        height: 100vh;
+        overflow-x: auto;
+    }
+}
+
+.lazyImage {
+    position: relative;
+}
+
+.collapseBar {
+    margin: auto;
+    text-decoration: dashed;
+    background-color: red;
+    &.open {
+        background-color: green;
+    }
+}
+
+.lazyRowOverflow {
+    background-color: red;
+    display: block;
+    margin: auto;
+    overflow-x: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.lazyRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 2rem;
+
+    width: auto;
+}
