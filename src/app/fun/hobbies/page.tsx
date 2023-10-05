@@ -1,10 +1,7 @@
-"use client";
-
+import ImageGallery from "@/components/imageGallery/_imageGallery";
 import Lazy from "@/components/lazy/_lazy";
-import LazyCollapse from "@/components/lazy/_lazyCollapse";
 import LazyImage from "@/components/lazy/_lazyImage";
 import LazyList from "@/components/lazy/_lazyList";
-import LazyRow from "@/components/lazy/_lazyRow";
 import { AIContent1, AIContent2, AIContent3, AIContent4, AIContent5, AIContent6, AIImagesPrompts, AISub1, AISub2, AISub3, AITitle, MusicDesc1, MusicDesc2, MusicDesc3, MusicDesc4, MusicICanPlay } from "@/content/Hobbies";
 
 export default function Hobbies() {
@@ -54,11 +51,14 @@ export default function Hobbies() {
         </p>
 
 
-        {
-            AIImagesPrompts.map((item) => {
-                return <LazyImage key={item} aspectRatio={469 / 928} src={item} alt={"Image prompt"} />
-            })
-        }
+        <ImageGallery
+            aspectRatio={469 / 928}
+            images={
+                AIImagesPrompts.map((item) => {
+                    return { src: item }
+                })
+            }
+        />
 
         <p>
             {
@@ -73,8 +73,8 @@ export default function Hobbies() {
             }
         </p>
 
-        <LazyImage alt="Final Picture" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod1.png" />
-        <LazyImage alt="Final Picture" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod2.png" />
+        <LazyImage alt="Variation" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod1.png" />
+        <LazyImage alt="Variation" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod2.png" />
 
         <p>
             {
@@ -82,7 +82,7 @@ export default function Hobbies() {
             }
         </p>
 
-        <LazyImage alt="Final Picture" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
+        <LazyImage alt="Inpainting" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
 
         <h3>{AISub3}</h3>
 

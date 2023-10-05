@@ -6,6 +6,11 @@
     &>* {
         margin: 0 2.5rem 2rem 2.5rem;
         max-width: calc(100% - 2.5rem);
+
+        &.unsetMargin {
+            margin: auto;
+            max-width: unset;
+        }
     }
 }
 
@@ -35,10 +40,8 @@
 }
 
 .lazyRowOverflow {
-    background-color: red;
     display: block;
     margin: auto;
-    overflow-x: auto;
     height: 100%;
     width: 100%;
 }
@@ -46,8 +49,8 @@
 .lazyRow {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 2rem;
-
+    flex-wrap: wrap;
+    gap: .4rem;
     width: auto;
+    justify-content: space-evenly;
 }
