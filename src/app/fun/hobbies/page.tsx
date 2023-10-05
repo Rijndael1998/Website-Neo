@@ -73,8 +73,14 @@ export default function Hobbies() {
             }
         </p>
 
-        <LazyImage alt="Variation" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod1.png" />
-        <LazyImage alt="Variation" aspectRatio={574 / 1281} src="/fun/hobbies/ai/mod2.png" />
+        <ImageGallery
+            aspectRatio={574 / 1281}
+            images={
+                ["/fun/hobbies/ai/mod1.png", "/fun/hobbies/ai/mod2.png"].map((item) => {
+                    return { src: item }
+                })
+            }
+        />
 
         <p>
             {

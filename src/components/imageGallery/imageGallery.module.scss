@@ -10,7 +10,7 @@
         max-height: 100%;
 
         .images {
-            transition: all 0.2s linear;
+            transition: all 0.2s ease-in-out;
             opacity: 0;
             position: absolute;
             width: 100%;

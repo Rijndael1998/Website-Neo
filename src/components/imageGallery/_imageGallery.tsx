@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./imageGallery.module.scss";
 import classNames from "classnames";
 import { useState } from "react";
+import GalleryImage from "./galleryImage";
 //import { MouseEvent } from 'react';
 
 export type ImageGalleryProps = {
@@ -59,11 +59,12 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
         <div style={{ aspectRatio }} className={classNames(styles.imageGallery)}>
             <figure style={{ aspectRatio }} className={styles.container}>
                 {
-                    images.map((image, i) => {
-                        return <div key={i} className={classNames(styles.images, i == index && styles.show)}>
-                            <Image style={{ objectFit: "cover" }} src={image.src} alt={image.alt ?? ""} fill quality={100} />
-                        </div>
-                    })
+                    images.map((image, i) =>
+                        <GalleryImage
+                            show={i == index}
+                            key={i}
+                            src={image.src} />
+                    )
                 }
             </figure>
         </div>
