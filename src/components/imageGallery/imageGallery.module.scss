@@ -23,6 +23,13 @@
     }
 }
 
+.container.standAlone {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-height: 70vh;
+}
+
 .controls {
     display: grid;
     grid-template-columns: 1fr 1fr;
