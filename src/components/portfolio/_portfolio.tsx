@@ -1,7 +1,7 @@
-import { PortfolioPreviewContent } from "@/app/fun/content"
 import PortfolioButton from "./portfolioButton/_portfolioButton"
 import styles from "./portfolio.module.scss";
 import PortfolioImage from "./portfolioImage/_portfolioImage";
+import { PortfolioPreviewContent } from "@/content/fun/content";
 
 
 export type PortfolioProps = {
