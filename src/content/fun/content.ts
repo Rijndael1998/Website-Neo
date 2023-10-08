@@ -6,10 +6,12 @@ export type PortfolioPreviewContent = {
     image?: string,
 }
 
+export type PortfolioViewArray = Array<PortfolioPreviewContent>;
+
 const preURL = "fun/";
 const imageFolder = "/fun/";
 
-export const irlContent: Array<PortfolioPreviewContent> = [
+export const irlContent: PortfolioViewArray = [
     {
         title: "(Current Role) Data & Decisions Developer @ International Personal Finance",
         desc: "",
@@ -26,7 +28,7 @@ export const irlContent: Array<PortfolioPreviewContent> = [
     },
 ];
 
-export const content: Array<PortfolioPreviewContent> = [
+export const content: PortfolioViewArray= [
     {
         title: "Rchan",
         desc: `Rchan is project I've worked on that bridges the gap between regular people and AI. It's a simple discord bot that you can talk to with your friends. Think of it as a group chat with ChatGPT It also supports voice calls in groups, as well as taking on different personalities.`,
@@ -55,6 +57,16 @@ export const content: Array<PortfolioPreviewContent> = [
         url: preURL + "",
         image: imageFolder + "drawing_program.png",
     },
+    // {
+    //     title:"",
+    //     desc: "",
+    //     isDemo: false,
+    //     url: preURL + "",
+    //     image: imageFolder + "",
+    // },
+];
+
+export const demos: PortfolioViewArray = [
     {
         title: "A*",
         desc: "I have made a path finding solver. It is available on GitHub and you can see the demo here. This program implements the A* algorithm. ",
@@ -76,11 +88,4 @@ export const content: Array<PortfolioPreviewContent> = [
         url: preURL + "",
         image: imageFolder + "lagrange.png"
     },
-    // {
-    //     title:"",
-    //     desc: "",
-    //     isDemo: false,
-    //     url: preURL + "",
-    //     image: imageFolder + "",
-    // },
-];
+]

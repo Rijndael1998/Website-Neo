@@ -1,5 +1,5 @@
 import Portfolio from "@/components/portfolio/_portfolio";
-import { content, irlContent } from "../../content/fun/content";
+import { content, demos, irlContent } from "../../content/fun/content";
 import styles from "./page.module.scss";
 
 /* would be good to:
@@ -24,6 +24,14 @@ export default function Fun() {
 
             <div className={styles.content}>
                 {content.map(
+                    (portfolio) =>
+                        <Portfolio key={portfolio.title} portfolio={portfolio} />)}
+            </div>
+
+            <h2>Demos</h2>
+
+            <div className={styles.content}>
+                {demos.map(
                     (portfolio) =>
                         <Portfolio key={portfolio.title} portfolio={portfolio} />)}
             </div>
