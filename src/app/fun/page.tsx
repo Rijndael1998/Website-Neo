@@ -1,5 +1,5 @@
 import Portfolio from "@/components/portfolio/_portfolio";
-import { content } from "./content";
+import { content } from "../../content/fun/content";
 import styles from "./page.module.scss";
 
 /* would be good to:

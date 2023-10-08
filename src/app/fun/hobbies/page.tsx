@@ -3,7 +3,7 @@ import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import LazyList from "@/components/lazy/_lazyList";
-import { AIContent1, AIContent2, AIContent3, AIContent4, AIContent5, AIContent6, AIImagesPrompts, AISub1, AISub2, AISub3, AITitle, MusicDesc1, MusicDesc2, MusicDesc3, MusicDesc4, MusicICanPlay } from "@/content/Hobbies";
+import { AIContent1, AIContent2, AIContent3, AIContent4, AIContent5, AIContent6, AIImagesPrompts, AISub1, AISub2, AISub3, AITitle, MusicDesc1, MusicDesc2, MusicDesc3, MusicDesc4, MusicICanPlay } from "@/content/fun/hobbies/Hobbies";
 
 export default function Hobbies() {
     return <Lazy>
