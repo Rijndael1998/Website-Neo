@@ -18,8 +18,8 @@ export const irlContent: PortfolioViewArray = [
         This is my current role. 
         IPF provides a variaty of loans, offering affordable financing solutions for individuals
         who need assistance with their financial needs. 
-        As a developer, I worked on the software responsible for deciding and processing customer applications. 
-        The work involved heavy involement in AWS, C#, IIS, T-SQL and other technologies.`,
+        As a developer, I worked on the software responsible for deciding and processing customer applications.
+        The work involved heavy involvement in AWS, C#, IIS, T-SQL and other technologies.`,
         isDemo: false,
         url: preURL + "",
         image: imageFolder + "ipf.png",
