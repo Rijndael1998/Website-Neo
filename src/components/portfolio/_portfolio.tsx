@@ -1,7 +1,8 @@
 import PortfolioButton from "./portfolioButton/_portfolioButton"
 import styles from "./portfolio.module.scss";
 import PortfolioImage from "./portfolioImage/_portfolioImage";
-import { PortfolioPreviewContent } from "@/content/fun/content";
+import { PortfolioPreviewContent, preURL } from "@/content/fun/content";
+import classNames from "classnames";
 
 
 export type PortfolioProps = {
@@ -9,7 +10,9 @@ export type PortfolioProps = {
 }
 
 export default function Portfolio({ portfolio }: PortfolioProps) {
-    return <div className={styles.portfolio}>
+    const empty = portfolio.url == preURL;
+
+    return <div className={classNames(styles.portfolio, empty && styles.empty)}>
         {
             portfolio.image && <PortfolioImage image={portfolio.image} />
         }
@@ -21,6 +24,8 @@ export default function Portfolio({ portfolio }: PortfolioProps) {
                 {portfolio.desc}
             </p>
         </div>
-        <PortfolioButton url={portfolio.url} text="Details" />
+        {
+            !empty && <PortfolioButton url={portfolio.url} text="Details" />
+        }
     </div>
 }

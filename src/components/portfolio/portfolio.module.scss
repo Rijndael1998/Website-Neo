@@ -9,6 +9,13 @@
     border-radius: 1ch;
     overflow: hidden;
 
+    transition: filter 0.15s ease;
+    filter: saturate(1);
+
+    &.empty:hover {
+        filter: saturate(0);
+    }
+
     div.portfolioMainContent {
         height: auto;
         padding: 0.5em;
