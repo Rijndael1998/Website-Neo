@@ -25,8 +25,11 @@ export const irlContent: PortfolioViewArray = [
         image: imageFolder + "ipf.png",
     },
     {
-        title: "Full Stack Developer @ Shreem",
-        desc: "",
+        title: "Full Stack Developer",
+        desc: `
+        As a Full Stack Developer at Shreem, I built key features, notably a real-time messaging component using React and Web Sockets.
+        I conducted regular quality assurance checks and code reviews, ensuring platform integrity. 
+        My role spanned both front-end tasks and back-end with an emphasis on user-facing features like menus, headers, and profile functionalities.`,
         isDemo: false,
         url: preURL + "",
         image: imageFolder + "shreem.png",
@@ -93,4 +96,17 @@ export const demos: PortfolioViewArray = [
         url: preURL + "",
         image: imageFolder + "lagrange.png"
     },
-]
+];
+
+export const games: PortfolioViewArray = [
+    {
+        title:"Chalk",
+        desc: `
+        It's a simple game I wrote during university with my partner at the time. 
+        It's a simple platformer where you try to get the chalk to come back into its box.
+        I wrote the physics engine myself. It's written in JavaScript using the P5.js framework.`,
+        isDemo: false,
+        url: preURL + "chalk/ChalkPrivate/index.html",
+        image: imageFolder + "chalk.png",
+    },
+];

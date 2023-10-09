@@ -1,4 +1,5 @@
 @import "./../colors";
+@import "./../../app/fun/sizes.scss";
 
 .portfolio {
     background-color: $secondaryBg;
@@ -23,5 +24,37 @@
         * {
             margin: 0 0 0.5em 0;
         }
+    }
+}
+
+.content {
+    display: grid;
+    justify-content: stretch;
+    justify-items: stretch;
+
+    // set the width to have a max of 3 cols or less
+    width: calc(100% - $gapping * 2);
+    max-width: calc($size * 3);
+
+    // center if smaller than main
+    margin: auto;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: $gapping;
+
+    padding: 0 $gapping;
+    padding-bottom: 6rem;
+}
+
+@media screen and (max-width: calc( ($size * 2) + ($gapping * 4))) {
+    .content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: calc(($size * 1) + ($gapping * 4))) {
+    .content {
+        grid-template-columns: 1fr;
     }
 }

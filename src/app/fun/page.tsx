@@ -1,6 +1,6 @@
-import Portfolio from "@/components/portfolio/_portfolio";
-import { content, demos, irlContent } from "../../content/fun/content";
+import { content, demos, games, irlContent } from "../../content/fun/content";
 import styles from "./page.module.scss";
+import PortfolioGroup from "@/components/portfolio/_portfolioGroup";
 
 export default function Fun() {
     return <>
@@ -8,28 +8,16 @@ export default function Fun() {
             <h1>Portfolio</h1>
 
             <h2>Previous Work</h2>
-
-            <div className={styles.content}>
-                {irlContent.map(
-                    (portfolio) =>
-                        <Portfolio key={portfolio.title} portfolio={portfolio} />)}
-            </div>
+            <PortfolioGroup items={irlContent}/>
 
             <h2>Personal Projects</h2>
-
-            <div className={styles.content}>
-                {content.map(
-                    (portfolio) =>
-                        <Portfolio key={portfolio.title} portfolio={portfolio} />)}
-            </div>
+            <PortfolioGroup items={content}/>
 
             <h2>Demos</h2>
+            <PortfolioGroup items={demos}/>
 
-            <div className={styles.content}>
-                {demos.map(
-                    (portfolio) =>
-                        <Portfolio key={portfolio.title} portfolio={portfolio} />)}
-            </div>
+            <h2>Games</h2>
+            <PortfolioGroup items={games}/>
         </div>
     </>
 }

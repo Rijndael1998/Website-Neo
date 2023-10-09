@@ -1,0 +1,36 @@
+//Load the classes and files, in order
+let synchronousScripts = <!-- ARRAY -->;
+
+var loaded = 0;
+var numberOfLoadables = synchronousScripts.length;
+
+function progressBarUpdate() {
+	document.getElementById("progress").style.width = (loaded / numberOfLoadables) * 100 + "%";
+	if(loaded == numberOfLoadables) {
+		document.getElementById("progressBar").style.height = "0";
+	} else {
+		document.getElementById("progressBar").style.height = "1em";
+	}
+}
+
+function progressBarIncrement() {
+	loaded++;
+	progressBarUpdate();
+}
+
+function loadNext() {
+	progressBarUpdate();
+	if(loaded == synchronousScripts.length) {
+		progressBarUpdate();
+		return false;
+	}
+
+	let script_DOM_element = document.createElement("script");
+	script_DOM_element.src = synchronousScripts[loaded];
+	script_DOM_element.addEventListener("load", loadNext); //loads files in order recursively
+	console.log("added " + script_DOM_element.src);
+	document.body.appendChild(script_DOM_element); //adds scripts to the bottom of the body tag
+	loaded++;
+}
+
+loadNext();

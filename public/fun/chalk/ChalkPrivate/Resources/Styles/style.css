@@ -1,0 +1,46 @@
+@font-face {
+	font-family: "Roboto";
+	src:url("../Fonts/Roboto/Roboto-Medium.ttf");
+}
+
+body {
+	font-family: "Roboto";
+}
+
+html {
+	background-color: black;
+	color:white;
+}
+
+* {
+	margin: 0; 
+	padding: 0; 
+	overflow: hidden;
+}
+
+.p5Canvas {
+	display: block;
+	align-content: center;
+	margin: auto;
+}
+
+#progressBar {
+	transition: height 3s ease;
+	display:block;
+	width: 100%;
+	min-width: 10em;
+	height: 1em;
+	padding: 0;
+	background-color: #aa2222;
+	overflow: hidden;
+}
+
+#progress {
+	transition: width 1s ease;
+	width:0%;
+	background-color: #22aa22;
+	height: 100%;
+	display: block;
+	margin:0;
+	padding: 0;
+}

@@ -1,10 +1,14 @@
 @import "./../../vars";
+@import "./../../colors";
 
 .footer {
     position: absolute;
     width: 100%;
     height: $footerHeight;
-    background-color: rgb(255, 255, 255, 0.1);
+    background-color: $secondaryBg;
 
     bottom: 0;
+
+    display: grid;
+    
 }
