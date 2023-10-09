@@ -21,7 +21,7 @@ export const irlContent: PortfolioViewArray = [
         As a developer, I worked on the software responsible for deciding and processing customer applications.
         The work involved heavy involvement in AWS, C#, IIS, T-SQL and other technologies.`,
         isDemo: false,
-        url: preURL + "",
+        url: preURL + "ipf",
         image: imageFolder + "ipf.png",
     },
     {
