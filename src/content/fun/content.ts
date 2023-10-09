@@ -8,13 +8,18 @@ export type PortfolioPreviewContent = {
 
 export type PortfolioViewArray = Array<PortfolioPreviewContent>;
 
-const preURL = "fun/";
-const imageFolder = "/fun/";
+export const preURL = "fun/";
+export const imageFolder = "/fun/";
 
 export const irlContent: PortfolioViewArray = [
     {
-        title: "(Current Role) Data & Decisions Developer @ International Personal Finance",
-        desc: "",
+        title: "Data & Decisions Developer",
+        desc: `
+        This is my current role. 
+        IPF provides a variaty of loans, offering affordable financing solutions for individuals
+        who need assistance with their financial needs. 
+        As a developer, I worked on the software responsible for deciding and processing customer applications. 
+        The work involved heavy involement in AWS, C#, IIS, T-SQL and other technologies.`,
         isDemo: false,
         url: preURL + "",
         image: imageFolder + "ipf.png",
@@ -28,7 +33,7 @@ export const irlContent: PortfolioViewArray = [
     },
 ];
 
-export const content: PortfolioViewArray= [
+export const content: PortfolioViewArray = [
     {
         title: "Rchan",
         desc: `Rchan is project I've worked on that bridges the gap between regular people and AI. It's a simple discord bot that you can talk to with your friends. Think of it as a group chat with ChatGPT It also supports voice calls in groups, as well as taking on different personalities.`,
