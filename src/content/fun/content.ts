@@ -60,19 +60,20 @@ export const personalProjects: PortfolioViewArray = [
     },
     {
         title: "Drawing Project",
-        desc: "It is a simple drawing program that uses a programming language designed for this project. The program can let you draw anything that you might like using this specialty language.",
+        desc: `
+        It is a simple drawing program that uses a programming language designed for this project. 
+        The program can let you draw anything that you might like using this specialty language.
+        `,
         isDemo: false,
         url: preURL + "",
         image: imageFolder + "drawing_program.png",
     },
     {
-        title:"Old Website",
+        title:"Python SPA Website",
         desc: `
-        It's my very own Python compiled SPA.
         This is my website generation tool that I used on my old website. 
         It can take ODF and TXT formats and generate it into a downloadable webpage.
-        It does this by utilising data URIs to create the data that it needs. 
-        It uses JavaScript to put everything in place after compression.
+        It does this by utilising data URIs to create and compress the data that it needs.
         `,
         isDemo: false,
         url: preURL + "",
@@ -104,7 +105,10 @@ export const demos: PortfolioViewArray = [
     },
     {
         title: "Langrage Demo",
-        desc: "A simple demonstration of how Langrage polynomials work. You can place points anywhere along the screen and the curve will recalculate, passing through all of the points made.",
+        desc: `
+        A simple demonstration of how Langrage polynomials work. 
+        You can place points anywhere along the screen and the curve will recalculate, 
+        passing through all of the points made.`,
         isDemo: false,
         url: preURL + "",
         image: imageFolder + "lagrange.png"
@@ -117,7 +121,8 @@ export const games: PortfolioViewArray = [
         desc: `
         It's a simple game I wrote during university with my partner at the time. 
         It's a simple platformer where you try to get the chalk to come back into its box.
-        I wrote the physics engine myself. It's written in JavaScript using the P5.js framework.`,
+        I wrote the physics engine myself. It's written in JavaScript using the P5.js framework.
+        `,
         isDemo: false,
         url: preURL + "chalk/ChalkPrivate/index.html",
         image: imageFolder + "chalk.png",
