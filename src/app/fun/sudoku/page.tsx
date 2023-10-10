@@ -64,5 +64,8 @@ export default function Sudoku() {
             </div>
             <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
         </div>
+
+        <h2>Solving Sudokus</h2>
+        
     </Lazy>
 }
