@@ -36,7 +36,7 @@ export const irlContent: PortfolioViewArray = [
     },
 ];
 
-export const content: PortfolioViewArray = [
+export const personalProjects: PortfolioViewArray = [
     {
         title: "Rchan",
         desc: `Rchan is project I've worked on that bridges the gap between regular people and AI. It's a simple discord bot that you can talk to with your friends. Think of it as a group chat with ChatGPT It also supports voice calls in groups, as well as taking on different personalities.`,
@@ -64,6 +64,19 @@ export const content: PortfolioViewArray = [
         isDemo: false,
         url: preURL + "",
         image: imageFolder + "drawing_program.png",
+    },
+    {
+        title:"Old Website",
+        desc: `
+        It's my very own Python compiled SPA.
+        This is my website generation tool that I used on my old website. 
+        It can take ODF and TXT formats and generate it into a downloadable webpage.
+        It does this by utilising data URIs to create the data that it needs. 
+        It uses JavaScript to put everything in place after compression.
+        `,
+        isDemo: false,
+        url: preURL + "",
+        image: imageFolder + "old_website.png",
     },
     // {
     //     title:"",

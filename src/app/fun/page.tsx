@@ -1,4 +1,4 @@
-import { content, demos, games, irlContent } from "../../content/fun/content";
+import { personalProjects, demos, games, irlContent } from "../../content/fun/content";
 import styles from "./page.module.scss";
 import PortfolioGroup from "@/components/portfolio/_portfolioGroup";
 
@@ -11,7 +11,7 @@ export default function Fun() {
             <PortfolioGroup items={irlContent}/>
 
             <h2>Personal Projects</h2>
-            <PortfolioGroup items={content}/>
+            <PortfolioGroup items={personalProjects}/>
 
             <h2>Demos</h2>
             <PortfolioGroup items={demos}/>
