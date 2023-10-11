@@ -12,6 +12,7 @@ import { AStarResult } from "@/components/algorithms/a*/utils/a*result";
 import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
 import { AStarStates } from "@/components/algorithms/a*/utils/a*states.enum";
 import { AStarStages } from "@/components/algorithms/a*/utils/a*stages.enum";
+import Lazy from "@/components/lazy/_lazy";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
@@ -20,8 +21,7 @@ function generateGridState(width: number, height: number) {
 
 export default function A_Star() {
     const initialSize = 10;
-    const maxSize = 40;
-
+    const maxSize = 22;
 
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
     const [AS, setAS] = useState<AStar>();
@@ -72,11 +72,11 @@ export default function A_Star() {
     }, [AS, stage]);
 
     useEffect(() => {
-        if(AS)
+        if (AS)
             applyResult(AS.setAuto(auto));
     }, [AS, auto]);
 
-    return <>
+    return <Lazy>
         <h1>
             A* Algorithm
         </h1>
@@ -90,19 +90,26 @@ export default function A_Star() {
                 setState(newAS.state);
             }}>New Grid</GenericButton>
         </div>
+        
         <div className={styles.stageButtons}>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
         </div>
+
         <div className={styles.stageButtons}>
-            <GenericButton className={styles.stageButton} onClick={() => {refreshState()}} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
+            <GenericButton className={styles.stageButton} onClick={() => { refreshState() }} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
             <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step</p></GenericButton>
         </div>
+        
         <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Progress</p></GenericButton>
+        
         <p>
             {canStepReason === undefined ? "All ok" : canStepReason}
         </p>
-        <Grid className={styles.grid} state={state} callback={callback} />
-    </>
+
+        <div className={styles.gridWarpper}>
+            <Grid className={styles.grid} state={state} callback={callback} />
+        </div>
+    </Lazy>
 }

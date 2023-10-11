@@ -1,5 +1,11 @@
+@import "./../../../colors";
+
 .gridItem {
     display: block;
     aspect-ratio: 1;
     height: 2em;
+
+    border: $background 1px solid;
+
+    transition: all 0.1s ease;
 }
