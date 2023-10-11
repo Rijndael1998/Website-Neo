@@ -4,7 +4,7 @@ import Lazy from "@/components/lazy/_lazy";
 import Link from "next/link";
 import LazyTable from "@/components/lazy/_lazyTable";
 import SudokuCollection from "@/components/algorithms/sudoku/sudokuCollection";
-import { easyGrid, easyGridSnippet, easyGridSnippet2, easyGridSnippet3 } from "@/content/fun/hobbies/sudoku/Sudoku";
+import { easyGrid, easyGridDone, easyGridSnippet, easyGridSnippet2, easyGridSnippet3, hardGrid, hardGridDone } from "@/content/fun/hobbies/sudoku/Sudoku";
 import classNames from "classnames";
 
 export default function Sudoku() {
@@ -145,17 +145,21 @@ export default function Sudoku() {
             We can keep iterating this process until all the squares are filled in:
         </p>
 
+        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={easyGridDone} />
+
         <p>
             However, this doesn’t guarantee that you will find a solution using this method.
             This is where you have to use backtracking.
             The following example cannot be solved using the previous method but can be solved using Backtracking:
         </p>
 
+        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={hardGrid} />
+
         <p>
             This is the solution to the above using my Sudoku solver:
         </p>
 
-
+        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={hardGridDone} />
 
     </Lazy>
 }
