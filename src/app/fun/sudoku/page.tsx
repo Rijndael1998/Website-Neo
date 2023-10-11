@@ -86,7 +86,7 @@ export default function Sudoku() {
             }
         </p>
 
-        <h2>Example with explanations</h2>
+        <h3>Example with explanations</h3>
         <p>
             Consider the following graph:
         </p>
@@ -147,9 +147,13 @@ export default function Sudoku() {
 
         <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={easyGridDone} />
 
+        <h3>Not a silver bullet</h3>
         <p>
-            However, this doesn’t guarantee that you will find a solution using this method.
+            However, this doesn’t guarantee that you will find a solution to every possible Sudoku using this method.
             This is where you have to use backtracking.
+        </p>
+        
+        <p>
             The following example cannot be solved using the previous method but can be solved using Backtracking:
         </p>
 
