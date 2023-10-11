@@ -7,6 +7,7 @@ import GenericButton from "@/components/input/genericButton/_genericButton";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
 import styles from "./sudoku.module.scss";
+import buttonStyles from "../../input/genericButton/genericButton.module.scss";
 
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
@@ -45,6 +46,7 @@ export default function SudokuCollection() {
     const solve = () => {
         const result = backtracking(Duplicate2DArray(grid), 0);
 
+        // TODO: Handle...
         if (result === false) {
             console.log("no result");
             return;
@@ -56,10 +58,10 @@ export default function SudokuCollection() {
     return <>
         <div className={styles.controlWrapper}>
             <div className={styles.buttonWrapper}>
-                <GenericButton className={styles.button} onClick={() => puzzleHandler("easy")}>Easy Puzzle</GenericButton>
-                <GenericButton className={styles.button} onClick={() => puzzleHandler("hard")}>Hard Puzzle</GenericButton>
-                <GenericButton className={styles.button} onClick={() => solve()}>Solve</GenericButton>
-                <GenericButton className={styles.button} onClick={() => setGrid(EmptyGridGen())}>Clear</GenericButton>
+                <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("easy")}>Easy Puzzle</GenericButton>
+                <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("hard")}>Hard Puzzle</GenericButton>
+                <GenericButton className={buttonStyles.bigButton} onClick={() => solve()}>Solve</GenericButton>
+                <GenericButton className={buttonStyles.bigButton} onClick={() => setGrid(EmptyGridGen())}>Clear</GenericButton>
             </div>
             <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
         </div>

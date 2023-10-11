@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react"
 import { GenericCallback } from "../../util"
 import styles from "./genericButton.module.scss"

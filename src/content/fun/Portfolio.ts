@@ -65,7 +65,7 @@ export const personalProjects: PortfolioViewArray = [
         The program can let you draw anything that you might like using this specialty language.
         `,
         isDemo: false,
-        url: preURL + "",
+        url: preURL + "drawingProgram",
         image: imageFolder + "drawing_program.png",
     },
     {

@@ -2,22 +2,44 @@
 
 import styles from "./imageGallery.module.scss";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GalleryImage from "./galleryImage";
-//import { MouseEvent } from 'react';
+
+export type ImageProps = Array<{
+    alt?: string,
+    src: string,
+    aspectRatio?: number,
+}>
 
 export type ImageGalleryProps = {
-    images: Array<{
-        alt?: string,
-        src: string,
-    }>
-
-    aspectRatio: number,
+    images: ImageProps,
+    aspectRatio?: number,
 };
 
 export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps) {
     const [index, setIndex] = useState(0);
+    const [minimalAspectRatio, setMinimalAspectRatio] = useState(Infinity);
 
+    useEffect(() => {
+        if(aspectRatio) {
+            setMinimalAspectRatio(aspectRatio);
+            return;
+        }
+
+        let currentMinimal = Infinity;
+        for (let index = 0; index < images.length; index++) {
+            const ac = images[index].aspectRatio;
+            if(!ac)
+                throw new Error("Image without aspect ratio: " + images[index].src);
+
+            currentMinimal = Math.min(currentMinimal, ac);
+        }
+
+        setMinimalAspectRatio(currentMinimal);
+        return;
+
+    }, [images, aspectRatio])
+    
     enum Controls {
         Next,
         Previous,
@@ -56,8 +78,8 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
                 </p>
             </div>
         </div>
-        <div style={{ aspectRatio }} className={classNames(styles.imageGallery)}>
-            <figure style={{ aspectRatio }} className={styles.container}>
+        <div style={{ aspectRatio: minimalAspectRatio}} className={classNames(styles.imageGallery)}>
+            <figure style={{aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio}} className={styles.container}>
                 {
                     images.map((image, i) =>
                         <GalleryImage

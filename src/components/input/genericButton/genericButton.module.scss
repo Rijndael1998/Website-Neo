@@ -9,6 +9,14 @@
     color: $text;
 }
 
+.bigButton {
+    $padding: 3ch;
+    margin: auto;
+    width: calc(100% - $padding * 2);
+    padding: $padding;
+    text-align: center;
+}
+
 .selected {
     background-color: $accent;
     color: $background;

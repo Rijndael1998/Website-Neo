@@ -13,14 +13,6 @@
         display: flex;
         flex-direction: column;
         width: 12ch;
-    
-        .button {
-            $padding: 3ch;
-            margin: auto;
-            width: calc(100% - $padding * 2);
-            padding: $padding;
-            text-align: center;
-        }
     }
 }
 
