@@ -36,7 +36,7 @@
         &>div {
             opacity: 0;
 
-            $dur: 2s;
+            $dur: 4s;
 
             @mixin vis {
                 opacity: 1;
@@ -89,7 +89,7 @@
             @for $x from 0 through 11 * 11 {
                 $xP: $x % 11;
                 $yP: floor($x / 11);
-                $d: hypot($xP - 3, $yP) / 8;
+                $d: hypot($xP - 3, $yP) / 1;
 
                 &:nth-child(#{$x}) {
                     animation-delay: #{$d}s;
