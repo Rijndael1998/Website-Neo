@@ -34,6 +34,7 @@
     margin: auto;
     text-decoration: dashed;
     background-color: red;
+
     &.open {
         background-color: green;
     }
@@ -53,4 +54,26 @@
     gap: .4rem;
     width: auto;
     justify-content: space-evenly;
+}
+
+.lazyTable {
+    display: grid;
+
+    max-width: 100%;
+    // max-height: 70vh;
+
+    &>div {
+
+        &.notNull {
+            aspect-ratio: 1;
+            align-content: center;
+            display: grid;
+        }
+
+        &>p {
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+    }
 }

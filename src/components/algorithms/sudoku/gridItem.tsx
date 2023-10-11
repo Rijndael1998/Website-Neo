@@ -14,6 +14,7 @@ export default function GridItem({ value, possible, callback }: GridItemProps) {
     values.sort((a, b) => a - b);
 
     return <div>
+        <p>{value == 0 ? "" : value}</p>
         <select value={value} onChange={(e) => callback(Number.parseInt((e.target as HTMLSelectElement).value))}>
             {
                 values.map((possibleValue) => {

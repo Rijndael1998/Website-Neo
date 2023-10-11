@@ -1,4 +1,5 @@
 @import "./../../vars";
+@import "./../../colors";
 
 .gridWrapper {
     .grid {
@@ -9,16 +10,35 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        width: 50ch;
+        width: 60ch;
         justify-content: center;
     
         margin: auto;
     
         .row {
             div {
+                display: grid;
+
+                position: relative;
+
+                background-color: $secondaryBg;
+                border: 1px solid $accentDull;
+
+                width: var(--gridSize);
+                height: var(--gridSize);
+
                 select {
-                    width: var(--gridSize);
-                    height: var(--gridSize);
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                p {
+                    margin: 0;
+                    justify-self: center;
+                    align-self: center;
+                    position: absolute;
                 }
     
                 margin-bottom: var(--smallGap);
@@ -45,7 +65,7 @@
     }
 }
 
-@media screen and (max-width: $titleBreak) {
+@media screen and (max-width: $navBreak) {
     .gridWrapper {
         overflow-y: auto;
     }
