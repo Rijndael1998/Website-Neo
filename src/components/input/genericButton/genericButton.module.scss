@@ -1,6 +1,10 @@
+@import "./../../colors";
+@import "./../../vars";
+
 .button {
-    background-color: red;
+    background-color: $accentDull;
     cursor: pointer;
+    border-radius: $buttonBorderRadius;
 }
 
 .selected {

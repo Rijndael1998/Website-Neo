@@ -12,12 +12,13 @@
     .buttonWrapper {
         display: flex;
         flex-direction: column;
-        width: 40ch;
+        width: 12ch;
     
         .button {
+            $padding: 3ch;
             margin: auto;
-            width: 10ch;
-            padding: 3ch;
+            width: calc(100% - $padding * 2);
+            padding: $padding;
             text-align: center;
         }
     }
