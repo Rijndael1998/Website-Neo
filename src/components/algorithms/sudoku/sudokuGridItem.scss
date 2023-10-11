@@ -1,0 +1,6 @@
+@import "./../../colors";
+
+@mixin sudokuGridItem {
+    background-color: $secondaryBg;
+    border: 1px solid $accentDull;
+}

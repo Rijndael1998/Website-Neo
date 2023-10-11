@@ -1,12 +1,12 @@
-@import "/src/components/colors";
+@import "./../../colors";
+@import "./sudokuGridItem.scss";
 
 .common {
     gap: .5em .5em;
     grid-auto-flow: row;
 
     &>div {
-        background-color: $secondaryBg;
-        border: 1px $accentDull solid;
+        @include sudokuGridItem;
     }
 }
 
@@ -15,6 +15,7 @@
     grid-template-rows: repeat(11, 1fr);
 
     &>div {
+
         &:nth-child(11n-3),
         &:nth-child(11n-7) {
             background-color: black;
@@ -28,6 +29,29 @@
             }
         }
     }
+
+    &.hideNonImportant {
+        &>div {
+            opacity: 0;
+
+            @for $i from 0 through 14 {
+                &:nth-child(#{$i}) {
+                    opacity: 1;
+                }
+            }
+
+            @for $i from 23 through 25 {
+                &:nth-child(#{$i}) {
+                    opacity: 1;
+                }
+            }
+
+            &:nth-child(11n + 25) {
+                opacity: 1;
+            }
+
+        }
+    }
 }
 
 .ind2 {
@@ -38,14 +62,39 @@
     }
 }
 
+.ind3 {
+    &>div {
+        &:nth-child(1) {
+            animation: ind2b 4s ease infinite;
+        }
+    }
+}
+
 @keyframes ind2b {
     0% {
         background-color: transparent !important;
     }
+
     50% {
         background-color: $accent !important;
         border: 1px solid $accent;
     }
+
+    100% {
+        background-color: transparent !important;
+    }
+}
+
+@keyframes ind4b {
+    0% {
+        background-color: transparent !important;
+    }
+
+    50% {
+        background-color: $accent !important;
+        border: 1px solid $accent;
+    }
+
     100% {
         background-color: transparent !important;
     }
@@ -59,4 +108,15 @@
     width: calc(100% / 3);
 
     aspect-ratio: 1;
+}
+
+.s9x1 {
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.s1x9 {
+    margin: 2rem auto !important;
+    max-width: calc(100% / 9) !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 1fr);
 }

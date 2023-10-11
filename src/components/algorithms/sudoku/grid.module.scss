@@ -1,5 +1,5 @@
 @import "./../../vars";
-@import "./../../colors";
+@import "./sudokuGridItem.scss";
 
 .gridWrapper {
     .grid {
@@ -21,8 +21,7 @@
 
                 position: relative;
 
-                background-color: $secondaryBg;
-                border: 1px solid $accentDull;
+                @include sudokuGridItem;
 
                 width: var(--gridSize);
                 height: var(--gridSize);

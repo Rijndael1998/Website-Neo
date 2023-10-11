@@ -110,33 +110,43 @@ export default function Sudoku() {
             however, we will start with the region first:
         </p>
 
-        <LazyTable className={classNames(sudokuStyle.s3x3, sudokuStyle.common)} items={easyGridSnippet} />
+        <LazyTable className={classNames(sudokuStyle.s3x3, sudokuStyle.ind2, sudokuStyle.common)} items={easyGridSnippet} />
 
         <p>
             We can remove the numbers present in the current region of the cell and are left with numbers 4, 5, 7 and 9 after
             removing 1, 2, 3, 6 and 8 from the possible set.
         </p>
 
-        <LazyTable className={sudokuStyle.addIn} items={easyGridSnippet2} />
+        <LazyTable className={classNames(sudokuStyle.s9x1, sudokuStyle.ind2, sudokuStyle.common)} items={easyGridSnippet2} />
 
         <p>
             We can now look at the row of the cell and remove numbers 4 and 5 from our list of numbers.
             This leaves us with the possibilities: 7 and 9.
         </p>
 
-        <LazyTable className={sudokuStyle.addIn} items={easyGridSnippet3} />
+        <LazyTable className={classNames(sudokuStyle.s1x9, sudokuStyle.ind3, sudokuStyle.common)} items={easyGridSnippet3} />
 
         <p>
             By looking at the column of the cell, we can remove the 7 from our list of numbers, leaving us with only 9.
         </p>
-        
+
+        <p>
+            {
+                `
+                Here's a representation of all the cells we checked to get here:
+                `
+            }
+        </p>
+
+        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.ind2, sudokuStyle.common, sudokuStyle.hideNonImportant)} items={easyGrid} />
+
         <p>
             Since 9 is the only number, we can be certain that only 9 should go into the cell so we write 9 into the cell.
             We can keep iterating this process until all the squares are filled in:
         </p>
 
         <p>
-            However, this doesn’t guarantee that there will be a solution.
+            However, this doesn’t guarantee that you will find a solution using this method.
             This is where you have to use backtracking.
             The following example cannot be solved using the previous method but can be solved using Backtracking:
         </p>
