@@ -2,15 +2,19 @@
 @import "./../../vars";
 
 .button {
+    transition: all 0.2s ease;
     background-color: $accentDull;
     cursor: pointer;
     border-radius: $buttonBorderRadius;
+    color: $text;
 }
 
 .selected {
-    background-color: green;
+    background-color: $accent;
+    color: $background;
 }
 
-.disabled {
-    background-color: darkslategray;
+.disabled, .disabled.selected {
+    background-color: $disabled;
+    color: $text;
 }
