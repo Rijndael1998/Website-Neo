@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import "./../../colors";
 @import "./sudokuGridItem.scss";
 
@@ -34,22 +36,65 @@
         &>div {
             opacity: 0;
 
+            $dur: 2s;
+
+            @mixin vis {
+                opacity: 1;
+                animation: ind4b $dur ease infinite;
+            }
+
+            @mixin unvis {
+                animation: none !important;
+                opacity: 0 !important;
+            }
+
+            @function hypot($a, $b) {
+                @return math.sqrt(($a * $a) + ($b * $b));
+            }
+
+            &:nth-child(3) {
+                animation: ind2b $dur ease infinite !important;
+            }
+
             @for $i from 0 through 14 {
                 &:nth-child(#{$i}) {
-                    opacity: 1;
+                    @include vis;
                 }
             }
 
             @for $i from 23 through 25 {
                 &:nth-child(#{$i}) {
-                    opacity: 1;
+                    @include vis;
                 }
             }
 
-            &:nth-child(11n + 25) {
-                opacity: 1;
+            &:nth-child(11n + 4) {
+                @include unvis;
             }
 
+            &:nth-child(11n + 8) {
+                @include unvis;
+            }
+
+            &:nth-child(11n + 25) {
+                @include vis;
+            }
+
+            @for $i from 0 through 10 {
+                &:nth-child(44n - #{$i}) {
+                    @include unvis;
+                }
+            }
+
+            @for $x from 0 through 11 * 11 {
+                $xP: $x % 11;
+                $yP: floor($x / 11);
+                $d: hypot($xP - 3, $yP) / 8;
+
+                &:nth-child(#{$x}) {
+                    animation-delay: #{$d}s;
+                }
+            }
         }
     }
 }
@@ -71,32 +116,14 @@
 }
 
 @keyframes ind2b {
-    0% {
-        background-color: transparent !important;
-    }
-
     50% {
-        background-color: $accent !important;
         border: 1px solid $accent;
-    }
-
-    100% {
-        background-color: transparent !important;
     }
 }
 
 @keyframes ind4b {
-    0% {
-        background-color: transparent !important;
-    }
-
     50% {
-        background-color: $accent !important;
-        border: 1px solid $accent;
-    }
-
-    100% {
-        background-color: transparent !important;
+        border: 1px solid transparentize($primary, 0.2);
     }
 }
 
