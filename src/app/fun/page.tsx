@@ -1,4 +1,4 @@
-import { personalProjects, demos, games, irlContent } from "../../content/fun/content";
+import { personalProjects, demos, games, irlContent } from "../../content/fun/Portfolio";
 import styles from "./page.module.scss";
 import PortfolioGroup from "@/components/portfolio/_portfolioGroup";
 
