@@ -76,7 +76,7 @@ export const personalProjects: PortfolioViewArray = [
         It does this by utilising data URIs to create and compress the data that it needs.
         `,
         isDemo: false,
-        url: preURL + "",
+        url: preURL + "oldWebsite",
         image: imageFolder + "old_website.png",
     },
     // {

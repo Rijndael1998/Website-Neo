@@ -6,8 +6,12 @@ import Link from "next/link";
 export default function PasswordManager() {
     return <Lazy>
         <h1>Internet Nomad Password Manager</h1>
-        <LazyImage aspectRatio={600 / 765} src={"/fun/hobbies/passwordManager/login.png"} alt={"Internet Nomad Login"}/>
-        <p>For my final year of university, I had to develop a security related product. The task of developing a product came with project management and everything that comes with that, including risk arrestment, resource allocation, development methodology, etc.</p>
+        <LazyImage aspectRatio={600 / 765} src={"/fun/hobbies/passwordManager/login.png"} alt={"Internet Nomad Login"} />
+        <p>
+            During my final year of university, I developed a security-related product that encompassed
+            various aspects of project management. This entailed conducting risk assessment, allocating
+            resources, implementing a development methodology, and more.
+        </p>
 
         <h2>Features</h2>
         <ul>
@@ -25,7 +29,7 @@ export default function PasswordManager() {
         </ul>
 
         <h2>Encryption and Data Security</h2>
-        <LazyImage aspectRatio={937 / 786} src={"/fun/hobbies/passwordManager/create_container.png"} alt={"Internet Nomad Login"}/>
+        <LazyImage aspectRatio={937 / 786} src={"/fun/hobbies/passwordManager/create_container.png"} alt={"Internet Nomad Login"} />
         <p>
             The user can choose their encryption in the password manager.
             The user has a choice of <Link href={links.bf}>Blowfish</Link> or <Link href={links.aes}>AES</Link> as the <Link href={links.enc}>encryption method</Link>, and <Link href={links.pbk}>PBKDF2</Link> and <Link href={links.arg}>Argon2</Link> as <Link href={links.kdf}>key derivation function</Link>.
@@ -57,7 +61,7 @@ export default function PasswordManager() {
         </p>
 
         <h2>Identities</h2>
-        <LazyImage aspectRatio={1228 / 852} src={"/fun/hobbies/passwordManager/identities.png"} alt={"Internet Nomad Login"}/>
+        <LazyImage aspectRatio={1228 / 852} src={"/fun/hobbies/passwordManager/identities.png"} alt={"Internet Nomad Login"} />
         <p>
             Another distinct feature of the password manager is that it implements “Identities”,
             which are fundamentally a collection of accounts. The password manager is designed as a
@@ -68,7 +72,7 @@ export default function PasswordManager() {
         </p>
 
         <h2>Accounts</h2>
-        <LazyImage aspectRatio={792 / 583} src={"/fun/hobbies/passwordManager/accounts.png"} alt={"Internet Nomad Login"}/>
+        <LazyImage aspectRatio={792 / 583} src={"/fun/hobbies/passwordManager/accounts.png"} alt={"Internet Nomad Login"} />
         <p>
             The password manager has many common password manager functions.
             It{`'`}s possible to create accounts, generate passwords, delete and edit accounts and more.

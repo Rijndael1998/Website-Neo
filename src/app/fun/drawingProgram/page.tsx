@@ -3,7 +3,8 @@ import Link from "next/link";
 import styles from "./drawing.module.scss";
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import ImageGallery from "@/components/imageGallery/_imageGallery";
-import { gallery, videos } from "@/content/fun/hobbies/drawingProgram/DrawingProgram";
+import { example, exampleCode, gallery, hue, videos } from "@/content/fun/hobbies/drawingProgram/DrawingProgram";
+import GalleryImage from "@/components/imageGallery/galleryImage";
 
 const demo = "https://baldy.ga/Resources/ProjectFiles/AdvancedSoftwareEngineering/Advanced%20Software%20Engineering.exe";
 const gh = "https://github.com/c3ypt1c/Advanced-Software-Engineering-Drawing-Project";
@@ -12,6 +13,7 @@ const guidelines = "https://baldy.ga/Resources/ProjectFiles/AdvancedSoftwareEngi
 export default function DrawingProject() {
     return <Lazy>
         <h1>Drawing Program</h1>
+        <GalleryImage src={hue.src} aspectRatio={hue.aspectRatio} alt="" />
         <p>
             {`This is one of my third year university projects. The program can let you draw anything that you might like.
             You can download a demo `}<Link href={demo}>here</Link>{`. 
@@ -51,16 +53,6 @@ export default function DrawingProject() {
             <li>Error detection.</li>
         </ul>
 
-        <h2>Videos</h2>
-        <p>
-            {
-                videos
-            }
-        </p>
-
-        <YoutubeEmbed videoID="Mu8wZJZAwrU" />
-        <YoutubeEmbed videoID="R9EyubWpI3g" />
-
         <h2>Gallery</h2>
         <ImageGallery images={gallery} aspectRatio={0} />
 
@@ -78,24 +70,23 @@ export default function DrawingProject() {
 
         </p>
 
-        {/* <h2>Example</h2>
+        <h2>Videos</h2>
         <p>
-            <code>
-{`
-var x = 0
-var y = 0
-while x < 128
-  y = 0
-  while y < 128
-    move x, y
-    pen x, y, x + y
-    dot
-    y = y + 1
-  end
-  x = x + 1
-end
-`}
-            </code>
-        </p> */}
+            {
+                videos
+            }
+        </p>
+
+        <YoutubeEmbed videoID="Mu8wZJZAwrU" />
+        <YoutubeEmbed videoID="R9EyubWpI3g" />
+
+        <h2>Example</h2>
+
+        <ImageGallery images={example} />
+
+        <h4>Code</h4>
+        <pre>
+            {exampleCode}
+        </pre>
     </Lazy>
 }
