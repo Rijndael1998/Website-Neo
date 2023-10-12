@@ -64,16 +64,38 @@ export default function DrawingProject() {
         <h2>Gallery</h2>
         <ImageGallery images={gallery} aspectRatio={0} />
 
-        <h2></h2>
+        <h2>Documentation</h2>
         <p>
             {
                 `
                 It was required that the software engineering project is fully documented.
                 Every class has documentation regarding its use and place in the program.
-                The documentation was generated Doxygen.
-                You can read the documentation here.
                 `
             }
+
+            The documentation was generated using <Link href="https://github.com/doxygen/doxygen">Doxygen</Link>.
+            You can read the documentation <Link href="/fun/hobbies/drawingProgram/html/index.html">here</Link>.
+
         </p>
+
+        {/* <h2>Example</h2>
+        <p>
+            <code>
+{`
+var x = 0
+var y = 0
+while x < 128
+  y = 0
+  while y < 128
+    move x, y
+    pen x, y, x + y
+    dot
+    y = y + 1
+  end
+  x = x + 1
+end
+`}
+            </code>
+        </p> */}
     </Lazy>
 }

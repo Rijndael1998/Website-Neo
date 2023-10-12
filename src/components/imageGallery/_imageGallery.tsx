@@ -78,7 +78,7 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
                 </p>
             </div>
         </div>
-        <div style={{ aspectRatio: minimalAspectRatio}} className={classNames(styles.imageGallery)}>
+        <div style={{ aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio}} className={classNames(styles.imageGallery)}>
             <figure style={{aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio}} className={styles.container}>
                 {
                     images.map((image, i) =>
