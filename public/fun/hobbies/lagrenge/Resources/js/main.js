@@ -91,7 +91,7 @@ function draw() {
 	if(LagrangeObject != null) {
 		push();
 		beginShape(LINES);
-		for(let i = 0; i < windowWidth; i++) {
+		for(let i = -offsetX; i < windowWidth - offsetX; i++) {
 			vertex(i-1, LagrangeObject.F(i-1))
 			vertex(i, LagrangeObject.F(i));
 		}
