@@ -10,13 +10,25 @@ export function filterPercent(styleString: string) {
     return round(Number.parseFloat(styleString.replaceAll("%", "")));
 }
 
-export function getLeftTop(e: React.MouseEvent) {
-    const tar = e.target as HTMLDivElement;
-    const styles = tar.style;
+export function getLeftTopByElement(e: HTMLElement) {
+    const styles = e.style;
     const left = filterPercent(styles.left);
     const top = filterPercent(styles.top);
 
     return [left, top];
+}
+
+export function getLeftTop(e: React.MouseEvent) {
+    const tar = e.target as HTMLDivElement;
+
+    return getLeftTopByElement(tar);
+}
+
+export function getRelativeLeftTopByElement(e: HTMLElement) {
+
+    const [x, y] = correctClick(e);
+
+    return new Point(100 * x / tar.clientWidth, 100 * y / tar.clientHeight);
 }
 
 /**

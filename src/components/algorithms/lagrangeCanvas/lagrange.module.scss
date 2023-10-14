@@ -13,10 +13,17 @@
         border-radius: 100vh;
         transform: translate(-0.5em, -0.5em);
 
+        $tr: 0.1s ease;
+
+        transition:
+            width $tr,
+            height $tr,
+            transform $tr;
+
         &.hidden {
-            width: 0;
-            height: 0;
-            transform: translate(0, 0);
+            width: 0.5em;
+            height: 0.5em;
+            // transform: translate(-0.25em, -0.25em);
         }
     }
 }

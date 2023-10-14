@@ -4,18 +4,34 @@ import { useEffect, useState } from "react";
 import styles from "./lagrange.module.scss";
 import { Point } from "./point";
 import { LagrangeFunction } from "./lagrangeFunction";
-import { DivMouseEvent, comparePoint, getLeftTop, getRelativeLeftTop } from "./util";
+import { DivMouseEvent, comparePoint, filterPercent, getLeftTop, getRelativeLeftTop, round } from "./util";
 import classNames from "classnames";
+import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 
+function findPoint(e: HTMLDivElement, points: Array<Point>) {
+    const x = filterPercent(e.style.left);
+    const y = filterPercent(e.style.top);
 
+    console.log("point", x, y);
 
+    let pointIndex = undefined;
+    points.forEach((point, i) => {
+        const pointx = round(point.x);
+        const pointy = round(point.y);
+        if (pointx == x && pointy == y) {
+            pointIndex = i;
+        }
+    })
+
+    return pointIndex;
+}
 
 export default function LagrangeCanvas() {
     const [points, setPoints] = useState<Array<Point>>([]);
     const [lf, setLF] = useState<LagrangeFunction>();
 
-    // the index of the dragged points within the points variable
-    const [draggedPoint, setDraggedPoint] = useState<Point>();
+    const [pressedIndex, setPressedIndex] = useState<number>();
+    const [lastDrag, setLastDrag] = useState<number>(0);
 
     useEffect(() => {
         if (points.length < 2)
@@ -26,6 +42,8 @@ export default function LagrangeCanvas() {
 
     const addPoint = (e: DivMouseEvent) => {
         console.log(e);
+        if (e.timeStamp < lastDrag + 16)
+            return;
 
         const newPoint = getRelativeLeftTop(e);
 
@@ -35,6 +53,9 @@ export default function LagrangeCanvas() {
     }
 
     const removePoint = (e: DivMouseEvent) => {
+        if (e.timeStamp < lastDrag + 16)
+            return;
+
         e.preventDefault();
         e.stopPropagation();
 
@@ -45,65 +66,69 @@ export default function LagrangeCanvas() {
         setPoints(newPoints);
     }
 
-    const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
-        console.log("started drag");
-        console.log(e);
+    const onStart = (e: DraggableEvent, d: DraggableData) => {
+        console.log("start", e, d);
 
-        const [x, y] = getLeftTop(e);
-        
-        points.forEach((point, i) => {
-            if(comparePoint(point, x, y)) {
-                const newPoints = [...points];
+        const index = findPoint(d.node as HTMLDivElement, points);
 
-                const newPoint = point.clone();
-                newPoint.hidden = true;
+        console.log(index);
 
-                newPoints[i] = newPoint;
-                setDraggedPoint(newPoint);
-                setPoints(newPoints);
-            }
-        });
+        setPressedIndex(index);
     }
 
-    const dragFinish = () => {
-        console.log("finished drag");
-        if(!draggedPoint)
+    const onDrag = (e: DraggableEvent, d: DraggableData) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        // if(!pressedIndex)
+        //     return false;
+
+        console.log("drag", e, d);
+    }
+
+    const onStop = (e: DraggableEvent, d: DraggableData) => {
+        console.log("stop", e, d);
+
+        const w = d.node.parentElement!.clientWidth;
+        const h = d.node.parentElement!.clientHeight;
+
+        const dx = 100 * d.x / w;
+        const dy = 100 * d.y / h;
+
+        console.log(dx, dy);
+
+        if(pressedIndex === undefined)
             return;
 
         const newPoints = [...points];
+        newPoints[pressedIndex].x = dx;
+        newPoints[pressedIndex].y = dy;
 
-        const newPoint = draggedPoint.clone()
-        newPoint.hidden = false;
+        d.node.style.transform = "";
 
-        newPoints[points.indexOf(draggedPoint)] = newPoint;
-
-        setDraggedPoint(undefined);
+        setLastDrag(e.timeStamp);
         setPoints(newPoints);
     }
 
-    const mouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        if(!draggedPoint)
-            return;
-
-        console.log(e);
-    }
 
     return <>
-        <div 
-        className={styles.wrapper} 
-        onClick={(e) => addPoint(e)}
-        onMouseMove={(e) => mouseMove(e)}>
+        <div
+            className={styles.wrapper}
+            onClick={(e) => addPoint(e)}>
             {
                 points.map((point, i) => {
-                    return <div
-                        draggable
+                    return <Draggable
                         key={`${i}`}
-                        className={classNames(styles.point, point.hidden && styles.hidden)}
-                        style={{ left: `${point.x}%`, top: `${point.y}%` }}
-                        onClick={(e) => removePoint(e)}
-                        onDragStart={(e) => dragStart(e)}
-                        onDragEnd={() => dragFinish()}
-                    />
+                        onStart={(e, d) => onStart(e, d)}
+                        onDrag={(e, d) => onDrag(e, d)}
+                        onStop={(e, d) => onStop(e, d)}
+                    >
+                        <div
+                            className={classNames(styles.point, point.hidden && styles.hidden)}
+                            style={{ left: `${point.x}%`, top: `${point.y}%` }}
+                            onClick={(e) => removePoint(e)}
+                        />
+                    </Draggable>
                 })
             }
         </div>
