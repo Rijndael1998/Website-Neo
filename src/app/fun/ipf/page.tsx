@@ -1,10 +1,10 @@
+import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
-import LazyImage from "@/components/lazy/_lazyImage";
 
 export default function IPF() {
     return <Lazy>
         <h1>International Personal Finance</h1>
-        <LazyImage src="/fun/ipf.png" alt="IPF Logo" aspectRatio={1} />
+        <GalleryImage src="/fun/ipf.png" alt="IPF Logo" aspectRatio={1} />
 
         <h2>The company</h2>
         <p>

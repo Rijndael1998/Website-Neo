@@ -1,0 +1,22 @@
+.wrapper {
+    position: relative;
+    background-color: seashell;
+    width: 100%;
+    aspect-ratio: 1;
+
+    .point {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-color: #cea2fd;
+
+        border-radius: 100vh;
+        transform: translate(-0.5em, -0.5em);
+
+        &.hidden {
+            width: 0;
+            height: 0;
+            transform: translate(0, 0);
+        }
+    }
+}
