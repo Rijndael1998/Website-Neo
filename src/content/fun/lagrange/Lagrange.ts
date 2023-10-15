@@ -42,13 +42,5 @@ export const ps2 = [
     secret - they would need at least 't' shares. It's also important to note that any 't' 
     shares will work, not just a specific set.
     `,
-    `
-    These polynomials, and therefore Shamir’s Secret Sharing, can be used in a password manager 
-    to distribute the master key safely among a group of select individuals. The master key 
-    could be divided into parts and given to different individuals. When needed, the key can 
-    be reconstructed by gathering a certain threshold of these parts. This ensures the security 
-    of the password manager as the master key is not stored in one place, therefore significantly 
-    decreasing the chance of the key getting exposed to potential threats.
-    `
 ];
 

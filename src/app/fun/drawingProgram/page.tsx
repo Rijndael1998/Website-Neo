@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./drawing.module.scss";
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import ImageGallery from "@/components/imageGallery/_imageGallery";
-import { example, exampleCode, gallery, hue, videos } from "@/content/fun/hobbies/drawingProgram/DrawingProgram";
+import { example, exampleCode, gallery, hue, videos } from "@/content/fun/drawingProgram/DrawingProgram";
 import GalleryImage from "@/components/imageGallery/galleryImage";
 
 const demo = "https://baldy.ga/Resources/ProjectFiles/AdvancedSoftwareEngineering/Advanced%20Software%20Engineering.exe";

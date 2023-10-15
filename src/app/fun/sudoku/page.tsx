@@ -4,7 +4,7 @@ import Lazy from "@/components/lazy/_lazy";
 import Link from "next/link";
 import LazyTable from "@/components/lazy/_lazyTable";
 import SudokuCollection from "@/components/algorithms/sudoku/sudokuCollection";
-import { easyGrid, easyGridDone, easyGridSnippet, easyGridSnippet2, easyGridSnippet3, hardGrid, hardGridDone } from "@/content/fun/hobbies/sudoku/Sudoku";
+import { easyGrid, easyGridDone, easyGridSnippet, easyGridSnippet2, easyGridSnippet3, hardGrid, hardGridDone } from "@/content/fun/sudoku/Sudoku";
 import classNames from "classnames";
 
 export default function Sudoku() {

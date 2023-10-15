@@ -1,6 +1,6 @@
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
-import { links } from "@/content/fun/hobbies/passwordManager/PasswordManager";
+import { links } from "@/content/fun/passwordManager/PasswordManager";
 import Link from "next/link";
 
 export default function PasswordManager() {
