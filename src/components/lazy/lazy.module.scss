@@ -12,6 +12,10 @@
             max-width: unset;
         }
     }
+
+    &>ol>li {
+        padding-bottom: 2rem;
+    }
 }
 
 .lazyCollapse {
