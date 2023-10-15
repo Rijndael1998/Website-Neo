@@ -1,6 +1,5 @@
 import Lazy from "@/components/lazy/_lazy";
 import Link from "next/link";
-import styles from "./drawing.module.scss";
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import ImageGallery from "@/components/imageGallery/_imageGallery";
 import { example, exampleCode, gallery, hue, videos } from "@/content/fun/drawingProgram/DrawingProgram";

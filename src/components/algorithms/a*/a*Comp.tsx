@@ -1,6 +1,7 @@
 "use client";
 
-import styles from "./../../../app/fun/a-star/a*.module.scss";
+import styles from "./styles/a*.module.scss";
+import button from "./../../input/genericButton/genericButton.module.scss";
 import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
@@ -76,9 +77,13 @@ export default function AStarComponent() {
     }, [AS, auto]);
     return <div>
         <div>
-            Width: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} />
-            Height: <NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} />
-            <GenericButton className={classNames(styles.stageButton, styles.inline)} onClick={() => {
+            <div>
+                <div>Width</div>
+                <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} /></div>
+                <div>Height</div>
+                <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} /></div>
+            </div>
+            <GenericButton className={classNames(styles.stageButton, styles.inline, button.bigButton)} onClick={() => {
                 const newAS = new AStar(generateGridState(InputWidth, InputHeight));
                 setAS(newAS);
                 setStage(AStarStages.Start);
