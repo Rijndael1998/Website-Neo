@@ -5,7 +5,7 @@ import { AStarResult } from "./utils/a*result";
 import { AStarStages } from "./utils/a*stages.enum";
 import { AStarStates } from "./utils/a*states.enum";
 
-export default class AStar implements StyledGridState {
+export default class AStar {
     state: GridState<AStarStates>;
     originalState: GridState<AStarStates>;
     all: Array<Array<AStarNode>> = [];
@@ -93,8 +93,21 @@ export default class AStar implements StyledGridState {
         return this.canContinueReason() === undefined;
     }
 
+    // This isn't getting used at all.
     getStyledGridState(): string[][] {
-        return this.state.getStyledGridState();
+        const state = this.state.getStyledGridState();
+
+        console.log("called getStyledGridState");
+        console.log(this.all, state);
+
+        this.all.forEach((nodes, y) => nodes.forEach((node, x) => {
+            if (node.i != undefined) {
+                console.log(node.i, node.x, node.y);
+                // get the number here
+                state[x][y] = `${state[x][y]} d${node.i}`;
+            }
+        }))
+        return state;
     }
 
     private canChange(node: AStarStates) {
@@ -244,9 +257,12 @@ export default class AStar implements StyledGridState {
         this.open.splice(this.open.indexOf(node), 1, ...possibleNodes);
 
         if (this.foundEnd) {
+            let i = 0;
             let cell = this.end!.bestRoute!;
             while (cell != this.start || !cell) {
                 this.setElementState(cell.x, cell.y, AStarStates.Path);
+                cell.i = i++;
+
                 cell = cell.bestRoute!;
             }
         }

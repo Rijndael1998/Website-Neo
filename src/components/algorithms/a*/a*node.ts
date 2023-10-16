@@ -1,4 +1,6 @@
 export class AStarNode {
+    i?: number;
+
     bestRoute?: AStarNode;
     cachedHCost?: number;
     isStart = false;
