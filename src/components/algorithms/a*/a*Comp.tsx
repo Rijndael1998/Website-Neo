@@ -2,6 +2,7 @@
 
 import styles from "./styles/a*.module.scss";
 import button from "./../../input/genericButton/genericButton.module.scss";
+import colors from "./styles/a*StyleMap.module.scss";
 import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
@@ -15,6 +16,7 @@ import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
 import { AStarStates } from "@/components/algorithms/a*/utils/a*states.enum";
 import { AStarStages } from "@/components/algorithms/a*/utils/a*stages.enum";
 import ColorSquare from "@/components/colorSquare/_colorSquare";
+import GridItem from "../grid/gridItem/_gridItem";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
@@ -114,9 +116,36 @@ export default function AStarComponent() {
             <Grid className={styles.grid} state={state} callback={callback} />
         </div>
 
-        <div>
-            <p>Key:</p>
-            <ColorSquare color=""/>
+        <div className={styles.key}>
+            <h3>Key:</h3>
+            <div>
+                <GridItem item={colors.Node} callback={undefined} />
+                <div>Node</div>
+            </div>
+            <div>
+                <GridItem item={colors.Wall} callback={undefined} />
+                <div>Wall</div>
+            </div>
+            <div>
+                <GridItem item={colors.Start} callback={undefined} />
+                <div>Start</div>
+            </div>
+            <div>
+                <GridItem item={colors.End} callback={undefined} />
+                <div>End</div>
+            </div>
+            <div>
+                <GridItem item={colors.Path} callback={undefined} />
+                <div>Path</div>
+            </div>
+            <div>
+                <GridItem item={colors.Explored} callback={undefined} />
+                <div>Explored</div>
+            </div>
+            <div>
+                <GridItem item={colors.Removed} callback={undefined} />
+                <div>Removed</div>
+            </div>
         </div>
     </div>
 }

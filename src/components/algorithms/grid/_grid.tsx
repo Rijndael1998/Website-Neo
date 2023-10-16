@@ -28,12 +28,13 @@ export default function Grid({ state, className, callback }: GridProps) {
                 (columnItems, col) => <div className={styles.col} key={col}>
                     {
                         columnItems.map(
-                            (item, row) =>
-                                <GridItem
+                            (item, row) => {
+                                return <GridItem
                                     key={row}
                                     callback={callbackGenerator(row, col, callback)}
                                     item={item}
                                 />
+                            }
                         )
                     }
                 </div>

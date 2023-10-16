@@ -1,11 +1,22 @@
 $text: #ffffff;
 $background: #000000;
-$primary: #00d600;
+
+$primary: #41E041;
 $primaryDull: transparentize($primary, 0.55);
+$primaryDullDesat: #16522e;
+
 $secondary: #0f2f0f;
 $secondaryBg: #141414;
+$secondaryBright: #509962;
+
 $accent: #0ff08b;
 $accentDull: transparentize($accent, 0.55);
+
 $disabled: rgb(50, 67, 67);
 
 $nicePink: #e83e8c;
+$nicePinkInv: hsl(170, 79%, 58%);
+
+$bad: #05474b;
+
+$idk: #509962;

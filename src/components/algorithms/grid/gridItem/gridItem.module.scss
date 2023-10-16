@@ -1,11 +1,29 @@
 @import "./../../../colors";
 
 .gridItem {
+    position: relative;
+
     display: block;
     aspect-ratio: 1;
     height: 2em;
 
     border: $background 1px solid;
 
-    transition: all 0.1s ease;
+    transition: all 0.2s ease;
+
+    &::before {
+        transition: all 0.2s ease;
+        opacity: 0;
+        position: absolute;
+        $fore: $bad;
+        $pr: $idk;
+        $size: calc(100% / 4);
+        background: repeating-linear-gradient(135deg, $fore, $fore $size, $pr $size, $pr $size * 2);
+        content: '';
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
 }

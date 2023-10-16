@@ -39,7 +39,7 @@ export default class AStar implements StyledGridState {
                 const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
 
-                console.log(item, node, this);
+                // console.log(item, node, this);
 
                 if (item == AStarStates.Wall)
                     node.removed = true;
@@ -81,9 +81,9 @@ export default class AStar implements StyledGridState {
             return "The start can't be the same as the end";
 
         if (this.foundEnd)
-            return "Path was found";
+            return `Path was found. Distance ${this.end!.gCost != Infinity ? Math.round(this.end!.gCost * 10) / 10 : "Unknown-"}u`;
 
-        console.log(this);
+        // console.log(this);
 
         if (this.open.length == 0)
             return "Impossible pathing."

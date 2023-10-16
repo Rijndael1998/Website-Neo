@@ -61,3 +61,15 @@
         }
     }
 }
+
+.key {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+
+    &>* {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+    }
+}

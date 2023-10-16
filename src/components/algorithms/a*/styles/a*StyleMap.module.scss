@@ -1,34 +1,38 @@
+@import "../../../colors";
+
 .Node {
-    background-color: green;
+    background-color: $idk;
 }
 
 .Wall {
-    background-color: black;
+    background: $background;
 }
 
 .Start {
-    background-color: aqua;
+    background: $nicePink;
 }
 
 .End {
-    background-color: blue;
+    background: $nicePinkInv;
 }
 
 .Path {
-    background-color: white;
-    animation: ani 1s ease-in-out infinite;
+    background: $text;
 }
 
 .Explored {
-    background-color: darkslategrey;
+    background: $primaryDullDesat;
 }
 
 .Removed {
-    background-color: brown;
-}
-
-@keyframes ani {
-    50% {
-        background-color: #313131;
+    &::before {
+        opacity: 1;
     }
 }
+
+// delay
+@for $i from 1 through 4 {
+    .d#{$i} {
+        animation-delay: #{$i}s;
+    }
+} 
