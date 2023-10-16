@@ -1,17 +1,3 @@
-.stageButtons {
-    display: flex;
-}
-
-.stageButton {
-    width: 15ch;
-    height: 3ex;
-    display: grid;
-    
-    * {
-        margin: auto;
-    }
-}
-
 .gridWarpper {
     max-width: 100%;
     overflow: auto;
@@ -23,6 +9,55 @@
     }
 }
 
-.inline {
-    display: inline;
+.options {
+    .newGridOptionsWrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        margin-bottom: 2rem;
+
+        .widthHeightOptions {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: 1fr 1fr;
+            gap: 1rem;
+
+            &>div {
+                display: block;
+                margin: auto;
+            }
+        }
+
+        .newGridButton {
+            width: 10ch;
+            margin-left: 2rem;
+        }
+    }
+
+    .tileSelection {
+        display: grid;
+        gap: 2rem;
+
+        grid-template-columns: auto repeat(3, 1fr);
+
+        margin-bottom: 2rem;
+    }
+
+    .stepSelection {
+        display: grid;
+        gap: 2rem;
+
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stageButton {
+        width: 15ch;
+        height: 3ex;
+        display: grid;
+
+        * {
+            margin: auto;
+        }
+    }
 }

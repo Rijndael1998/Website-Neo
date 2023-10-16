@@ -9,6 +9,17 @@
     color: $text;
 }
 
+.selected {
+    background-color: $accent;
+    color: $background;
+}
+
+.disabled, .disabled.selected {
+    background-color: $disabled;
+    color: transparentize($text, 0.55);
+    cursor: not-allowed;
+}
+
 .bigButton {
     $padding: 3ch;
     margin: auto;
@@ -17,12 +28,10 @@
     text-align: center;
 }
 
-.selected {
-    background-color: $accent;
-    color: $background;
-}
-
-.disabled, .disabled.selected {
-    background-color: $disabled;
-    color: $text;
+.medButton {
+    $padding: 1ch;
+    margin: auto;
+    width: calc(100% - $padding * 2);
+    padding: $padding;
+    text-align: center;
 }

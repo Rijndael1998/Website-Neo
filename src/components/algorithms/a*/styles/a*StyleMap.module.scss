@@ -16,6 +16,7 @@
 
 .Path {
     background-color: white;
+    animation: ani 1s ease-in-out infinite;
 }
 
 .Explored {
@@ -24,4 +25,10 @@
 
 .Removed {
     background-color: brown;
+}
+
+@keyframes ani {
+    50% {
+        background-color: #313131;
+    }
 }

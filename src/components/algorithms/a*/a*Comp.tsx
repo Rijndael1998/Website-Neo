@@ -14,6 +14,7 @@ import { AStarResult } from "@/components/algorithms/a*/utils/a*result";
 import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
 import { AStarStates } from "@/components/algorithms/a*/utils/a*states.enum";
 import { AStarStages } from "@/components/algorithms/a*/utils/a*stages.enum";
+import ColorSquare from "@/components/colorSquare/_colorSquare";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
@@ -76,40 +77,46 @@ export default function AStarComponent() {
             applyResult(AS.setAuto(auto));
     }, [AS, auto]);
     return <div>
-        <div>
-            <div>
-                <div>Width</div>
-                <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} /></div>
-                <div>Height</div>
-                <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} /></div>
+        <div className={styles.options}>
+            <div className={styles.newGridOptionsWrapper}>
+                <div className={styles.widthHeightOptions}>
+                    <div>Width</div>
+                    <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} /></div>
+                    <div>Height</div>
+                    <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} /></div>
+                </div>
+                <GenericButton className={classNames(styles.newGridButton, button.medButton)} onClick={() => {
+                    const newAS = new AStar(generateGridState(InputWidth, InputHeight));
+                    setAS(newAS);
+                    setStage(AStarStages.Start);
+                    setState(newAS.state);
+                }}><p>New Grid</p></GenericButton>
             </div>
-            <GenericButton className={classNames(styles.stageButton, styles.inline, button.bigButton)} onClick={() => {
-                const newAS = new AStar(generateGridState(InputWidth, InputHeight));
-                setAS(newAS);
-                setStage(AStarStages.Start);
-                setState(newAS.state);
-            }}>New Grid</GenericButton>
+
+            <div className={classNames(styles.tileSelection, styles.stageButtons)}>
+                <div>Tile Selection:</div>
+                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
+                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
+                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
+            </div>
+
+            <div className={classNames(styles.stepSelection, styles.stageButtons)}>
+                <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step: {auto ? "Enabled" : "Disabled"}</p></GenericButton>
+                <GenericButton className={styles.stageButton} onClick={() => { refreshState() }} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
+                <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Steps</p></GenericButton>
+            </div>
         </div>
-
-        <div className={styles.stageButtons}>
-            <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
-            <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
-            <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
-        </div>
-
-        <div className={styles.stageButtons}>
-            <GenericButton className={styles.stageButton} onClick={() => { refreshState() }} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
-            <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step</p></GenericButton>
-        </div>
-
-        <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Progress</p></GenericButton>
-
         <p>
             {canStepReason === undefined ? "All ok" : canStepReason}
         </p>
 
         <div className={styles.gridWarpper}>
             <Grid className={styles.grid} state={state} callback={callback} />
+        </div>
+
+        <div>
+            <p>Key:</p>
+            <ColorSquare color=""/>
         </div>
     </div>
 }
