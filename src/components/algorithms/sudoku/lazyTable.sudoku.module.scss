@@ -1,0 +1,149 @@
+@use 'sass:math';
+
+@import "./../../colors";
+@import "./sudokuGridItem.scss";
+
+.common {
+    gap: .5em .5em;
+    grid-auto-flow: row;
+
+    &>div {
+        @include sudokuGridItem;
+    }
+}
+
+.s9x9 {
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+
+    &>div {
+
+        &:nth-child(11n-3),
+        &:nth-child(11n-7) {
+            background-color: black;
+            border: 0;
+        }
+
+        @for $i from 0 through 10 {
+            &:nth-child(44n - #{$i}) {
+                background-color: black;
+                border: 0;
+            }
+        }
+    }
+
+    &.hideNonImportant {
+        &>div {
+            opacity: 0;
+
+            $dur: 4s;
+
+            @mixin vis {
+                opacity: 1;
+                animation: ind4b $dur ease infinite;
+            }
+
+            @mixin unvis {
+                animation: none !important;
+                opacity: 0 !important;
+            }
+
+            @function hypot($a, $b) {
+                @return math.sqrt(($a * $a) + ($b * $b));
+            }
+
+            &:nth-child(3) {
+                animation: ind2b $dur ease infinite !important;
+            }
+
+            @for $i from 0 through 14 {
+                &:nth-child(#{$i}) {
+                    @include vis;
+                }
+            }
+
+            @for $i from 23 through 25 {
+                &:nth-child(#{$i}) {
+                    @include vis;
+                }
+            }
+
+            &:nth-child(11n + 4) {
+                @include unvis;
+            }
+
+            &:nth-child(11n + 8) {
+                @include unvis;
+            }
+
+            &:nth-child(11n + 25) {
+                @include vis;
+            }
+
+            @for $i from 0 through 10 {
+                &:nth-child(44n - #{$i}) {
+                    @include unvis;
+                }
+            }
+
+            @for $x from 0 through 11 * 11 {
+                $xP: $x % 11;
+                $yP: floor($x / 11);
+                $d: hypot($xP - 3, $yP) / 1;
+
+                &:nth-child(#{$x}) {
+                    animation-delay: #{$d}s;
+                }
+            }
+        }
+    }
+}
+
+.ind2 {
+    &>div {
+        &:nth-child(3) {
+            animation: ind2b 4s ease infinite;
+        }
+    }
+}
+
+.ind3 {
+    &>div {
+        &:nth-child(1) {
+            animation: ind2b 4s ease infinite;
+        }
+    }
+}
+
+@keyframes ind2b {
+    50% {
+        border: 1px solid $accent;
+    }
+}
+
+@keyframes ind4b {
+    50% {
+        border: 1px solid transparentize($primary, 0.2);
+    }
+}
+
+.s3x3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    margin: 2rem auto !important;
+    width: calc(100% / 3);
+
+    aspect-ratio: 1;
+}
+
+.s9x1 {
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.s1x9 {
+    margin: 2rem auto !important;
+    max-width: calc(100% / 9) !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 1fr);
+}

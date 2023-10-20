@@ -1,0 +1,24 @@
+@font-face {
+	font-family:"Gravity-Book";
+	src:url("../Fonts/Gravity/Gravity-Book.otf");
+}
+
+h1 {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+p {
+	font-family: "Gravity-Book";
+}
+
+body {
+	max-width: 30em;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1, h2, h3 {
+	margin-top: 0.2em;
+}

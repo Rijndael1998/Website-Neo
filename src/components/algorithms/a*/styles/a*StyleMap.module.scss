@@ -1,0 +1,38 @@
+@import "../../../colors";
+
+.Node {
+    background-color: $idk;
+}
+
+.Wall {
+    background: $background;
+}
+
+.Start {
+    background: $nicePink;
+}
+
+.End {
+    background: $nicePinkInv;
+}
+
+.Path {
+    background: $text;
+}
+
+.Explored {
+    background: $primaryDullDesat;
+}
+
+.Removed {
+    &::before {
+        opacity: 1;
+    }
+}
+
+// delay
+@for $i from 1 through 4 {
+    .d#{$i} {
+        animation-delay: #{$i}s;
+    }
+} 

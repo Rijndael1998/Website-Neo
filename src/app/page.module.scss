@@ -1,0 +1,18 @@
+@import "./../components/colors";
+
+.page {
+    max-width: 60ch;
+    display: block;
+    margin: auto;
+    padding: 2rem;
+}
+
+.item {
+    padding: 0rem 0 1rem 0;
+
+    border-bottom: 1px dotted $accent;
+
+    &:last-of-type {
+        border-bottom: 0px;
+    }
+}

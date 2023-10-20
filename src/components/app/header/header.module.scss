@@ -1,0 +1,14 @@
+.header {
+    overflow: hidden;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0;
+    margin-bottom: 2em;
+
+    font-family: monospace;
+
+    height: 8ch;
+}

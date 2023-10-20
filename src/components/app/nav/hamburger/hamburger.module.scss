@@ -1,0 +1,76 @@
+@import "./../../../vars";
+@import "./../../../colors";
+
+.hamburgerWrapper {
+    display: flex;
+
+    font-size: 0;
+    margin: auto 0 auto 0;
+    overflow: hidden;
+
+    height: 0%;
+    aspect-ratio: 1;
+
+    background-color: black;
+
+    transition: all 0.4s ease;
+
+    &.onTop {
+        z-index: 2;
+    }
+
+    .hamburger {
+        $size: 5ch;
+        $gap: 2fr;
+        $div: 1.5fr;
+
+        display: grid;
+        margin: auto;
+        height: $size;
+        width: $size;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: $gap $div $gap $div $gap $div $gap;
+
+        transition: inherit;
+
+        cursor: pointer;
+
+        &.crossed {
+            --adj: calc(10ch/8);
+            $gap: 3fr;
+            grid-template-rows: $gap $div $gap 0fr $gap $div $gap;
+
+            div {
+                &:nth-child(2) {
+                    transform: translateY(var(--adj)) rotate( calc(45deg + 360deg * 1))
+                }
+
+                &:nth-child(4) {
+                    background-color: transparent;
+                }
+
+                &:nth-child(6) {
+                    transform: translateY(calc(var(--adj) * -1)) rotate(calc(-45deg - 360deg * 1));
+                }
+            }
+        }
+
+        div:nth-child(2n-1) {
+            background-color: transparent !important;
+        }
+
+        div {
+            transition: inherit;
+            background-color: $text;
+        }
+    }
+}
+
+@media screen and (max-width: $navBreak) {
+    .hamburgerWrapper {
+        height: 100%;
+        font-size: 1rem;
+        margin: auto 1rem auto 2rem
+    }
+}

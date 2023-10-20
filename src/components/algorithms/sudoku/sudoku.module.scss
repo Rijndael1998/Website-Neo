@@ -1,0 +1,73 @@
+@import "./../../../components/vars";
+@import "./../../../components/colors";
+
+.controlWrapper {
+    display: flex;
+    flex-direction: row;
+
+    max-width: 80ch;
+    margin: auto;
+    margin-bottom: 4rem;
+
+    .buttonWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 12ch;
+    }
+}
+
+@media screen and (max-width: calc($navBreak + 10ch)) {
+    .controlWrapper {
+        flex-direction: column;
+
+        .buttonWrapper {
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+            gap: 1ch;
+
+            .button {
+                justify-self: center;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: $titleBreak) {
+    .controlWrapper {
+
+        .buttonWrapper {
+            width: 100%;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(1fr, 4);
+
+            .button {
+                max-width: 100%;
+                margin: 1ch auto;
+            }
+        }
+    }
+}
+
+.ind2 {
+    animation-name: ind2a;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    text-decoration: underline;
+}
+
+@keyframes ind2a {
+    0% {
+        text-decoration-color: transparent;
+    }
+    50% {
+        text-decoration-color: $accent;
+    }
+    100% {
+        text-decoration-color: transparent;
+    }
+}

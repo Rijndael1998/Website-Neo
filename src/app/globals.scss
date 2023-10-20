@@ -1,0 +1,32 @@
+@import "../components/vars";
+@import "../components/colors";
+
+html {
+  position: relative;
+  min-height: 100%;
+
+  body {
+    margin: 0 0 calc($footerHeight * 1.2);
+    font-size: 1rem;
+
+    min-width: 100vw;
+    min-height: 100vh;
+
+    background-color: $background;
+    color: $text;
+
+    a {
+      color: $text;
+      text-decoration-color: $text;
+      transition: text-decoration-color 0.1s ease;
+
+      &:hover {
+        text-decoration-color: transparent;
+      }
+    }
+  }
+}
+
+code {
+  color: $nicePink;
+}

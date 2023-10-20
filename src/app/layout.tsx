@@ -1,6 +1,10 @@
-import './globals.css'
+import Header from '@/components/app/header/_header'
+import './globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Nav from '@/components/app/nav/_nav'
+import Title from '@/components/app/header/title/_title'
+import Footer from '@/components/app/footer/_footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,10 +20,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" type="image/png" href="/favico.png"/>
-      </head>
-      <body className={inter.className}>{children}</body>
+      <link rel="icon" type="image/png" href="/favico.png" />
+      <body className={inter.className}>
+        <header>
+          <Header>
+            <Title text="Lukasz Baldyga"/>
+            <Nav />
+          </Header>
+        </header>
+        <main>
+          {children}
+        </main>
+        <Footer/>
+      </body>
     </html>
   )
 }

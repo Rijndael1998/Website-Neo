@@ -1,0 +1,83 @@
+.lazy {
+    display: block;
+    margin: auto;
+    max-width: 80ch;
+
+    &>* {
+        margin: 0 2.5rem 2rem 2.5rem;
+        max-width: calc(100% - 5rem);
+
+        &.unsetMargin {
+            margin: auto;
+            max-width: unset;
+        }
+    }
+
+    &>ol>li {
+        padding-bottom: 2rem;
+    }
+}
+
+.lazyCollapse {
+    margin: auto;
+    overflow: hidden;
+    height: 0;
+    transition: all ease-in 1s;
+
+    &.open {
+        height: 100vh;
+        overflow-x: auto;
+    }
+}
+
+.lazyImage {
+    position: relative;
+}
+
+.collapseBar {
+    margin: auto;
+    text-decoration: dashed;
+    background-color: red;
+
+    &.open {
+        background-color: green;
+    }
+}
+
+.lazyRowOverflow {
+    display: block;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.lazyRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .4rem;
+    width: auto;
+    justify-content: space-evenly;
+}
+
+.lazyTable {
+    display: grid;
+
+    max-width: 100%;
+    // max-height: 70vh;
+
+    &>div {
+
+        &.notNull {
+            aspect-ratio: 1;
+            align-content: center;
+            display: grid;
+        }
+
+        &>p {
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+    }
+}

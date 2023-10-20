@@ -1,0 +1,20 @@
+@import "./../../../../vars";
+
+.navLink {
+    display: flex;
+    margin: auto 1ch;
+
+    a {
+        color: white;
+        text-decoration-color: white;
+        transition: all 0.4s ease;
+
+        &:hover {
+            text-decoration-color: transparent;
+        }
+    }
+}
+
+.shy {
+    font-size: 0;
+}
