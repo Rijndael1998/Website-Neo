@@ -39,8 +39,6 @@ export default class AStar {
                 const item: AStarStates = this.getElementState(x, y);
                 const node: AStarNode = new AStarNode(x, y);
 
-                // console.log(item, node, this);
-
                 if (item == AStarStates.Wall)
                     node.removed = true;
 
@@ -83,8 +81,6 @@ export default class AStar {
         if (this.foundEnd)
             return `Path was found. Distance ${this.end!.gCost != Infinity ? Math.round(this.end!.gCost * 10) / 10 : "Unknown-"}u`;
 
-        // console.log(this);
-
         if (this.open.length == 0)
             return "Impossible pathing."
     }
@@ -97,12 +93,8 @@ export default class AStar {
     getStyledGridState(): string[][] {
         const state = this.state.getStyledGridState();
 
-        console.log("called getStyledGridState");
-        console.log(this.all, state);
-
         this.all.forEach((nodes, y) => nodes.forEach((node, x) => {
             if (node.i != undefined) {
-                console.log(node.i, node.x, node.y);
                 // get the number here
                 state[x][y] = `${state[x][y]} d${node.i}`;
             }

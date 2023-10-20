@@ -23,8 +23,6 @@ export default function SudokuCollection() {
     const [grid, setGrid] = useState<Array<Array<number>>>(EmptyGridGen());
 
     const callback = (x: number, y: number, v: number) => {
-        console.log("cb", x, y, v);
-
         const newGrid = Duplicate2DArray(grid);
         newGrid[x][y] = v;
 
@@ -48,7 +46,7 @@ export default function SudokuCollection() {
 
         // TODO: Handle...
         if (result === false) {
-            console.log("no result");
+            console.error("no result");
             return;
         }
 

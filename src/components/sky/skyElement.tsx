@@ -52,8 +52,6 @@ class SkyNodeLink {
             force * Math.cos(theta - Math.PI),
         )
 
-        console.log(dist);
-
         this.n1.addForce(vf1);
         this.n2.addForce(vf2);
     }
@@ -94,8 +92,6 @@ class SkyNodeSimulation {
             node.solve();
             nodeArray.push(node);
         });
-        
-        // console.log(nodeArray);
 
         return [this, nodeArray] as [SkyNodeSimulation, Array<SkyNode>];
     }

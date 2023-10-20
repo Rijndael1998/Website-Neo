@@ -10,5 +10,11 @@
     bottom: 0;
 
     display: grid;
-    
+
+    div {
+        display: block;
+        margin: auto;
+
+        text-align: center;
+    }
 }

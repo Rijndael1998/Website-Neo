@@ -39,8 +39,6 @@ export default function AStarComponent() {
     const [InputHeight, setInputHeight] = useState<number>(initialSize);
 
     const applyResult = (result: AStarResult) => {
-        console.log(result);
-
         if (result.gridStage !== undefined)
             setStage(result.gridStage);
 
@@ -67,7 +65,6 @@ export default function AStarComponent() {
 
         const newCallback = (x: number, y: number) => {
             const result = AS.interaction(x, y, stage);
-            console.log("cb", x, y);
             applyResult(result);
         }
 

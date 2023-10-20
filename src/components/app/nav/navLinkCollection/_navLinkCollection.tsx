@@ -13,15 +13,15 @@ export type NavLinkCollectionProps =
     }
 
 export default function NavLinkCollection({ onSelection }: NavLinkCollectionProps) {
-    const pathname = usePathname();
-    const parts = pathname.split("/");
-    console.log(parts);
+    // const pathname = usePathname();
+    // const parts = pathname.split("/");
+    // console.log(parts);
 
-    const prevPath = parts.slice(0, parts.length - 1);
-    console.log(prevPath);
+    // const prevPath = parts.slice(0, parts.length - 1);
+    // console.log(prevPath);
 
-    const backValue = prevPath.join("/") + "/";
-    console.log(backValue);
+    // const backValue = prevPath.join("/") + "/";
+    // console.log(backValue);
 
     return <>
         {/* <NavLink onClick={onSelection} href={backValue} extraClassName={classNames(pathname == "/" && styles.shy)}><Typing text="Back" interval={interval} iterCount={iterCount} /></NavLink> */}
