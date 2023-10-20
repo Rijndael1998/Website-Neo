@@ -1,3 +1,6 @@
+@import "./../colors";
+@import "./../vars";
+
 .imageGallery {
     transition: all 0.4s ease;
     width: 100% !important;
@@ -38,10 +41,12 @@
     justify-content: center;
 
     &>div {
+        margin: auto;
         cursor: pointer;
-        background-color: red;
-        width: 100%;
+        background-color: $secondary;
+        width: 80%;
         text-align: center;
         gap: 1rem;
+        border-radius: $buttonBorderRadius;
     }
 }
