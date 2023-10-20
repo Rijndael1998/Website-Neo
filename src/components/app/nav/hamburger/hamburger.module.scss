@@ -27,7 +27,7 @@
         display: grid;
         margin: auto;
         height: $size;
-        width: 0;
+        width: $size;
 
         grid-template-columns: 1fr;
         grid-template-rows: $gap $div $gap $div $gap $div $gap;
@@ -35,9 +35,25 @@
         transition: inherit;
 
         cursor: pointer;
-    
-        &.crossed div {
-            background-color: green;
+
+        &.crossed {
+            --adj: calc(10ch/8);
+            $gap: 3fr;
+            grid-template-rows: $gap $div $gap 0fr $gap $div $gap;
+
+            div {
+                &:nth-child(2) {
+                    transform: translateY(var(--adj)) rotate( calc(45deg + 360deg * 1))
+                }
+
+                &:nth-child(4) {
+                    background-color: transparent;
+                }
+
+                &:nth-child(6) {
+                    transform: translateY(calc(var(--adj) * -1)) rotate(calc(-45deg - 360deg * 1));
+                }
+            }
         }
 
         div:nth-child(2n-1) {
@@ -45,13 +61,10 @@
         }
 
         div {
+            transition: inherit;
             background-color: $text;
         }
-
-        &.show {
-            width: $size;
-        }
-    }    
+    }
 }
 
 @media screen and (max-width: $navBreak) {
