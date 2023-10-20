@@ -47,7 +47,7 @@ export default function PythonSPAWebsite() {
 
         <p>
             <Link href="/fun/hobbies/oldWebsite/resources/down.html">{`Here's a sample`}</Link> of the old website. 
-            Please note that none of the pointing to <code>baldy.ga</code> will work. You can right click and save as, 
+            Please note that none of the links pointing to <code>baldy.ga</code> will work. You can right click and save as, 
             just like the Founding Fathers intended.
         </p>
 
