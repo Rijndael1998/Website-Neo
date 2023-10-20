@@ -1,10 +1,12 @@
 @import "./../../vars";
 
 .nav, .menu {
+    font-size: 1rem;
+
     display: flex;
     padding: 0.5ch 2ch;
     background: linear-gradient(90deg, transparent 0%, black 25%);
-    transition: transform ease 0.4s, font-size ease 0.4s;
+    transition: all ease 0.4s;
 
     overflow: hidden;
 }
@@ -39,6 +41,6 @@
 
 @media screen and (max-width: $navBreak) {
     .nav {
-        font-size: 0px;
+        font-size: 0;
     }
 }

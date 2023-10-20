@@ -1,5 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import styles from "./hamburger.module.scss";
-import classNames from "classnames"; "classnames";
+import classNames from "classnames";
 
 export type HamburgerProps = {
     crossed: boolean,
@@ -9,10 +12,17 @@ export type HamburgerProps = {
 }
 
 export default function Hamburger({ crossed, onTop, dynamic, onClick }: HamburgerProps) {
-    const className = classNames(
+    // const [show, setShow] = useState(true);
+
+    // useEffect(() => {
+    //     setShow(true);
+    // }, [])
+
+    const hamburgerClassName = classNames(
         styles.hamburger,
         crossed && styles.crossed,
         dynamic && styles.dynamic,
+        true && styles.show,
     );
 
     const wrapperClassName = classNames(
@@ -21,8 +31,8 @@ export default function Hamburger({ crossed, onTop, dynamic, onClick }: Hamburge
     );
 
     return <div className={wrapperClassName}>
-        <div className={className} onClick={() => onClick()}>
-            <div /><div /><div />
+        <div className={hamburgerClassName} onClick={() => onClick()}>
+            <div /><div /><div /><div /><div /><div /><div />
         </div>
     </div>
 }

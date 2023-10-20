@@ -1,10 +1,11 @@
 @import "./../../../vars";
+@import "./../../../colors";
 
 .hamburgerWrapper {
     display: flex;
 
     font-size: 0;
-    margin: auto 1em auto 2em;
+    margin: auto 0 auto 0;
     overflow: hidden;
 
     height: 0%;
@@ -19,16 +20,36 @@
     }
 
     .hamburger {
-        display: block;
+        $size: 5ch;
+        $gap: 2fr;
+        $div: 1.5fr;
+
+        display: grid;
         margin: auto;
-        height: 5ch;
-        width: 5ch;
-        background-color: red;
-    
+        height: $size;
+        width: 0;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: $gap $div $gap $div $gap $div $gap;
+
+        transition: inherit;
+
         cursor: pointer;
     
-        &.crossed {
+        &.crossed div {
             background-color: green;
+        }
+
+        div:nth-child(2n-1) {
+            background-color: transparent !important;
+        }
+
+        div {
+            background-color: $text;
+        }
+
+        &.show {
+            width: $size;
         }
     }    
 }
@@ -37,5 +58,6 @@
     .hamburgerWrapper {
         height: 100%;
         font-size: 1rem;
+        margin: auto 1rem auto 2rem
     }
 }
