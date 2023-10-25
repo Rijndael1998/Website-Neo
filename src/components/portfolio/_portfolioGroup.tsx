@@ -1,6 +1,6 @@
-import { PortfolioViewArray } from "@/content/fun/content";
 import styles from "./portfolio.module.scss";
 import Portfolio from "./_portfolio";
+import { PortfolioViewArray } from "@/content/fun/Portfolio";
 
 export default function PortfolioGroup({ items }: { items: PortfolioViewArray }) {
     return <div className={styles.content}>
