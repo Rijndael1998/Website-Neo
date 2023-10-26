@@ -1,4 +1,4 @@
-name: Test Docker
+name: Test Docker Build
 
 on:
   push:
@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - run: bash RunDocker.sh
+      - run: sudo docker buildx build -t IMAGE .
