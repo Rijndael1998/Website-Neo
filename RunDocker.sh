@@ -12,6 +12,3 @@ then
 else
     sudo docker run -p 10000:3000 nextjs-docker
 fi
-
-sudo docker run -p 10000:3000 -it nextjs-docker
-
