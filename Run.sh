@@ -7,4 +7,6 @@ cd "${0%/*}"
 git fetch --all
 git reset --hard origin/main
 
-./RunDocker.sh
+yarn install
+yarn run build
+PORT=10000 yarn run start
