@@ -9,4 +9,4 @@ git reset --hard origin/main
 
 yarn install
 yarn run build
-PORT=10000 yarn run serve
+PORT=10000 yarn run start

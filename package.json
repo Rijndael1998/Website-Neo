@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "serve": "node .next/standalone/server.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@types/node": "20.5.7",
