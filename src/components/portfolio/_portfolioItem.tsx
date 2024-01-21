@@ -9,7 +9,7 @@ export type PortfolioProps = {
     portfolio: PortfolioPreviewContent,
 }
 
-export default function Portfolio({ portfolio }: PortfolioProps) {
+export default function PortfolioItem({ portfolio }: PortfolioProps) {
     const empty = portfolio.url == preURL;
     const text = portfolio.isDemo ? "See Demo" : (portfolio.url.includes("https") ? "External Link" : "Details");
 
