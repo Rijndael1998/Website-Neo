@@ -1,5 +1,5 @@
 import styles from "./portfolio.module.scss";
-import Portfolio from "./_portfolio";
+import PortfolioItem from "./_portfolioItem";
 import { PortfolioViewArray } from "@/content/portfolio/Portfolio";
 
 export default function PortfolioGroup({ items }: { items: PortfolioViewArray }) {
@@ -7,7 +7,7 @@ export default function PortfolioGroup({ items }: { items: PortfolioViewArray })
         {
             items.map(
                 (portfolio) =>
-                    <Portfolio key={portfolio.title} portfolio={portfolio} />)
+                    <PortfolioItem key={portfolio.title} portfolio={portfolio} />)
         }
     </div>
 }

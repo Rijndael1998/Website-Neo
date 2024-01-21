@@ -53,19 +53,17 @@ export const irlContent: PortfolioViewArray = [
     },
 ];
 
-export const personalProjects: PortfolioViewArray = [
+export const volunteering: PortfolioViewArray = [
     {
-        title: "Rchan",
+        title: "Folding@Home",
         desc: `
-        Rchan is a pioneering project I crafted, aimed at narrowing the gap between normal users and Artificial Intelligence.
-        It operates as a streamlined Discord bot that allows you and your friends to engage in an interactive conversation. 
-        Consider it as a group chat, brilliantly infused with ChatGPT. 
-        Moreover, Rchan broadens its functionality by supporting group voice calls. 
-        It even diversifies by adopting various intriguing personalities.
+        Folding@Home is a global project by Stanford University, utilizing idle computing power from volunteers' 
+        computers to simulate protein folding. This research aids in understanding diseases like cancer and 
+        Alzheimer's to develop potential treatments. Use the details button to see my current score.
         `,
         isDemo: false,
-        url: preURL + "",
-        image: imageFolder + "rchan.png",
+        url: "https://stats.foldingathome.org/donor/name/rijn.dev",
+        image: imageFolder + "foldingAtHome.webp",
     },
     {
         title: "Tor Relay",
@@ -79,16 +77,21 @@ export const personalProjects: PortfolioViewArray = [
         url: preURL + "",
         image: imageFolder + "tor.webp",
     },
+];
+
+export const personalProjects: PortfolioViewArray = [
     {
-        title: "Folding@Home",
+        title: "Rchan",
         desc: `
-        Folding@Home is a global project by Stanford University, utilizing idle computing power from volunteers' 
-        computers to simulate protein folding. This research aids in understanding diseases like cancer and 
-        Alzheimer's to develop potential treatments. Use the details button to see my current score.
+        Rchan is a pioneering project I crafted, aimed at narrowing the gap between normal users and Artificial Intelligence.
+        It operates as a streamlined Discord bot that allows you and your friends to engage in an interactive conversation. 
+        Consider it as a group chat, brilliantly infused with ChatGPT. 
+        Moreover, Rchan broadens its functionality by supporting group voice calls. 
+        It even diversifies by adopting various intriguing personalities.
         `,
         isDemo: false,
-        url: "https://stats.foldingathome.org/donor/name/rijn.dev",
-        image: imageFolder + "foldingAtHome.webp",
+        url: preURL + "",
+        image: imageFolder + "rchan.png",
     },
     {
         title: "Hobbies",
