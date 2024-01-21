@@ -18,7 +18,7 @@ export type ImageGalleryProps = {
 
 export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps) {
     const [index, setIndex] = useState(0);
-    const [minimalAspectRatio, setMinimalAspectRatio] = useState(Infinity);
+    const [minimalAspectRatio, setMinimalAspectRatio] = useState(Number.MAX_SAFE_INTEGER);
 
     useEffect(() => {
         if(aspectRatio) {
