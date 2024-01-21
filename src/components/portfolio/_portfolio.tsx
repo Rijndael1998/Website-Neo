@@ -11,6 +11,7 @@ export type PortfolioProps = {
 
 export default function Portfolio({ portfolio }: PortfolioProps) {
     const empty = portfolio.url == preURL;
+    const text = portfolio.isDemo ? "See Demo" : (portfolio.url.includes("https") ? "External Link" : "Details");
 
     return <div className={classNames(styles.portfolio, empty && styles.empty)}>
         {
@@ -25,7 +26,7 @@ export default function Portfolio({ portfolio }: PortfolioProps) {
             </p>
         </div>
         {
-            !empty && <PortfolioButton url={portfolio.url} text="Details" />
+            !empty && <PortfolioButton url={portfolio.url} text={text} />
         }
     </div>
 }

@@ -14,12 +14,12 @@ export const imageFolder = "/fun/";
 const chalk: PortfolioPreviewContent = {
     title: "Chalk",
     desc: `
-    In university, my partner and I developed an engaging platformer game.
+    In university, my ex partner and I developed an engaging platformer game.
     The objective is to guide a piece of chalk back into its box. 
     I crafted a custom physics engine to enhance the gameplay. 
     It's built with JavaScript, utilizing the P5.js framework for rendering functionality.
     `,
-    isDemo: false,
+    isDemo: true,
     url: preURL + "chalk/ChalkPrivate/index.html",
     image: imageFolder + "chalk.png",
 };
@@ -84,10 +84,10 @@ export const personalProjects: PortfolioViewArray = [
         desc: `
         Folding@Home is a global project by Stanford University, utilizing idle computing power from volunteers' 
         computers to simulate protein folding. This research aids in understanding diseases like cancer and 
-        Alzheimer's to develop potential treatments.
+        Alzheimer's to develop potential treatments. Use the details button to see my current score.
         `,
         isDemo: false,
-        url: preURL + "",
+        url: "https://stats.foldingathome.org/donor/name/rijn.dev",
         image: imageFolder + "foldingAtHome.webp",
     },
     {
@@ -139,7 +139,7 @@ export const collegeWork: PortfolioViewArray = [
         The university assignment that I achieved full marks on is a unique drawing program created using a specially designed programming language for this particular project. 
         The program enables users to draw freely using this language which is intended to be high level for easy comprehension by programming learners.
         `,
-        isDemo: false,
+        isDemo: true,
         url: preURL + "drawingProgram",
         image: imageFolder + "drawing_program.png",
     },
@@ -164,14 +164,14 @@ export const demos: PortfolioViewArray = [
         This software is readily available on GitHub for you to utilize and modify as per your needs. 
         For a practical demonstration of its functionality, feel free to explore the live demo.
         `,
-        isDemo: false,
+        isDemo: true,
         url: preURL + "a-star",
         image: imageFolder + "a*.png",
     },
     {
         title: "Sudoku Solver",
         desc: "I have made a Sudoku solver. The brute-force Backtracking algorithm is the major solving algorithm in this Sudoku solver with a supporting algorithm that helps remove singles from the graph.",
-        isDemo: false,
+        isDemo: true,
         url: preURL + "sudoku",
         image: imageFolder + "sudoku_solver.png",
     },
@@ -181,7 +181,7 @@ export const demos: PortfolioViewArray = [
         A simple demonstration of how Langrage polynomials work. 
         You can place points anywhere along the screen and the curve will recalculate, 
         passing through all of the points made.`,
-        isDemo: false,
+        isDemo: true,
         url: preURL + "langrage",
         image: imageFolder + "lagrange.png"
     },
