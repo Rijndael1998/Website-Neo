@@ -1,6 +1,6 @@
 import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
-import { http2, msLink } from "@/content/fun/oldWebsite/OldWebsite";
+import { http2, msLink } from "@/content/portfolio/oldWebsite/OldWebsite";
 import Link from "next/link";
 
 export default function PythonSPAWebsite() {
