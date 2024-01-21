@@ -1,7 +1,7 @@
 import PortfolioButton from "./portfolioButton/_portfolioButton"
 import styles from "./portfolio.module.scss";
 import PortfolioImage from "./portfolioImage/_portfolioImage";
-import { PortfolioPreviewContent, preURL } from "@/content/fun/Portfolio";
+import { PortfolioPreviewContent, preURL } from "@/content/portfolio/Portfolio";
 import classNames from "classnames";
 
 

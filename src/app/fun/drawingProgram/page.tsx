@@ -2,7 +2,7 @@ import Lazy from "@/components/lazy/_lazy";
 import Link from "next/link";
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import ImageGallery from "@/components/imageGallery/_imageGallery";
-import { example, exampleCode, gallery, hue, videos } from "@/content/fun/drawingProgram/DrawingProgram";
+import { example, exampleCode, gallery, hue, videos } from "@/content/portfolio/drawingProgram/DrawingProgram";
 import GalleryImage from "@/components/imageGallery/galleryImage";
 
 const demo = "https://baldy.ga/Resources/ProjectFiles/AdvancedSoftwareEngineering/Advanced%20Software%20Engineering.exe";

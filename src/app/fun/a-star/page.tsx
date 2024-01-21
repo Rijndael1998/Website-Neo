@@ -1,6 +1,6 @@
 import AStarComponent from "@/components/algorithms/a*/a*Comp";
 import Lazy from "@/components/lazy/_lazy";
-import { AStarContent, AStarContent2 } from "@/content/fun/a*/A*";
+import { AStarContent, AStarContent2 } from "@/content/portfolio/a*/A*";
 
 export default function A_Star() {
     return <Lazy>

@@ -1,7 +1,7 @@
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
-import { points, ps1, ps2 } from "@/content/fun/lagrange/Lagrange";
+import { points, ps1, ps2 } from "@/content/portfolio/lagrange/Lagrange";
 import Link from "next/link";
 
 export default function Langrage() {
