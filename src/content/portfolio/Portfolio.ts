@@ -55,6 +55,17 @@ export const irlContent: PortfolioViewArray = [
 
 export const volunteering: PortfolioViewArray = [
     {
+        title: "LBU Student Rep",
+        desc: `
+        As a Student Rep at Leeds Beckett University, I represented student views on education, liaise with staff and the Students' Union, 
+        and participate in a system improving academic representation.
+        My duties included understanding student experiences, discussing solutions with staff and students, and reporting outcomes.
+        `,
+        isDemo: false,
+        url: preURL + "",
+        image: imageFolder + "lbu.png",
+    },
+    {
         title: "Folding@Home",
         desc: `
         Folding@Home is a global project by Stanford University, utilizing idle computing power from volunteers' 
