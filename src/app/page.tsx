@@ -11,16 +11,6 @@ export default function Home() {
           <h1>
             Hi!
           </h1>
-
-          <p>
-            {main}
-          </p>
-
-          <h4>{`What's the deal with the ugly elements?`}</h4>
-
-          <p>
-            {uglyElements}
-          </p>
         </div>
 
         <div className={styles.item}>
