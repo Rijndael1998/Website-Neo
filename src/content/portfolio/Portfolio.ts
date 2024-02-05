@@ -1,17 +1,9 @@
-export type PortfolioPreviewContent = {
-    title: string,
-    desc: string,
-    isDemo: boolean,
-    url: string,
-    image?: string,
-}
-
-export type PortfolioViewArray = Array<PortfolioPreviewContent>;
+import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
 
 export const preURL = "fun/";
 export const imageFolder = "/fun/";
 
-const chalk: PortfolioPreviewContent = {
+const chalk: GroupPreviewContent = {
     title: "Chalk",
     desc: `
     In university, my ex partner and I developed an engaging platformer game.
@@ -24,11 +16,11 @@ const chalk: PortfolioPreviewContent = {
     image: imageFolder + "chalk.png",
 };
 
-export const best: PortfolioViewArray = [
+export const best: GroupViewArray = [
     chalk,
 ]
 
-export const irlContent: PortfolioViewArray = [
+export const irlContent: GroupViewArray = [
     {
         title: "Data & Decisions Developer",
         desc: `
@@ -53,7 +45,7 @@ export const irlContent: PortfolioViewArray = [
     },
 ];
 
-export const volunteering: PortfolioViewArray = [
+export const volunteering: GroupViewArray = [
     {
         title: "LBU Student Rep",
         desc: `
@@ -90,7 +82,7 @@ export const volunteering: PortfolioViewArray = [
     },
 ];
 
-export const personalProjects: PortfolioViewArray = [
+export const personalProjects: GroupViewArray = [
     {
         title: "Rchan",
         desc: `
@@ -135,7 +127,7 @@ export const personalProjects: PortfolioViewArray = [
     },
 ];
 
-export const collegeWork: PortfolioViewArray = [
+export const collegeWork: GroupViewArray = [
     {
         title: "Internet Nomad Password Manager",
         desc: `
@@ -170,7 +162,7 @@ export const collegeWork: PortfolioViewArray = [
     },
 ];
 
-export const demos: PortfolioViewArray = [
+export const demos: GroupViewArray = [
     {
         title: "A*",
         desc: `
@@ -201,7 +193,7 @@ export const demos: PortfolioViewArray = [
     },
 ];
 
-export const games: PortfolioViewArray = [
+export const games: GroupViewArray = [
     chalk,
 ];
 

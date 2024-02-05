@@ -1,12 +1,12 @@
-import PortfolioGroup, { PortfolioGroupProps } from "../_portfolioGroup";
+import GroupPageLayout, { GroupPageLayoutProps } from "../_groupPageLayout";
 import styles from "./page.module.scss";
 
-export type PortfolioPageProps = {
+export type GroupPageProps = {
     title: string,
-    groups: Array<PortfolioGroupProps>,
+    groups: Array<GroupPageLayoutProps>,
 };
 
-export default function PortfolioPage({ title, groups }: PortfolioPageProps) {
+export default function GroupPage({ title, groups }: GroupPageProps) {
     return <>
         <div className={styles.contentWrapper}>
             <h1>{title}</h1>
@@ -14,9 +14,9 @@ export default function PortfolioPage({ title, groups }: PortfolioPageProps) {
                 groups.map(
                     (
                         portfolioGroup =>
-                            <PortfolioGroup
+                            <GroupPageLayout
                                 key={portfolioGroup.title}
-                                items={portfolioGroup.items}
+                                groups={portfolioGroup.groups}
                                 title={portfolioGroup.title}
                                 subtitle={portfolioGroup.subtitle}
                             />
