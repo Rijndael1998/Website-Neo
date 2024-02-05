@@ -16,7 +16,19 @@ export default function Blog() {
                             url: "",
                         }
                     ],
-                }
+                },
+                {
+                    title: "Mental Health Insigts",
+                    subtitle: "Struggles with mental health and solutions that I found",
+                    groups: [
+                        {
+                            title: "",
+                            desc: "",
+                            isDemo: false,
+                            url: "",
+                        }
+                    ],
+                },
             ]
         }
     />;
