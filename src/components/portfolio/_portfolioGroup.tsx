@@ -2,7 +2,13 @@ import styles from "./portfolio.module.scss";
 import PortfolioItem from "./_portfolioItem";
 import { PortfolioViewArray } from "@/content/portfolio/Portfolio";
 
-export default function PortfolioGroup({ items, title, subtitle }: { items: PortfolioViewArray, title: string, subtitle: string }) {
+export type PortfolioGroupProps = { 
+    items: PortfolioViewArray, 
+    title: string, 
+    subtitle: string 
+};
+
+export default function PortfolioGroup({ items, title, subtitle }: PortfolioGroupProps) {
     return <>
         <h2>{title}</h2>
         <p>{subtitle}</p>
@@ -14,4 +20,4 @@ export default function PortfolioGroup({ items, title, subtitle }: { items: Port
             }
         </div>
     </>
-}
+};
