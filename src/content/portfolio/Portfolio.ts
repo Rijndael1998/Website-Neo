@@ -1,6 +1,6 @@
 import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
 
-export const preURL = "fun/";
+export const preURL = "portfolio/";
 export const imageFolder = "/fun/";
 
 const chalk: GroupPreviewContent = {
@@ -12,7 +12,7 @@ const chalk: GroupPreviewContent = {
     It's built with JavaScript, utilizing the P5.js framework for rendering functionality.
     `,
     isDemo: true,
-    url: preURL + "chalk/ChalkPrivate/index.html",
+    url: "/fun/chalk/ChalkPrivate/index.html",
     image: imageFolder + "chalk.png",
 };
 
