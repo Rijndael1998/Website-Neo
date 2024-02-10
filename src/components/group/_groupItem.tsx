@@ -11,8 +11,8 @@ export type GroupProps = {
 }
 
 export default function GroupItem({ portfolio }: GroupProps) {
-    const empty = portfolio.url == preURL;
-    const text = portfolio.isDemo ? "See Demo" : (portfolio.url.includes("https") ? "External Link" : "Details");
+    const empty = portfolio.url == null || portfolio.url == "";
+    const text = empty ? "" : portfolio.isDemo ? "See Demo" : (portfolio.url!.includes("https") ? "External Link" : "Details");
 
     return <div className={classNames(styles.portfolio, empty && styles.empty)}>
         {
@@ -27,7 +27,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
             </p>
         </div>
         {
-            !empty && <GroupButton url={portfolio.url} text={text} />
+            !empty && <GroupButton url={portfolio.url ?? ""} text={text} />
         }
     </div>
 }

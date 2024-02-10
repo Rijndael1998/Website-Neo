@@ -2,7 +2,7 @@ export type GroupPreviewContent = {
     title: string,
     desc: string,
     isDemo: boolean,
-    url: string,
+    url?: string,
     image?: string,
 }
 

@@ -54,7 +54,7 @@ export const volunteering: GroupViewArray = [
         My duties included understanding student experiences, discussing solutions with staff and students, and reporting outcomes.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: imageFolder + "lbu.png",
     },
     {
@@ -77,7 +77,7 @@ export const volunteering: GroupViewArray = [
         I run a Tor node that helps the network.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: imageFolder + "tor.webp",
     },
 ];
@@ -93,7 +93,7 @@ export const personalProjects: GroupViewArray = [
         It even diversifies by adopting various intriguing personalities.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: imageFolder + "rchan.png",
     },
     {
@@ -122,7 +122,7 @@ export const personalProjects: GroupViewArray = [
         It is mainly a celebration of everything I have done. Like everything else, it's FOSS.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: "/favico.png",
     },
 ];
@@ -157,7 +157,7 @@ export const collegeWork: GroupViewArray = [
         fragments, and other aspects of the Android operating system.
         `,
         isDemo: false,
-        url: preURL + "", //this won't get a page for a while
+//        url: preURL \+ "", //this won't get a page for a while
         image: imageFolder + "todo.png",
     },
 ];
