@@ -1,3 +1,5 @@
+@import "./../colors";
+
 .lazy {
     display: block;
     margin: auto;
@@ -30,8 +32,19 @@
     }
 }
 
-.lazyImage {
-    position: relative;
+.lazyImageWrapper {
+    .lazyImage {
+        position: relative;
+        max-height: 70vh;
+        
+        display: block;
+        margin: auto;
+    }
+    
+    .lazyCaption {
+        color: $edge;
+        font-size: small;
+    }
 }
 
 .collapseBar {
