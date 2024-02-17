@@ -1,4 +1,5 @@
 import GroupPage from "@/components/group/groupPage/_groupPage";
+import { MirrorSynopsis, MirrorTitle } from "@/content/blog/mirrorsEdge";
 const preURL = "/blog/";
 
 export default function Blog() {
@@ -11,25 +12,22 @@ export default function Blog() {
                     subtitle: "Tech related blogs",
                     groups: [
                         {
-                            title: "Mirror's Edge's fantastic coloring",
-                            desc: `
-                                The first Mirror's Edge game had fantastic lighting. 
-                                It used a propriatary lighting solution developed by Illuminate Labs to achieve great looking visuals.
-                                `,
+                            title: MirrorTitle,
+                            desc: MirrorSynopsis,
                             isDemo: false,
                             url: "blog/mirrors_edge",
                             image: `${preURL}mirrors_edge/1x1 partial logo.png`,
                         },
-                        {
-                            title: "Arch Installation",
-                            desc: `
-                                How I install Arch Linux on my own machine using an automated script.
-                                The install is fully encrypted, has no swap by design and uses LVM for partitioning.
-                                `,
-                            isDemo: false,
-                            url: "",
-                            image: `${preURL}arch/arch.png`,
-                        },
+                        // {
+                        //     title: "Arch Installation",
+                        //     desc: `
+                        //         How I install Arch Linux on my own machine using an automated script.
+                        //         The install is fully encrypted, has no swap by design and uses LVM for partitioning.
+                        //         `,
+                        //     isDemo: false,
+                        //     url: "",
+                        //     image: `${preURL}arch/arch.png`,
+                        // },
                     ],
                 },
                 // {
