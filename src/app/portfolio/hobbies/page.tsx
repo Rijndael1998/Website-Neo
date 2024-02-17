@@ -1,5 +1,4 @@
 import ImageGallery from "@/components/imageGallery/_imageGallery";
-import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import LazyList from "@/components/lazy/_lazyList";
@@ -89,7 +88,7 @@ export default function Hobbies() {
             }
         </p>
 
-        <GalleryImage alt="Inpainting" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
+        <LazyImage alt="Inpainting" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
 
         <h3>{AISub3}</h3>
 
