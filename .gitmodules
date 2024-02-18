@@ -7,3 +7,6 @@
 [submodule "public/fun/website"]
 	path = public/fun/website
 	url = https://github.com/Rijndael1998/Website
+[submodule "public/fun/lagrange"]
+	path = public/fun/lagrange
+	url = https://github.com/Rijndael1998/LagrangePolynomialDemo

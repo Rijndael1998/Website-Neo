@@ -12,7 +12,7 @@ export default function Langrage() {
 
         <h2 style={{ paddingTop: "2rem" }}>Demo</h2>
         <p>
-            The interactive, full screen demo is <Link href="/fun/hobbies/lagrenge/index.html">here</Link>.
+            The interactive, full screen demo is <Link href="/fun/lagrange/index.html">here</Link>.
         </p>
 
         <p>Tap to create new points. Drag to move existing points.</p>
