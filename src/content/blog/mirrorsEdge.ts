@@ -8,7 +8,7 @@ export const Paragraphs = [
     `Mirror's Edge has a special place in my heart. I fell in love with this game instantly when I discovered it when I was around 13 years old. I had a pretty bad laptop back then (think AMD APU R8 graphics) but it still ran fine and I enjoyed the game even on some pretty bad hardware. But this game also connected with me on a deeper level. During the same time, I remember other movement oriented games, mainly the few early Assassin's Creed games and specifically I Am Alive. These games inspired me to try out parkour, through which I met a lot of my then friends.`,
 
     // 2
-    `The things that I remember the most about this game is its one of a kind visual style that drew me in years later to write this article. Since playing this game as a young teenager, I acquired various skills; some in graphic design, some in 3D modeling and rendering. I decided to replay this game after feeling disappointed by its successor, understand what I felt was missing and in order to find inspiration.`,
+    `The things that I remember the most about this game is its one of a kind visual style that drew me in years later to write this article. Since playing this game as a young teenager, I acquired various skills; some in graphic design, some in 3D modeling and rendering. I decided to replay this game after feeling disappointed by its successor and in order to find inspiration.`,
 
     // 3
     `The first thing that inspired me is the start screen depicting the City of Glass, which is what you can see was my final render. It's so serine and simple, but also has impossible stylized lighting and replicating it in Blender was very, very challenging.`,
