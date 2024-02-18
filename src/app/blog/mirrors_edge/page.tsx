@@ -1,3 +1,4 @@
+import YoutubeEmbed from "@/components/external/youtube/_embed";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import { Paragraphs, MirrorTitle } from "@/content/blog/mirrorsEdge";
@@ -12,6 +13,7 @@ export default function MirrorsEdge() {
             src={"/blog/mirrors_edge/1x1 partial logo.png"}
             alt={"My own render of the Mirror's Edge: Catalyst world in the style of Mirror's Edge's menu screen."}
             cap
+            capCol="#64a3c6"
         />
 
         <p>
@@ -21,7 +23,7 @@ export default function MirrorsEdge() {
         <LazyImage
             aspectRatio={2540 / 1440}
             src={"/blog/mirrors_edge/screenshots/screenshot2.jpg"}
-            alt="Notice the simple architecture mixed with only tones of green."
+            alt="Simple architecture mixed with only tones of green."
             cap
             capCol="#64bd2e"
         />
@@ -44,22 +46,9 @@ export default function MirrorsEdge() {
 
         <LazyImage
             aspectRatio={2540 / 1440}
-            src={"/blog/mirrors_edge/screenshots/screenshot9.jpg"}
-            alt={`"Runner vision" is a core navigational aid. It manifests as a red object helping to direct the player in the right direction through chaos.`}
-            cap={
-                <>
-                    {`"`}
-                    <span style={{color: "rgb(196, 82, 85)"}}>
-                        {`Runner vision`}
-                    </span>
-                    {`" is a core navigational aid. It manifests as a `}
-                    <span style={{color: "rgb(196, 82, 85)"}}>
-                        {`red`}
-                    </span>
-                    {` object helping to direct the player in the right direction through chaos.`}
-                </>
-            }
-            capCol="rgb(144, 145, 221)"
+            src={"/blog/mirrors_edge/screenshots/screenshot31.jpg"}
+            alt="Mirror's Edge menu screen. Notice how shadows are blue, not gray."
+            cap
         />
 
         <p>
@@ -67,11 +56,10 @@ export default function MirrorsEdge() {
         </p>
 
         <LazyImage
-            aspectRatio={2540 / 1440}
-            src={"/blog/mirrors_edge/screenshots/screenshot6.jpg"}
-            alt="Vibrant rooftop with amazing lighting. Note the choice of primary colors and their tones."
+            aspectRatio={1920 / 1080}
+            src={"/blog/mirrors_edge/renders/1.png"}
+            alt="My first render."
             cap
-            capCol="#fdca18"
         />
 
         <p>
@@ -79,11 +67,10 @@ export default function MirrorsEdge() {
         </p>
 
         <LazyImage
-            aspectRatio={2540 / 1440}
-            src={"/blog/mirrors_edge/screenshots/screenshot10.jpg"}
-            alt="The vibrant orange clashes with the shades of blue under the shadow of the city. This creates an increasingly somber atmosphere as Faith flees from her pursuers."
+            aspectRatio={1920 / 1080}
+            src={"/blog/mirrors_edge/renders/3.png"}
+            alt="My second attempt at a render."
             cap
-            capCol="rgb(188, 128, 196)"
         />
 
         <p>
@@ -91,11 +78,10 @@ export default function MirrorsEdge() {
         </p>
 
         <LazyImage
-            aspectRatio={2540 / 1440}
-            src={"/blog/mirrors_edge/screenshots/screenshot4.jpg"}
-            alt="Faith's hand shown as she slides down the building's sloped roof."
+            aspectRatio={1530 / 1076}
+            src={"/blog/mirrors_edge/blender/compositor.png"}
+            alt="My stylistic color correction compositing process."
             cap
-            capCol="rgb(182, 169, 240)"
         />
 
         <p>
@@ -103,11 +89,16 @@ export default function MirrorsEdge() {
         </p>
 
         <LazyImage
-            aspectRatio={2540 / 1440}
-            src={"/blog/mirrors_edge/screenshots/screenshot22.jpg"}
-            alt="Underground sewer showing how lights guide the player. Notice where the first ladder is placed in the proximity to the first light."
+            aspectRatio={909 / 901}
+            src={"/blog/mirrors_edge/blender/hdri.png"}
+            alt="HDRI Result"
             cap
-            capCol="rgb(113, 166, 114)"
+        />
+        <LazyImage
+            aspectRatio={2424 / 787}
+            src={"/blog/mirrors_edge/blender/world.png"}
+            alt="My world shader"
+            cap
         />
 
         <p>
@@ -115,15 +106,23 @@ export default function MirrorsEdge() {
         </p>
 
         <LazyImage
-            aspectRatio={2540 / 1440}
-            src={"/blog/mirrors_edge/screenshots/screenshot8.jpg"}
-            alt="Dark alley with lights guiding your way."
+            aspectRatio={1920 / 1080}
+            src={"/blog/mirrors_edge/blender/4.png"}
+            alt="Raw Render"
             cap
-            capCol="rgb(89, 126, 236)"
+        />
+
+        <LazyImage
+            aspectRatio={1920 / 1080}
+            src={"/blog/mirrors_edge/blender/4.png"}
+            alt="Processed Render"
+            cap
         />
 
         <p>
             {Paragraphs[8]}
         </p>
+
+        <YoutubeEmbed videoID={"AOaenVRjcTE"}/>
     </Lazy>
 }
