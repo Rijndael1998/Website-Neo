@@ -84,17 +84,17 @@ export const volunteering: GroupViewArray = [
 
 export const personalProjects: GroupViewArray = [
     {
-        title: "Rchan",
+        title: "R-AI",
         desc: `
-        Rchan is a pioneering project I crafted, aimed at narrowing the gap between normal users and Artificial Intelligence.
+        R-AI is a pioneering project I crafted, aimed at narrowing the gap between normal users and Artificial Intelligence.
         It operates as a streamlined Discord bot that allows you and your friends to engage in an interactive conversation. 
         Consider it as a group chat, brilliantly infused with ChatGPT. 
-        Moreover, Rchan broadens its functionality by supporting group voice calls. 
+        Moreover, R-AI broadens its functionality by supporting group voice calls. 
         It even diversifies by adopting various intriguing personalities.
         `,
         isDemo: false,
 //        url: preURL \+ "",
-        image: imageFolder + "rchan.png",
+        image: imageFolder + "R-AI.png",
     },
     {
         title: "Hobbies",

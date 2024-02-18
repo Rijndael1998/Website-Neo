@@ -27,7 +27,7 @@ export default function Portfolio() {
                     groups: personalProjects,
                 },
                 {
-                    title: "Univeristy Projects",
+                    title: "University Projects",
                     subtitle: "Things I made at university",
                     groups: collegeWork,
                 },
