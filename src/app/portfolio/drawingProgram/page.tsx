@@ -5,9 +5,10 @@ import ImageGallery from "@/components/imageGallery/_imageGallery";
 import { example, exampleCode, gallery, hue, videos } from "@/content/portfolio/drawingProgram/DrawingProgram";
 import GalleryImage from "@/components/imageGallery/galleryImage";
 
-const demo = "https://baldy.ga/Resources/ProjectFiles/AdvancedSoftwareEngineering/Advanced%20Software%20Engineering.exe";
-const gh = "https://github.com/c3ypt1c/Advanced-Software-Engineering-Drawing-Project";
-const guidelines = "https://baldy.ga/Resources/ProjectFiles/AdvancedSoftwareEngineering/L6ASE2020assignmentSpec.pdf"
+const gh = "https://github.com/Rijndael1998/Advanced-Software-Engineering-Drawing-Project";
+const demo = "/fun/ase/Advanced Software Engineering.exe";
+const docs = "/fun/ase/Advanced Software Engineering/Docs/html/index.html";
+const guidelines = "/fun/ase/L6ASE2020assignmentSpec.pdf";
 
 export default function DrawingProject() {
     return <Lazy>
@@ -65,7 +66,7 @@ export default function DrawingProject() {
             }
 
             The documentation was generated using <Link href="https://github.com/doxygen/doxygen">Doxygen</Link>.
-            You can read the documentation <Link href="/fun/hobbies/drawingProgram/html/index.html">here</Link>.
+            You can read the documentation <Link href={docs}>here</Link>.
 
         </p>
 
