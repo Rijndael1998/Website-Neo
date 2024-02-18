@@ -4,3 +4,6 @@
 [submodule "public/fun/ase"]
 	path = public/fun/ase
 	url = https://github.com/Rijndael1998/Advanced-Software-Engineering-Drawing-Project
+[submodule "public/fun/website"]
+	path = public/fun/website
+	url = https://github.com/Rijndael1998/Website
