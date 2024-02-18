@@ -106,15 +106,15 @@ export default function MirrorsEdge() {
         </p>
 
         <LazyImage
-            aspectRatio={1920 / 1080}
-            src={"/blog/mirrors_edge/blender/4.png"}
+            aspectRatio={1}
+            src={"/blog/mirrors_edge/blender/raw.png"}
             alt="Raw Render"
             cap
         />
 
         <LazyImage
-            aspectRatio={1920 / 1080}
-            src={"/blog/mirrors_edge/blender/4.png"}
+            aspectRatio={1}
+            src={"/blog/mirrors_edge/blender/final.png"}
             alt="Processed Render"
             cap
         />
