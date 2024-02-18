@@ -12,7 +12,7 @@ const chalk: GroupPreviewContent = {
     It's built with JavaScript, utilizing the P5.js framework for rendering functionality.
     `,
     isDemo: true,
-    url: "/fun/chalk/ChalkPrivate/index.html",
+    url: "/fun/chalk/index.html",
     image: imageFolder + "chalk.png",
 };
 

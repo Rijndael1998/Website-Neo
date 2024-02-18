@@ -1,4 +1,0 @@
-var namespace_advanced___software___engineering_1_1_verbs_1_1_value_1_1_value_objects =
-[
-    [ "PointValue", "class_advanced___software___engineering_1_1_verbs_1_1_value_1_1_value_objects_1_1_point_value.html", "class_advanced___software___engineering_1_1_verbs_1_1_value_1_1_value_objects_1_1_point_value" ]
-];
