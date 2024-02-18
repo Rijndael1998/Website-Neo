@@ -1,0 +1,3 @@
+[submodule "public/fun/chalk"]
+	path = public/fun/chalk
+	url = https://github.com/Rijndael1998/ChalkLegacy/
