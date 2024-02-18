@@ -9,5 +9,9 @@
         "typescriptreact",
         "typescript",
         "html"
+    ],
+    "cSpell.words": [
+        "gameplay",
+        "microtransactions"
     ]
 }

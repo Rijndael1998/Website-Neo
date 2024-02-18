@@ -1,17 +1,9 @@
-export type PortfolioPreviewContent = {
-    title: string,
-    desc: string,
-    isDemo: boolean,
-    url: string,
-    image?: string,
-}
+import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
 
-export type PortfolioViewArray = Array<PortfolioPreviewContent>;
-
-export const preURL = "fun/";
+export const preURL = "portfolio/";
 export const imageFolder = "/fun/";
 
-const chalk: PortfolioPreviewContent = {
+const chalk: GroupPreviewContent = {
     title: "Chalk",
     desc: `
     In university, my ex partner and I developed an engaging platformer game.
@@ -20,15 +12,15 @@ const chalk: PortfolioPreviewContent = {
     It's built with JavaScript, utilizing the P5.js framework for rendering functionality.
     `,
     isDemo: true,
-    url: preURL + "chalk/ChalkPrivate/index.html",
+    url: "/fun/chalk/ChalkPrivate/index.html",
     image: imageFolder + "chalk.png",
 };
 
-export const best: PortfolioViewArray = [
+export const best: GroupViewArray = [
     chalk,
 ]
 
-export const irlContent: PortfolioViewArray = [
+export const irlContent: GroupViewArray = [
     {
         title: "Data & Decisions Developer",
         desc: `
@@ -53,7 +45,7 @@ export const irlContent: PortfolioViewArray = [
     },
 ];
 
-export const volunteering: PortfolioViewArray = [
+export const volunteering: GroupViewArray = [
     {
         title: "LBU Student Rep",
         desc: `
@@ -62,7 +54,7 @@ export const volunteering: PortfolioViewArray = [
         My duties included understanding student experiences, discussing solutions with staff and students, and reporting outcomes.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: imageFolder + "lbu.png",
     },
     {
@@ -85,12 +77,12 @@ export const volunteering: PortfolioViewArray = [
         I run a Tor node that helps the network.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: imageFolder + "tor.webp",
     },
 ];
 
-export const personalProjects: PortfolioViewArray = [
+export const personalProjects: GroupViewArray = [
     {
         title: "Rchan",
         desc: `
@@ -101,7 +93,7 @@ export const personalProjects: PortfolioViewArray = [
         It even diversifies by adopting various intriguing personalities.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: imageFolder + "rchan.png",
     },
     {
@@ -130,12 +122,12 @@ export const personalProjects: PortfolioViewArray = [
         It is mainly a celebration of everything I have done. Like everything else, it's FOSS.
         `,
         isDemo: false,
-        url: preURL + "",
+//        url: preURL \+ "",
         image: "/favico.png",
     },
 ];
 
-export const collegeWork: PortfolioViewArray = [
+export const collegeWork: GroupViewArray = [
     {
         title: "Internet Nomad Password Manager",
         desc: `
@@ -165,12 +157,12 @@ export const collegeWork: PortfolioViewArray = [
         fragments, and other aspects of the Android operating system.
         `,
         isDemo: false,
-        url: preURL + "", //this won't get a page for a while
+//        url: preURL \+ "", //this won't get a page for a while
         image: imageFolder + "todo.png",
     },
 ];
 
-export const demos: PortfolioViewArray = [
+export const demos: GroupViewArray = [
     {
         title: "A*",
         desc: `
@@ -201,7 +193,7 @@ export const demos: PortfolioViewArray = [
     },
 ];
 
-export const games: PortfolioViewArray = [
+export const games: GroupViewArray = [
     chalk,
 ];
 

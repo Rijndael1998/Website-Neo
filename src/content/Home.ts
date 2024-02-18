@@ -21,4 +21,4 @@ I bring a grounding in security, a willingness to learn and a commitment to over
 export const contact = `
 The easiest way to contact me would be through email. 
 Send me an email to lukasz [at] baldy.ga.
-`
+`;
