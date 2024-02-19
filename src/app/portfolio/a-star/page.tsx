@@ -1,16 +1,16 @@
-import AStarComponent from "@/components/algorithms/a*/a*Comp";
+import AStarComponent from "@/components/algorithms/aStar/aStarComp";
 import Lazy from "@/components/lazy/_lazy";
-import { AStarContent, AStarContent2 } from "@/content/portfolio/a*/A*";
+import { AStarContent, AStarContent2 } from "@/content/portfolio/aStar/AStar";
 
 export default function A_Star() {
     return <Lazy>
         <h1>
-            A* Algorithm
+            A Star Algorithm
         </h1>
 
         <AStarComponent />
 
-        <h2>What is A*?</h2>
+        <h2>What is A Star?</h2>
 
         {
             AStarContent.map((par, i) => {
@@ -20,7 +20,7 @@ export default function A_Star() {
             })
         }
 
-        <h2>{`Why I'm fascinated with A*?`}</h2>
+        <h2>{`Why I'm fascinated with A Star?`}</h2>
 
         <ol>
             {

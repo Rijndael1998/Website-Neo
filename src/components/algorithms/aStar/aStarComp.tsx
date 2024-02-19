@@ -1,20 +1,20 @@
 "use client";
 
-import styles from "./styles/a*.module.scss";
+import styles from "./styles/aStar.module.scss";
 import button from "./../../input/genericButton/genericButton.module.scss";
-import colors from "./styles/a*StyleMap.module.scss";
+import colors from "./styles/aStarStyleMap.module.scss";
 import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
-import Grid from "../../../components/algorithms/grid/_grid";
+import Grid from "../grid/_grid";
 import { useEffect, useState } from "react";
-import { GridState } from "../../../components/algorithms/grid/gridState"
-import AStar from "@/components/algorithms/a*/_a*";
+import { GridState } from "../grid/gridState"
+import AStar from "@/components/algorithms/aStar/_aStar";
 
-import { AStarResult } from "@/components/algorithms/a*/utils/a*result";
-import { AStarStyleMap } from "@/components/algorithms/a*/styles/a*StyleMap";
-import { AStarStates } from "@/components/algorithms/a*/utils/a*states.enum";
-import { AStarStages } from "@/components/algorithms/a*/utils/a*stages.enum";
+import { AStarResult } from "@/components/algorithms/aStar/utils/aStarResult";
+import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMap";
+import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
+import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import ColorSquare from "@/components/colorSquare/_colorSquare";
 import GridItem from "../grid/gridItem/_gridItem";
 

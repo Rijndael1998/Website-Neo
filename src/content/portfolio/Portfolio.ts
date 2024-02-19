@@ -164,15 +164,15 @@ export const collegeWork: GroupViewArray = [
 
 export const demos: GroupViewArray = [
     {
-        title: "A*",
+        title: "A Star",
         desc: `
-        I have developed an efficient path-finding solver, implementing the sophisticated A* algorithm. 
+        I have developed an efficient path-finding solver, implementing the sophisticated A Star algorithm. 
         This software is readily available on GitHub for you to utilize and modify as per your needs. 
         For a practical demonstration of its functionality, feel free to explore the live demo.
         `,
         isDemo: true,
         url: preURL + "a-star",
-        image: imageFolder + "a*.png",
+        image: imageFolder + "aStar.png",
     },
     {
         title: "Sudoku Solver",
