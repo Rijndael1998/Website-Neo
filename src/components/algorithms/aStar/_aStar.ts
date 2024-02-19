@@ -1,9 +1,9 @@
 import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
-import { AStarNode } from "./a*node";
-import { AStarResult } from "./utils/a*result";
-import { AStarStages } from "./utils/a*stages.enum";
-import { AStarStates } from "./utils/a*states.enum";
+import { AStarNode } from "./aStarNode";
+import { AStarResult } from "./utils/aStarResult";
+import { AStarStages } from "./utils/aStarStages.enum";
+import { AStarStates } from "./utils/aStarStates.enum";
 
 export default class AStar {
     state: GridState<AStarStates>;

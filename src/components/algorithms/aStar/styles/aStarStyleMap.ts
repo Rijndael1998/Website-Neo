@@ -1,5 +1,5 @@
-import { AStarStates } from "../utils/a*states.enum";
-import styles from "./a*StyleMap.module.scss";
+import { AStarStates } from "../utils/aStarStates.enum";
+import styles from "./aStarStyleMap.module.scss";
 
 export const AStarStyleMap: Map<AStarStates, string> = new Map();
 AStarStyleMap.set(AStarStates.Node, styles.Node);
