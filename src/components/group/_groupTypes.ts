@@ -1,6 +1,6 @@
 export type GroupPreviewContent = {
     title: string,
-    desc: string,
+    desc: string | JSX.Element,
     isDemo: boolean,
     url?: string,
     image?: string,
