@@ -1,3 +1,4 @@
+import FoldingCount from "@/components/foldingAtHome/FoldingCount";
 import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
 
 export const preURL = "portfolio/";
@@ -59,18 +60,18 @@ export const volunteering: GroupViewArray = [
     },
     {
         title: "Folding@Home",
-        desc: `
+        desc: <>{`
         Folding@Home is a global project by Stanford University, utilizing idle computing power from volunteers' 
         computers to simulate protein folding. This research aids in understanding diseases like cancer and 
-        Alzheimer's to develop potential treatments. Use the details button to see my current score.
-        `,
+        Alzheimer's to develop potential treatments. 
+        `}<FoldingCount/></>,
         isDemo: false,
         url: "https://stats.foldingathome.org/donor/name/rijn.dev",
         image: imageFolder + "foldingAtHome.webp",
     },
     {
         title: "Tor Relay",
-        desc: `
+        desc:`
         Tor, is a free, open-source software that enables anonymous communication on the internet. 
         It conceals a user's location and usage from anyone conducting network surveillance, 
         thus maintaining the user's privacy and freedom. 

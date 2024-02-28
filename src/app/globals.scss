@@ -30,3 +30,9 @@ html {
 code {
   color: $nicePink;
 }
+
+// TODO: Remove this hack
+.help {
+  border-bottom: 1px white dotted;
+  cursor: help;
+}
