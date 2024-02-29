@@ -17,7 +17,7 @@ export default async function FoldingCount() {
     let p;
 
     try {
-        const call = await fetch(url);
+        const call = await fetch(url, {cache: "no-store"})
         const rijn = await call.json();
         users = rijn["users"];
         rank = rijn["rank"];
