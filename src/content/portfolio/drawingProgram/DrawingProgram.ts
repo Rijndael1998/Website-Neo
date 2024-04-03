@@ -5,7 +5,7 @@ I go over these and my code in two videos.
 I don't recommend watching them because they are really long and might 
 be really boring. It was requirement for the project. They're here:
 `
-export const imageBaseURL = "/fun/hobbies/drawingProgram/images/";
+export const imageBaseURL = "/fun/hobbies/ase/";
 
 export const hue = {
     src: imageBaseURL + "Hue.png",
