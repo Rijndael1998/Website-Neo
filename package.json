@@ -9,8 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/react": "18.2.73",
     "@types/node": "20.12.2",
+    "@types/react": "18.2.73",
     "@types/react-dom": "18.2.23",
     "classnames": "^2.3.2",
     "eslint": "8.57.0",
@@ -20,7 +20,7 @@
     "react-dom": "18.2.0",
     "react-draggable": "^4.4.6",
     "scss": "^0.2.4",
-    "sharp": "^0.33.2",
+    "sharp": "^0.33.3",
     "typescript": "5.3.3"
   },
   "devDependencies": {
