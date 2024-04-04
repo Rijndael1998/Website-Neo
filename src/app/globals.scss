@@ -4,12 +4,13 @@
 html {
   position: relative;
   min-height: 100%;
+  max-width: 100vw;
 
   body {
-    margin: 0 0 calc($footerHeight * 1.2);
+    margin: 0 0 calc($footerHeight * 1.2) 0;
     font-size: 1rem;
 
-    min-width: 100vw;
+    max-width: 100vw;
     min-height: 100vh;
 
     background-color: $background;
