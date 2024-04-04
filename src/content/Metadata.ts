@@ -1,9 +1,13 @@
 import { Metadata } from "next";
 import { about } from "./Home";
 
-export const title = "Lukasz Baldyga";
-export const description = about;
+export const title = formatMetadata("Lukasz Baldyga");
+export const description = formatMetadata(about);
 export const url = "https://baldy.ga/";
+
+export function formatMetadata(text: string) {
+    return text.replace(/\s+/g,' ');
+}
 
 export const defaultOG = {
     title,

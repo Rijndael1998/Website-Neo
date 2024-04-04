@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google'
 import Nav from '@/components/app/nav/_nav'
 import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
-import { about } from '@/content/Home'
 import { defaultMetadata } from '@/content/Metadata'
 
 const inter = Inter({ subsets: ['latin'] })
