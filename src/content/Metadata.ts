@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { about } from "./Home";
+import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 export const title = formatMetadata("Lukasz Baldyga");
 export const description = formatMetadata(about);
@@ -9,11 +10,13 @@ export function formatMetadata(text: string) {
     return text.replace(/\s+/g,' ');
 }
 
-export const defaultOG = {
+export const defaultOG: OpenGraph = {
     title,
     description,
     url,
-    images: "favico.png",
+    images: {
+        url: "favico.png",
+    },
     type: "website",
 };
 
