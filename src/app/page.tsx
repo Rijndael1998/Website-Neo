@@ -1,5 +1,5 @@
 import Lazy from "@/components/lazy/_lazy";
-import { about, contact, main, uglyElements } from "./../content/Home";
+import { about, contact } from "./../content/Home";
 import styles from "./page.module.scss";
 import LazyImage from "@/components/lazy/_lazyImage";
 
@@ -12,8 +12,13 @@ export default function Home() {
           <h1>
             Hi!
           </h1>
-          <LazyImage aspectRatio={3840 / 2160} src={"/opengraph.webp"} alt={"Computer on a desk showing the website logo: a white L in a green square on a black background."} />
-          
+          <LazyImage
+            aspectRatio={3840 / 2160}
+            src={"/opengraph.webp"}
+            alt={"Computer on a desk showing the website logo: a white L in a green square on a black background."} 
+            quality={50}
+            />
+
         </div>
 
         <div className={styles.item}>

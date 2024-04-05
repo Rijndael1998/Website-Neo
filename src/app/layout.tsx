@@ -6,14 +6,19 @@ import Nav from '@/components/app/nav/_nav'
 import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
 import { defaultMetadata, url } from '@/content/Metadata'
+import { headers } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  metadataBase: new URL(url),
-};
-console.log("after", metadata);
+export function generateMetadata(): Metadata {
+  const headersList = headers();
+  const metaBaseValue = headersList.get("x-forwarded-host") ?? headersList.get("host");
+
+  return {
+    ...defaultMetadata,
+    metadataBase: metaBaseValue ? new URL(`https://${metaBaseValue}/`) : undefined,
+  };
+}
 
 export default function RootLayout({
   children,

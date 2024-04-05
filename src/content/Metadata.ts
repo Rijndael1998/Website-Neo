@@ -24,6 +24,3 @@ export const defaultMetadata: Metadata = {
     robots: "index, follow",
     openGraph: defaultOG,
 }
-
-console.log(defaultMetadata);
-console.log(defaultMetadata.metadataBase);
