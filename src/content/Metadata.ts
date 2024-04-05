@@ -24,3 +24,14 @@ export const defaultMetadata: Metadata = {
     robots: "index, follow",
     openGraph: defaultOG,
 }
+
+export function generateCustomMetadata(newMetadata: Metadata): Metadata {
+    return {
+        ...defaultMetadata,
+        ...newMetadata,
+        openGraph: {
+            ...defaultOG,
+            ...newMetadata.openGraph,
+        }
+    }
+}
