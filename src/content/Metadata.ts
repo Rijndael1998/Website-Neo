@@ -4,7 +4,7 @@ import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 export const title = formatMetadata("Lukasz Baldyga");
 export const description = formatMetadata(about);
-export const url = "https://baldy.ga/";
+export const url = "https://testing.baldy.ga";
 
 export function formatMetadata(text: string) {
     return text.replace(/\s+/g,' ');
@@ -21,7 +21,9 @@ export const defaultOG: OpenGraph = {
 export const defaultMetadata: Metadata = {
     title,
     description,
-    metadataBase: new URL(url),
     robots: "index, follow",
     openGraph: defaultOG,
 }
+
+console.log(defaultMetadata);
+console.log(defaultMetadata.metadataBase);

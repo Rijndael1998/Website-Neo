@@ -5,11 +5,15 @@ import { Inter } from 'next/font/google'
 import Nav from '@/components/app/nav/_nav'
 import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
-import { defaultMetadata } from '@/content/Metadata'
+import { defaultMetadata, url } from '@/content/Metadata'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {...defaultMetadata};
+export const metadata: Metadata = {
+  ...defaultMetadata,
+  metadataBase: new URL(url),
+};
+console.log("after", metadata);
 
 export default function RootLayout({
   children,
@@ -18,18 +22,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <link rel="icon" type="image/png" href="/favico.png" />
+      <head>
+        <link rel="icon" type="image/png" href="/favico.png" />
+      </head>
       <body className={inter.className}>
         <header>
           <Header>
-            <Title text="Lukasz Baldyga"/>
+            <Title text="Lukasz Baldyga" />
             <Nav />
           </Header>
         </header>
         <main>
           {children}
         </main>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   )
