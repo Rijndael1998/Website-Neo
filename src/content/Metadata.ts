@@ -14,9 +14,7 @@ export const defaultOG: OpenGraph = {
     title,
     description,
     url,
-    images: {
-        url: "favico.png",
-    },
+    images: "/opengraph.webp",
     type: "website",
 };
 
