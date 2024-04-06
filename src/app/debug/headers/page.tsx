@@ -6,7 +6,10 @@ export default function Headers() {
     const pairs: Array<[key: string, value: string]> = [];
 
     headersList.forEach((value, key) => {
-        pairs.push([key, value]);
+        if(key != "x-forwarded-for")
+            pairs.push([key, value]);
+        else
+            pairs.push([key, "redacted"]);
     });
 
     const pairStrings = pairs.sort().reduce<string>((prev, curr) => {
