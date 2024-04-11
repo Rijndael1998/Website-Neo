@@ -18,8 +18,6 @@ html {
     background-color: $background;
     color: $text;
 
-    font-family: Bagnard;
-
     a {
       color: $text;
       text-decoration-color: $text;
@@ -29,9 +27,14 @@ html {
         text-decoration-color: transparent;
       }
     }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Bagnard;
+    }
   }
 }
 
-code {
+code, tt, pre {
   color: $nicePink;
+  font-family: OfficeCodePro;
 }
