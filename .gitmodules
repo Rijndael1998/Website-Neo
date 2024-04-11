@@ -13,3 +13,6 @@
 [submodule "public/external/Bagnard"]
 	path = public/external/Bagnard
 	url = https://github.com/sebsan/Bagnard
+[submodule "public/external/Office-Code-Pro"]
+	path = public/external/Office-Code-Pro
+	url = https://github.com/nathco/Office-Code-Pro/

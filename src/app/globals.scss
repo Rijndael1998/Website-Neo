@@ -6,6 +6,11 @@
   src: url("/external/Bagnard/Bagnard.otf");
 }
 
+@font-face {
+  font-family: OfficeCodePro;
+  src: url("/external/Office-Code-Pro/Fonts/Office Code Pro/OTF/OfficeCodePro-Regular.otf");
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -21,7 +26,7 @@ html {
     background-color: $background;
     color: $text;
 
-    font-family: Bagnard;
+    font-family: OfficeCodePro;
 
     a {
       color: $text;
