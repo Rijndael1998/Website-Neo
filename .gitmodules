@@ -10,3 +10,6 @@
 [submodule "public/fun/lagrange"]
 	path = public/fun/lagrange
 	url = https://github.com/Rijndael1998/LagrangePolynomialDemo
+[submodule "public/external/Bagnard"]
+	path = public/external/Bagnard
+	url = https://github.com/sebsan/Bagnard
