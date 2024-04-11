@@ -1,30 +1,38 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import styles from "./footer.module.scss";
-import { usePathname } from 'next/navigation';
-import GalleryImage from "@/components/imageGallery/galleryImage";
 import Image from "next/image";
+import { RiAccountPinBoxFill, RiDiscordFill, RiLinkedinBoxFill, RiMailSendFill, RiYoutubeFill } from "@remixicon/react";
 
 export default function Footer() {
-    // const pathname = usePathname();
 
-    // const [path, setPath] = useState("");
-
-    // useEffect(() => {
-    //     setPath()
-    // }, [pathname]);
 
     return <footer className={styles.footer}>
-        <div>
-            <Image src="/favico.png" width={50} height={50} alt="logo"/>
-            {/* <p>{path}</p> */}
-            <p>
-                Lukasz Baldyga
-            </p>
-            <p>
-                Rijn.dev
-            </p>
+        <div className={styles.centre}>
+            <div>
+                <RiAccountPinBoxFill/>
+                <p>Lukasz Baldyga</p>
+            </div>
+            <div>
+                <RiLinkedinBoxFill/>
+                <p>Rijndael1998</p>
+            </div>
+            <div>
+                <RiDiscordFill/>
+                <p>rijn.dev</p>
+            </div>
+            <div>
+                <RiYoutubeFill/>
+                <p>@Rijndael1998</p>
+            </div>
+            <div>
+                <RiMailSendFill/>
+                <p>lukasz [at] baldy.ga</p>
+            </div>
+            <div>
+                <Image src="/favico.png" width={50} height={50} alt="logo"/>
+            </div>
         </div>
+        {/* <div className={styles.imageWrapper}>
+            <Image src="/favico.png" width={50} height={50} alt="logo"/>
+        </div> */}
     </footer>
 }

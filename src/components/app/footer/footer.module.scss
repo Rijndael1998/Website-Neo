@@ -2,19 +2,45 @@
 @import "./../../colors";
 
 .footer {
-    position: absolute;
     width: 100%;
-    height: $footerHeight;
+    min-height: $footerHeight;
     background-color: $secondaryBg;
 
     bottom: 0;
 
     display: grid;
 
-    div {
+    .centre {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 2em;
+
+        margin: auto;
+        max-width: calc($pageWidth - 2em);
+        width: calc(100% - 2em);
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+
+            p {
+                margin: .5ex auto;
+            }
+        }
+    }
+
+    .imageWrapper {
         display: block;
         margin: auto;
+    }
+}
 
-        text-align: center;
+@media screen and (max-width: $footerBreak) {
+    .footer, .centre {
+        flex-direction: column;
     }
 }
