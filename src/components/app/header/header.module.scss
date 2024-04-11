@@ -12,4 +12,8 @@
     font-family: monospace;
 
     height: $headerHeight;
+
+    * {
+        font-family: inherit;
+    }
 }
