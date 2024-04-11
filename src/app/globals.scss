@@ -1,15 +1,7 @@
 @import "../components/vars";
 @import "../components/colors";
+@import "../components/fonts";
 
-@font-face {
-  font-family: Bagnard;
-  src: url("/external/Bagnard/Bagnard.otf");
-}
-
-@font-face {
-  font-family: OfficeCodePro;
-  src: url("/external/Office-Code-Pro/Fonts/Office Code Pro/OTF/OfficeCodePro-Regular.otf");
-}
 
 html {
   position: relative;
@@ -26,7 +18,7 @@ html {
     background-color: $background;
     color: $text;
 
-    font-family: OfficeCodePro;
+    font-family: Bagnard;
 
     a {
       color: $text;
