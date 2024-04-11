@@ -1,6 +1,11 @@
 @import "../components/vars";
 @import "../components/colors";
 
+@font-face {
+  font-family: Bagnard;
+  src: url("/external/Bagnard/Bagnard.otf");
+}
+
 html {
   position: relative;
   min-height: 100%;
