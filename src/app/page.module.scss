@@ -1,7 +1,8 @@
 @import "./../components/colors";
+@import "./../components/vars";
 
 .page {
-    max-width: 60ch;
+    max-width: $pageWidth;
     display: block;
     margin: auto;
     padding: 2rem;

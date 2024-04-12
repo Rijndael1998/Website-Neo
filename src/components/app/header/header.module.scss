@@ -1,3 +1,5 @@
+@import "./../../vars";
+
 .header {
     overflow: hidden;
     position: relative;
@@ -5,10 +7,13 @@
     display: flex;
     justify-content: space-between;
 
-    margin: 0;
-    margin-bottom: 2em;
+    margin: 0 0 2em 0;
 
     font-family: monospace;
 
-    height: 8ch;
+    height: $headerHeight;
+
+    * {
+        font-family: inherit;
+    }
 }

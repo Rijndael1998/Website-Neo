@@ -2,19 +2,69 @@
 @import "./../../colors";
 
 .footer {
-    position: absolute;
     width: 100%;
-    height: $footerHeight;
+    padding: 4ex 0;
     background-color: $secondaryBg;
 
-    bottom: 0;
-
     display: grid;
+    grid-template-rows: auto 1fr;
 
-    div {
+    font-family: OfficeCodePro;
+    gap: 4ex;
+
+    & > * {
+        margin: auto;
+    }
+
+    .centre {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+        row-gap: 2ex;
+        column-gap: 2ch;
+
+        width: calc(100% - 2em);
+        max-width: calc($pageWidth * 2 - 2em);
+
+        div, a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+
+            p {
+                margin: .5ex auto;
+            }
+        }
+    }
+
+    .imageWrapper {
         display: block;
         margin: auto;
+    }
 
-        text-align: center;
+    h1, h2, h3, h4, h5, h6, p {
+        display: flex;
+        align-items: center;
+        gap: 0.5ch;
+    }
+}
+
+@media screen and (max-width: $footerBreakXl) {
+    .footer .centre {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: $footerBreak) {
+    .footer .centre {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: $footerBreakXs) {
+    .footer .centre {
+        grid-template-columns: 1fr;
     }
 }
