@@ -1,4 +1,4 @@
-$footerHeight: 20ex;
+$headerHeight: 8ch;
 
 /// breaks
 // nav bar
@@ -8,6 +8,15 @@ $navBreak: 80ch;
 $titleBreak: 51ch;
 $titleBreakNone: 30ch;
 
+// for footer
+$footerBreak: 60ch;
+$footerBreakXs: 40ch;
+$footerBreakL: 90ch;
+$footerBreakXl: 120ch;
+
 // values
 $buttonBorderRadius: 0.2rem;
+
+// general page size
+$pageWidth: 60ch;
 
