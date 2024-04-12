@@ -2,24 +2,29 @@
 
 .copyWrap {
     perspective: 4ch;
+    position: relative;
+
+    width: 2ch;
 
     &,
     * {
-        transition: all 0.5s ease;
+        transition: color 0.5s ease, transform 0.5s ease;
     }
 
     .copy {
+        position: absolute;
+        transform: rotateY(-30deg) translateY(-50%);
+
         color: white;
-        transform: rotateY(-30deg);
         cursor: pointer;
 
+        &.copied, &:hover {
+            transform: rotateY(0deg) translateY(-50%);
+        }
+        
         &.copied {
             color: $accent;
-            transform: rotateY(0deg);
-        }
-
-        &:hover {
-            transform: rotateY(0deg);
+            transform: rotateY(360deg) translateY(-50%);
         }
     }
 }

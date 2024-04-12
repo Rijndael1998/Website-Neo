@@ -18,7 +18,7 @@ export default function Copy({ text }: CopyProps) {
         setCopied(true);
         CopyToClipboard(text);
 
-        if(lastTimeout)
+        if (lastTimeout)
             clearTimeout(lastTimeout);
 
         setLastTimeout(setTimeout(() => {

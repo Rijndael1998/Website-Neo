@@ -17,7 +17,7 @@ export default function Footer() {
         <div className={styles.centre}>
             <div>
                 <RiAccountPinBoxFill />
-                <p>Lukasz Baldyga</p>
+                <p>Lukasz Baldyga<Copy text="Lukasz Baldyga"/></p>
             </div>
             <div>
                 <Link href="https://www.linkedin.com/in/Rijndael1998/">
@@ -35,7 +35,7 @@ export default function Footer() {
             </div>
             <div>
                 <RiMailSendFill />
-                <p>lukasz@baldy.ga</p>
+                <p>lukasz@baldy.ga<Copy text="lukasz@baldy.ga"/></p>
             </div>
         </div>
         <h6>Made with <RiHeart3Fill color="#a80200" /> for humanity.</h6>
