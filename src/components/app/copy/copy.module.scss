@@ -13,6 +13,7 @@
 
     .copy {
         position: absolute;
+        z-index: 1;
         transform: rotateY(-30deg) translateY(-50%);
 
         color: white;

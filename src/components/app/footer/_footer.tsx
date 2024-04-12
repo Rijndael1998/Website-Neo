@@ -17,25 +17,29 @@ export default function Footer() {
         <div className={styles.centre}>
             <div>
                 <RiAccountPinBoxFill />
-                <p>Lukasz Baldyga<Copy text="Lukasz Baldyga"/></p>
+                <p>Lukasz Baldyga<Copy text="Lukasz Baldyga" /></p>
             </div>
             <div>
                 <Link href="https://www.linkedin.com/in/Rijndael1998/">
                     <RiLinkedinBoxFill />
-                    <p>Rijndael1998</p>
+                    <p>Rijndael1998<Copy text="Rijndael1998" /></p>
                 </Link>
             </div>
             <div>
                 <RiDiscordFill />
-                <p>rijn.dev<Copy text="rijn.dev"/></p>
+                <p>rijn.dev<Copy text="rijn.dev" /></p>
             </div>
             <div>
-                <RiYoutubeFill />
-                <p>@Rijndael1998</p>
+                <Link href="https://www.youtube.com/channel/UCEQmT-JPl79xNsOWF41WB7w">
+                    <RiYoutubeFill />
+                    <p>@Rijndael1998<Copy text="@Rijndael1998" /></p>
+                </Link>
             </div>
             <div>
-                <RiMailSendFill />
-                <p>lukasz@baldy.ga<Copy text="lukasz@baldy.ga"/></p>
+                <Link href="mailto:lukasz@baldy.ga">
+                    <RiMailSendFill />
+                    <p>lukasz@baldy.ga<Copy text="lukasz@baldy.ga" /></p>
+                </Link>
             </div>
         </div>
         <h6>Made with <RiHeart3Fill color="#a80200" /> for humanity.</h6>

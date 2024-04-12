@@ -27,6 +27,6 @@ export default function Copy({ text }: CopyProps) {
     }
 
     return <span className={style.copyWrap}>
-        <RiClipboardLine className={classNames(style.copy, copied && style.copied)} onClick={() => handleClick()} />
+        <RiClipboardLine className={classNames(style.copy, copied && style.copied)} onClick={(e) => {e.preventDefault(); e.stopPropagation(); handleClick()}} />
     </span>
 }
