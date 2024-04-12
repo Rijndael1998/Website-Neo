@@ -1,11 +1,14 @@
 import styles from "./footer.module.scss";
 import Image from "next/image";
-import { RiAccountPinBoxFill, RiDiscordFill, RiLinkedinBoxFill, RiMailSendFill, RiYoutubeFill } from "@remixicon/react";
+import { RiAccountPinBoxFill, RiDiscordFill, RiHeart3Fill, RiLinkedinBoxFill, RiMailSendFill, RiYoutubeFill } from "@remixicon/react";
 
 export default function Footer() {
 
 
     return <footer className={styles.footer}>
+        <h4>
+            Contact
+        </h4>
         <div className={styles.centre}>
             <div>
                 <RiAccountPinBoxFill/>
@@ -25,14 +28,9 @@ export default function Footer() {
             </div>
             <div>
                 <RiMailSendFill/>
-                <p>lukasz [at] baldy.ga</p>
-            </div>
-            <div>
-                <Image src="/favico.png" width={50} height={50} alt="logo"/>
+                <p>lukasz@baldy.ga</p>
             </div>
         </div>
-        {/* <div className={styles.imageWrapper}>
-            <Image src="/favico.png" width={50} height={50} alt="logo"/>
-        </div> */}
+        <h6>Made with <RiHeart3Fill color="#a80200"/> for humanity.</h6>
     </footer>
 }

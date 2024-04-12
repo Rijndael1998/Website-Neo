@@ -3,24 +3,28 @@
 
 .footer {
     width: 100%;
-    min-height: $footerHeight;
+    padding: 4ex 0;
     background-color: $secondaryBg;
 
-    bottom: 0;
-
     display: grid;
+    grid-template-rows: auto 1fr;
 
     font-family: OfficeCodePro;
+    gap: 4ex;
+
+    & > * {
+        margin: auto;
+    }
 
     .centre {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-        gap: 2em;
+        row-gap: 2ex;
+        column-gap: 2ch;
 
-        margin: auto;
-        max-width: calc($pageWidth - 2em);
         width: calc(100% - 2em);
+        max-width: calc($pageWidth * 2 - 2em);
 
         div {
             display: flex;
@@ -39,10 +43,28 @@
         display: block;
         margin: auto;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        display: flex;
+        align-items: center;
+        gap: 0.5ch;
+    }
+}
+
+@media screen and (max-width: $footerBreakXl) {
+    .footer .centre {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 @media screen and (max-width: $footerBreak) {
-    .footer, .centre {
-        flex-direction: column;
+    .footer .centre {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: $footerBreakXs) {
+    .footer .centre {
+        grid-template-columns: 1fr;
     }
 }
