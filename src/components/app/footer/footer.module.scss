@@ -26,7 +26,7 @@
         width: calc(100% - 2em);
         max-width: calc($pageWidth * 2 - 2em);
 
-        div {
+        div, a {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,7 +44,7 @@
         margin: auto;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6, p {
         display: flex;
         align-items: center;
         gap: 0.5ch;
