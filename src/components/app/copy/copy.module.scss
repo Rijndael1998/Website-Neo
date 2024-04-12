@@ -1,0 +1,25 @@
+@import "./../../colors";
+
+.copyWrap {
+    perspective: 4ch;
+
+    &,
+    * {
+        transition: all 0.5s ease;
+    }
+
+    .copy {
+        color: white;
+        transform: rotateY(-30deg);
+        cursor: pointer;
+
+        &.copied {
+            color: $accent;
+            transform: rotateY(0deg);
+        }
+
+        &:hover {
+            transform: rotateY(0deg);
+        }
+    }
+}
