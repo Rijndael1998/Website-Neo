@@ -1,11 +1,13 @@
+$cols: 3fr 1fr;
+
 .table {
     display: grid;
     grid-template-columns: 1fr;
 
     &>.top {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        
+        grid-template-columns: $cols;
+
         div {
             margin: auto;
         }
@@ -13,7 +15,7 @@
 
     .question {
         display: grid;
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: $cols;
 
 
         .answer {
