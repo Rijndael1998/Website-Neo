@@ -1,5 +1,6 @@
 import FoldingCount from "@/components/foldingAtHome/FoldingCount";
 import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
+import { ObfuscatedText } from "@/components/obfuscate/obfuscate";
 
 export const preURL = "portfolio/";
 export const imageFolder = "/fun/";
@@ -70,13 +71,13 @@ export const volunteering: GroupViewArray = [
         image: imageFolder + "foldingAtHome.webp",
     },
     {
-        title: "Tor Relay",
-        desc:`
+        title: <ObfuscatedText text="Tor Relay"/>,
+        desc: <ObfuscatedText text={`
         Tor, is a free, open-source software that enables anonymous communication on the internet. 
         It conceals a user's location and usage from anyone conducting network surveillance, 
         thus maintaining the user's privacy and freedom. 
         I run a Tor node that helps the network.
-        `,
+        `}/>,
         isDemo: false,
 //        url: preURL \+ "",
         image: imageFolder + "tor.webp",

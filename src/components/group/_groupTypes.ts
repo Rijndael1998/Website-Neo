@@ -1,5 +1,5 @@
 export type GroupPreviewContent = {
-    title: string,
+    title: string | JSX.Element,
     desc: string | JSX.Element,
     isDemo: boolean,
     url?: string,
