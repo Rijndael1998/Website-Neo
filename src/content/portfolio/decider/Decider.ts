@@ -1,6 +1,4 @@
-export const deciderP1 = `
-Lorem
-`
+export const deciderP1 = ``;
 
 export class Question {
     public question: string;

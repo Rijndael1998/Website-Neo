@@ -1,0 +1,31 @@
+.table {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &>.top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        div {
+            margin: auto;
+        }
+    }
+
+    .question {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+
+
+        .answer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            * {
+                display: block;
+                margin: auto;
+            }
+
+            ;
+        }
+    }
+}
