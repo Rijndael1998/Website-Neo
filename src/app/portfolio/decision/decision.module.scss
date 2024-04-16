@@ -3,6 +3,7 @@ $cols: 2fr 1fr;
 .table {
     display: grid;
     grid-template-columns: 1fr;
+    row-gap: 1ex;
 
     &>.top {
         display: grid;
@@ -20,7 +21,17 @@ $cols: 2fr 1fr;
     .question {
         display: grid;
         grid-template-columns: $cols;
+        row-gap: 2ex;
 
+        .query {
+            display: flex;
+            flex-direction: row;
+            gap: 1ch;
+
+            * {
+                margin: auto 0;
+            }
+        }
 
         .answer {
             display: grid;

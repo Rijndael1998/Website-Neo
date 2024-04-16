@@ -25,7 +25,7 @@ export default function Decider() {
         const newAnswers = [...answers];
 
         // get current value
-        const answer = newAnswers[index] ?? Answer.Crossed;
+        const answer = newAnswers[index] ?? Answer.NotApplicable;
 
         // get index in loop
         const currentAnswerLoopIndex = answerLoop.indexOf(answer);
@@ -64,12 +64,16 @@ export default function Decider() {
             </div>
             {
                 deciderQuestions.map((q, i) => {
+                    const question = q.question[0];
+                    const description = q.question[1];
                     return <div
                         className={styles.question}
                         key={i}>
-                        <div>
-                            <p>{q.question}</p>
-                            <RiInformationFill />
+                        <div className={styles.query}>
+                            <p>{question}</p>
+                            {
+                                description ? <RiInformationFill /> : <></>
+                            }
                         </div>
                         <div className={styles.answer} onClick={() => toggleAnswer(i)}>
                             <div>
