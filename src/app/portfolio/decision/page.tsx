@@ -4,29 +4,28 @@ import Lazy from "@/components/lazy/_lazy";
 import { deciderP1, deciderQuestions } from "@/content/portfolio/decider/Decider";
 import { useState } from "react";
 import styles from "./decision.module.scss";
-import { RiCheckboxBlankFill, RiCheckboxFill, RiCheckboxIndeterminateFill, RiInformationFill, RiInformationOffFill } from "@remixicon/react";
-import { assert } from "console";
+import { RiCheckboxBlankCircleFill, RiCheckboxCircleFill, RiCloseCircleFill, RiInformationFill } from "@remixicon/react";
 
-enum AnswerLoop {
-    Unchecked,
-    Checked,
+enum Answer {
     NotApplicable,
+    Checked,
+    Crossed,
 }
 
 export default function Decider() {
-    const [answers, setAnswers] = useState<Array<AnswerLoop | undefined>>(new Array(deciderQuestions.length));
+    const [answers, setAnswers] = useState<Array<Answer | undefined>>(new Array(deciderQuestions.length));
 
     const answerLoop = [
-        AnswerLoop.Unchecked,
-        AnswerLoop.Checked,
-        AnswerLoop.NotApplicable,
+        Answer.NotApplicable,
+        Answer.Checked,
+        Answer.Crossed,
     ];
 
     const toggleAnswer = (index: number) => {
         const newAnswers = [...answers];
 
         // get current value
-        const answer = newAnswers[index] ?? AnswerLoop.Unchecked;
+        const answer = newAnswers[index] ?? Answer.Crossed;
 
         // get index in loop
         const currentAnswerLoopIndex = answerLoop.indexOf(answer);
@@ -36,6 +35,19 @@ export default function Decider() {
 
         // set the next value
         setAnswers(newAnswers);
+    }
+
+    const renderIcon = (answer?: Answer) => {
+        switch (answer) {
+            case Answer.Crossed:
+                return <RiCloseCircleFill />
+            case Answer.Checked:
+                return <RiCheckboxCircleFill />
+
+            case Answer.NotApplicable:
+            default:
+                return <RiCheckboxBlankCircleFill />
+        }
     }
 
     return <Lazy>
@@ -62,7 +74,7 @@ export default function Decider() {
                         <div className={styles.answer} onClick={() => toggleAnswer(i)}>
                             <div>
                                 {
-                                    answers[i] == AnswerLoop.Checked ? <RiCheckboxFill /> : answers[i] == AnswerLoop.NotApplicable ? <RiCheckboxIndeterminateFill /> : <RiCheckboxBlankFill />
+                                    renderIcon(answers[i])
                                 }
                             </div>
                         </div>
