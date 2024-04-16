@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@remixicon/react": "^4.2.0",
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
@@ -20,6 +21,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-draggable": "^4.4.6",
+    "react-popper": "^2.3.0",
     "scss": "^0.2.4",
     "sharp": "^0.33.3",
     "typescript": "5.4.5"
