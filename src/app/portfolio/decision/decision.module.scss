@@ -1,4 +1,4 @@
-$cols: 3fr 1fr;
+$cols: 2fr 1fr;
 
 .table {
     display: grid;
@@ -7,9 +7,13 @@ $cols: 3fr 1fr;
     &>.top {
         display: grid;
         grid-template-columns: $cols;
+        gap: 1em;
 
         div {
-            margin: auto;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            text-align: center;
         }
     }
 
@@ -20,7 +24,7 @@ $cols: 3fr 1fr;
 
         .answer {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
 
             * {
                 display: block;
