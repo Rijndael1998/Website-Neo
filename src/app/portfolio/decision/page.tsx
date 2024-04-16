@@ -77,7 +77,7 @@ export default function Decider() {
                         className={styles.question}
                         key={i}>
                         <div className={styles.query}>
-                            <p>{question}</p>
+                            <p>{question}?</p>
                             {
                                 renderInfo(description)
                             }
