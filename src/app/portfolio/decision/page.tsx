@@ -50,6 +50,13 @@ export default function Decider() {
         }
     }
 
+    const renderInfo = (info?: string) => {
+        if(!info)
+            return <></>;
+
+        return <RiInformationFill />;
+    }
+
     return <Lazy>
         <h1>Decision</h1>
         <p>{deciderP1}</p>
@@ -72,7 +79,7 @@ export default function Decider() {
                         <div className={styles.query}>
                             <p>{question}</p>
                             {
-                                description ? <RiInformationFill /> : <></>
+                                renderInfo(description)
                             }
                         </div>
                         <div className={styles.answer} onClick={() => toggleAnswer(i)}>

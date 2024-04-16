@@ -28,7 +28,7 @@ export class Question {
             inv: yn.inv ?? false,
         };
 
-        if(this.yn.inv) {
+        if (this.yn.inv) {
             this.yn = {
                 ...this.yn,
                 y: this.yn.n,
@@ -69,7 +69,7 @@ export const questions: Array<Question> = [
         ["Have I considered this for over two weeks"],
         {
             y: 3,
-        }, 
+        },
     ),
     Q(
         ["Is this an impulsive purchase"],
@@ -77,13 +77,13 @@ export const questions: Array<Question> = [
             y: 5,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
         ["Does it address a real problem I have"],
         {
             y: 5,
-        }, 
+        },
     ),
     Q(
         ["Do I already own something like it"],
@@ -91,26 +91,26 @@ export const questions: Array<Question> = [
             y: 4,
             n: 3,
             inv,
-        }, 
+        },
     ),
     Q(
         ["Is it worth delaying financial goals"],
         {
             y: 5,
-        }, 
+        },
     ),
     Q(
         ["Will I use it in five years"],
         {
             y: 2,
             n: 0,
-        }, 
+        },
     ),
     Q(
         ["Do I have space for it"],
         {
             y: 1,
-        }, 
+        },
     ),
     Q(
         ["Will it lead to debt"],
@@ -118,13 +118,13 @@ export const questions: Array<Question> = [
             y: 5,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
         ["Can I quickly pay for it"],
         {
             y: 4,
-        }, 
+        },
     ),
     Q(
         ["Is there a better way to get it"],
@@ -132,14 +132,17 @@ export const questions: Array<Question> = [
             y: 3,
             n: 3,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Have I compared prices from different vendors"],
+        [
+            "Have I compared prices from different vendors",
+            "Check for the best deal. For a smartphone, you might find it cheaper through a different retailer or carrier.",
+        ],
         {
             y: 3,
             n: 2,
-        }, 
+        },
     ),
     Q(
         ["Am I swayed by others"],
@@ -147,68 +150,92 @@ export const questions: Array<Question> = [
             y: 2,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Is this purchase within my budget"],
+        [
+            "Is this purchase within my budget",
+            "Evaluate if the cost fits into your current financial plan without causing strain. For example, buying a new laptop should not interfere with your ability to pay your monthly bills.",
+        ],
         {
             y: 1,
             n: 5,
-        }, 
+        },
     ),
     Q(
-        ["Is there a less expensive alternative"],
+        [
+            "Is there a less expensive alternative",
+            "Consider if there's a more affordable option that meets your needs. Instead of a brand-new book, maybe a used copy or a library loan could suffice.",
+        ],
         {
             y: 3,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Will this purchase add value to my life"],
+        [
+            "Will this purchase add value to my life",
+            "Think about whether this item or service will positively impact your daily routine. A coffee machine might save you time and money spent at cafes.",
+        ],
         {
             y: 4,
             n: 3,
-        }, 
+        },
     ),
     Q(
-        ["Am I expecting a discount or sale soon"], 
+        [
+            "Am I expecting a discount or sale soon",
+            "Delay purchases if a sale or discount is anticipated, like waiting for Black Friday to buy that new TV.",
+        ],
         {
             y: 3,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Could my money be better spent elsewhere"], 
+        [
+            "Could my money be better spent elsewhere",
+            "Consider the opportunity cost of spending on this item versus another expense or investment. Joining a gym might have long-term health benefits over buying a gaming console.",
+        ],
         {
             y: 4,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Is this purchase influenced by a short-term emotion"], 
+        [
+            "Is this purchase influenced by a short-term emotion",
+            "Identify if your desire to buy is driven by an impulse, such as stress shopping after a tough day at work.",
+        ],
         {
             y: 5,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Is this a limited-time offer influencing my decision"],
+        [
+            "Is this a limited-time offer influencing my decision",
+            "Challenge if the urgency is artificial. A 'sale ending soon' might push you to buy luggage you don't need immediately.",
+        ],
         {
             y: 3,
             n: 0,
             inv,
-        }, 
+        },
     ),
     Q(
-        ["Could I borrow or rent instead of buying"],
+        [
+            "Could I borrow or rent instead of buying",
+            "Explore temporary options. Renting a suit for a single event may be wiser than purchasing.",
+        ],
         {
             y: 2,
             n: 0,
             inv,
-        }, 
+        },
     ),
 ];
 
