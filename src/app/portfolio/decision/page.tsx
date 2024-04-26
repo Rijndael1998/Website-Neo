@@ -2,9 +2,10 @@
 
 import Lazy from "@/components/lazy/_lazy";
 import { deciderP1, deciderQuestions } from "@/content/portfolio/decider/Decider";
-import { useState } from "react";
-import styles from "./decision.module.scss";
+import React, { useState } from "react";
+import style from "./decision.module.scss";
 import { RiCheckboxBlankCircleFill, RiCheckboxCircleFill, RiCloseCircleFill, RiInformationFill } from "@remixicon/react";
+import { usePopper } from 'react-popper';
 
 enum Answer {
     NotApplicable,
@@ -14,6 +15,14 @@ enum Answer {
 
 export default function Decider() {
     const [answers, setAnswers] = useState<Array<Answer | undefined>>(new Array(deciderQuestions.length));
+
+    const [referenceElement, setReferenceElement] = useState(null);
+    const [popperElement, setPopperElement] = useState(null);
+    const [arrowElement, setArrowElement] = useState(null);
+    const { styles, attributes } = usePopper(referenceElement, popperElement, {
+      modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+    });
+  
 
     const answerLoop = [
         Answer.NotApplicable,
@@ -60,8 +69,8 @@ export default function Decider() {
     return <Lazy>
         <h1>Decision</h1>
         <p>{deciderP1}</p>
-        <div className={styles.table}>
-            <div className={styles.top}>
+        <div className={style.table}>
+            <div className={style.top}>
                 <div>
                     <h4>Question</h4>
                 </div>
@@ -74,15 +83,15 @@ export default function Decider() {
                     const question = q.question[0];
                     const description = q.question[1];
                     return <div
-                        className={styles.question}
+                        className={style.question}
                         key={i}>
-                        <div className={styles.query}>
+                        <div className={style.query}>
                             <p>{question}?</p>
                             {
                                 renderInfo(description)
                             }
                         </div>
-                        <div className={styles.answer} onClick={() => toggleAnswer(i)}>
+                        <div className={style.answer} onClick={() => toggleAnswer(i)}>
                             <div>
                                 {
                                     renderIcon(answers[i])
