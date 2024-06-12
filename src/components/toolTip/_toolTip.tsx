@@ -1,4 +1,5 @@
 import styles from "./tooltip.module.scss";
+import Tooltip from '@mui/material/Tooltip';
 
 export type ToolTipProps = {
     children: JSX.Element,
@@ -6,5 +7,5 @@ export type ToolTipProps = {
 }
 
 export default function ToolTip({children, tip}: ToolTipProps) {
-    return <span className={styles.tooltip} title={tip}>{children}</span>;
+    return <Tooltip className={styles.tooltip} title={tip}>{children}</Tooltip>;
 }
