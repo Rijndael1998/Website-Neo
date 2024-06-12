@@ -8,3 +8,4 @@ export type ToolTipProps = {
 export default function ToolTip({children, tip}: ToolTipProps) {
     return <span className={styles.tooltip} title={tip}>{children}</span>;
 }
+
