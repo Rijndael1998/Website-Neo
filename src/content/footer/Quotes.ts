@@ -5,8 +5,8 @@ export interface Author {
 }
 
 export interface Quote {
-    eng: string,
-    og?: string,
+    eng?: string,
+    og: string,
     author: Author,
 }
 
@@ -18,7 +18,7 @@ function makeAuthor(name: string, engName?: string, wiki?: string): Author {
     };
 }
 
-function makeQuote(eng: string, og?: string, auth?: Author): Quote {
+function makeQuote(og: string, eng?: string, auth?: Author): Quote {
     const author = auth ?? makeAuthor("Unknown");
 
     return {

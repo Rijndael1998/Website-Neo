@@ -6,6 +6,15 @@ export type ToolTipProps = {
     tip: string,
 }
 
-export default function ToolTip({children, tip}: ToolTipProps) {
-    return <Tooltip className={styles.tooltip} title={tip}>{children}</Tooltip>;
+export default function ToolTip({ children, tip }: ToolTipProps) {
+    return (
+        <Tooltip
+            className={styles.tooltip}
+            title={tip}
+            placement="top"
+            arrow
+        >
+            {children}
+        </Tooltip>
+    );
 }
