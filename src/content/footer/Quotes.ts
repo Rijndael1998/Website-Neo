@@ -1,60 +1,90 @@
-export class Quote {
-    constructor(
-        public readonly og: string | null,
-        public readonly eng: string,
-        public readonly author?: string,
-        public readonly authorURL?: string,
-    ) { }
+export interface Author {
+    name: string,
+    engName?: string,
+    wiki?: string,
+}
+
+export interface Quote {
+    eng: string,
+    og?: string,
+    author: Author,
+}
+
+function makeAuthor(name: string, engName?: string, wiki?: string): Author {
+    return {
+        name,
+        engName,
+        wiki,
+    };
+}
+
+function makeQuote(eng: string, og?: string, auth?: Author): Quote {
+    const author = auth ?? makeAuthor("Unknown");
+
+    return {
+        eng,
+        og,
+        author,
+    }
 }
 
 export const quotes: Array<Quote> = [
-    new Quote(
+    makeQuote(
         "W życiu piękne są tylko chwile.",
         "In life, only moments are beautiful",
-        "Ryszard Riedel"),
+        makeAuthor("Ryszard Riedel")
+    ),
 
-    new Quote(
+    makeQuote(
         "Kiedy śmieje się dziecko, śmieje się cały świat.",
         "When a child laughs, the whole world laughs.",
-        "Janusz Korczak"),
+        makeAuthor("Janusz Korczak"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Nie żałuj że się starzejesz. To przywilej wielu nie dany.",
         "Don't regret getting older. It's a privilege denied to many."),
 
-    new Quote(
+    makeQuote(
         "Człowiek jest wielki nie przez to, co posiada, lecz przez to, kim jest; nie przez to, co ma, lecz przez to, czym dzieli się z innymi.",
         "A person is not great by what they own, but by what they are; not by what they have, but by what they share with others.",
-        "Pope John Paul II - Karol Wojtyła"),
+        makeAuthor("Pope John Paul II - Karol Wojtyła"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Lepiej zaliczać się do niektórych, niż do wszystkich.",
         "It's better to belong to some than to everyone.",
-        "Andrzej Sapkowski"),
+        makeAuthor("Andrzej Sapkowski"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Nie ma nic lepszego niż możliwość przelania na papier myśli.",
         "There is nothing better than the ability to put thoughts on paper.",
-        "Maria Skłodowska - Curie"),
+        makeAuthor("Maria Skłodowska - Curie"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Świat jest piękny, ale jeżeli ktoś wątpi w to, niech odnajdzie siebie.",
         "The world is beautiful, but if someone doubts it, let them find themselves.",
-        "Adam Mickiewicz"),
+        makeAuthor("Adam Mickiewicz"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Prawdziwa odwaga polega na robieniu tego, czego się boisz.",
         "True courage consists in doing what you fear.",
-        "Józef Piłsudski"),
+        makeAuthor("Józef Piłsudski"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Strach nie istnieje nigdzie indziej, tylko w umyśle.",
         "Fear does not exist anywhere else but in the mind.",
-        "Stefan Żeromski"),
+        makeAuthor("Stefan Żeromski"),
+    ),
 
-    new Quote(
+    makeQuote(
         "Niech twoje życie będzie świadectwem, że niemożliwe nie istnieje.",
         "Let your life be a testimony that impossible does not exist.",
-        "Wisława Szymborska"),
+        makeAuthor("Wisława Szymborska"),
+    ),
 
 ];
