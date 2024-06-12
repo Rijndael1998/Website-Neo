@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/app/nav/_nav'
 import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
+import { Tooltip } from 'react-tooltip';
 
 export const metadata: Metadata = {
   title: 'Lukasz Baldyga',
@@ -30,6 +31,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer/>
+        {/* Extra stuff */}
+        <Tooltip id={"default"}/>
       </body>
     </html>
   )
