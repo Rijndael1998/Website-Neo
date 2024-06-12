@@ -6,6 +6,7 @@ import { RiAccountPinBoxFill, RiDiscordFill, RiHeart3Fill, RiLinkedinBoxFill, Ri
 import Link from "next/link";
 import { CopyToClipboard } from "@/components/util";
 import Copy from "../copy/_copy";
+import Quotes from "./quotes";
 
 export default function Footer() {
 
@@ -42,6 +43,6 @@ export default function Footer() {
                 </Link>
             </div>
         </div>
-        <h6>Made with <RiHeart3Fill color="#a80200" /> for humanity.</h6>
+        <Quotes/>
     </footer>
 }
