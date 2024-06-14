@@ -25,9 +25,11 @@ export default async function Quotes() {
 
     return <h6 style={{ flexDirection: "column" }}>
         <span>
-            "<ChooseQuote og={quote.og}>
+            &quot;
+            <ChooseQuote og={quote.og}>
                 <>{text}</>
-            </ChooseQuote>"
+            </ChooseQuote>
+            &quot;
         </span>
         <span>
             <ChooseQuote og={quote.author.engName ? quote.author.name : undefined}>
