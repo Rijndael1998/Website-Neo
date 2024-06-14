@@ -4,12 +4,12 @@ import ToolTip from "@/components/toolTip/_toolTip";
 import { ChooseRandomElement } from "@/components/util";
 import { quotes } from "@/content/footer/Quotes";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 
-function ChooseQuote({ text, og }: { text: string, og?: string }) {
+function ChooseQuote({ children, og }: { children: ReactElement, og?: string }) {
     return og ?
-        <ToolTip tip={og}><>{text}</></ToolTip> :
-        <>{text}</>
+        <ToolTip tip={og}><>{children}</></ToolTip> :
+        <>{children}</>
 }
 
 function ChooseAuthor({ children, link }: { children: ReactNode, link?: string }) {
@@ -24,7 +24,15 @@ export default async function Quotes() {
     const text = quote.eng ?? quote.og;
 
     return <h6 style={{ flexDirection: "column" }}>
-        <span>"<ChooseQuote text={text} og={quote.og} />"</span>
-        <span><ChooseAuthor link={quote.author.wiki}>{author}</ChooseAuthor></span>
+        <span>
+            "<ChooseQuote og={quote.og}>
+                <>{text}</>
+            </ChooseQuote>"
+        </span>
+        <span>
+            <ChooseQuote og={quote.author.engName ? quote.author.name : undefined}>
+                <ChooseAuthor link={quote.author.wiki}>{author}</ChooseAuthor>
+            </ChooseQuote>
+        </span>
     </h6>
 }

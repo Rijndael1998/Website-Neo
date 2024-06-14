@@ -1,8 +1,9 @@
+import { ReactElement } from "react";
 import styles from "./tooltip.module.scss";
 import Tooltip from '@mui/material/Tooltip';
 
 export type ToolTipProps = {
-    children: JSX.Element,
+    children: ReactElement,
     tip: string,
 }
 
