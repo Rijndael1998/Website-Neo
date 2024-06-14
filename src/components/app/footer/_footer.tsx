@@ -1,11 +1,8 @@
-"use client";
-
 import styles from "./footer.module.scss";
-import Image from "next/image";
-import { RiAccountPinBoxFill, RiDiscordFill, RiHeart3Fill, RiLinkedinBoxFill, RiMailSendFill, RiYoutubeFill } from "@remixicon/react";
+import { RiAccountPinBoxFill, RiDiscordFill, RiLinkedinBoxFill, RiMailSendFill, RiYoutubeFill } from "@remixicon/react";
 import Link from "next/link";
-import { CopyToClipboard } from "@/components/util";
 import Copy from "../copy/_copy";
+import Quotes from "./quotes";
 
 export default function Footer() {
 
@@ -42,6 +39,6 @@ export default function Footer() {
                 </Link>
             </div>
         </div>
-        <h6>Made with <RiHeart3Fill color="#a80200" /> for humanity.</h6>
+        <Quotes/>
     </footer>
 }
