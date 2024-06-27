@@ -16,6 +16,34 @@ enum Answer {
     Crossed,
 }
 
+function Score({ answers }: { answers: Array<Answer | undefined> }) {
+    return <>
+        <h2>Verdict</h2>
+    </>
+}
+
+function RenderIcon({ answer }: { answer?: Answer }) {
+    switch (answer) {
+        case Answer.Crossed:
+            return <CancelIcon />
+        case Answer.Checked:
+            return <CheckCircleIcon />
+
+        case Answer.NotApplicable:
+        default:
+            return <CircleIcon />
+    }
+}
+
+function RenderInfo({ info }: { info?: string }) {
+    if (!info)
+        return <></>;
+
+    return <Tooltip title={info} arrow placement="right">
+        <InfoIcon />
+    </Tooltip>;
+}
+
 export default function Decider() {
     const [answers, setAnswers] = useState<Array<Answer | undefined>>(new Array(deciderQuestions.length));
 
@@ -41,33 +69,16 @@ export default function Decider() {
         setAnswers(newAnswers);
     }
 
-    const renderIcon = (answer?: Answer) => {
-        switch (answer) {
-            case Answer.Crossed:
-                return <CancelIcon />
-            case Answer.Checked:
-                return <CheckCircleIcon />
-
-            case Answer.NotApplicable:
-            default:
-                return <CircleIcon />
-        }
-    }
-
-    const RenderInfo = ({ info }: { info?: string }) => {
-        if (!info)
-            return <></>;
-
-        return <Tooltip title={info} arrow placement="right">
-            <InfoIcon />
-        </Tooltip>;
-    }
-
     return <Lazy>
         <h1>Decision helper</h1>
-        <p style={{display: "flex"}}>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi, labore facere dicta aspernatur illum mollitia totam accusamus ipsa ex alias sint natus dignissimos aliquid autem dolorem, quas accusantium repudiandae?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam omnis debitis optio asperiores numquam! Sequi voluptates dolorum quia adipisci provident minus repellendus placeat expedita totam molestias, ullam numquam, tempore iste.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam nihil ipsum quas eveniet odit explicabo veniam qui tenetur quo quae vero, vel nulla impedit aliquid unde saepe commodi a aliquam!</p>
+
+        <p>To help me with this, I have made this very simple tool that helps me figure out if I should or should not buy something.</p>
+        <p style={{ display: "flex" }}>
             Choose yes (<CheckCircleIcon />), no (<CancelIcon />) or leave the question blank if not applicable.
-            </p>
+        </p>
         <div className={style.table}>
             <div className={style.top}>
                 <div>
@@ -90,14 +101,13 @@ export default function Decider() {
                         </div>
                         <div className={style.answer} onClick={() => toggleAnswer(i)}>
                             <div>
-                                {
-                                    renderIcon(answers[i])
-                                }
+                                <RenderIcon answer={answers[i]} />
                             </div>
                         </div>
                     </div>;
                 })
             }
         </div>
+        <Score answers={answers} />
     </Lazy>
 }
