@@ -9,8 +9,6 @@ export default function Blog() {
         groups={
             [
                 {
-                    title: "Tech",
-                    subtitle: "Tech related blogs",
                     groups: [
                         {
                             title: MirrorTitle,
