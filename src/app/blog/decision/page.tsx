@@ -1,7 +1,7 @@
 "use client";
 
 import Lazy from "@/components/lazy/_lazy";
-import { deciderP1, deciderQuestions } from "@/content/portfolio/decider/Decider";
+import { deciderQuestions } from "@/content/portfolio/decider/Decider";
 import React, { useState } from "react";
 import style from "./decision.module.scss";
 import InfoIcon from '@mui/icons-material/Info';
@@ -64,8 +64,10 @@ export default function Decider() {
     }
 
     return <Lazy>
-        <h1>Decision</h1>
-        <p>{deciderP1}</p>
+        <h1>Decision helper</h1>
+        <p style={{display: "flex"}}>
+            Choose yes (<CheckCircleIcon />), no (<CancelIcon />) or leave the question blank if not applicable.
+            </p>
         <div className={style.table}>
             <div className={style.top}>
                 <div>

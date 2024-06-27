@@ -192,15 +192,6 @@ export const demos: GroupViewArray = [
         url: preURL + "langrage",
         image: imageFolder + "lagrange.png"
     },
-    {
-        title: "Decisions",
-        desc: `
-        Sometimes, there can be difficulties with life
-        `,
-        isDemo: true,
-        url: preURL + "decision",
-        image: imageFolder + "hobbies/decision/decision.webp",
-    },
 ];
 
 export const games: GroupViewArray = [

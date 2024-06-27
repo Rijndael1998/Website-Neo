@@ -1,5 +1,3 @@
-export const deciderP1 = `Choose yes (${""}) or no`;
-
 export type QuestionEntryType = [
     question: string,
     description?: string,
