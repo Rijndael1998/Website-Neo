@@ -17,8 +17,21 @@ enum Answer {
 }
 
 function Score({ answers }: { answers: Array<Answer | undefined> }) {
+    const score = answers.reduce<number>((prev, curr, index) => {
+        const question = deciderQuestions[index];
+        switch (curr) {
+            case Answer.Checked:
+                return prev + question.yes;
+            case Answer.Crossed:
+                return prev + question.no;
+        }
+
+        return prev;
+    }, 0);
+
     return <>
         <h2>Verdict</h2>
+        <p>{score}</p>
     </>
 }
 

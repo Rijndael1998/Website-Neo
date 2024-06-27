@@ -9,9 +9,6 @@ export type QuestionYesNoType = {
 
     // no
     n: number;
-
-    // invert
-    inv: boolean;
 };
 
 export class Question {
@@ -22,17 +19,8 @@ export class Question {
         this.question = question;
         this.yn = {
             y: yn.y ?? 0,
-            n: yn.n ?? yn.y ?? 0,
-            inv: yn.inv ?? false,
+            n: yn.n ?? -(yn.y ?? 0),
         };
-
-        if (this.yn.inv) {
-            this.yn = {
-                ...this.yn,
-                y: this.yn.n,
-                n: this.yn.y,
-            }
-        }
     }
 
     get yes() {
@@ -43,7 +31,7 @@ export class Question {
         return this.yn.n;
     }
 
-    scale(ynScale: Omit<QuestionYesNoType, "inv">) {
+    scale(ynScale: QuestionYesNoType) {
         this.yn = {
             ...this.yn,
             y: this.yn.y / ynScale.y,
@@ -70,6 +58,7 @@ export const questions: Array<Question> = [
         ],
         {
             y: 3,
+            n: -1,
         },
     ),
     Q(
@@ -78,9 +67,8 @@ export const questions: Array<Question> = [
             "Determine if you are acting on a whim rather than a well-thought-out decision. Impulsive buys can lead to regret.",
         ],
         {
-            y: 5,
-            n: 0,
-            inv,
+            y: -5,
+            n: 1,
         },
     ),
     Q(
@@ -98,9 +86,8 @@ export const questions: Array<Question> = [
             "Check if you have anything similar that serves the same purpose. Redundancy is often unnecessary.",
         ],
         {
-            y: 4,
+            y: -4,
             n: 3,
-            inv,
         },
     ),
     Q(
@@ -110,6 +97,7 @@ export const questions: Array<Question> = [
         ],
         {
             y: 5,
+            n: -2,
         },
     ),
     Q(
@@ -119,7 +107,6 @@ export const questions: Array<Question> = [
         ],
         {
             y: 2,
-            n: 0,
         },
     ),
     Q(
@@ -129,6 +116,7 @@ export const questions: Array<Question> = [
         ],
         {
             y: 1,
+            n: -1,
         },
     ),
     Q(
@@ -137,9 +125,7 @@ export const questions: Array<Question> = [
             "Evaluate if purchasing the item will cause you to incur debt. Future financial strain is a high cost.",
         ],
         {
-            y: 5,
-            n: 0,
-            inv,
+            y: -5,
         },
     ),
     Q(
@@ -157,9 +143,8 @@ export const questions: Array<Question> = [
             "Think if there's an alternative method to obtaining the item, such as borrowing or negotiating a better price.",
         ],
         {
-            y: 3,
-            n: 3,
-            inv,
+            y: -3,
+            n: 1,
         },
     ),
     Q(
@@ -169,7 +154,7 @@ export const questions: Array<Question> = [
         ],
         {
             y: 3,
-            n: 2,
+            n: -2,
         },
     ),
     Q(
@@ -178,9 +163,8 @@ export const questions: Array<Question> = [
             "Reflect on whether your decision is influenced by others' opinions. Peer pressure can lead to unnecessary purchases.",
         ],
         {
-            y: 2,
+            y: -2,
             n: 0,
-            inv,
         },
     ),
     Q(
@@ -190,7 +174,7 @@ export const questions: Array<Question> = [
         ],
         {
             y: 1,
-            n: 5,
+            n: -5,
         },
     ),
     Q(
@@ -199,9 +183,8 @@ export const questions: Array<Question> = [
             "Consider if there's a more affordable option that meets your needs. Instead of a brand-new book, maybe a used copy or a library loan could suffice.",
         ],
         {
-            y: 3,
+            y: -3,
             n: 0,
-            inv,
         },
     ),
     Q(
@@ -211,7 +194,7 @@ export const questions: Array<Question> = [
         ],
         {
             y: 4,
-            n: 3,
+            n: -3,
         },
     ),
     Q(
@@ -220,9 +203,8 @@ export const questions: Array<Question> = [
             "Delay purchases if a sale or discount is anticipated, like waiting for Black Friday to buy that new TV.",
         ],
         {
-            y: 3,
+            y: -3,
             n: 0,
-            inv,
         },
     ),
     Q(
@@ -231,8 +213,7 @@ export const questions: Array<Question> = [
             "Consider the opportunity cost of spending on this item versus another expense or investment. Joining a gym might have long-term health benefits over buying a gaming console.",
         ],
         {
-            y: 4,
-            inv,
+            y: -4,
         },
     ),
     Q(
@@ -241,9 +222,8 @@ export const questions: Array<Question> = [
             "Identify if your desire to buy is driven by an impulse, such as stress shopping after a tough day at work.",
         ],
         {
-            y: 5,
+            y: -5,
             n: 0,
-            inv,
         },
     ),
     Q(
@@ -252,9 +232,8 @@ export const questions: Array<Question> = [
             "Challenge if the urgency is artificial. A 'sale ending soon' might push you to buy luggage you don't need immediately.",
         ],
         {
-            y: 3,
+            y: -3,
             n: 0,
-            inv,
         },
     ),
     Q(
@@ -263,19 +242,18 @@ export const questions: Array<Question> = [
             "Explore temporary options. Renting a suit for a single event may be wiser than purchasing.",
         ],
         {
-            y: 2,
+            y: -2,
             n: 0,
-            inv,
         },
     ),
 ];
 
 export const adjustmentYes = questions.reduce<number>((prev, curr) => {
-    return prev + curr.yn.y;
+    return prev + Math.abs(curr.yn.y);
 }, 0);
 
 export const adjustmentNo = questions.reduce<number>((prev, curr) => {
-    return prev + curr.no;
+    return prev + Math.abs(curr.no);
 }, 0);
 
 const adjScale: Omit<QuestionYesNoType, "inv"> = {
