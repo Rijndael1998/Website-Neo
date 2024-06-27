@@ -4,8 +4,11 @@ import Lazy from "@/components/lazy/_lazy";
 import { deciderP1, deciderQuestions } from "@/content/portfolio/decider/Decider";
 import React, { useState } from "react";
 import style from "./decision.module.scss";
-import { RiCheckboxBlankCircleFill, RiCheckboxCircleFill, RiCloseCircleFill, RiInformationFill } from "@remixicon/react";
-import { usePopper } from 'react-popper';
+import InfoIcon from '@mui/icons-material/Info';
+import CircleIcon from '@mui/icons-material/Circle';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { Tooltip } from "@mui/material";
 
 enum Answer {
     NotApplicable,
@@ -15,14 +18,6 @@ enum Answer {
 
 export default function Decider() {
     const [answers, setAnswers] = useState<Array<Answer | undefined>>(new Array(deciderQuestions.length));
-
-    const [referenceElement, setReferenceElement] = useState(null);
-    const [popperElement, setPopperElement] = useState(null);
-    const [arrowElement, setArrowElement] = useState(null);
-    const { styles, attributes } = usePopper(referenceElement, popperElement, {
-      modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
-    });
-  
 
     const answerLoop = [
         Answer.NotApplicable,
@@ -49,21 +44,23 @@ export default function Decider() {
     const renderIcon = (answer?: Answer) => {
         switch (answer) {
             case Answer.Crossed:
-                return <RiCloseCircleFill />
+                return <CancelIcon />
             case Answer.Checked:
-                return <RiCheckboxCircleFill />
+                return <CheckCircleIcon />
 
             case Answer.NotApplicable:
             default:
-                return <RiCheckboxBlankCircleFill />
+                return <CircleIcon />
         }
     }
 
-    const renderInfo = (info?: string) => {
-        if(!info)
+    const RenderInfo = ({ info }: { info?: string }) => {
+        if (!info)
             return <></>;
 
-        return <RiInformationFill />;
+        return <Tooltip title={info} arrow placement="right">
+            <InfoIcon />
+        </Tooltip>;
     }
 
     return <Lazy>
@@ -87,9 +84,7 @@ export default function Decider() {
                         key={i}>
                         <div className={style.query}>
                             <p>{question}?</p>
-                            {
-                                renderInfo(description)
-                            }
+                            <RenderInfo info={description} />
                         </div>
                         <div className={style.answer} onClick={() => toggleAnswer(i)}>
                             <div>

@@ -8,7 +8,7 @@ import { ReactElement, ReactNode } from "react";
 
 function ChooseQuote({ children, og }: { children: ReactElement, og?: string }) {
     return og ?
-        <ToolTip tip={og}><>{children}</></ToolTip> :
+        <ToolTip tip={og} placement="top"><>{children}</></ToolTip> :
         <>{children}</>
 }
 

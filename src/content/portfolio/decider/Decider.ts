@@ -1,4 +1,4 @@
-export const deciderP1 = ``;
+export const deciderP1 = `Choose yes (${""}) or no`;
 
 export type QuestionEntryType = [
     question: string,
@@ -66,13 +66,19 @@ const Q = (q: QuestionEntryType, yn: Partial<QuestionYesNoType>) => new Question
 const inv = true;
 export const questions: Array<Question> = [
     Q(
-        ["Have I considered this for over two weeks"],
+        [
+            "Have I considered this for over two weeks",
+            "Reflect on whether you have given enough time to think about this purchase. A long contemplation period often results in a more rational decision.",
+        ],
         {
             y: 3,
         },
     ),
     Q(
-        ["Is this an impulsive purchase"],
+        [
+            "Is this an impulsive purchase",
+            "Determine if you are acting on a whim rather than a well-thought-out decision. Impulsive buys can lead to regret.",
+        ],
         {
             y: 5,
             n: 0,
@@ -80,13 +86,19 @@ export const questions: Array<Question> = [
         },
     ),
     Q(
-        ["Does it address a real problem I have"],
+        [
+            "Does it address a real problem I have",
+            "Assess if the item will solve or improve an issue you are currently facing. Effective solutions justify the expense.",
+        ],
         {
             y: 5,
         },
     ),
     Q(
-        ["Do I already own something like it"],
+        [
+            "Do I already own something like it",
+            "Check if you have anything similar that serves the same purpose. Redundancy is often unnecessary.",
+        ],
         {
             y: 4,
             n: 3,
@@ -94,26 +106,38 @@ export const questions: Array<Question> = [
         },
     ),
     Q(
-        ["Is it worth delaying financial goals"],
+        [
+            "Is it worth delaying financial goals",
+            "Weigh if the purchase justifies postponing more significant financial objectives like savings or investments.",
+        ],
         {
             y: 5,
         },
     ),
     Q(
-        ["Will I use it in five years"],
+        [
+            "Will I use it in five years",
+            "Forecast if the item will remain useful or relevant in your life for the long term. Durable utility justifies the cost.",
+        ],
         {
             y: 2,
             n: 0,
         },
     ),
     Q(
-        ["Do I have space for it"],
+        [
+            "Do I have space for it",
+            "Consider if you have the physical space to store or use the item. Clutter can detract from your living environment.",
+        ],
         {
             y: 1,
         },
     ),
     Q(
-        ["Will it lead to debt"],
+        [
+            "Will it lead to debt",
+            "Evaluate if purchasing the item will cause you to incur debt. Future financial strain is a high cost.",
+        ],
         {
             y: 5,
             n: 0,
@@ -121,13 +145,19 @@ export const questions: Array<Question> = [
         },
     ),
     Q(
-        ["Can I quickly pay for it"],
+        [
+            "Can I quickly pay for it",
+            "Check if you have readily available funds to cover the cost. Immediate affordability is a positive indicator.",
+        ],
         {
             y: 4,
         },
     ),
     Q(
-        ["Is there a better way to get it"],
+        [
+            "Is there a better way to get it",
+            "Think if there's an alternative method to obtaining the item, such as borrowing or negotiating a better price.",
+        ],
         {
             y: 3,
             n: 3,
@@ -145,7 +175,10 @@ export const questions: Array<Question> = [
         },
     ),
     Q(
-        ["Am I swayed by others"],
+        [
+            "Am I swayed by others",
+            "Reflect on whether your decision is influenced by others' opinions. Peer pressure can lead to unnecessary purchases.",
+        ],
         {
             y: 2,
             n: 0,

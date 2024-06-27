@@ -1,21 +1,22 @@
 import { ReactElement } from "react";
 import styles from "./tooltip.module.scss";
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
 
 export type ToolTipProps = {
-    children: ReactElement,
+    children: ReactElement | string,
     tip: string,
+    placement?: TooltipProps["placement"],
 }
 
-export default function ToolTip({ children, tip }: ToolTipProps) {
+export default function ToolTip({ children, tip, placement }: ToolTipProps) {
     return (
         <Tooltip
             className={styles.tooltip}
             title={tip}
-            placement="top"
+            placement={placement ?? "bottom"}
             arrow
         >
-            {children}
+            <>{children}</>
         </Tooltip>
     );
 }
