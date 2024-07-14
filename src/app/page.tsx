@@ -1,6 +1,7 @@
 import Lazy from "@/components/lazy/_lazy";
 import { about, contact, main, uglyElements } from "./../content/Home";
 import styles from "./page.module.scss";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
           <h1>
             Hi!
           </h1>
+          <p>
+            For everything that I have to offer, have a look at my <Link href="/portfolio">portfolio</Link> page.
+          </p>
         </div>
 
         <div className={styles.item}>
