@@ -38,7 +38,6 @@ const LBU = {
     My duties included understanding student experiences, discussing solutions with staff and students, and reporting outcomes.
     `,
     isDemo: false,
-    //        url: preURL \+ "",
     image: imageFolder + "lbu.png",
 };
 
@@ -120,7 +119,6 @@ const THIS = {
     It is mainly a celebration of everything I have done. Like everything else, it's FOSS.
     `,
     isDemo: false,
-    // url: preURL \+ "",
     image: "/favico.png",
 }
 
@@ -189,14 +187,34 @@ const Langrage = {
     image: imageFolder + "lagrange.png"
 };
 
+const Marta = {
+    title: "Marta",
+    desc: `
+    
+    `,
+    isDemo: false,
+    image: imageFolder + "marta.jpg",
+}
+
+const HAL = {
+    title: "HAL Systems LTD",
+    desc: `
+    I worked and was responsible for maintaining the website and email service. bla bla
+    `,
+    isDemo: false,
+    image: imageFolder + "hal.webp",
+}
+
 export const irlContent: GroupViewArray = [
     IPF,
     Shreem,
+    HAL,
 ];
 
 export const volunteering: GroupViewArray = [
-    LBU,
     FAH,
+    LBU,
+    Marta,
 ];
 
 export const personalProjects: GroupViewArray = [
