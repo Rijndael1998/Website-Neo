@@ -199,7 +199,10 @@ const Marta = {
 const HAL = {
     title: "HAL Systems LTD",
     desc: `
-    I worked and was responsible for maintaining the website and email service. bla bla
+    From the age of 16 until I was 21, I served as a Webmaster for HAL Systems LTD. 
+    During this time, I personally hosted the company's website on my own hardware, ensuring consistent uptime and performing regular maintenance.
+    I provided aftermarket updates to the website, including content changes and performance updates as well as ongoing website support.
+    Additionally, I also managed the company's email accounts, setting up and administering email addresses as needed.
     `,
     isDemo: false,
     image: imageFolder + "hal.webp",
