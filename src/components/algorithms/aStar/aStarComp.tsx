@@ -106,7 +106,7 @@ export default function AStarComponent() {
             </div>
         </div>
         <p>
-            {canStepReason === undefined ? "All ok" : canStepReason}
+            {canStepReason ?? "All ok"}
         </p>
 
         <div className={styles.gridWarpper}>
@@ -116,31 +116,31 @@ export default function AStarComponent() {
         <div className={styles.key}>
             <h3>Key:</h3>
             <div>
-                <GridItem item={colors.Node} callback={undefined} />
+                <GridItem item={colors.Node} />
                 <div>Node</div>
             </div>
             <div>
-                <GridItem item={colors.Wall} callback={undefined} />
+                <GridItem item={colors.Wall} />
                 <div>Wall</div>
             </div>
             <div>
-                <GridItem item={colors.Start} callback={undefined} />
+                <GridItem item={colors.Start} />
                 <div>Start</div>
             </div>
             <div>
-                <GridItem item={colors.End} callback={undefined} />
+                <GridItem item={colors.End} />
                 <div>End</div>
             </div>
             <div>
-                <GridItem item={colors.Path} callback={undefined} />
+                <GridItem item={colors.Path} />
                 <div>Path</div>
             </div>
             <div>
-                <GridItem item={colors.Explored} callback={undefined} />
+                <GridItem item={colors.Explored} />
                 <div>Explored</div>
             </div>
             <div>
-                <GridItem item={colors.Removed} callback={undefined} />
+                <GridItem item={colors.Removed} />
                 <div>Removed</div>
             </div>
         </div>

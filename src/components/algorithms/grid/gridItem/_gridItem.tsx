@@ -4,7 +4,7 @@ import { GenericCallback } from "@/components/util";
 
 export type GridItemProps = {
     item: string,
-    callback: GenericCallback,
+    callback?: GenericCallback,
 }
 
 export default function GridItem({ item, callback }: GridItemProps) {
