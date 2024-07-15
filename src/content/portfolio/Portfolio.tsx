@@ -188,9 +188,9 @@ const Langrage = {
 };
 
 const Marta = {
-    title: "Marta",
+    title: "Marta Fundraiser",
     desc: `
-    
+    My mom and I helped organize a community fundraiser in Bolton and Bury for Marta, a single mother with cancer who lacked basics like furniture and a clothes dryer. Thanks to the generosity of our communities, we were able to gather the funds needed to support her and her three young children during this challenging time.
     `,
     isDemo: false,
     image: imageFolder + "marta.jpg",
@@ -201,8 +201,7 @@ const HAL = {
     desc: `
     From the age of 16 until I was 21, I served as a Webmaster for HAL Systems LTD. 
     During this time, I personally hosted the company's website on my own hardware, ensuring consistent uptime and performing regular maintenance.
-    I provided aftermarket updates to the website, including content changes and performance updates as well as ongoing website support.
-    Additionally, I also managed the company's email accounts, setting up and administering email addresses as needed.
+    I provided updates to the website, including content changes and performance updates.
     `,
     isDemo: false,
     image: imageFolder + "hal.webp",
