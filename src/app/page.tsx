@@ -1,5 +1,5 @@
 import Lazy from "@/components/lazy/_lazy";
-import { about, contact, main, uglyElements } from "./../content/Home";
+import { about, contact } from "./../content/Home";
 import styles from "./page.module.scss";
 import Link from "next/link";
 
