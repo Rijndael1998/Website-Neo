@@ -1,5 +1,9 @@
 @import "./../../colors";
 
+.toolTipFix {
+    background-color: red !important;
+}
+
 .copyWrap {
     perspective: 4ch;
     position: relative;
@@ -19,10 +23,11 @@
         color: white;
         cursor: pointer;
 
-        &.copied, &:hover {
+        &.copied,
+        &:hover {
             transform: rotateY(0deg) translateY(-50%);
         }
-        
+
         &.copied {
             color: $accent;
             transform: rotateY(360deg) translateY(-50%);
