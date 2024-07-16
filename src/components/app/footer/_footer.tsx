@@ -5,6 +5,7 @@ import Copy from "../copy/_copy";
 import Quotes from "./quotes";
 import ToolTip from "@/components/toolTip/_toolTip";
 import { Signal } from "@/components/customIcons/Signal";
+import PersonPinIcon from '@mui/icons-material/';
 
 export default function Footer() {
 
@@ -15,7 +16,7 @@ export default function Footer() {
         </h4>
         <div className={styles.centre}>
             <div>
-                <RiAccountPinBoxFill />
+                <PersonPinIcon />
                 <p>Lukasz Baldyga<Copy text="Lukasz Baldyga" /></p>
             </div>
             <div>
