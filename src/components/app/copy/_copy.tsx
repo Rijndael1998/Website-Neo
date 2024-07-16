@@ -1,7 +1,7 @@
 "use client";
 
 import { CopyToClipboard } from "@/components/util";
-import { RiClipboardLine } from "@remixicon/react";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import style from "./copy.module.scss";
 import { useState } from "react";
 import classNames from "classnames";
@@ -27,6 +27,6 @@ export default function Copy({ text }: CopyProps) {
     }
 
     return <span className={style.copyWrap}>
-        <RiClipboardLine className={classNames(style.copy, copied && style.copied)} onClick={(e) => {e.preventDefault(); e.stopPropagation(); handleClick()}} />
+        <ContentCopyIcon className={classNames(style.copy, copied && style.copied)} onClick={(e) => {e.preventDefault(); e.stopPropagation(); handleClick()}} />
     </span>
 }
