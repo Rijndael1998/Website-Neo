@@ -10,7 +10,7 @@ export const content = [
 
     "Me and my mom were close friends with a priest in Bolton overseeing a Polish Catholic mission. He very politely allowed us to sell the candles at the churches that he performed mass in. ",
 
-    
+    <>{"We sold sold almost all of the candles and raised a total of £471. I also reached out to my employer, "} <Link href="/portfolio/ipf">IPF</Link>{", and they boosted the amount by £250. We used this money to buy her the furniture, a clothes drier and a new laptop for her classes along with gifts for her children for Christmas."}</>,
 ];
 
 export const citations = [
