@@ -17,7 +17,7 @@ const chalk: GroupPreviewContent = {
     image: imageFolder + "chalk.png",
 };
 
-const IPF = {
+const IPF: GroupPreviewContent = {
     title: "Data & Decisions Developer",
     desc: `
     This is my current role. 
@@ -30,7 +30,7 @@ const IPF = {
     image: imageFolder + "ipf.png",
 };
 
-const LBU = {
+const LBU: GroupPreviewContent = {
     title: "LBU Student Rep",
     desc: `
     As a Student Rep at Leeds Beckett University, I represented student views on education, liaise with staff and the Students' Union, 
@@ -41,7 +41,7 @@ const LBU = {
     image: imageFolder + "lbu.png",
 };
 
-const Shreem = {
+const Shreem: GroupPreviewContent = {
     title: "Full Stack Developer",
     desc: `
     As a Full Stack Developer at Shreem, I built key features, notably a real-time messaging component using React and Web Sockets.
@@ -52,7 +52,7 @@ const Shreem = {
     image: imageFolder + "shreem.png",
 };
 
-const FAH = {
+const FAH: GroupPreviewContent = {
     title: "Folding@Home",
     desc: <>{`
     Folding@Home is a global project by Stanford University, utilizing idle computing power from volunteers' 
@@ -64,7 +64,7 @@ const FAH = {
     image: imageFolder + "foldingAtHome.webp",
 };
 
-const TOR = {
+const TOR: GroupPreviewContent = {
     title: "Tor Relay",
     desc: `
             Tor, is a free, open-source software that enables anonymous communication on the internet. 
@@ -73,11 +73,10 @@ const TOR = {
             I run a Tor node that helps the network.
             `,
     isDemo: false,
-    // url: preURL \+ "",
     image: imageFolder + "tor.webp",
 };
 
-const RAI = {
+const RAI: GroupPreviewContent = {
     title: "R-AI",
     desc: `
     R-AI is a pioneering project I crafted, aimed at narrowing the gap between normal users and Artificial Intelligence.
@@ -87,11 +86,11 @@ const RAI = {
     It even diversifies by adopting various intriguing personalities.
     `,
     isDemo: false,
-    // url: preURL \+ "",
     image: imageFolder + "R-AI.png",
+    url: "https://github.com/DeguSec/R-AI",
 };
 
-const crab = {
+const crab: GroupPreviewContent = {
     title: "Hobbies",
     desc: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
     isDemo: false,
@@ -99,7 +98,7 @@ const crab = {
     image: imageFolder + "crab_rave.png",
 };
 
-const SPA = {
+const SPA: GroupPreviewContent = {
     title: "Python SPA Website",
     desc: `
     This is my website generation tool that I used on my old website. 
@@ -111,7 +110,7 @@ const SPA = {
     image: imageFolder + "old_website.png",
 };
 
-const THIS = {
+const THIS: GroupPreviewContent = {
     title: "Website Neo",
     desc: `
     This website. It was made in Next.js using TypeScript. 
@@ -120,9 +119,10 @@ const THIS = {
     `,
     isDemo: false,
     image: "/favico.png",
+    url: "https://github.com/Rijndael1998/Website-Neo",
 }
 
-const Nomad = {
+const Nomad: GroupPreviewContent = {
     title: "Internet Nomad Password Manager",
     desc: `
     The Internet Nomad password manager is built upon research into encryption types.
@@ -134,7 +134,7 @@ const Nomad = {
     image: imageFolder + "password_manager.png",
 };
 
-const Drawing = {
+const Drawing: GroupPreviewContent = {
     title: "Drawing Project",
     desc: `
     The university assignment that I achieved full marks on is a unique drawing program created using a specially designed programming language for this particular project. 
@@ -145,7 +145,7 @@ const Drawing = {
     image: imageFolder + "drawing_program.png",
 };
 
-const ToDo = {
+const ToDo: GroupPreviewContent = {
     title: "ToDo App",
     desc: `
     A simple ToDo application written for Android. Made for a Java assignment. 
@@ -154,9 +154,10 @@ const ToDo = {
     `,
     isDemo: false,
     image: imageFolder + "todo.png",
+    url: "https://github.com/c3ypt1c/ToDo",
 };
 
-const AS = {
+const AS: GroupPreviewContent = {
     title: "A Star",
     desc: `
     I have developed an efficient path-finding solver, implementing the sophisticated A Star algorithm. 
@@ -168,7 +169,7 @@ const AS = {
     image: imageFolder + "aStar.png",
 };
 
-const Sudoku = {
+const Sudoku: GroupPreviewContent = {
     title: "Sudoku Solver",
     desc: "I have made a Sudoku solver. The brute-force Backtracking algorithm is the major solving algorithm in this Sudoku solver with a supporting algorithm that helps remove singles from the graph.",
     isDemo: true,
@@ -176,7 +177,7 @@ const Sudoku = {
     image: imageFolder + "sudoku_solver.png",
 };
 
-const Langrage = {
+const Langrage: GroupPreviewContent = {
     title: "Langrage Demo",
     desc: `
     A simple demonstration of how Langrage polynomials work. 
@@ -187,16 +188,17 @@ const Langrage = {
     image: imageFolder + "lagrange.png"
 };
 
-const Marta = {
+const Marta: GroupPreviewContent = {
     title: "Marta Fundraiser",
     desc: `
     My mom and I helped organize a community fundraiser in Bolton and Bury for Marta, a single mother with cancer who lacked basics like furniture and a clothes dryer. Thanks to the generosity of our communities, we were able to gather the funds needed to support her and her three young children during this challenging time.
     `,
     isDemo: false,
     image: imageFolder + "marta.jpg",
+    url: preURL + "marta",
 }
 
-const HAL = {
+const HAL: GroupPreviewContent = {
     title: "HAL Systems LTD",
     desc: `
     From the age of 16 until I was 21, I served as a Webmaster for HAL Systems LTD. 
@@ -205,6 +207,7 @@ const HAL = {
     `,
     isDemo: false,
     image: imageFolder + "hal.webp",
+    url: "https://www.halsystemsltd.co.uk",
 }
 
 export const irlContent: GroupViewArray = [
