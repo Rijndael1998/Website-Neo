@@ -38,6 +38,7 @@ const LBU: GroupPreviewContent = {
     My duties included understanding student experiences, discussing solutions with staff and students, and reporting outcomes.
     `,
     isDemo: false,
+    url: "https://www.leedsbeckett.ac.uk/student-information/course-information/course-representatives/",
     image: imageFolder + "lbu.png",
 };
 
@@ -210,6 +211,14 @@ const HAL: GroupPreviewContent = {
     url: "https://www.halsystemsltd.co.uk",
 }
 
+const OSM: GroupPreviewContent = {
+    title: "OpenStreetMap",
+    desc: "OpenStreetMap (OSM) is a free, collaborative map of the world created by volunteers. It offers open access to constantly updated geographic data, making it essential for urban planning, navigation, and numerous applications.",
+    isDemo: false,
+    image: imageFolder + "osm.svg",
+    url: "https://hdyc.neis-one.org/?C3ypt1c",
+};
+
 export const irlContent: GroupViewArray = [
     IPF,
     Shreem,
@@ -220,6 +229,7 @@ export const volunteering: GroupViewArray = [
     FAH,
     LBU,
     Marta,
+    OSM,
 ];
 
 export const personalProjects: GroupViewArray = [
