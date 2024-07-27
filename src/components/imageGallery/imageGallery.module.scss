@@ -2,10 +2,11 @@
 @import "./../vars";
 
 .imageGallery {
+    position: relative;
     transition: all 0.4s ease;
     width: 100% !important;
     max-height: 70vh;
-    margin: 2.5rem auto !important;
+    margin: 2.5rem auto 0 auto !important;
 
     .container {
         transition: inherit;
@@ -36,17 +37,36 @@
 }
 
 .controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 
-    &>div {
-        margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &>svg {
+        opacity: 0;
+        transition: all ease 0.5s;
         cursor: pointer;
-        background-color: $secondary;
-        width: 80%;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 25%;
+        height: 100%;
         text-align: center;
         gap: 1rem;
-        border-radius: $buttonBorderRadius;
+    }
+
+    &.show>svg {
+        opacity: 1;
+    }
+
+    &.touch {
+        position: relative;
+
+        &>svg {
+            opacity: 1;
+        }
     }
 }

@@ -4,6 +4,8 @@ import styles from "./imageGallery.module.scss";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import GalleryImage from "./galleryImage";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export type ImageProps = Array<{
     alt?: string,
@@ -19,9 +21,14 @@ export type ImageGalleryProps = {
 export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps) {
     const [index, setIndex] = useState(0);
     const [minimalAspectRatio, setMinimalAspectRatio] = useState(Number.MAX_SAFE_INTEGER);
+    const [hovering, setHovering] = useState(false);
+
+    const touchSupport =
+        (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0));
 
     useEffect(() => {
-        if(aspectRatio) {
+        if (aspectRatio) {
             setMinimalAspectRatio(aspectRatio);
             return;
         }
@@ -29,7 +36,7 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
         let currentMinimal = Infinity;
         for (let index = 0; index < images.length; index++) {
             const ac = images[index].aspectRatio;
-            if(!ac)
+            if (!ac)
                 throw new Error("Image without aspect ratio: " + images[index].src);
 
             currentMinimal = Math.min(currentMinimal, ac);
@@ -38,8 +45,8 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
         setMinimalAspectRatio(currentMinimal);
         return;
 
-    }, [images, aspectRatio])
-    
+    }, [images, aspectRatio]);
+
     enum Controls {
         Next,
         Previous,
@@ -55,8 +62,9 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
         setIndex(index % images.length);
     }
 
-    const Control = (control: Controls, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const Control = (control: Controls, e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         e.preventDefault();
+        console.log("control");
         switch (control) {
             case Controls.Next:
                 return setIndexFlow(index + 1);
@@ -66,20 +74,14 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
     }
 
     return <>
-        <div className={styles.controls}>
-            <div onClick={(e) => Control(Controls.Previous, e)}>
-                <p>
-                    Previous
-                </p>
-            </div>
-            <div onClick={(e) => Control(Controls.Next, e)}>
-                <p>
-                    Next
-                </p>
-            </div>
-        </div>
-        <div style={{ aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio}} className={classNames(styles.imageGallery)}>
-            <figure style={{aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio}} className={styles.container}>
+        <div
+            style={{ aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio }}
+            className={classNames(styles.imageGallery)}
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}>
+            <figure
+                style={{ aspectRatio: images[index]?.aspectRatio ?? minimalAspectRatio }}
+                className={styles.container}>
                 {
                     images.map((image, i) =>
                         <GalleryImage
@@ -89,16 +91,17 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
                     )
                 }
             </figure>
+            <div className={classNames(
+                styles.controls,
+                hovering && styles.show,
+                touchSupport && styles.touch,
+            )
+            }>
+                <ArrowBackIcon onClick={(e) => Control(Controls.Previous, e)} />
+                <ArrowForwardIcon onClick={(e) => Control(Controls.Next, e)} />
+            </div>
         </div>
-        <div>
-            {
-                images.map((image, i) => {
-                    return <div key={i} className={classNames(styles.alt, i == index && styles.show && image.alt)}>
-                        {image.alt}
-                    </div>
-                })
-            }
-        </div>
+
         <div>
             Current Page {index + 1} / {images.length}
         </div>
