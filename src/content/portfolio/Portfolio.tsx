@@ -216,7 +216,7 @@ const OSM: GroupPreviewContent = {
     desc: "OpenStreetMap (OSM) is a free, collaborative map of the world created by volunteers. It offers open access to constantly updated geographic data, making it essential for urban planning, navigation, and numerous applications.",
     isDemo: false,
     image: imageFolder + "osm.svg",
-    url: "https://hdyc.neis-one.org/?C3ypt1c",
+    url: "https://hdyc.neis-one.org/?Rijndael1998",
 };
 
 const Lineage: GroupPreviewContent = {
