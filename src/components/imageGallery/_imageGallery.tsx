@@ -98,12 +98,11 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
             )
             }>
                 <ArrowBackIcon onClick={(e) => Control(Controls.Previous, e)} />
+                <div className={styles.count}>
+                    <p>{index + 1} / {images.length}</p>
+                </div>
                 <ArrowForwardIcon onClick={(e) => Control(Controls.Next, e)} />
             </div>
-        </div>
-
-        <div>
-            Current Page {index + 1} / {images.length}
         </div>
     </>
 }

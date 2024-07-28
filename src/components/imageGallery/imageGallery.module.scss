@@ -6,7 +6,7 @@
     transition: all 0.4s ease;
     width: 100% !important;
     max-height: 70vh;
-    margin: 2.5rem auto 0 auto !important;
+    margin: 2.5rem auto 2 auto !important;
 
     .container {
         transition: inherit;
@@ -47,9 +47,12 @@
     flex-direction: row;
     justify-content: space-between;
 
-    &>svg {
+    &>svg,
+    &>.count {
         opacity: 0;
-        transition: all ease 0.5s;
+        backdrop-filter: blur(0ch);
+
+        transition: opacity ease 0.5s, backdrop-filter ease 1s;
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.5);
         width: 25%;
@@ -58,15 +61,34 @@
         gap: 1rem;
     }
 
-    &.show>svg {
+    &>.count {
+        display: grid;
+
+        height: 4ex;
+        cursor: default;
+        margin: auto 0;
+        padding: 1ex 2ch;
+
+        width: unset;
+
+        p {
+            margin: auto;
+        }
+    }
+
+    &.show>svg,
+    &.show>.count {
         opacity: 1;
+        backdrop-filter: blur(0.5ch);
     }
 
     &.touch {
         position: relative;
 
-        &>svg {
+        &>svg,
+        &>.count {
             opacity: 1;
+            height: 6ex;
         }
     }
 }
