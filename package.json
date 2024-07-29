@@ -11,8 +11,12 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
     "@mui/icons-material": "^5.16.1",
     "@mui/material": "^5.16.1",
+    "@next/mdx": "^14.2.5",
+    "@types/mdx": "^2.0.13",
     "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
@@ -23,6 +27,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-draggable": "^4.4.6",
+    "remark-gfm": "^4.0.0",
     "scss": "^0.2.4",
     "sharp": "^0.33.4",
     "typescript": "5.5.3"
