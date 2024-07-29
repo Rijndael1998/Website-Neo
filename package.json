@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "nix-dev": "nix-shell shell.nix",
+    "nix-install": "",
     "build": "next build",
     "lint": "next lint",
     "start": "next start"
@@ -27,6 +29,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-draggable": "^4.4.6",
+    "rehype-mermaid": "^2.1.0",
     "remark-gfm": "^4.0.0",
     "scss": "^0.2.4",
     "sharp": "^0.33.4",
