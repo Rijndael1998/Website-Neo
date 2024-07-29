@@ -9,10 +9,8 @@ export default async function Infastructure() {
     const pageContent = await getFile("/src/content/blog/infra.md");
 
     return <Lazy>
-        <p>
-            <Markdown remarkPlugins={[remarkGfm]}>
-                {pageContent}
-            </Markdown>
-        </p>
+        <Markdown remarkPlugins={[remarkGfm]}>
+            {pageContent}
+        </Markdown>
     </Lazy>
 }
