@@ -80,3 +80,66 @@ The reason for not using a bare metal machine running everything that I want is 
 
 I could also control the resource use by every program. For example, my [Folding @ Home](https://foldingathome.org/) virtual machine has a high number of cores/threads but a low CPU priority, meaning that it will use only the remaining CPU resources from all the other higher priority virtual machines. The only downside to this approach is that you're also running the operating system and you have to allocate more ram to the virtual machine than necessary.  
 
+# Topology
+![drawio](:/54bf5d2a29bd4fe69922806cb29492c8)
+
+```mermaid
+flowchart LR
+  ISP[WAN]
+  ES[Edge Server]
+  SDS[Server Device Switch]
+  NDS[Normal Device Switch]
+  UDS[Untrusted Device Switch]
+  TPL[TP_Link\n Wireless Access Point]
+  VM1[[Virtual Machines & Servers...]]
+  NWD[[Normal Wired Devices...]]
+  ND[[Normal Wireless Devices...]]
+  UD[[Untrused Wireless Devices...]]
+  
+  ISP --> ES
+  ES -->|192.168.10.0/24| UDS
+  ES <-->|192.168.1.0/24| NDS
+  ES <-->|10.0.0.0/24| SDS
+  SDS <-->|10.0.0.0/24| VM1
+  
+  NDS <-->|192.168.1.0/24| TPL
+  NDS <-->|192.168.1.0/24| NWD
+  
+  UDS <-->|192.168.10.0/24| TPL
+  
+  TPL <-.->|SSID: Untrusted\n192.168.10.0/24| UD
+  TPL <-.->|SSID: Normal\n192.168.1.0/24| ND
+```
+
+Edge server is an old computer.
+TP_Link is a wireless router.
+
+I set up my router to act like a wireless switch. It will funnel the traffic from each respected SSID to their correct network and disallow cross talking. I used two separate cables to split the normal and untrusted traffic. I couldn't figure out how to set up VLANs so this was the way that I decided to do it.
+
+## Access Chart
+```mermaid
+flowchart LR
+	A[10.0.0.1/24 - Server Network] 
+	B[WAN / Internet]
+	C[192.168.1.0/24 - Normal Network]
+	D[192.168.10.0/24 - Untrusted Network]
+	A --> B
+	C --> B
+	A --> C
+	A --> D
+	C --> D
+	
+```
+
+- Server network can access any other network.
+- Normal network can only access the WAN and Untrusted network.
+- Untrusted devices have no access to any network including the internet.
+
+### Server network
+The server network consists of bridged virtual machines and physical devices. It's protected so that only devices inside the network can connect to it. It has full reign over the network.
+
+### Normal network
+This network is the default network that my devices would connect to. This means devices that need access to the internet, and my family's wireless devices.
+
+### Untrusted network
+The untrusted network has devices that I would consider evil. They don't have any access to the internet and all of their activities can be accessed from the outside from the other networks. I primarily use this network to run my camera system. I cannot risk the cameras sending any data to the internet because of privacy.
