@@ -1,5 +1,5 @@
 import Lazy from "@/components/lazy/_lazy";
-import LayoutFlow from "./topology.graph.tsx";
+import MermaidFlow from "@/components/flow/MermaidFlow";
 
 <Lazy>
 If you're interested in how my network is structured, you can read more about it [here](:/4aec8153102e410b8a912960e2289501).
@@ -86,7 +86,33 @@ I could also control the resource use by every program. For example, my [Folding
 
 # Topology
 
-<LayoutFlow />
+<MermaidFlow mermaidFlow={`
+flowchart LR
+  ISP[WAN]
+  ES[Edge Server]
+  SDS[Server Device Switch]
+  NDS[Normal Device Switch]
+  UDS[Untrusted Device Switch]
+  TPL[TP_Link\n Wireless Access Point]
+  VM1[[Virtual Machines & Servers...]]
+  NWD[[Normal Wired Devices...]]
+  ND[[Normal Wireless Devices...]]
+  UD[[Untrused Wireless Devices...]]
+  
+  ISP --> ES
+  ES -->|192.168.10.0/24| UDS
+  ES <-->|192.168.1.0/24| NDS
+  ES <-->|10.0.0.0/24| SDS
+  SDS <-->|10.0.0.0/24| VM1
+  
+  NDS <-->|192.168.1.0/24| TPL
+  NDS <-->|192.168.1.0/24| NWD
+  
+  UDS <-->|192.168.10.0/24| TPL
+  
+  TPL <-.->|SSID: Untrusted\n192.168.10.0/24| UD
+  TPL <-.->|SSID: Normal\n192.168.1.0/24| ND
+`} />
 
 Edge server is an old computer.
 TP_Link is a wireless router.

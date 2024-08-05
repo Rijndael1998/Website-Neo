@@ -1,5 +1,3 @@
-"use client";
-import { ReactFlowProps } from "@xyflow/react";
 import dagre from '@dagrejs/dagre';
 import Flow from "./Flow";
 
@@ -33,9 +31,11 @@ function getLayoutedElements(nodes: node[], edges: edge[], direction: string = '
     const isHorizontal = direction === 'LR';
     dagreGraph.setGraph({ rankdir: direction });
 
-    nodes.forEach((node) =>
-        dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight })
-    );
+    nodes.forEach((node) => {
+        // checks for new lines and adds height as needed
+        const lines = ((node?.desc ?? "").match(/\n/g) || []).length + 1;
+        return dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight * lines});
+    });
 
     edges.forEach((edge) => {
         dagreGraph.setEdge(edge.id1, edge.id2);
