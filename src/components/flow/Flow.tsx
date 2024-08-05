@@ -7,6 +7,8 @@ import {
     ReactFlowProps,
 } from "@xyflow/react";
 
+import '@xyflow/react/dist/style.css';
+
 export type FlowProps = {
     flowProps?: Omit<ReactFlowProps, "fitView" | "colorMode">,
     style?: React.CSSProperties,
