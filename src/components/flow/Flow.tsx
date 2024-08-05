@@ -23,8 +23,9 @@ const show = (bool: boolean, part: React.ReactNode) => {
 }
 
 export default function Flow({ flowProps, style, bg, mm, co }: FlowProps) {
-    const newStyle = style ?? { width: "100%", height: "50ex", resize: "vertical" };
-    const showBG = bg ?? true;
+    const defaultStyle: React.CSSProperties = { width: "100%", height: "50ex", resize: "vertical" };
+    const newStyle: React.CSSProperties = {...defaultStyle, ...style };
+    const showBG = bg ?? false;
     const showMM = mm ?? false;
     const showCO = co ?? true;
 

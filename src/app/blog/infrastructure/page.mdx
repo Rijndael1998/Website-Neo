@@ -86,7 +86,8 @@ I could also control the resource use by every program. For example, my [Folding
 
 # Topology
 
-<MermaidFlow mermaidFlow={`
+<MermaidFlow style={{height: "60ex"}}
+mermaidFlow={`
 flowchart LR
   ISP[WAN]
   ES[Edge Server]
@@ -120,19 +121,18 @@ TP_Link is a wireless router.
 I set up my router to act like a wireless switch. It will funnel the traffic from each respected SSID to their correct network and disallow cross talking. I used two separate cables to split the normal and untrusted traffic. I couldn't figure out how to set up VLANs so this was the way that I decided to do it.
 
 ## Access Chart
-```mermaid
+<MermaidFlow mermaidFlow={`mermaid
 flowchart LR
-	A[10.0.0.1/24 - Server Network] 
-	B[WAN / Internet]
-	C[192.168.1.0/24 - Normal Network]
-	D[192.168.10.0/24 - Untrusted Network]
-	A --> B
-	C --> B
-	A --> C
-	A --> D
-	C --> D
-	
-```
+  A[10.0.0.1/24 - Server Network] 
+  B[WAN / Internet]
+  C[192.168.1.0/24 - Normal Network]
+  D[192.168.10.0/24 - Untrusted Network]
+  A --> B
+  C --> B
+  A --> C
+  A --> D
+  C --> D
+`} />
 
 - Server network can access any other network.
 - Normal network can only access the WAN and Untrusted network.

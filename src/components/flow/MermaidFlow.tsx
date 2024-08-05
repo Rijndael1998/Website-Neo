@@ -1,8 +1,9 @@
 import dagre from '@dagrejs/dagre';
-import Flow from "./Flow";
+import Flow, { FlowProps } from "./Flow";
 
 export type MermaidFlowProps = {
-    mermaidFlow: string
+    mermaidFlow: string,
+    style: FlowProps["style"],
 }
 
 type node = {
@@ -22,7 +23,7 @@ type edge = {
 // direction shouldn't be a string
 function getLayoutedElements(nodes: node[], edges: edge[], direction: string = 'TB') {
     const edgeType = 'smoothstep';
-    const nodeWidth = 172;
+    const nodeWidth = 200;
     const nodeHeight = 36;
 
     const dagreGraph = new dagre.graphlib.Graph();
@@ -78,7 +79,7 @@ const nodeRegex = RegExp(/([^\ \[]+)\[+([^\]]+)\]+/g);
 const edgeRegex =
     RegExp(/(?<id1>[0-9A-z]+)\ ?(?<la>\<?)\-(?<dot>\.?)\-(?<ra>\>?)\ ?((?<id2>[0-9A-z]+)|(\|(?<desc>[^\|]+)\|\ ?(?<id3>[0-9A-z]+)))/g);
 
-export default function MermaidFlow({ mermaidFlow }: MermaidFlowProps) {
+export default function MermaidFlow({ mermaidFlow, style }: MermaidFlowProps) {
     const rawNodes: node[] = [];
     const rawEdges = [];
 
@@ -118,5 +119,5 @@ export default function MermaidFlow({ mermaidFlow }: MermaidFlowProps) {
     // generate the react flow from the edges
     const layout = getLayoutedElements(rawNodes, rawEdges);
 
-    return <Flow flowProps={{ nodes: layout.nodes, edges: layout.edges }} />
+    return <Flow flowProps={{ nodes: layout.nodes, edges: layout.edges }} style={style} />
 }
