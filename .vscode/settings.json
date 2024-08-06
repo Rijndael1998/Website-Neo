@@ -1,17 +1,6 @@
 {
-    "spellright.language": [
-        "en-US-10-1."
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "typescriptreact",
-        "typescript",
-        "html"
-    ],
     "cSpell.words": [
         "gameplay",
         "microtransactions"
-    ]
+    ],
 }
