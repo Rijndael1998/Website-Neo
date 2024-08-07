@@ -8,8 +8,6 @@ import Footer from '@/components/app/footer/_footer'
 import { defaultMetadata, url } from '@/content/Metadata'
 import { headers } from 'next/headers'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export function generateMetadata(): Metadata {
   const headersList = headers();
   const metaBaseValue = headersList.get("x-forwarded-host") ?? headersList.get("host");
@@ -30,7 +28,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href="/favico.png" />
       </head>
-      <body className={inter.className}>
+      <body>
         <header>
           <Header>
             <Title text="Lukasz Baldyga" />
