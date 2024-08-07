@@ -22,12 +22,12 @@ export default function GroupItem({ portfolio }: GroupProps) {
             <h2>
                 {portfolio.title}
             </h2>
-            <p>
+            {/* <p>
                 {portfolio.desc}
-            </p>
+            </p> */}
         </div>
-        {
+        {/* {
             !empty && <GroupButton url={portfolio.url ?? ""} text={text} />
-        }
+        } */}
     </div>
 }

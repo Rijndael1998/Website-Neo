@@ -28,7 +28,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href="/favico.png" />
       </head>
-      <body>
+      <body className={style.body}>
         <header>
           <Header>
             <Title text="Lukasz Baldyga" />
