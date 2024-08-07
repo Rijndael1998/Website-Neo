@@ -9,12 +9,13 @@ export type LazyImageProps = {
     className?: string
     cap?: JSX.Element | string | boolean,
     capCol?: string,
+    quality?: number,
 }
 
-export default function LazyImage({ aspectRatio, src, alt, className, cap, capCol }: LazyImageProps) {
+export default function LazyImage({ aspectRatio, src, alt, className, cap, capCol, quality }: LazyImageProps) {
     return <div className={styles.lazyImageWrapper}>
         <div className={classNames(styles.lazyImage, className)} style={{ aspectRatio }}>
-            <Image style={{ width: "100%", height: "100%" }} alt={alt ?? ""} quality={100} fill src={src} />
+            <Image style={{ width: "100%", height: "100%" }} alt={alt ?? ""} quality={quality ?? 100} fill src={src} />
         </div>
         {
             cap ?
