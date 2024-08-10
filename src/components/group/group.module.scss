@@ -2,6 +2,8 @@
 @import "./sizes.scss";
 
 .portfolio {
+    position: relative;
+
     background-color: $secondaryBg;
     display: flex;
     flex-direction: column;
@@ -10,7 +12,14 @@
     border-radius: 1ch;
     overflow: hidden;
 
-    transition: filter 0.15s ease;
+    transition: all 0.15s ease;
+
+    border: 1px lighten($secondaryBg, 5) solid;
+
+    &:hover {
+        border: 2px lighten($secondaryBg, 20) solid;
+    }
+
     filter: saturate(1);
 
     &.empty:hover {
@@ -24,6 +33,25 @@
         * {
             margin: 0 0 0.5em 0;
         }
+    }
+
+    div.portfolioMainContentHover {
+        transition: all 0.15s ease;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        backdrop-filter: blur(1ch);
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    &:hover div.portfolioMainContentHover {
+        opacity: 1;
+        backdrop-filter: blur(1ch);
+        background-color: rgba(0, 0, 0, 0.5);
     }
 }
 
