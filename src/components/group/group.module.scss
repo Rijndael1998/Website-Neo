@@ -14,10 +14,11 @@
 
     transition: all 0.15s ease;
 
-    border: 1px lighten($secondaryBg, 5) solid;
+    $b_width: 0.2ex;
+    border: $b_width lighten($secondaryBg, 5) solid;
 
     &:hover {
-        border: 2px lighten($secondaryBg, 20) solid;
+        border: $b_width lighten($secondaryBg, 20) solid;
     }
 
     filter: saturate(1);
@@ -27,11 +28,18 @@
     }
 
     div.portfolioMainContent {
-        height: auto;
+        display: grid;
+        height: 100%;
         padding: 0.5em;
+        text-align: center;
+
+        h2 {
+            display: block;
+        }
 
         * {
-            margin: 0 0 0.5em 0;
+            margin: auto;
+            padding: 0;
         }
     }
 
@@ -46,6 +54,15 @@
 
         backdrop-filter: blur(1ch);
         background-color: rgba(0, 0, 0, 0);
+
+        display: grid;
+        align-items: center;
+        justify-items: center;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &:hover div.portfolioMainContentHover {
@@ -67,7 +84,7 @@
     // center if smaller than main
     margin: auto;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 
     gap: $gapping;
 

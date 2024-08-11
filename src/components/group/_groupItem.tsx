@@ -7,6 +7,7 @@ import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
 import { SvgIcon } from "@mui/material";
+import Link from "next/link";
 
 export type GroupProps = {
     portfolio: GroupPreviewContent,
@@ -43,7 +44,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
             {/* {
                 !empty && <GroupButton url={portfolio.url ?? ""} text={text} />
             } */}
-            <Icon />
+            <Link href={portfolio.url ?? ""}><Icon /></Link>
         </div>
     </div>
 }
