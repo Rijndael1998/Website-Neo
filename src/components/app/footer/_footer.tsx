@@ -3,12 +3,12 @@ import Link from "next/link";
 import Copy from "../copy/_copy";
 import Quotes from "./quotes";
 import ToolTip from "@/components/toolTip/_toolTip";
-import { SignalIcon } from "@/components/customIcons/Signal";
+import { SignalIcon } from "@/components/muiWrappers/customIcons/Signal";
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
-import { DiscordIcon } from "@/components/customIcons/Discord";
+import { DiscordIcon } from "@/components/muiWrappers/customIcons/Discord";
 
 export default function Footer() {
 
