@@ -1,4 +1,4 @@
-import { ScrollDialog, ScrollDialogProps } from "../popup/_PopUp"
+import { ScrollDialog, ScrollDialogProps } from "../muiWrappers/popup/_PopUp"
 
 
 export type GroupItemDialogProps = {

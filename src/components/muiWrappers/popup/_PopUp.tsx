@@ -7,9 +7,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { GroupPreviewContent } from '../group/_groupTypes';
+import { GroupPreviewContent } from '../../group/_groupTypes';
 import DarkModeFix from '../darkModeFix/_darkModeFix';
-import { ifTrue } from '../reactUtils';
+import { ifTrue } from '../../reactUtils';
 import Link from 'next/link';
 
 export type ScrollDialogProps = {
