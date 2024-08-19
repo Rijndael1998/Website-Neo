@@ -22,6 +22,7 @@ import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import LanIcon from '@mui/icons-material/Lan';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import ComputerIcon from '@mui/icons-material/Computer';
 
@@ -29,31 +30,31 @@ import style from "./timeline.module.scss";
 
 const timelineItems: Array<[string, any, React.ReactNode?]> = [
     [
-        "2000", "I was born in Poland!", <CakeIcon />
+        "2000", "Born in Poland.", <CakeIcon />
     ],
     [
         "2007", "I moved to the UK.", <FlightLandIcon />
     ],
     [
-        "2011", "Got my first computer", <ComputerIcon />
+        "2011", "I got my first computer.", <ComputerIcon />
     ],
     [
-        "2013", "Wrote my first computer program", <TerminalIcon />
+        "2013", "I wrote my first computer program.", <TerminalIcon />
     ],
     [
-        "2015", "Started running a volunteer relay for human rights.", <LanIcon />
+        "2015", "I started running a volunteer relay for human rights.", <LanIcon />
     ],
     [
         "2016", "I started going to Thomas Rotherham College.", <SchoolOutlinedIcon />
     ],
     [
-        "2016", "I started hosting for HAL Systems LTD", <WorkOutlineIcon />
+        "2016", "I started hosting for HAL Systems LTD.", <WorkOutlineIcon />
     ],
     [
-        "2017", "Math contest bronze award", <EmojiEventsIcon />
+        "2017", "I won the math contest bronze award.", <EmojiEventsOutlinedIcon />
     ],
     [
-        "2018", "Bacon award", <EmojiEventsIcon />
+        "2018", "I was awarded the Bacon award for complex algorithms.", <EmojiEventsOutlinedIcon />
     ],
     [
         "2018", "I went to Leeds Beckett University and became a student representative for the student body.", <SchoolIcon />
@@ -62,18 +63,24 @@ const timelineItems: Array<[string, any, React.ReactNode?]> = [
         "2019", "I wrote my own 2d physics engine. Used it to make Chalk.", <SportsEsportsIcon />
     ],
     [
-        "2020", "Participated in supporting Folding @ Home", <DeveloperBoardIcon />
+        "2020", "I participated in supporting Folding @ Home.", <DeveloperBoardIcon />
     ],
     [
-        "2021", "Graduated with a First in Cyber Security.", <GradeIcon />
+        "2021", "I graduated with a First in Cyber Security.", <GradeIcon />
     ],
     [
-        "2021", "Started working for Shreem (my first 'real' job!)", <WorkIcon />
+        "2021", "I started working for Shreem (my first 'real' job!).", <WorkIcon />
     ],
     [
-        "2022", "Started working for IPF", <WorkIcon />
+        "2022", "I started working for IPF.", <WorkIcon />
     ],
-]
+    [
+        "2023", "Developing on AWS certification.", <EmojiEventsIcon />
+    ],
+    [
+        "2024", "Passed AWS Practitioner exam.", <EmojiEventsIcon /> // slight white lie: I didn't even start learning yet but given how long this is taking to merge into main, i probably will by the time I'm finished
+    ],
+];
 
 
 export default function TimelinePage() {
