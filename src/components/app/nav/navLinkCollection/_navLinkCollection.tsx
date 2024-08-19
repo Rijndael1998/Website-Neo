@@ -28,8 +28,8 @@ export default function NavLinkCollection({ onSelection }: NavLinkCollectionProp
         <NavLink onClick={onSelection} href="/"><Typing text="Home" interval={interval} iterCount={iterCount} /></NavLink>
         {/* <NavLink onClick={onSelection} href="/contact"><Typing text="Contact" interval={interval} iterCount={iterCount} /></NavLink> */ }
         {/* <NavLink onClick={onSelection} href="/cv"><Typing text="CV" interval={interval} iterCount={iterCount} /></NavLink> */}
-        <NavLink onClick={onSelection} href="/blog"><Typing text="Blog" interval={interval} iterCount={iterCount} /></NavLink>
         <NavLink onClick={onSelection} href="/portfolio"><Typing text="Portfolio" interval={interval} iterCount={iterCount} /></NavLink>
+        <NavLink onClick={onSelection} href="/blog"><Typing text="Blog" interval={interval} iterCount={iterCount} /></NavLink>
         <NavLink onClick={onSelection} href="/timeline"><Typing text="Timeline" interval={interval} iterCount={iterCount} /></NavLink>
     </>
 }

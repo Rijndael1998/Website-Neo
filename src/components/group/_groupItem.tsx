@@ -8,6 +8,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
 import { SvgIcon } from "@mui/material";
 import Link from "next/link";
+import GroupItemDialog from "./_groupItemDialog";
 
 export type GroupProps = {
     portfolio: GroupPreviewContent,
@@ -26,6 +27,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
     const empty = portfolio.url == null || portfolio.url == "";
     const text: LinkText = empty ? "" : portfolio.isDemo ? "See Demo" : (portfolio.url!.includes("https") ? "External Link" : "Details");
     const Icon = IconMatrix.get(text) ?? IconMatrix.get("")!;
+    const url = portfolio.url ?? "";
 
     return <div className={classNames(styles.portfolio, empty && styles.empty)}>
         {
@@ -38,13 +40,10 @@ export default function GroupItem({ portfolio }: GroupProps) {
         </div>
 
         <div className={styles.portfolioMainContentHover}>
-            {/* <p>
-                {portfolio.desc}
-            </p> */}
-            {/* {
-                !empty && <GroupButton url={portfolio.url ?? ""} text={text} />
-            } */}
-            <Link href={portfolio.url ?? ""}><Icon /></Link>
+            <Link href={url}>
+                <Icon />
+            </Link>
+            <GroupItemDialog content={portfolio.desc} title={portfolio.title} link={url} linkText={text}/>
         </div>
     </div>
 }
