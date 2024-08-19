@@ -75,6 +75,7 @@ export default function AStarComponent() {
         if (AS)
             applyResult(AS.setAuto(auto));
     }, [AS, auto]);
+
     return <div>
         <div className={styles.options}>
             <div className={styles.newGridOptionsWrapper}>
@@ -100,7 +101,7 @@ export default function AStarComponent() {
             </div>
 
             <div className={classNames(styles.stepSelection, styles.stageButtons)}>
-                <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step: {auto ? "Enabled" : "Disabled"}</p></GenericButton>
+                <GenericButton className={styles.stageButton} onClick={() => {setAuto(!auto); auto && AS && applyResult(AS.reset())}} selected={auto}><p>Auto step: {auto ? "Enabled" : "Disabled"}</p></GenericButton>
                 <GenericButton className={styles.stageButton} onClick={() => { refreshState() }} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
                 <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Steps</p></GenericButton>
             </div>
@@ -109,7 +110,7 @@ export default function AStarComponent() {
             {canStepReason ?? "All ok"}
         </p>
 
-        <div className={styles.gridWarpper}>
+        <div className={styles.gridWrapper}>
             <Grid className={styles.grid} state={state} callback={callback} />
         </div>
 
