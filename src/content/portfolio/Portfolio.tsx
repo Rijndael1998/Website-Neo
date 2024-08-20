@@ -1,4 +1,4 @@
-import FoldingCount from "@/components/foldingAtHome/FoldingCount";
+import FoldingCount from "@/components/external/foldingAtHome/FoldingCount";
 import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
 
 export const preURL = "portfolio/";

@@ -1,6 +1,6 @@
 "use server";
 
-import ToolTip from "../toolTip/_toolTip";
+import ToolTip from "@/components/toolTip/_toolTip";
 
 export default async function FoldingCount() {
     const formatter = new Intl.NumberFormat();
