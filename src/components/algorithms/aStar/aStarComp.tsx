@@ -1,9 +1,7 @@
 "use client";
 
 import styles from "./styles/aStar.module.scss";
-import button from "./../../input/genericButton/genericButton.module.scss";
 import colors from "./styles/aStarStyleMap.module.scss";
-import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import classNames from "classnames";
 import Grid from "../grid/_grid";
@@ -15,11 +13,20 @@ import { AStarResult } from "@/components/algorithms/aStar/utils/aStarResult";
 import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMap";
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
-import ColorSquare from "@/components/colorSquare/_colorSquare";
 import GridItem from "../grid/gridItem/_gridItem";
+import { Button, ButtonOwnProps, Card, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup, Stack, Switch } from "@mui/material";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import { default as MGrid } from '@mui/material/Unstable_Grid2';
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
+}
+
+function buttonVariant(v: boolean): ButtonOwnProps["variant"] {
+    return v ? "contained" : "outlined";
 }
 
 export default function AStarComponent() {
@@ -57,6 +64,7 @@ export default function AStarComponent() {
         const as = new AStar(generateGridState(initialSize, initialSize));
         setAS(as);
         setState(as.state);
+        setAuto(true);
     }, []);
 
     useEffect(() => {
@@ -76,36 +84,46 @@ export default function AStarComponent() {
             applyResult(AS.setAuto(auto));
     }, [AS, auto]);
 
+    const mGridSpacing = 4;
+    const mGridXS = 12 / 2;
+
     return <div>
-        <div className={styles.options}>
-            <div className={styles.newGridOptionsWrapper}>
-                <div className={styles.widthHeightOptions}>
-                    <div>Width</div>
-                    <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} /></div>
-                    <div>Height</div>
-                    <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} /></div>
-                </div>
-                <GenericButton className={classNames(styles.newGridButton, button.medButton)} onClick={() => {
-                    const newAS = new AStar(generateGridState(InputWidth, InputHeight));
-                    setAS(newAS);
-                    setStage(AStarStages.Start);
-                    setState(newAS.state);
-                }}><p>New Grid</p></GenericButton>
-            </div>
+        <MGrid container spacing={mGridSpacing}>
+            <MGrid xs={mGridXS - 2}>
+                <Stack spacing={1}>
+                    <NumUpDown label="Width" start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} />
+                    <NumUpDown label="Height" start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} />
+                    <Button variant="contained"
+                        onClick={() => {
+                            const newAS = new AStar(generateGridState(InputWidth, InputHeight));
+                            setAS(newAS);
+                            setStage(AStarStages.Start);
+                            setState(newAS.state);
+                        }}>
+                        New Grid
+                    </Button>
+                </Stack>
+            </MGrid>
+            <MGrid xs={mGridXS + 2}>
+                <Stack spacing={1}>
+                    <FormControl>
+                        <FormLabel id="demo-radio-buttons-group-label">Tile Selection</FormLabel>
+                        <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            name="radio-buttons-group"
+                            defaultValue={AStarStages.Start}
+                            onChange={(_, v) => setStage(Number.parseInt(v))}
+                            value={stage}
+                        >
+                            <FormControlLabel value={AStarStages.Start} control={<Radio />} label="Start" />
+                            <FormControlLabel value={AStarStages.End} control={<Radio />} label="End" />
+                            <FormControlLabel value={AStarStages.Wall} control={<Radio />} label="Wall" />
+                        </RadioGroup>
+                    </FormControl>
+                </Stack>
+            </MGrid>
+        </MGrid>
 
-            <div className={classNames(styles.tileSelection, styles.stageButtons)}>
-                <div>Tile Selection:</div>
-                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
-            </div>
-
-            <div className={classNames(styles.stepSelection, styles.stageButtons)}>
-                <GenericButton className={styles.stageButton} onClick={() => {setAuto(!auto); auto && AS && applyResult(AS.reset())}} selected={auto}><p>Auto step: {auto ? "Enabled" : "Disabled"}</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => { refreshState() }} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Steps</p></GenericButton>
-            </div>
-        </div>
         <p>
             {canStepReason ?? "All ok"}
         </p>
@@ -113,6 +131,31 @@ export default function AStarComponent() {
         <div className={styles.gridWrapper}>
             <Grid className={styles.grid} state={state} callback={callback} />
         </div>
+
+        <Stack direction="row" spacing={1}>
+            <FormGroup>
+                <FormControlLabel
+                    label="Auto step"
+                    control={
+                        <Switch
+                            checked={auto}
+                            onClick={() => { setAuto(!auto); auto && AS && applyResult(AS.reset()) }}
+                        />
+                    } />
+            </FormGroup>
+            <Button
+                variant={buttonVariant(canStep)}
+                disabled={auto || canStepReason !== undefined}
+                onClick={() => { refreshState() }}>
+                Step
+            </Button>
+            <Button
+                color="warning"
+                disabled={auto}
+                onClick={() => AS && applyResult(AS.reset())}>
+                Reset Steps
+            </Button>
+        </Stack>
 
         <div className={styles.key}>
             <h3>Key:</h3>

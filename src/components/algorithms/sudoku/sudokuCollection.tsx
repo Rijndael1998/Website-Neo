@@ -7,7 +7,7 @@ import GenericButton from "@/components/input/genericButton/_genericButton";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
 import styles from "./sudoku.module.scss";
-import buttonStyles from "../../input/genericButton/genericButton.module.scss";
+// import buttonStyles from "../../input/genericButton/genericButton.module.scss";
 
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
