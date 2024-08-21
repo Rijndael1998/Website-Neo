@@ -15,46 +15,5 @@ export default function A_Star() {
         </p>
 
         <AStarComponent />
-
-        <div>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                >
-                    {`What is A Star??`}
-                </AccordionSummary>
-                <AccordionDetails>
-                    {
-                        AStarContent.map((par, i) => {
-                            return <p key={i}>
-                                {par}
-                            </p>
-                        })
-                    }
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    {`Why I'm fascinated with A Star?`}
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ol>
-                        {
-                            AStarContent2.map((par, i) => {
-                                return <li style={{ margin: "1em" }} key={i}>
-                                    {par}
-                                </li>
-                            })
-                        }
-                    </ol>
-                </AccordionDetails>
-            </Accordion>
-        </div>
     </Lazy>
 }

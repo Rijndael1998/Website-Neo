@@ -1,11 +1,6 @@
 @import "./../colors";
 
 .lazy {
-    display: block;
-    margin: auto;
-    max-width: 80ch;
-    width: 100%;
-
     &>* {
         margin: 0 2.5rem 2rem 2.5rem;
         max-width: calc(100% - 5rem);
