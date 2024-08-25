@@ -1,4 +1,5 @@
 import { GridState } from "../../grid/gridState";
+import { CanContinueReasonType } from "../_aStar";
 import { AStarStages } from "./aStarStages.enum";
 import { AStarStates } from "./aStarStates.enum";
 
@@ -8,6 +9,6 @@ export class AStarResult {
         public readonly gridState: GridState<AStarStates>,
         public readonly gridStage: AStarStages | undefined,
         public readonly canContinue: boolean,
-        public readonly canContinueReason: string | undefined,
+        public readonly canContinueReason: CanContinueReasonType,
     ) { }
 }

@@ -25,12 +25,10 @@
 }
 
 .Removed {
-    $fore: $bad;
-    $pr: $idk;
-    $size: calc(100% / 4);
-    background: repeating-linear-gradient(135deg, $fore, $fore $size, $pr $size, $pr $size * 2);
-    &::before {
-        opacity: 1;
+    background: transparent;
+
+    div {
+        opacity: 1 !important;
     }
 }
 
@@ -39,4 +37,4 @@
     .d#{$i} {
         animation-delay: #{$i}s;
     }
-} 
+}

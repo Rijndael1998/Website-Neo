@@ -5,6 +5,15 @@ import { AStarResult } from "./utils/aStarResult";
 import { AStarStages } from "./utils/aStarStages.enum";
 import { AStarStates } from "./utils/aStarStates.enum";
 
+export enum CanContinueReason {
+    NO_START = "Start is not defined",
+    NO_END = "End is not defined",
+    END_START_SAME = "The start can't be the same as the end",
+    IMPOSSIBLE = "Impossible pathing.",
+}
+
+export type CanContinueReasonType = string | CanContinueReason | undefined;
+
 export default class AStar {
     state: GridState<AStarStates>;
     originalState: GridState<AStarStates>;
@@ -68,7 +77,7 @@ export default class AStar {
         return this.postInteraction(this.originalState.new());
     }
 
-    canContinueReason() {
+    canContinueReason(): CanContinueReasonType {
         if (this.start === undefined)
             return "Start is not defined";
 
@@ -79,10 +88,10 @@ export default class AStar {
             return "The start can't be the same as the end";
 
         if (this.foundEnd)
-            return `Path was found. Distance ${this.end!.gCost != Infinity ? Math.round(this.end!.gCost * 10) / 10 : "Unknown-"}u`;
+            return `Path was found. Distance: ${this.end!.gCost != Infinity ? Math.round(this.end!.gCost * 10) / 10 : "Unknown-"}u`;
 
         if (this.open.length == 0)
-            return "Impossible pathing."
+            return "Impossible pathing.";
     }
 
     canContinue() {

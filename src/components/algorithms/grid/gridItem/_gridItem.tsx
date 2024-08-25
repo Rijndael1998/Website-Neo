@@ -14,6 +14,8 @@ export default function GridItem({ item, callback }: GridItemProps) {
     )
 
     return <>
-        <div className={className} onClick={callback}/>
+        <div className={className} onClick={callback}>
+            <div/>
+        </div>
     </>
 }

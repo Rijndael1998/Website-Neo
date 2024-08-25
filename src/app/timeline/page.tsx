@@ -50,12 +50,12 @@ const timelineItems: Array<[string, any, React.ReactNode?]> = [
     [
         "2016", "I started hosting for HAL Systems LTD.", <WorkOutlineIcon />
     ],
-    [
-        "2017", "I won the math contest bronze award.", <EmojiEventsOutlinedIcon />
-    ],
-    [
-        "2018", "I was awarded the Bacon award for complex algorithms.", <EmojiEventsOutlinedIcon />
-    ],
+    // [
+    //     "2017", "I won the math contest bronze award.", <EmojiEventsOutlinedIcon />
+    // ],
+    // [
+    //     "2018", "I was awarded the Bacon award for complex algorithms.", <EmojiEventsOutlinedIcon />
+    // ],
     [
         "2018", "I went to Leeds Beckett University and became a student representative for the student body.", <SchoolIcon />
     ],
