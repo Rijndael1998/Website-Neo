@@ -23,7 +23,7 @@ export default async function Quotes() {
     const author = quote.author.engName ?? quote.author.name;
     const text = quote.eng ?? quote.og;
 
-    return <h6 style={{ flexDirection: "column" }}>
+    return <h6 style={{ flexDirection: "column", textAlign: "center" }}>
         <span>
             &quot;
             <ChooseQuote og={quote.og}>
