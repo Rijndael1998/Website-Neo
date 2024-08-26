@@ -6,7 +6,7 @@ import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import Grid from "../grid/_grid";
 import { CSSProperties, useEffect, useState } from "react";
 import { GridState } from "../grid/gridState"
-import AStar from "@/components/algorithms/aStar/_aStar";
+import AStar, { CanContinueReason } from "@/components/algorithms/aStar/_aStar";
 
 import { AStarResult } from "@/components/algorithms/aStar/utils/aStarResult";
 import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMap";
@@ -18,6 +18,8 @@ import * as React from 'react';
 import { default as MGrid } from '@mui/material/Unstable_Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AStarContent, AStarContent2 } from "@/content/portfolio/aStar/AStar";
+import { ifTrue } from "@/components/reactUtils";
+import ToolTip from "@/components/toolTip/_toolTip";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
@@ -112,6 +114,10 @@ export default function AStarComponent() {
         // return extraStyle[y][x];
     }
 
+    const reason = (canStepReason && canStepReason[0]) ?? "All ok! Ready to step."
+    const preciseDistance = (canStepReason && canStepReason.length > 1) ? canStepReason[1] : undefined;
+    const distance = preciseDistance !== undefined ? Math.round(preciseDistance * 10) / 10 : undefined;
+
     return <div>
         {/* This could do with better and more specific tweaking */}
         <FormControl sx={smoothOperator}>
@@ -131,8 +137,21 @@ export default function AStarComponent() {
             </RadioGroup>
         </FormControl>
 
-        <Alert sx={smoothOperator} severity={canStepReason ? (canStepReason.includes("Path was found") ? "success" : "warning") : "info"}>
-            {canStepReason ?? "All ok! Ready to step."}
+        <Alert sx={smoothOperator} severity={canStepReason ? (canStepReason[0] == CanContinueReason.FOUND ? "success" : "warning") : "info"}>
+            {reason}
+            {
+                ifTrue(
+                    distance !== undefined,
+                    <>
+                        {" Distance: "}
+                        <ToolTip tip={`Exactly ${preciseDistance} squares`}>
+                            <span>
+                                {`${distance} squares.`}
+                            </span>
+                        </ToolTip>
+                    </>
+                )
+            }
         </Alert>
 
         <div className={styles.gridWrapper}>

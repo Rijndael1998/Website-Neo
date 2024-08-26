@@ -18,16 +18,17 @@ export default function ToolTip({ children, tip, className, offset }: ToolTipPro
             arrow
             slotProps={offset ? {
                 popper: {
-                  modifiers: [
-                    {
-                      name: 'offset',
-                      options: {
-                        offset: offset,
-                      },
-                    },
-                  ],
+                    modifiers: [
+                        {
+                            name: 'offset',
+                            options: {
+                                offset: offset,
+                            },
+                        },
+                    ],
                 },
-              } : undefined}
+            } : undefined}
+
         >
             {children}
         </Tooltip>

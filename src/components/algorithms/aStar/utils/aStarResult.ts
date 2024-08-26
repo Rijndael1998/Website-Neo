@@ -1,9 +1,10 @@
 import { CSSProperties } from "react";
 import { GridState } from "../../grid/gridState";
-import { CanContinueReasonType } from "../_aStar";
 import { AStarStages } from "./aStarStages.enum";
 import { AStarStates } from "./aStarStates.enum";
+import { CanContinueReason } from "../_aStar";
 
+export type CanContinueReasonType = [reason: CanContinueReason, distance?: number] | undefined;
 
 export class AStarResult {
     constructor(
