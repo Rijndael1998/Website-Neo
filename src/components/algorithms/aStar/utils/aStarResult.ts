@@ -10,5 +10,6 @@ export class AStarResult {
         public readonly gridStage: AStarStages | undefined,
         public readonly canContinue: boolean,
         public readonly canContinueReason: CanContinueReasonType,
+        public readonly gridExtraStyle?: CSSStyleDeclaration,
     ) { }
 }

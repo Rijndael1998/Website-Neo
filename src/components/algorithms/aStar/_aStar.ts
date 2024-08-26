@@ -1,4 +1,3 @@
-import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
 import { AStarNode } from "./aStarNode";
 import { AStarResult } from "./utils/aStarResult";
@@ -96,19 +95,6 @@ export default class AStar {
 
     canContinue() {
         return this.canContinueReason() === undefined;
-    }
-
-    // This isn't getting used at all.
-    getStyledGridState(): string[][] {
-        const state = this.state.getStyledGridState();
-
-        this.all.forEach((nodes, y) => nodes.forEach((node, x) => {
-            if (node.i != undefined) {
-                // get the number here
-                state[x][y] = `${state[x][y]} d${node.i}`;
-            }
-        }))
-        return state;
     }
 
     private canChange(node: AStarStates) {
@@ -210,8 +196,6 @@ export default class AStar {
                     if (!node.removed)
                         nodes.push(node);
                 }
-
-
         return nodes;
     }
 
