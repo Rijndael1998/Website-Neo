@@ -10,10 +10,6 @@ export default function A_Star() {
             A Star Algorithm
         </h1>
 
-        <p>
-            Tap the grid to start!
-        </p>
-
         <AStarComponent />
     </Lazy>
 }
