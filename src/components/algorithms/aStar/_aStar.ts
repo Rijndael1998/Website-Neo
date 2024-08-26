@@ -76,6 +76,20 @@ export default class AStar {
         return this.postInteraction(this.originalState.new());
     }
 
+    generateExtraStyles(): AStarResult["gridExtraStyle"] {
+        const delay = 0.4;
+        return this.all.map(
+            row => row.map(
+                node => {
+                    if (node.i !== undefined)
+                        return { animationDelay: `${delay * node.i}s` };
+
+                    return {};
+                }
+            )
+        );
+    }
+
     canContinueReason(): CanContinueReasonType {
         if (this.start === undefined)
             return "Start is not defined";
@@ -125,7 +139,7 @@ export default class AStar {
         this.inProgress = false;
         this.foundEnd = false;
         this.generate();
-        return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason());
+        return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
     }
 
     private postInteraction(res: GridState<AStarStates>, nextStage?: AStarStages) {
@@ -135,7 +149,7 @@ export default class AStar {
         if (this.auto)
             this.run();
 
-        return new AStarResult(this.state.new(), nextStage, this.canContinue(), this.canContinueReason());
+        return new AStarResult(this.state.new(), nextStage, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
     }
 
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
@@ -202,7 +216,7 @@ export default class AStar {
     step(): AStarResult {
         this.inProgress = true;
         if (!this.canContinue())
-            return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
+            return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
 
         // find the lowest element
         const node =
@@ -247,14 +261,13 @@ export default class AStar {
             while (cell != this.start || !cell) {
                 this.setElementState(cell.x, cell.y, AStarStates.Path);
                 cell.i = i++;
-
                 cell = cell.bestRoute!;
             }
         }
 
         this.steps++;
 
-        return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
+        return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
     }
 
     run(): AStarResult {

@@ -12,6 +12,7 @@
     &,
     * {
         transition: all 0.2s ease;
+        animation-delay: inherit;
     }
 
     &>div {

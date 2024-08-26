@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { GridState } from "../../grid/gridState";
 import { CanContinueReasonType } from "../_aStar";
 import { AStarStages } from "./aStarStages.enum";
@@ -10,6 +11,6 @@ export class AStarResult {
         public readonly gridStage: AStarStages | undefined,
         public readonly canContinue: boolean,
         public readonly canContinueReason: CanContinueReasonType,
-        public readonly gridExtraStyle?: CSSStyleDeclaration,
+        public readonly gridExtraStyle: Array<Array<CSSProperties>>,
     ) { }
 }

@@ -4,7 +4,7 @@ import styles from "./styles/aStar.module.scss";
 import colors from "./styles/aStarStyleMap.module.scss";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import Grid from "../grid/_grid";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { GridState } from "../grid/gridState"
 import AStar from "@/components/algorithms/aStar/_aStar";
 
@@ -38,6 +38,7 @@ export default function AStarComponent() {
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
     const [canStep, setCanStep] = useState<boolean>(false);
     const [canStepReason, setCanStepReason] = useState<AStarResult["canContinueReason"]>();
+    const [extraStyle, setExtraStyle] = useState<AStarResult["gridExtraStyle"]>();
     const [auto, setAuto] = useState<boolean>(false);
 
     const [InputWidth, setInputWidth] = useState<number>(initialSize);
@@ -50,6 +51,7 @@ export default function AStarComponent() {
         setState(result.gridState);
         setCanStep(result.canContinue);
         setCanStepReason(result.canContinueReason);
+        setExtraStyle(result.gridExtraStyle);
     }
 
     const refreshState = () => {
@@ -101,6 +103,15 @@ export default function AStarComponent() {
 
     const smoothOperator = { "&, *": { transition: "all 0.5s ease" } };
 
+    const styleCallback = (x: number, y: number): CSSProperties | void => {
+        return {};
+
+        // if(!extraStyle)
+        //     return;
+
+        // return extraStyle[y][x];
+    }
+
     return <div>
         {/* This could do with better and more specific tweaking */}
         <FormControl sx={smoothOperator}>
@@ -125,7 +136,7 @@ export default function AStarComponent() {
         </Alert>
 
         <div className={styles.gridWrapper}>
-            <Grid className={styles.grid} state={state} callback={callback} />
+            <Grid className={styles.grid} state={state} extraStyleFunction={styleCallback} callback={callback} />
         </div>
 
         <div>
