@@ -13,4 +13,9 @@
         "Rijndael",
         "Shreem"
     ],
+    "CodeGPT.Autocomplete.enabled": false,
+    "CodeGPT.Autocomplete.maxTokens": 1024,
+    "CodeGPT.Autocomplete.suggestionDelay": 1000,
+    "CodeGPT.apiKey": "OpenAI",
+    "CodeGPT.Autocomplete.provider": "Ollama - codellama:code",
 }

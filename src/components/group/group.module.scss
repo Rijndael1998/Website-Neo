@@ -3,10 +3,9 @@
 
 .portfolio {
     position: relative;
-
     background-color: $secondaryBg;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    
     max-width: 100%;
 
     border-radius: 1ch;
@@ -15,10 +14,15 @@
     transition: all 0.15s ease;
 
     $b_width: 0.2ex;
-    border: $b_width lighten($secondaryBg, 5) solid;
+    $borer_hover_col: lighten($secondaryBg, 20);
+
+    $border_declaration: $b_width lighten($secondaryBg, 5) solid;
+    $border_declaration_hover: $b_width $borer_hover_col solid;
+
+    border: $border_declaration;
 
     &:hover {
-        border: $b_width lighten($secondaryBg, 20) solid;
+        border: $border_declaration_hover;
     }
 
     filter: saturate(1);
@@ -29,45 +33,51 @@
 
     div.portfolioMainContent {
         display: grid;
-        padding: 0.5em;
         text-align: center;
+
+        position: relative;
 
         h2 {
             display: block;
         }
 
-        * {
+        &>* {
             margin: auto;
             padding: 0;
         }
-    }
 
-    div.portfolioMainContentHover {
-        transition: all 0.15s ease;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        div.portfolioMainContentHover {
+            transition: all 0.25s ease-in-out;
+            opacity: 0;
+            position: absolute;
 
-        backdrop-filter: blur(1ch);
-        background-color: rgba(0, 0, 0, 0);
+            // Hack around firefox bug. It prevents translate being used while absolute + backdrop filter.
+            top: 100%;
+            bottom: -100%;
 
-        display: grid;
-        align-items: center;
-        justify-items: center;
+            left: 0;
+            right: 0;
 
-        svg {
-            width: 100%;
-            height: 100%;
+            backdrop-filter: blur(0);
+            background-color: rgba(0, 0, 0, 0);
+
+            border-top: $border_declaration;
+
+            display: grid;
+            align-items: center;
+            justify-items: center;
         }
     }
 
-    &:hover div.portfolioMainContentHover {
+    &:hover div.portfolioMainContent div.portfolioMainContentHover {
+        top: 0%;
+        bottom: 0%;
+
         opacity: 1;
-        backdrop-filter: blur(1ch);
         background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(1ch);
+
+        border-top: $border_declaration_hover;
     }
 }
 
@@ -91,7 +101,7 @@
     padding-bottom: 6rem;
 }
 
-@media screen and (max-width: calc( ($size * 2) + ($gapping * 4))) {
+@media screen and (max-width: calc(($size * 2) + ($gapping * 4))) {
     .content {
         grid-template-columns: 1fr 1fr;
     }

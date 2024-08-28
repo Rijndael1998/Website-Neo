@@ -1,7 +1,5 @@
-import GroupButton from "./groupButton/_groupButton"
 import styles from "./group.module.scss";
 import GroupImage from "./groupImage/_groupImage";
-import { preURL } from "@/content/portfolio/Portfolio";
 import classNames from "classnames";
 import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -34,16 +32,17 @@ export default function GroupItem({ portfolio }: GroupProps) {
             portfolio.image && <GroupImage image={portfolio.image} />
         }
         <div className={styles.portfolioMainContent}>
-            <h2>
-                {portfolio.title}
-            </h2>
-        </div>
-
-        <div className={styles.portfolioMainContentHover}>
-            <Link href={url}>
-                <Icon />
-            </Link>
-            <GroupItemDialog content={portfolio.desc} title={portfolio.title} link={url} linkText={text}/>
+            <div style={{ width: "100%", height: "100%", position: "relative", padding: 0, margin: "auto" }}>
+                <h2>
+                    {portfolio.title}
+                </h2>
+                <div className={styles.portfolioMainContentHover}>
+                    {/* <Link href={url}>
+                    <Icon />
+                </Link> */}
+                    <GroupItemDialog content={portfolio.desc} title={portfolio.title} link={url} linkText={text} />
+                </div>
+            </div>
         </div>
     </div>
 }
