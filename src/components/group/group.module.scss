@@ -4,14 +4,17 @@
 .portfolio {
     position: relative;
     background-color: $secondaryBg;
+
     display: grid;
-    
+    grid-template-rows: auto 1fr 0fr;
+
     max-width: 100%;
+    height: calc(1rem * 440 / 16);
 
     border-radius: 1ch;
     overflow: hidden;
 
-    transition: all 0.15s ease;
+    transition: all 0.25s ease;
 
     $b_width: 0.2ex;
     $borer_hover_col: lighten($secondaryBg, 20);
@@ -23,6 +26,7 @@
 
     &:hover {
         border: $border_declaration_hover;
+        grid-template-rows: auto 0fr 1fr;
     }
 
     filter: saturate(1);
@@ -35,44 +39,49 @@
         display: grid;
         text-align: center;
 
-        position: relative;
+        transition: inherit;
+        transform: rotateX(0deg);
+        opacity: 1;
+        border-top: $border_declaration;
+
+        overflow: hidden;
+
+        width: 100%;
 
         h2 {
             display: block;
-        }
-
-        &>* {
             margin: auto;
-            padding: 0;
-        }
-
-        div.portfolioMainContentHover {
-            transition: all 0.25s ease-in-out;
-            opacity: 0;
-            position: absolute;
-
-            // Hack around firefox bug. It prevents translate being used while absolute + backdrop filter.
-            top: 100%;
-            bottom: -100%;
-
-            left: 0;
-            right: 0;
-
-            backdrop-filter: blur(0);
-            background-color: rgba(0, 0, 0, 0);
-
-            border-top: $border_declaration;
-
-            display: grid;
-            align-items: center;
-            justify-items: center;
+            padding: 1ch;
         }
     }
 
-    &:hover div.portfolioMainContent div.portfolioMainContentHover {
-        top: 0%;
-        bottom: 0%;
+    &:hover div.portfolioMainContent {
+        transform: rotateX(90deg);
+        opacity: 0;
+        border-top-width: 0;
+    }
 
+    div.portfolioMainContentHover {
+        transition: inherit;
+        opacity: 0;
+
+        backdrop-filter: blur(0);
+        background-color: rgba(0, 0, 0, 0);
+
+        border-top: $border_declaration;
+        border-width: 0;
+
+        display: grid;
+
+        align-items: center;
+        justify-items: center;
+
+        overflow: hidden;
+
+        width: 100%;
+    }
+
+    &:hover div.portfolioMainContentHover {
         opacity: 1;
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(1ch);
