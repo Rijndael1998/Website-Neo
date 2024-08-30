@@ -7,6 +7,7 @@ import GenericButton from "@/components/input/genericButton/_genericButton";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
 import styles from "./sudoku.module.scss";
+import { Paper } from "@mui/material";
 // import buttonStyles from "../../input/genericButton/genericButton.module.scss";
 
 function EmptyGridGen() {
@@ -53,15 +54,14 @@ export default function SudokuCollection() {
         setGrid(result);
     }
 
-    return <>
-        <div className={styles.controlWrapper}>
+    return <Paper>
+        {/* <div className={styles.controlWrapper}>
             <div className={styles.buttonWrapper}>
-                <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("easy")}>Easy Puzzle</GenericButton>
+                {/* <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("easy")}>Easy Puzzle</GenericButton>
                 <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("hard")}>Hard Puzzle</GenericButton>
                 <GenericButton className={buttonStyles.bigButton} onClick={() => solve()}>Solve</GenericButton>
                 <GenericButton className={buttonStyles.bigButton} onClick={() => setGrid(EmptyGridGen())}>Clear</GenericButton>
-            </div>
-            <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
-        </div>
-    </>
+            </div> */}
+        <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
+    </Paper>
 }
