@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -19,9 +19,10 @@ export type ScrollDialogProps = {
     closeText?: string,
     link?: string,
     linkText?: string,
+    buttonProps?: Omit<ButtonProps, "onClick">,
 }
 
-export function ScrollDialog({ title, buttonText, body, closeText, link, linkText }: ScrollDialogProps) {
+export function ScrollDialog({ title, buttonText, body, closeText, link, linkText, buttonProps }: ScrollDialogProps) {
     const [open, setOpen] = React.useState(false);
     const scroll = 'paper';
 
@@ -41,7 +42,7 @@ export function ScrollDialog({ title, buttonText, body, closeText, link, linkTex
 
     return (
         <DarkModeFix>
-            <Button onClick={() => setOpen(true)}>{buttonText}</Button>
+            <Button {...buttonProps} onClick={() => setOpen(true)}>{buttonText}</Button>
             <Dialog
                 open={open}
                 onClose={handleClose}

@@ -21,7 +21,7 @@ const IPF: GroupPreviewContent = {
     title: "Data & Decisions Developer",
     desc: `
     This is my current role. 
-    IPF provides a variaty of loans, offering affordable financing solutions for individuals
+    IPF provides a variety of loans, offering affordable financing solutions for individuals
     who need assistance with their financial needs. 
     As a developer, I worked on the software responsible for deciding and processing customer applications.
     The work involved heavy involvement in AWS, C#, IIS, T-SQL and other technologies.`,
@@ -104,7 +104,7 @@ const SPA: GroupPreviewContent = {
     desc: `
     This is my website generation tool that I used on my old website. 
     It can take ODF and TXT formats and generate it into a downloadable webpage.
-    It does this by utilising data URIs to create and compress the data that it needs.
+    It does this by utilizing data URIs to create and compress the data that it needs.
     `,
     isDemo: false,
     url: preURL + "oldWebsite",
@@ -200,9 +200,9 @@ const Marta: GroupPreviewContent = {
 }
 
 const HAL: GroupPreviewContent = {
-    title: "HAL Systems LTD",
+    title: "Webmaster",
     desc: `
-    From the age of 16 until I was 21, I served as a Webmaster for HAL Systems LTD. 
+    From the age of 16 until I was 21, I worked as a Webmaster for HAL Systems LTD. 
     During this time, I personally hosted the company's website on my own hardware, ensuring consistent uptime and performing regular maintenance.
     I provided updates to the website, including content changes and performance updates.
     `,

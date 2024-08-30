@@ -6,8 +6,20 @@ export type GroupItemDialogProps = {
     title: ScrollDialogProps["title"],
     link?: ScrollDialogProps["link"],
     linkText?: ScrollDialogProps["linkText"],
+    buttonProps?: ScrollDialogProps["buttonProps"],
 }
 
-export default function GroupItemDialog({content, title, link, linkText }: GroupItemDialogProps) {
-    return <ScrollDialog buttonText="More details" body={content} title={title} link={link} linkText={linkText} />
+export default function GroupItemDialog({ content, title, link, linkText, buttonProps }: GroupItemDialogProps) {
+    return <ScrollDialog
+        buttonText="Overview"
+        body={content}
+        title={title}
+        link={link}
+        linkText={linkText}
+        buttonProps={
+            {
+                variant: "contained",
+                ...buttonProps
+            }
+        } />
 }

@@ -4,9 +4,11 @@ import classNames from "classnames";
 import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
-import { SvgIcon } from "@mui/material";
+import { Button, IconButton, Stack, SvgIcon } from "@mui/material";
 import Link from "next/link";
 import GroupItemDialog from "./_groupItemDialog";
+import DarkModeFix from "../muiWrappers/darkModeFix/_darkModeFix";
+import { ifTrue } from "../reactUtils";
 
 export type GroupProps = {
     portfolio: GroupPreviewContent,
@@ -37,10 +39,28 @@ export default function GroupItem({ portfolio }: GroupProps) {
             </h2>
         </div>
         <div className={styles.portfolioMainContentHover}>
-            <Link href={url}>
-                <Icon />
-            </Link>
-            <GroupItemDialog content={portfolio.desc} title={portfolio.title} link={url} linkText={text} />
+            <DarkModeFix>
+                <Stack direction={"row"} gap={2}>
+                    <GroupItemDialog
+                        buttonProps={{ variant: "outlined" }}
+                        content={portfolio.desc}
+                        title={portfolio.title}
+                        link={url}
+                        linkText={text}
+                    />
+                    {ifTrue(!empty,
+                        <Button
+                            href={portfolio.url}
+                            aria-label={text}
+                            color="info"
+                            variant="contained"
+                            endIcon={<Icon fontSize="inherit" />}
+                        >
+                            {text}
+                        </Button>
+                    )}
+                </Stack>
+            </DarkModeFix>
         </div>
     </div>
 }
