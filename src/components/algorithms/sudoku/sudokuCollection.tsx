@@ -3,12 +3,13 @@
 import { EasyGrid, HardGrid } from "@/components/algorithms/sudoku/testGrids";
 import { backtracking } from "@/components/algorithms/sudoku/sudokuWorker";
 import SudokuGrid from "@/components/algorithms/sudoku/_grid";
-import GenericButton from "@/components/input/genericButton/_genericButton";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
-import styles from "./sudoku.module.scss";
-import { Paper } from "@mui/material";
-// import buttonStyles from "../../input/genericButton/genericButton.module.scss";
+import { Button, Paper } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import { paperProps } from "./sudokuConstants";
+
+
 
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
@@ -55,13 +56,28 @@ export default function SudokuCollection() {
     }
 
     return <Paper>
-        {/* <div className={styles.controlWrapper}>
-            <div className={styles.buttonWrapper}>
-                {/* <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("easy")}>Easy Puzzle</GenericButton>
-                <GenericButton className={buttonStyles.bigButton} onClick={() => puzzleHandler("hard")}>Hard Puzzle</GenericButton>
-                <GenericButton className={buttonStyles.bigButton} onClick={() => solve()}>Solve</GenericButton>
-                <GenericButton className={buttonStyles.bigButton} onClick={() => setGrid(EmptyGridGen())}>Clear</GenericButton>
-            </div> */}
-        <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
+        <Grid container overflow={"hidden"}>
+            <Grid xs={12}>
+                <Paper {...paperProps}>
+                    <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
+                </Paper>
+            </Grid>
+            <Grid xs={12}>
+                <Grid container justifyContent={"space-around"} marginBottom={"1em"}>
+                    <Grid>
+                        <Button onClick={() => puzzleHandler("easy")}>Easy Puzzle</Button>
+                    </Grid>
+                    <Grid>
+                        <Button onClick={() => puzzleHandler("hard")}>Hard Puzzle</Button>
+                    </Grid>
+                    <Grid>
+                        <Button onClick={() => setGrid(EmptyGridGen())}>Clear</Button>
+                    </Grid>
+                    <Grid>
+                        <Button onClick={() => solve()}>Solve</Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
     </Paper>
 }

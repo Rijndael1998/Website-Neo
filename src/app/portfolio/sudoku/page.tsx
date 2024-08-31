@@ -6,8 +6,9 @@ import LazyTable from "@/components/lazy/_lazyTable";
 import SudokuCollection from "@/components/algorithms/sudoku/sudokuCollection";
 import { easyGrid, easyGridDone, easyGridSnippet, easyGridSnippet2, easyGridSnippet3, hardGrid, hardGridDone } from "@/content/portfolio/sudoku/Sudoku";
 import classNames from "classnames";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Paper } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { paperProps } from "@/components/algorithms/sudoku/sudokuConstants";
 
 export default function Sudoku() {
     return <Lazy>
@@ -104,8 +105,9 @@ export default function Sudoku() {
                         Consider the following graph:
                     </p>
 
-
-                    <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common, sudokuStyle.ind2)} items={easyGrid} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common, sudokuStyle.ind2)} items={easyGrid} />
+                    </Paper>
 
                     <p>
                         {
@@ -123,21 +125,27 @@ export default function Sudoku() {
                         however, we will start with the region first:
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s3x3, sudokuStyle.ind2, sudokuStyle.common)} items={easyGridSnippet} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s3x3, sudokuStyle.ind2, sudokuStyle.common)} items={easyGridSnippet} />
+                    </Paper>
 
                     <p>
                         We can remove the numbers present in the current region of the cell and are left with numbers 4, 5, 7 and 9 after
                         removing 1, 2, 3, 6 and 8 from the possible set.
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s9x1, sudokuStyle.ind2, sudokuStyle.common)} items={easyGridSnippet2} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s9x1, sudokuStyle.ind2, sudokuStyle.common)} items={easyGridSnippet2} />
+                    </Paper>
 
                     <p>
                         We can now look at the row of the cell and remove numbers 4 and 5 from our list of numbers.
                         This leaves us with the possibilities: 7 and 9.
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s1x9, sudokuStyle.ind3, sudokuStyle.common)} items={easyGridSnippet3} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s1x9, sudokuStyle.ind3, sudokuStyle.common)} items={easyGridSnippet3} />
+                    </Paper>
 
                     <p>
                         By looking at the column of the cell, we can remove the 7 from our list of numbers, leaving us with only 9.
@@ -151,14 +159,18 @@ export default function Sudoku() {
                         }
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.ind2, sudokuStyle.common, sudokuStyle.hideNonImportant)} items={easyGrid} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.ind2, sudokuStyle.common, sudokuStyle.hideNonImportant)} items={easyGrid} />
+                    </Paper>
 
                     <p>
                         Since 9 is the only number, we can be certain that only 9 should go into the cell so we write 9 into the cell.
                         We can keep iterating this process until all the squares are filled in:
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={easyGridDone} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={easyGridDone} />
+                    </Paper>
 
                     <h3>Not a silver bullet</h3>
                     <p>
@@ -170,14 +182,17 @@ export default function Sudoku() {
                         The following example cannot be solved using the previous method but can be solved using Backtracking:
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={hardGrid} />
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={hardGrid} />
+                    </Paper>
 
                     <p>
                         This is the solution to the above using my Sudoku solver:
                     </p>
 
-                    <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={hardGridDone} />
-
+                    <Paper {...paperProps}>
+                        <LazyTable className={classNames(sudokuStyle.s9x9, sudokuStyle.common)} items={hardGridDone} />
+                    </Paper>
                 </AccordionDetails>
             </Accordion>
         </div>
