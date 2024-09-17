@@ -4,8 +4,7 @@ import classNames from "classnames";
 import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
-import { Button, IconButton, Stack, SvgIcon } from "@mui/material";
-import Link from "next/link";
+import { Button, Stack, SvgIcon } from "@mui/material";
 import GroupItemDialog from "./_groupItemDialog";
 import DarkModeFix from "../muiWrappers/darkModeFix/_darkModeFix";
 import { ifTrue } from "../reactUtils";
@@ -23,23 +22,44 @@ export const IconMatrix: Map<LinkText, typeof SvgIcon> = new Map([
     ["", LinkIcon],
 ]);
 
-export default function GroupItem({ portfolio }: GroupProps) {
-    const empty = portfolio.url == null || portfolio.url == "";
-    const text: LinkText = empty ? "" : portfolio.isDemo ? "See Demo" : (portfolio.url!.includes("https") ? "External Link" : "Details");
-    const Icon = IconMatrix.get(text) ?? IconMatrix.get("")!;
-    const url = portfolio.url ?? "";
+function GetGroupItemText(portfolio: GroupPreviewContent): LinkText {
+    // is the portfolio empty?
+    if (portfolio.url == null || portfolio.url == "")
+        return "";
 
-    return <div className={classNames(styles.portfolio, empty && styles.empty)}>
-        {
-            portfolio.image && <GroupImage image={portfolio.image} />
-        }
-        <div className={styles.portfolioMainContent}>
-            <h2>
-                {portfolio.title}
-            </h2>
-        </div>
-        <div className={styles.portfolioMainContentHover}>
-            <DarkModeFix>
+    // is it a demo?
+    if (portfolio.isDemo)
+        return "See Demo";
+
+    // is it an external link?
+    if (portfolio.url.includes("https"))
+        return "External Link";
+
+    // if none of the above, it's a relative link
+    return "Details";
+}
+
+export default function GroupItem({ portfolio }: GroupProps) {
+    // link URL
+    const url = portfolio.url ?? "";
+    const empty = url == "";
+
+    // Interface items
+    const text = GetGroupItemText(portfolio);
+    const Icon = IconMatrix.get(text) ?? IconMatrix.get("")!;
+
+
+    return <DarkModeFix>
+        <div className={classNames(styles.portfolio, empty && styles.empty)}>
+            {
+                portfolio.image && <GroupImage image={portfolio.image} />
+            }
+            <div className={styles.portfolioMainContent}>
+                <h2>
+                    {portfolio.title}
+                </h2>
+            </div>
+            <div className={styles.portfolioMainContentHover}>
                 <Stack direction={"row"} gap={2}>
                     <GroupItemDialog
                         buttonProps={{ variant: "outlined" }}
@@ -60,7 +80,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
                         </Button>
                     )}
                 </Stack>
-            </DarkModeFix>
+            </div>
         </div>
-    </div>
+    </DarkModeFix>
 }
