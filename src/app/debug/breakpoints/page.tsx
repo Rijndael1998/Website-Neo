@@ -1,7 +1,7 @@
 "use client";
 
 import Lazy from "@/components/lazy/_lazy";
-import { Card, Checkbox, Paper, Typography } from "@mui/material";
+import { Card, Checkbox, FormControlLabel, FormGroup, Paper, Stack, Theme, Typography } from "@mui/material";
 import { Breakpoint, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -11,6 +11,11 @@ const breakpoints: Array<Breakpoint> = [
     'md',
     'lg',
     'xl',
+];
+
+const functions: Array<[string, (t: Theme, bp: Breakpoint) => boolean]> = [
+    [".up(...)", (theme, bp) => useMediaQuery(theme.breakpoints.up(bp))],
+    [".down(...)", (theme, bp) => useMediaQuery(theme.breakpoints.down(bp))],
 ];
 
 export default function Breakpoints() {
@@ -23,45 +28,31 @@ export default function Breakpoints() {
 
         <Paper elevation={3} sx={{ padding: "1em", marginTop: "1em" }}>
             <Typography variant="h5" gutterBottom>theme.breakpoints.</Typography>
-            <Card sx={{ padding: "1em" }}>
-
-                <Typography variant="h6">.up(...)</Typography>
-                <ul>
-                    {
-                        breakpoints.map((breakpoint) =>
-                            <li>
-                                <Typography key={breakpoint}>
-                                    {`'${breakpoint}':`}
-                                    {
-                                        useMediaQuery(theme.breakpoints.up(breakpoint)) ?
-                                            <Checkbox checked={true} color="success" disabled /> :
-                                            <Checkbox checked={false} color="error" disabled />
-                                    }
-                                </Typography>
-                            </li>
-                        )
-                    }
-                </ul>
-            </Card>
-            <Card sx={{ padding: "1em", marginTop: "1em" }}>
-                <Typography variant="h6">.down(...)</Typography>
-                <ul>
-                    {
-                        breakpoints.map((breakpoint) =>
-                            <li>
-                                <Typography key={breakpoint}>
-                                    {`'${breakpoint}':`}
-                                    {
-                                        useMediaQuery(theme.breakpoints.down(breakpoint)) ?
-                                            <Checkbox checked={true} color="success" disabled /> :
-                                            <Checkbox checked={false} color="error" disabled />
-                                    }
-                                </Typography>
-                            </li>
-                        )
-                    }
-                </ul>
-            </Card>
+            {
+                functions.map(fnObject => {
+                    const [title, fn] = fnObject;
+                    return <Card key={title} sx={{ padding: "1em", marginBottom: "1em" }}>
+                        <Typography variant="h6">{title}</Typography>
+                        <Stack margin={1}>
+                            {
+                                breakpoints.map((breakpoint) =>
+                                    <Stack direction={"row"}>
+                                        <FormGroup>
+                                            <FormControlLabel
+                                                label={breakpoint}
+                                                control={fn(theme, breakpoint) ?
+                                                    <Checkbox checked={true} color="success" disabled /> :
+                                                    <Checkbox checked={false} color="error" disabled />
+                                                }
+                                            />
+                                        </FormGroup>
+                                    </Stack>
+                                )
+                            }
+                        </Stack>
+                    </Card>
+                })
+            }
         </Paper>
     </Lazy>
 }
