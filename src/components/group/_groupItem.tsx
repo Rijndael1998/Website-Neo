@@ -60,7 +60,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
                 </h2>
             </div>
             <div className={styles.portfolioMainContentHover}>
-                <Stack direction={"row"} gap={2}>
+                <Stack direction={"row"} gap={2} padding={1}>
                     <GroupItemDialog
                         buttonProps={{ variant: "outlined" }}
                         content={portfolio.desc}
