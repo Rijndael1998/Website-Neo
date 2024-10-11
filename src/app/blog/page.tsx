@@ -34,30 +34,15 @@ export default function Blog() {
                             url: "blog/mirrors_edge",
                             image: `${preURL}mirrors_edge/1x1 partial logo.png`,
                         },
-                        // {
-                        //     title: "Arch Installation",
-                        //     desc: `
-                        //         How I install Arch Linux on my own machine using an automated script.
-                        //         The install is fully encrypted, has no swap by design and uses LVM for partitioning.
-                        //         `,
-                        //     isDemo: false,
-                        //     url: "",
-                        //     image: `${preURL}arch/arch.png`,
-                        // },
+                        {
+                            title: "Recover your Creality Ender-3 V3 SE",
+                            desc: "",
+                            isDemo: false,
+                            url: "blog/3d_printer",
+                            image: `${preURL}3d printer/3d printer.webp`,
+                        },
                     ],
                 },
-                // {
-                //     title: "Mental Health Insigts",
-                //     subtitle: "Struggles with mental health and solutions that I found",
-                //     groups: [
-                //         {
-                //             title: "",
-                //             desc: "",
-                //             isDemo: false,
-                //             url: "",
-                //         }
-                //     ],
-                // },
             ]
         }
     />;

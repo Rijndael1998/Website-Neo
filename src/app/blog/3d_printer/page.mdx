@@ -1,0 +1,80 @@
+import LazyImage from "@/components/lazy/_lazyImage";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
+
+# Recover your Creality Ender-3 V3 SE
+
+<LazyImage 
+    aspectRatio={1}
+    src={"/blog/3d printer/3d printer.webp"}
+    quality={100} 
+/>
+
+After failing to [Klipper](https://artamis.me/projects/klipper_guide/)ize my borrowed Ender-3 V3 SE, I found it very hard to actually recover the printer and I swear I aged a few years in the process. And the stakes were even higher since this was a *borrowed* 3d printer worth ~200USD. 
+
+There are a couple of things that Creality support doesn't say about resetting the printer. Regardless, here's my quick guide to recovering your Ender-3 V3 SE.
+
+## Properly Format your SD Card
+In my case, I had a 128GB SD card that I formatted 100% of, which didn't work. It's also an issue that's going to be rather prevalent with time, I believe, as higher capacity SD cards become available. One of the thing that support doesn't mention is that the SD card needs to be ***FORMATTED*** to under 8GB and that it needs to be a "real" SD card. I assume this was a failsafe to stop fake SD cards which bolster very high capacities. Speculation aside, what's important that you only need to have the first partition to be under 8GB, regardless of the actual capacity of the SD card.
+
+Here's how my card is currently formatted:
+```
+Disk /dev/sdc: 119.38 GiB, 128177930240 bytes, 250347520 sectors
+Disk model: Multi-Card      
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x600d155b
+
+Device     Boot Start     End Sectors  Size Id Type
+/dev/sdc1        2048 8194047 8192000  3.9G  b W95 FAT32
+```
+
+From this `fdisk` output, you can see that my 128GB SD card has only one 4GB partition. I have also partitioned it in MBR/DOS rather than GPT for compatibility, but I'm actually not sure if that's important.
+
+
+<DarkModeFix>
+    <Accordion>
+        <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+        >
+            {"Rough steps"}
+        </AccordionSummary>
+        <AccordionDetails>
+            Reformat your SD card to MBR/DOS
+            <LazyImage
+                aspectRatio={646 / 312}
+                src={"/blog/3d printer/s1.png"}
+            />
+
+            Create a partition smaller than 8GB.
+            <LazyImage
+                aspectRatio={613 / 492}
+                src={"/blog/3d printer/s3.png"}
+            />
+
+            Select the FAT32 option.
+            <LazyImage
+                aspectRatio={613 / 492}
+                src={"/blog/3d printer/s4.png"}
+            />
+
+            Now, you've successfully formatted your SD card to "spec".
+        </AccordionDetails>
+    </Accordion>
+</DarkModeFix>
+
+## Make sure you update the screen, too
+I spent far too long only updating the main firmware, but after stumbling for ages, I was informed that screen should also be updated *every* time you make any changes to the main firmware, even if you've not changed the version of the firmware. So, my advice, update the main firmware and then update the screen firmware. You can get both from this official link:
+
+### Firmware link
+
+https://www.creality.com/pages/download-ender-3-v3-se
+
+## Summary
+
+With this, I'm never again going to lobotomize my (borrowed) 3d printing machine. Not until I get myself one that I didn't borrow.
+
+
