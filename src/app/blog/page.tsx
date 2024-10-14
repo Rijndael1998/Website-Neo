@@ -35,6 +35,13 @@ export default function Blog() {
                             image: `${preURL}mirrors_edge/1x1 partial logo.png`,
                         },
                         {
+                            title: "Get OpenWRT to work on Octaplus networks",
+                            desc: "",
+                            isDemo: false,
+                            url: "blog/city_fibre",
+                            image: `${preURL}city_fibre/logos.webp`,
+                        },
+                        {
                             title: "Recover your Creality Ender-3 V3 SE",
                             desc: "",
                             isDemo: false,
