@@ -28,14 +28,7 @@ export default function Blog() {
                     subtitle: "Tech related blogs",
                     groups: [
                         {
-                            title: MirrorTitle,
-                            desc: MirrorSynopsis,
-                            isDemo: false,
-                            url: "blog/mirrors_edge",
-                            image: `${preURL}mirrors_edge/1x1 partial logo.png`,
-                        },
-                        {
-                            title: "Get OpenWRT to work on Octaplus networks",
+                            title: "OpenWRT 5.15 on Octaplus networks",
                             desc: "",
                             isDemo: false,
                             url: "blog/city_fibre",
@@ -47,6 +40,13 @@ export default function Blog() {
                             isDemo: false,
                             url: "blog/3d_printer",
                             image: `${preURL}3d printer/3d printer.webp`,
+                        },
+                        {
+                            title: MirrorTitle,
+                            desc: MirrorSynopsis,
+                            isDemo: false,
+                            url: "blog/mirrors_edge",
+                            image: `${preURL}mirrors_edge/1x1 partial logo.png`,
                         },
                     ],
                 },
