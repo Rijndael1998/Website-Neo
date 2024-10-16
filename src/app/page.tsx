@@ -2,8 +2,8 @@ import Lazy from "@/components/lazy/_lazy";
 import { about, contact } from "./../content/Home";
 import styles from "./page.module.scss";
 import Link from "next/link";
-import LazyImage from "@/components/lazy/_lazyImage";
-
+import logo from "@/../public/opengraph.webp";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 
 
 export default function Home() {
@@ -15,12 +15,11 @@ export default function Home() {
             Hi!
           </h1>
           <p>
-            For everything that I have to offer, have a look at my <Link href="/portfolio">portfolio</Link> page.
+            Visit my <Link href="/portfolio">portfolio</Link> page to see my previous work and experience. 🧐
           </p>
-          <LazyImage
-            aspectRatio={3840 / 2160}
-            src={"/opengraph.webp"}
-            alt={"Computer on a desk showing the website logo: a white L in a green square on a black background."} 
+          <LazyLocalImage
+            src={logo}
+            alt={"Computer on a desk showing the website logo: a white L in a green square on a black background."}
             quality={50}
             />
         </div>

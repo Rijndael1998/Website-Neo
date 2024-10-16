@@ -5,7 +5,7 @@ import { LazyImageProps } from "./_lazyImage";
 import { DEFAULT_IMAGE_QUALITY } from "./defaults";
 import LazyImageCaption from "./_lazyImageCaption";
 
-export type LocalLazyImageProps = Omit<Omit<LazyImageProps, "aspectRation">, "src"> & { src: StaticImageData };
+export type LocalLazyImageProps = Omit<Omit<LazyImageProps, "aspectRatio">, "src"> & { src: StaticImageData };
 
 export default function LazyLocalImage({ src, alt, className, cap, capCol, quality }: LocalLazyImageProps) {
     return <div className={styles.lazyImageWrapper}>
