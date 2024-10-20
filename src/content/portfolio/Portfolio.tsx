@@ -91,14 +91,6 @@ const RAI: GroupPreviewContent = {
     url: "https://github.com/DeguSec/R-AI",
 };
 
-const crab: GroupPreviewContent = {
-    title: "Hobbies",
-    desc: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
-    isDemo: false,
-    url: preURL + "hobbies",
-    image: imageFolder + "crab_rave.png",
-};
-
 const SPA: GroupPreviewContent = {
     title: "Python SPA Website",
     desc: `
@@ -189,16 +181,6 @@ const Langrage: GroupPreviewContent = {
     image: imageFolder + "lagrange.png"
 };
 
-const Marta: GroupPreviewContent = {
-    title: "Marta Fundraiser",
-    desc: `
-    My mom and I helped organize a community fundraiser in Bolton and Bury for Marta, a single mother with cancer who lacked basics like furniture and a clothes dryer. Thanks to the generosity of our communities, we were able to gather the funds needed to support her and her three young children during this challenging time.
-    `,
-    isDemo: false,
-    image: imageFolder + "marta.jpg",
-    url: preURL + "marta",
-}
-
 const HAL: GroupPreviewContent = {
     title: "Webmaster",
     desc: `
@@ -236,14 +218,12 @@ export const irlContent: GroupViewArray = [
 export const volunteering: GroupViewArray = [
     FAH,
     LBU,
-    Marta,
     OSM,
     // Lineage,
 ];
 
 export const personalProjects: GroupViewArray = [
     RAI,
-    crab,
     SPA,
     THIS,
 ];
