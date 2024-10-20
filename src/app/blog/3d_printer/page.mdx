@@ -1,16 +1,23 @@
-import LazyImage from "@/components/lazy/_lazyImage";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
 import Lazy from "@/components/lazy/_lazy";
 
+import logo from "@/../public/blog/3d printer/3d printer.webp";
+import s1 from "@/../public/blog/3d printer/s1.png";
+import s2 from "@/../public/blog/3d printer/s2.png";
+import s3 from "@/../public/blog/3d printer/s3.png";
+import s4 from "@/../public/blog/3d printer/s4.png";
+import s5 from "@/../public/blog/3d printer/s5.png";
+
 <Lazy>
 
 # Recover your Creality Ender-3 V3 SE
 
-<LazyImage 
+<LazyLocalImage 
     aspectRatio={1}
-    src={"/blog/3d printer/3d printer.webp"}
+    src={logo}
     quality={100} 
 />
 
@@ -46,30 +53,20 @@ From this `fdisk` output, you can see that my 128GB SD card has only one 4GB par
                 {"Rough steps"}
             </AccordionSummary>
             <AccordionDetails>
-                Reformat your SD card to MBR/DOS
-                <LazyImage
-                    aspectRatio={646 / 312}
-                    src={"/blog/3d printer/s1.png"}
-                />
+                <div>
+                    Reformat your SD card to MBR/DOS
+                    <LazyLocalImage src={s1} />
 
-                Create a partition smaller than 8GB.
-                <LazyImage
-                    aspectRatio={613 / 492}
-                    src={"/blog/3d printer/s3.png"}
-                />
+                    Create a partition smaller than 8GB.
+                    <LazyLocalImage src={s3} />
 
-                Select the FAT32 option.
-                <LazyImage
-                    aspectRatio={613 / 492}
-                    src={"/blog/3d printer/s4.png"}
-                />
+                    Select the FAT32 option.
+                    <LazyLocalImage src={s4} />
 
-                Now, you've successfully formatted your SD card to "spec".
+                    Now, you've successfully formatted your SD card to "spec".
 
-                <LazyImage
-                    aspectRatio={952 / 652}
-                    src={"/blog/3d printer/s5.png"}
-                />
+                    <LazyLocalImage src={s5} />
+                </div>
             </AccordionDetails>
         </Accordion>
     </DarkModeFix>
