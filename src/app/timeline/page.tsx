@@ -77,9 +77,9 @@ const timelineItems: Array<[string, any, React.ReactNode?]> = [
     [
         "2023", "Developing on AWS certification.", <EmojiEventsIcon />
     ],
-    [
-        "2024", "Passed AWS Practitioner exam.", <EmojiEventsIcon /> // slight white lie: I didn't even start learning yet but given how long this is taking to merge into main, i probably will by the time I'm finished
-    ],
+    // [
+    //     "2024", "Passed AWS Practitioner exam.", <EmojiEventsIcon /> // slight white lie: I didn't even start learning yet but given how long this is taking to merge into main, i probably will by the time I'm finished
+    // ],
 ];
 
 
