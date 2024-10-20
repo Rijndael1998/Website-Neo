@@ -18,7 +18,7 @@ html {
     background-color: $background;
     color: $text;
 
-    font-family: BagnardSans;
+    font-family: var(--main-body);
 
     main {
       max-width: 80ch;

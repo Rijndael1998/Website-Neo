@@ -7,9 +7,16 @@ import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
 import { defaultMetadata, url } from '@/content/Metadata'
 import { headers } from 'next/headers'
-import { Noto_Serif } from 'next/font/google';
+import { Kanit, Noto_Sans, Roboto_Flex } from 'next/font/google';
 
-const ns = Noto_Serif({ subsets: ["latin"], variable: '--noto-sans' });
+
+const ns = Noto_Sans({ subsets: ["latin"], variable: '--main-body' });
+
+const cn = Kanit({
+  subsets: ["latin"],
+  variable: "--main-body",
+  weight: '400'
+});
 
 export function generateMetadata(): Metadata {
   const headersList = headers();
@@ -31,7 +38,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href="/favico.png" />
       </head>
-      <body className={`${style.body} ${ns.variable}`}>
+      <body className={`${style.body} ${cn.variable}`}>
         <header>
           <Header>
             <Title text="Lukasz Baldyga" />
