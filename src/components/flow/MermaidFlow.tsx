@@ -77,7 +77,7 @@ function getLayoutedElements(nodes: node[], edges: edge[], direction: string = '
 const nodeRegex = RegExp(/([^\ \[]+)\[+([^\]]+)\]+/g);
 // this could be better but it's fine for now.
 const edgeRegex =
-    RegExp(/(?<id1>[0-9A-z]+)\ ?(?<la>\<?)\-(?<dot>\.?)\-(?<ra>\>?)\ ?((?<id2>[0-9A-z]+)|(\|(?<desc>[^\|]+)\|\ ?(?<id3>[0-9A-z]+)))/g);
+    RegExp(/(?<id1>[0-9A-Za-z]+)\ ?(?<la>\<?)\-(?<dot>\.?)\-(?<ra>\>?)\ ?((?<id2>[0-9A-Za-z]+)|(\|(?<desc>[^\|]+)\|\ ?(?<id3>[0-9A-Za-z]+)))/g);
 
 export default function MermaidFlow({ mermaidFlow, style }: MermaidFlowProps) {
     const rawNodes: node[] = [];
