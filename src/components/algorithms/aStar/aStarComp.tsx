@@ -13,9 +13,9 @@ import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMa
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import GridItem from "../grid/gridItem/_gridItem";
-import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup, Stack, Switch } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, Switch } from "@mui/material";
 import * as React from 'react';
-import { default as MGrid } from '@mui/material/Unstable_Grid2';
+import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AStarContent, AStarContent2 } from "@/content/portfolio/aStar/AStar";
 import { ifTrue } from "@/components/reactUtils";
@@ -211,7 +211,7 @@ export default function AStarComponent() {
                             direction={{ xs: 'column', sm: 'row' }}
                             spacing={{ xs: 2 }}
                         >
-                            <MGrid sm={3} sx={{ "*": { height: "100%", width: "100%" } }}>
+                            <MGrid size={{ sm: 3 }} sx={{ "*": { height: "100%", width: "100%" } }}>
                                 <NumUpDown
                                     label="Width"
                                     start={initialSize}
@@ -220,7 +220,7 @@ export default function AStarComponent() {
                                     callback={(num) => setInputWidth(num)}
                                 />
                             </MGrid>
-                            <MGrid sm={3} sx={{ "*": { height: "100%", width: "100%" } }}>
+                            <MGrid size={{ sm: 3 }} sx={{ "*": { height: "100%", width: "100%" } }}>
                                 <NumUpDown
                                     label="Height"
                                     start={initialSize}
@@ -229,7 +229,7 @@ export default function AStarComponent() {
                                     callback={(num) => setInputHeight(num)}
                                 />
                             </MGrid>
-                            <MGrid sm={6} sx={{ "*": { display: "block !important", height: "100%", marginLeft: "auto !important" } }}>
+                            <MGrid size={{ sm: 6 }} sx={{ "*": { display: "block !important", height: "100%", marginLeft: "auto !important" } }}>
                                 <Button
                                     variant="contained"
                                     onClick={() => {
@@ -250,7 +250,7 @@ export default function AStarComponent() {
                             spacing={2}
                             sx={{ "&": { textAlign: "center" } }}
                         >
-                            <MGrid xs={12} sm={4}>
+                            <MGrid size={{ xs: 12, sm: 4 }}>
                                 <FormControlLabel
                                     label="Auto step"
                                     control={
@@ -261,7 +261,7 @@ export default function AStarComponent() {
                                     } />
 
                             </MGrid>
-                            <MGrid xs={12} sm={4}>
+                            <MGrid size={{ xs: 12, sm: 4 }}>
                                 <Button
                                     variant={buttonVariant(canStep)}
                                     disabled={auto || canStepReason !== undefined}
@@ -269,7 +269,7 @@ export default function AStarComponent() {
                                     Step
                                 </Button>
                             </MGrid>
-                            <MGrid xs={12} sm={4}>
+                            <MGrid size={{ xs: 12, sm: 4 }}>
                                 <Button
                                     color="warning"
                                     disabled={auto}

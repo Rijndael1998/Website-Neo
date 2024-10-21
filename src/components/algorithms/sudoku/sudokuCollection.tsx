@@ -6,7 +6,7 @@ import SudokuGrid from "@/components/algorithms/sudoku/_grid";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
 import { Button, Paper } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import { default as Grid } from "@mui/material/Grid2";
 import { paperProps } from "./sudokuConstants";
 
 
@@ -57,12 +57,12 @@ export default function SudokuCollection() {
 
     return <Paper>
         <Grid container overflow={"hidden"}>
-            <Grid xs={12}>
+            <Grid size={12}>
                 <Paper {...paperProps}>
                     <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
                 </Paper>
             </Grid>
-            <Grid xs={12}>
+            <Grid size={12}>
                 <Grid container justifyContent={"space-around"} marginBottom={"1em"}>
                     <Grid>
                         <Button onClick={() => puzzleHandler("easy")}>Easy Puzzle</Button>
