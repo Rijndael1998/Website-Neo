@@ -88,8 +88,10 @@ export default function AStarComponent() {
 
     const mGridProps = {
         sx: { "*": { margin: "auto", textAlign: "center" } },
-        xs: 6,
-        sm: 1.65,
+        size: {
+            xs: 6,
+            sm: 1.65,
+        },
         alignContent: "center",
         justifyItems: "center",
     }
