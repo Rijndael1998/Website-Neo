@@ -43,16 +43,6 @@
     }
 }
 
-.collapseBar {
-    margin: auto;
-    text-decoration: dashed;
-    background-color: red;
-
-    &.open {
-        background-color: green;
-    }
-}
-
 .lazyRowOverflow {
     display: block;
     margin: auto;
