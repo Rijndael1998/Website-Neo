@@ -31,8 +31,8 @@
 .lazyImageWrapper {
     .lazyImage {
         position: relative;
-        max-height: 70vh;
-        
+        // max-height: 70vh; // this causes images to be weird
+
         display: block;
         margin: auto;
     }
