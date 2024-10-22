@@ -5,7 +5,7 @@ import { backtracking } from "@/components/algorithms/sudoku/sudokuWorker";
 import SudokuGrid from "@/components/algorithms/sudoku/_grid";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
-import { Button, Paper } from "@mui/material";
+import { Button, Paper, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { default as Grid } from "@mui/material/Grid2";
 import { paperProps } from "./sudokuConstants";
 
@@ -23,6 +23,7 @@ function EmptyGridGen() {
 
 export default function SudokuCollection() {
     const [grid, setGrid] = useState<Array<Array<number>>>(EmptyGridGen());
+    const [open, setOpen] = useState(false);
 
     const callback = (x: number, y: number, v: number) => {
         const newGrid = Duplicate2DArray(grid);
@@ -46,14 +47,25 @@ export default function SudokuCollection() {
     const solve = () => {
         const result = backtracking(Duplicate2DArray(grid), 0);
 
-        // TODO: Handle...
+        // This shows the snackbar which tells you that it's impossible.
         if (result === false) {
-            console.error("no result");
+            setOpen(true);
             return;
         }
 
         setGrid(result);
     }
+
+    const handleClose = (
+        event: React.SyntheticEvent | Event,
+        reason?: SnackbarCloseReason,
+    ) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
 
     return <Paper>
         <Grid container overflow={"hidden"}>
@@ -79,5 +91,12 @@ export default function SudokuCollection() {
                 </Grid>
             </Grid>
         </Grid>
+        <Snackbar
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            open={open}
+            autoHideDuration={5000}
+            onClose={handleClose}
+            message="There's no valid solution for this Sudoku."
+        />
     </Paper>
 }
