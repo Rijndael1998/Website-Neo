@@ -22,6 +22,17 @@
         "Rijndael",
         "Shreem"
     ],
+    "cSpell.ignorePaths": [
+        "package-lock.json",
+        "node_modules",
+        "vscode-extension",
+        ".git/{info,lfs,logs,refs,objects}/**",
+        ".git/{index,*refs,*HEAD}",
+        ".vscode",
+        ".vscode-insiders",
+        "yarn.lock",
+        ".vscode/**",
+    ],
     "CodeGPT.Autocomplete.enabled": false,
     "CodeGPT.Autocomplete.maxTokens": 1024,
     "CodeGPT.Autocomplete.suggestionDelay": 1000,
