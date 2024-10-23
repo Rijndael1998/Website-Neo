@@ -53,12 +53,20 @@
             margin: auto;
             padding: 1ch;
         }
+
+        * {
+            transition: inherit;
+        }
     }
 
     &:hover div.portfolioMainContent {
         // transform: rotateX(90deg);
         opacity: 0;
         border-top-width: 0;
+
+        * {
+            transform: translateY(-100%);
+        }
     }
 
     div.portfolioMainContentHover {
