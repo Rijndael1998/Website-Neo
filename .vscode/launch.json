@@ -6,7 +6,7 @@
     "configurations": [
         {
             "command": "yarn run olddev",
-            "name": "Run yarn run dev",
+            "name": "Run debug",
             "request": "launch",
             "type": "node-terminal"
         }

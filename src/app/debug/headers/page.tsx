@@ -1,11 +1,11 @@
 import Lazy from "@/components/lazy/_lazy";
 import { headers } from "next/headers";
 
-export default function Headers() {
+export default async function Headers() {
     const headersList = headers();
     const pairs: Array<[key: string, value: string]> = [];
 
-    headersList.forEach((value, key) => {
+    (await headersList).forEach((value, key) => {
         if(key != "x-forwarded-for")
             pairs.push([key, value]);
         else

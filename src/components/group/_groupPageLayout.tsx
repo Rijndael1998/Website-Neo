@@ -1,9 +1,9 @@
-import styles from "./group.module.scss";
 import GroupItem from "./_groupItem";
 import { GroupViewArray } from "./_groupTypes";
+import { Grid2 } from "@mui/material";
 
-export type GroupPageLayoutProps = { 
-    title: string, 
+export type GroupPageLayoutProps = {
+    title: string,
     subtitle: string,
     groups: GroupViewArray,
 };
@@ -12,12 +12,15 @@ export default function GroupPageLayout({ groups, title, subtitle }: GroupPageLa
     return <>
         <h2>{title}</h2>
         <p>{subtitle}</p>
-        <div className={styles.content}>
+        <Grid2 container spacing={2}>
             {
                 groups.map(
                     (group) =>
-                        <GroupItem key={group.title} portfolio={group} />)
+                        <Grid2 size={6}>
+                            <GroupItem key={group.title} portfolio={group} />
+                        </Grid2>
+                )
             }
-        </div>
+        </Grid2>
     </>
 };

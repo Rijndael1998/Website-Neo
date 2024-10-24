@@ -25,6 +25,7 @@
     ],
     "cSpell.ignorePaths": [
         "package-lock.json",
+        "package.json",
         "node_modules",
         "vscode-extension",
         ".git/{info,lfs,logs,refs,objects}/**",

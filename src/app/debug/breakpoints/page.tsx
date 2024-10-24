@@ -36,7 +36,7 @@ export default function Breakpoints() {
                         <Stack margin={1}>
                             {
                                 breakpoints.map((breakpoint) =>
-                                    <Stack direction={"row"}>
+                                    <Stack key={breakpoint} direction={"row"}>
                                         <FormGroup>
                                             <FormControlLabel
                                                 label={breakpoint}

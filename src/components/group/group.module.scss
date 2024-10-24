@@ -9,7 +9,7 @@
     grid-template-rows: auto 1fr 0fr;
 
     max-width: 100%;
-    height: calc(1rem * 440 / 16);
+    height: calc(calc(1rem * 440 / 16) + 4ex);
 
     border-radius: 1ch;
     overflow: hidden;
@@ -27,6 +27,8 @@
     &:hover {
         border: $border_declaration_hover;
         grid-template-rows: auto 0fr 1fr;
+
+        box-shadow: 0 3px 15px 0 rgba(73, 73, 73, 0.7);
     }
 
     filter: saturate(1);
@@ -95,32 +97,6 @@
         backdrop-filter: blur(1ch);
 
         border-top: $border_declaration_hover;
-    }
-}
-
-.content {
-    display: grid;
-    justify-content: stretch;
-    justify-items: stretch;
-
-    // set the width to have a max of 3 cols or less
-    width: calc(100% - $gapping * 2);
-    max-width: calc($size * 3);
-
-    // center if smaller than main
-    margin: auto;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: $gapping;
-
-    padding: 0 $gapping;
-    padding-bottom: 6rem;
-}
-
-@media screen and (max-width: calc(($size * 2) + ($gapping * 4))) {
-    .content {
-        grid-template-columns: 1fr 1fr;
     }
 }
 
