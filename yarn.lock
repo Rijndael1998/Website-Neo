@@ -828,10 +828,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@remixicon/react@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@remixicon/react/-/react-4.3.0.tgz#8ab34d03fccca53bf66f87c6e3f943ef5c65684f"
-  integrity sha512-mAVDn8pAa9dURltGwiYrf7bPIqjG4ZAnCUHfjpgz3g+HLSDNXOaJ67Z5wmjVB5KMGpp9JbbTN5vsp2z+ajVLWg==
+"@remixicon/react@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@remixicon/react/-/react-4.4.0.tgz#f777f0ab9a8000ed67fada464da34730d370cf6e"
+  integrity sha512-f1N61WiAZZZckaC8/dzQTIQBfpPbDIpAlUR8x2Q/g9AQT0/sMxeqqGrxh4VrTrimCD6pfret0++2CRI+pahldA==
 
 "@rtsao/scc@^1.1.0":
   version "1.1.0"
