@@ -18,25 +18,37 @@ html {
     background-color: $background;
     color: $text;
 
-    font-family: BagnardSans;
+    font-family: var(--main-body);
+
+    main {
+      max-width: 80ch;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     a {
       color: $text;
       text-decoration-color: $text;
-      transition: text-decoration-color 0.1s ease;
+      transition: text-decoration-color 0.15s ease;
 
       &:hover {
         text-decoration-color: transparent;
       }
     }
+
+    nextjs-portal {
+      position: fixed;
+    }
   }
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Bagnard;
+  font-family: var(--noto-sans);
 }
 
 code, tt, pre {
   color: $nicePink;
+  white-space: pre;
   font-family: OfficeCodePro;
 }

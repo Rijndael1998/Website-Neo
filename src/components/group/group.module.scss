@@ -2,15 +2,35 @@
 @import "./sizes.scss";
 
 .portfolio {
+    position: relative;
     background-color: $secondaryBg;
-    display: flex;
-    flex-direction: column;
+
+    display: grid;
+    grid-template-rows: auto 1fr 0fr;
+
     max-width: 100%;
+    height: calc(calc(1rem * 440 / 16) + 4ex);
 
     border-radius: 1ch;
     overflow: hidden;
 
-    transition: filter 0.15s ease;
+    transition: all 0.25s cubic-bezier(.65,.05,.54,1);
+
+    $b_width: 0.2ex;
+    $borer_hover_col: lighten($secondaryBg, 20);
+
+    $border_declaration: $b_width lighten($secondaryBg, 5) solid;
+    $border_declaration_hover: $b_width $borer_hover_col solid;
+
+    border: $border_declaration;
+
+    &:hover {
+        border: $border_declaration_hover;
+        grid-template-rows: auto 0fr 1fr;
+
+        box-shadow: 0 3px 15px 0 rgba(73, 73, 73, 0.7);
+    }
+
     filter: saturate(1);
 
     &.empty:hover {
@@ -18,38 +38,65 @@
     }
 
     div.portfolioMainContent {
-        height: auto;
-        padding: 0.5em;
+        display: grid;
+        text-align: center;
+
+        transition: inherit;
+        transform: rotateX(0deg);
+        opacity: 1;
+        border-top: $border_declaration;
+
+        overflow: hidden;
+
+        width: 100%;
+
+        h2 {
+            display: block;
+            margin: auto;
+            padding: 1ch;
+        }
 
         * {
-            margin: 0 0 0.5em 0;
+            transition: inherit;
         }
     }
-}
 
-.content {
-    display: grid;
-    justify-content: stretch;
-    justify-items: stretch;
+    &:hover div.portfolioMainContent {
+        // transform: rotateX(90deg);
+        opacity: 0;
+        border-top-width: 0;
 
-    // set the width to have a max of 3 cols or less
-    width: calc(100% - $gapping * 2);
-    max-width: calc($size * 3);
+        * {
+            transform: translateY(-100%);
+        }
+    }
 
-    // center if smaller than main
-    margin: auto;
+    div.portfolioMainContentHover {
+        transition: inherit;
+        opacity: 0;
 
-    grid-template-columns: repeat(3, 1fr);
+        backdrop-filter: blur(0);
+        background-color: rgba(0, 0, 0, 0);
 
-    gap: $gapping;
+        border-top: $border_declaration;
+        border-width: 0;
 
-    padding: 0 $gapping;
-    padding-bottom: 6rem;
-}
+        display: grid;
 
-@media screen and (max-width: calc( ($size * 2) + ($gapping * 4))) {
-    .content {
-        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+
+        overflow: hidden;
+
+        width: 100%;
+    }
+
+    &:hover div.portfolioMainContentHover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(1ch);
+
+        border-top: $border_declaration_hover;
     }
 }
 

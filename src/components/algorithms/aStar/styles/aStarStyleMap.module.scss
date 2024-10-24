@@ -18,6 +18,8 @@
 
 .Path {
     background: $text;
+    // animation: blink 2s ease infinite;
+    // animation-direction: reverse;
 }
 
 .Explored {
@@ -25,7 +27,23 @@
 }
 
 .Removed {
-    &::before {
+    background: transparent;
+
+    div {
+        opacity: 1 !important;
+    }
+}
+
+@keyframes blink {
+    80% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
         opacity: 1;
     }
 }
@@ -35,4 +53,4 @@
     .d#{$i} {
         animation-delay: #{$i}s;
     }
-} 
+}

@@ -16,4 +16,11 @@
     * {
         font-family: inherit;
     }
+
+    filter: hue-rotate(0deg);
+    transition: all 1s ease;
+
+    &.red {
+        filter: hue-rotate(100deg);
+    }
 }

@@ -7,7 +7,7 @@ export enum AStarStates {
     Explored,
     Removed,
 
-    // compund state
+    // compound state
     d0,
     d1,
     d2,

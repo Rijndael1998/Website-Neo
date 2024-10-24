@@ -1,12 +1,17 @@
 @import "./../../vars";
 
-.nav, .menu {
+.nav,
+.menu {
     font-size: 1rem;
 
     display: flex;
     padding: 0.5ch 2ch;
     background: linear-gradient(90deg, transparent 0%, black 25%);
-    transition: all ease 0.4s;
+
+    &,
+    & a {
+        transition: all ease 0.4s;
+    }
 
     overflow: hidden;
 }
@@ -41,6 +46,18 @@
 
 @media screen and (max-width: $navBreak) {
     .nav {
-        font-size: 0;
+        padding-left: 3em;
+        
+        a {
+            font-size: 0;
+            text-decoration-color: transparent !important;
+            color: transparent !important;
+            opacity: 0;
+        }
+
+        div {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 }

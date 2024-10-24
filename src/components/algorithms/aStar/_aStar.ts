@@ -1,9 +1,16 @@
-import { StyledGridState } from "../grid/_grid";
 import { GridState } from "../grid/gridState";
 import { AStarNode } from "./aStarNode";
-import { AStarResult } from "./utils/aStarResult";
+import { AStarResult, CanContinueReasonType } from "./utils/aStarResult";
 import { AStarStages } from "./utils/aStarStages.enum";
 import { AStarStates } from "./utils/aStarStates.enum";
+
+export enum CanContinueReason {
+    NO_START = "Start is not defined.",
+    NO_END = "End is not defined.",
+    END_START_SAME = "The start can't be the same as the end.",
+    IMPOSSIBLE = "Impossible pathing.",
+    FOUND = "A path was found.",
+}
 
 export default class AStar {
     state: GridState<AStarStates>;
@@ -68,38 +75,39 @@ export default class AStar {
         return this.postInteraction(this.originalState.new());
     }
 
-    canContinueReason() {
+    generateExtraStyles(): AStarResult["gridExtraStyle"] {
+        const delay = 0.4;
+        return this.all.map(
+            row => row.map(
+                node => {
+                    if (node.i !== undefined)
+                        return { animationDelay: `${delay * node.i}s` };
+
+                    return {};
+                }
+            )
+        );
+    }
+
+    canContinueReason(): CanContinueReasonType | undefined {
         if (this.start === undefined)
-            return "Start is not defined";
+            return [CanContinueReason.NO_START];
 
         if (this.end === undefined)
-            return "End is not defined";
+            return [CanContinueReason.NO_END];
 
         if (this.start == this.end)
-            return "The start can't be the same as the end";
+            return [CanContinueReason.END_START_SAME];
 
         if (this.foundEnd)
-            return `Path was found. Distance ${this.end!.gCost != Infinity ? Math.round(this.end!.gCost * 10) / 10 : "Unknown-"}u`;
+            return [CanContinueReason.FOUND, this.end!.gCost];
 
         if (this.open.length == 0)
-            return "Impossible pathing."
+            return [CanContinueReason.IMPOSSIBLE];
     }
 
     canContinue() {
         return this.canContinueReason() === undefined;
-    }
-
-    // This isn't getting used at all.
-    getStyledGridState(): string[][] {
-        const state = this.state.getStyledGridState();
-
-        this.all.forEach((nodes, y) => nodes.forEach((node, x) => {
-            if (node.i != undefined) {
-                // get the number here
-                state[x][y] = `${state[x][y]} d${node.i}`;
-            }
-        }))
-        return state;
     }
 
     private canChange(node: AStarStates) {
@@ -130,7 +138,7 @@ export default class AStar {
         this.inProgress = false;
         this.foundEnd = false;
         this.generate();
-        return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason());
+        return new AStarResult(this.state, undefined, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
     }
 
     private postInteraction(res: GridState<AStarStates>, nextStage?: AStarStages) {
@@ -140,7 +148,7 @@ export default class AStar {
         if (this.auto)
             this.run();
 
-        return new AStarResult(this.state.new(), nextStage, this.canContinue(), this.canContinueReason());
+        return new AStarResult(this.state.new(), nextStage, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
     }
 
     interaction(x: number, y: number, stage: AStarStages): AStarResult {
@@ -201,15 +209,13 @@ export default class AStar {
                     if (!node.removed)
                         nodes.push(node);
                 }
-
-
         return nodes;
     }
 
     step(): AStarResult {
         this.inProgress = true;
         if (!this.canContinue())
-            return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
+            return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
 
         // find the lowest element
         const node =
@@ -254,14 +260,13 @@ export default class AStar {
             while (cell != this.start || !cell) {
                 this.setElementState(cell.x, cell.y, AStarStates.Path);
                 cell.i = i++;
-
                 cell = cell.bestRoute!;
             }
         }
 
         this.steps++;
 
-        return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason());
+        return new AStarResult(this.state.new(), AStarStages.Wall, this.canContinue(), this.canContinueReason(), this.generateExtraStyles());
     }
 
     run(): AStarResult {

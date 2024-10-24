@@ -20,13 +20,13 @@
 
         &:nth-child(11n-3),
         &:nth-child(11n-7) {
-            background-color: black;
+            background-color: transparent;
             border: 0;
         }
 
         @for $i from 0 through 10 {
             &:nth-child(44n - #{$i}) {
-                background-color: black;
+                background-color: transparent;
                 border: 0;
             }
         }
