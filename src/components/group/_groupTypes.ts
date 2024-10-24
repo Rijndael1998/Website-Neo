@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 export type GroupPreviewContent = {
     title: string,
     desc: string | JSX.Element,
