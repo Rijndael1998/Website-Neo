@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "yarn run dev",
+            "command": "yarn run olddev",
             "name": "Run yarn run dev",
             "request": "launch",
             "type": "node-terminal"

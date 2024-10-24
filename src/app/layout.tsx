@@ -18,9 +18,9 @@ const cn = Kanit({
   weight: '400'
 });
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
   const headersList = headers();
-  const metaBaseValue = headersList.get("x-forwarded-host") ?? headersList.get("host");
+  const metaBaseValue = (await headersList).get("x-forwarded-host") ?? (await headersList).get("host");
 
   return {
     ...defaultMetadata,
