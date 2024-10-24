@@ -33,7 +33,7 @@
     "react-dom": "^18.3.1",
     "react-draggable": "^4.4.6",
     "remark-gfm": "^4.0.0",
-    "sass": "^1.80.3",
+    "sass": "^1.80.4",
     "scss": "^0.2.4",
     "sharp": "^0.33.5",
     "typescript": "^5.6.3",
