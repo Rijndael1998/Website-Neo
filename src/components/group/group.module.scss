@@ -1,5 +1,4 @@
 @import "./../colors";
-@import "./sizes.scss";
 
 .portfolio {
     position: relative;
@@ -28,7 +27,7 @@
         border: $border_declaration_hover;
         grid-template-rows: auto 0fr 1fr;
 
-        box-shadow: 0 3px 15px 0 rgba(73, 73, 73, 0.7);
+        box-shadow: 0 .4ch 1ch 0 rgba(73, 73, 73, 0.7);
     }
 
     filter: saturate(1);
@@ -97,11 +96,5 @@
         backdrop-filter: blur(1ch);
 
         border-top: $border_declaration_hover;
-    }
-}
-
-@media screen and (max-width: calc(($size * 1) + ($gapping * 4))) {
-    .content {
-        grid-template-columns: 1fr;
     }
 }

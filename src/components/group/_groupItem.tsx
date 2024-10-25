@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
-import { Button, Stack, SvgIcon } from "@mui/material";
+import { Button, Grid2, Stack, SvgIcon } from "@mui/material";
 import GroupItemDialog from "./_groupItemDialog";
 import DarkModeFix from "../muiWrappers/darkModeFix/_darkModeFix";
 import { ifTrue } from "../reactUtils";
@@ -49,38 +49,40 @@ export default function GroupItem({ portfolio }: GroupProps) {
     const Icon = IconMatrix.get(text) ?? IconMatrix.get("")!;
 
 
-    return <DarkModeFix>
-        <div className={classNames(styles.portfolio, empty && styles.empty)}>
-            {
-                portfolio.image && <GroupImage image={portfolio.image} />
-            }
-            <div className={styles.portfolioMainContent}>
-                <h2>
-                    {portfolio.title}
-                </h2>
+    return <Grid2 size={{ xs: 12, md: 6 }}>
+        <DarkModeFix>
+            <div className={classNames(styles.portfolio, empty && styles.empty)}>
+                {
+                    portfolio.image && <GroupImage image={portfolio.image} />
+                }
+                <div className={styles.portfolioMainContent}>
+                    <h2>
+                        {portfolio.title}
+                    </h2>
+                </div>
+                <div className={styles.portfolioMainContentHover}>
+                    <Stack direction={"row"} gap={2} padding={1}>
+                        <GroupItemDialog
+                            buttonProps={{ variant: "outlined" }}
+                            content={portfolio.desc}
+                            title={portfolio.title}
+                            link={url}
+                            linkText={text}
+                        />
+                        {ifTrue(!empty,
+                            <Button
+                                href={portfolio.url}
+                                aria-label={text}
+                                color="info"
+                                variant="contained"
+                                endIcon={<Icon fontSize="inherit" />}
+                            >
+                                {text}
+                            </Button>
+                        )}
+                    </Stack>
+                </div>
             </div>
-            <div className={styles.portfolioMainContentHover}>
-                <Stack direction={"row"} gap={2} padding={1}>
-                    <GroupItemDialog
-                        buttonProps={{ variant: "outlined" }}
-                        content={portfolio.desc}
-                        title={portfolio.title}
-                        link={url}
-                        linkText={text}
-                    />
-                    {ifTrue(!empty,
-                        <Button
-                            href={portfolio.url}
-                            aria-label={text}
-                            color="info"
-                            variant="contained"
-                            endIcon={<Icon fontSize="inherit" />}
-                        >
-                            {text}
-                        </Button>
-                    )}
-                </Stack>
-            </div>
-        </div>
-    </DarkModeFix>
+        </DarkModeFix>
+    </Grid2>
 }

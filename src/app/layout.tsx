@@ -28,6 +28,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+// Remove the head: 
+// - https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+// - https://nextjs.org/docs/app/api-reference/file-conventions/layout
 export default function RootLayout({
   children,
 }: {

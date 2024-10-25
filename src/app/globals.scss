@@ -18,8 +18,6 @@ html {
     background-color: $background;
     color: $text;
 
-    font-family: var(--main-body);
-
     main {
       max-width: 80ch;
       width: 100%;
@@ -43,12 +41,7 @@ html {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--noto-sans);
-}
-
 code, tt, pre {
   color: $nicePink;
   white-space: pre;
-  font-family: OfficeCodePro;
 }
