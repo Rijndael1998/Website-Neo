@@ -1,8 +1,12 @@
 import Image from "next/image";
 import styles from "./groupImage.module.scss";
 
-export default function GroupImage({image}: {image: string}) {
-    return <div className={styles.image}> {/* TODO: Implement alts */}
-        <Image src={image} fill={true} style={{"objectFit": "cover"}} alt={image}/>
+/* TODO: Implement alts */
+export default function GroupImage({ image }: { image: string }) {
+    return <div className={styles.imageWrapper}>
+        <div className={styles.image}>
+            <Image src={image} fill={true} alt={image} style={{objectFit: "cover"}}/>
+        </div>
     </div>
+
 }

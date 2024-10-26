@@ -1,5 +1,8 @@
-.image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1;
+.imageWrapper {
+    max-height: 100%;
+    .image {
+        position: relative;
+        max-width: 100%;
+        height: 100%;
+    }
 }

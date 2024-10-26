@@ -5,7 +5,10 @@
     background-color: $secondaryBg;
 
     display: grid;
-    grid-template-rows: auto 1fr 0fr;
+
+    $imgShares: 3fr;
+    $textShares: 1fr;
+    grid-template-rows: $imgShares $textShares 0fr;
 
     max-width: 100%;
     height: calc(calc(1rem * 440 / 16) + 4ex);
@@ -25,7 +28,7 @@
 
     &:hover {
         border: $border_declaration_hover;
-        grid-template-rows: auto 0fr 1fr;
+        grid-template-rows: $imgShares 0fr $textShares;
 
         box-shadow: 0 .4ch 1ch 0 rgba(73, 73, 73, 0.7);
     }

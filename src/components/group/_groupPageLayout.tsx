@@ -11,7 +11,7 @@ export type GroupPageLayoutProps = {
 export default function GroupPageLayout({ groups, title, subtitle }: GroupPageLayoutProps) {
     return <Card>
         <CardContent>
-            <Typography variant="h3">
+            <Typography variant="h4">
                 {title}
             </Typography>
             <Typography>

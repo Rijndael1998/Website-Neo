@@ -9,21 +9,22 @@ export type GroupPageProps = {
 
 export default function GroupPage({ title, groups }: GroupPageProps) {
     return <DarkModeFix>
-        <Stack>
-            <h1>{title}</h1>
-                {
-                    groups.map(
-                        (
-                            portfolioGroup =>
-                                <GroupPageLayout
-                                    key={portfolioGroup.title}
-                                    groups={portfolioGroup.groups}
-                                    title={portfolioGroup.title}
-                                    subtitle={portfolioGroup.subtitle}
-                                />
-                        )
+        <h1>{title}</h1>
+
+        <Stack gap={5}>
+            {
+                groups.map(
+                    (
+                        portfolioGroup =>
+                            <GroupPageLayout
+                                key={portfolioGroup.title}
+                                groups={portfolioGroup.groups}
+                                title={portfolioGroup.title}
+                                subtitle={portfolioGroup.subtitle}
+                            />
                     )
-                }
+                )
+            }
         </Stack>
     </DarkModeFix>
 }
