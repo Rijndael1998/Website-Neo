@@ -49,11 +49,17 @@ export default function GroupItem({ portfolio }: GroupProps) {
     const Icon = IconMatrix.get(text) ?? IconMatrix.get("")!;
 
 
-    return <Grid2 size={{ xs: 12, md: 6 }}>
+    return <Grid2 size={{
+        xs: 12 / 1,
+        sm: 12 / 2,
+        md: 12 / 3,
+        lg: 12 / 4,
+        xl: 12 / 5,
+    }}>
         <DarkModeFix>
             <div className={classNames(styles.portfolio, empty && styles.empty)}>
                 {
-                    portfolio.image && <GroupImage image={portfolio.image} />
+                    portfolio.image && <GroupImage image={portfolio.image} logo={portfolio.logo} />
                 }
                 <div className={styles.portfolioMainContent}>
                     <h2>
@@ -61,7 +67,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
                     </h2>
                 </div>
                 <div className={styles.portfolioMainContentHover}>
-                    <Stack direction={"row"} gap={2} padding={1}>
+                    <Stack direction={"column"} gap={1} padding={1}>
                         <GroupItemDialog
                             buttonProps={{ variant: "outlined" }}
                             content={portfolio.desc}

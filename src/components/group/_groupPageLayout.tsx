@@ -19,7 +19,7 @@ export default function GroupPageLayout({ groups, title, subtitle }: GroupPageLa
             </Typography>
         </CardContent>
         <CardContent>
-            <Grid2 container spacing={2}>
+            <Grid2 container spacing={2} justifyContent={"center"}>
                 {
                     groups.map(
                         (group) =>

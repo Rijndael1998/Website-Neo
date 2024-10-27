@@ -8,6 +8,7 @@ import Footer from '@/components/app/footer/_footer'
 import { defaultMetadata } from '@/content/Metadata'
 import { headers } from 'next/headers'
 import { Kanit, Noto_Sans, Noto_Serif } from 'next/font/google';
+import { Container } from '@mui/material';
 
 
 const ns = Noto_Sans({ 
@@ -58,9 +59,9 @@ export default function RootLayout({
             <Nav />
           </Header>
         </header>
-        <main>
+        <Container maxWidth="xl">
           {children}
-        </main>
+        </Container>
         <Footer />
       </body>
     </html>

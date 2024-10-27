@@ -7,11 +7,11 @@
     display: grid;
 
     $imgShares: 3fr;
-    $textShares: 1fr;
-    grid-template-rows: $imgShares $textShares 0fr;
+    $textShares: 12ex;
+    grid-template-rows: $imgShares $textShares 0;
 
     max-width: 100%;
-    height: calc(calc(1rem * 440 / 16) + 4ex);
+    height: 30ex;
 
     border-radius: 1ch;
     overflow: hidden;
@@ -28,7 +28,7 @@
 
     &:hover {
         border: $border_declaration_hover;
-        grid-template-rows: $imgShares 0fr $textShares;
+        grid-template-rows: $imgShares 0 $textShares;
 
         box-shadow: 0 .4ch 1ch 0 rgba(73, 73, 73, 0.7);
     }
