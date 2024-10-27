@@ -10,6 +10,7 @@ import { headers } from 'next/headers'
 import { Kanit, Noto_Sans, Noto_Serif } from 'next/font/google';
 import { Container } from '@mui/material';
 import FabNav from '@/components/app/nav/fabnav/_fabnav';
+import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
 
 
 const ns = Noto_Sans({
@@ -60,9 +61,11 @@ export default function RootLayout({
             <Nav />
           </Header>
         </header>
-        <Container maxWidth="xl">
-          {children}
-        </Container>
+        <DarkModeFix>
+          <Container maxWidth="xl">
+            {children}
+          </Container>
+        </DarkModeFix>
         <Footer />
         <FabNav />
       </body>
