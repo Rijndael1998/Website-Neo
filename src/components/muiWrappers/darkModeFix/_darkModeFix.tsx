@@ -11,10 +11,18 @@ const titleTypography: TypographyOptions["h1"] = {
     fontWeight: "bold",
 };
 
-// TODO: Fix the palette
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
+        primary: {
+            main: "#00a900",
+        },
+        secondary: {
+            main: "#0083a9",
+        },
+        background: {
+            default: "#000",
+        }
     },
     typography: {
         allVariants: {
