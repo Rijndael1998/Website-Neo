@@ -5,6 +5,6 @@ import { Container } from "@mui/material";
 
 export default function Lazy({ children }: { children?: ReactNode }) {
     return <DarkModeFix>
-        <Container className={styles.lazy}>{children}</Container>
+        <Container className={styles.lazy} maxWidth={"md"}>{children}</Container>
     </DarkModeFix>
 }

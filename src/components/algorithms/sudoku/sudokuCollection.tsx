@@ -5,11 +5,12 @@ import { backtracking } from "@/components/algorithms/sudoku/sudokuWorker";
 import SudokuGrid from "@/components/algorithms/sudoku/_grid";
 import { Duplicate2DArray } from "@/components/util";
 import { useState } from "react";
-import { Button, Paper, Snackbar, SnackbarCloseReason } from "@mui/material";
+import { Button, Container, Paper, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { default as Grid } from "@mui/material/Grid2";
-import { paperProps } from "./sudokuConstants";
+import { elementProps, elementPropsType } from "./sudokuConstants";
 
-
+const paperProps: elementPropsType["paper"] = {...elementProps.paper};
+const containerProps: elementPropsType["container"] = {...elementProps.container, sx: {padding: "1em 0"}};
 
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
@@ -70,9 +71,11 @@ export default function SudokuCollection() {
     return <Paper>
         <Grid container overflow={"hidden"}>
             <Grid size={12}>
-                <Paper {...paperProps}>
-                    <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
-                </Paper>
+                <Container {...containerProps}>
+                    <Paper {...paperProps}>
+                        <SudokuGrid grid={grid} callback={(x, y, v) => { callback(x, y, v) }} />
+                    </Paper>
+                </Container>
             </Grid>
             <Grid size={12}>
                 <Grid container justifyContent={"space-around"} marginBottom={"1em"}>
