@@ -76,7 +76,7 @@ export default function FabNav() {
                     tooltipTitle={link[0]}
                     tooltipOpen
                     onClick={() => { handleClose() }}
-                    sx={{ [`&, & *`]: { transition: "all 0.25s ease" } }}
+                    sx={{ [`&, & button`]: { transition: "all 0.25s ease !important" } }}
                 />
             )}
 
