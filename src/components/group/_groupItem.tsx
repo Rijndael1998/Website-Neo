@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
-import { Button, Grid2, Stack, SvgIcon } from "@mui/material";
+import { Button, Grid2, Stack, SvgIcon, Typography } from "@mui/material";
 import GroupItemDialog from "./_groupItemDialog";
 import DarkModeFix from "../muiWrappers/darkModeFix/_darkModeFix";
 import { ifTrue } from "../reactUtils";
@@ -62,9 +62,9 @@ export default function GroupItem({ portfolio }: GroupProps) {
                     portfolio.image && <GroupImage image={portfolio.image} logo={portfolio.logo} />
                 }
                 <div className={styles.portfolioMainContent}>
-                    <h2>
+                    <Typography variant="h6">
                         {portfolio.title}
-                    </h2>
+                    </Typography>
                 </div>
                 <div className={styles.portfolioMainContentHover}>
                     <Stack direction={"column"} gap={1} padding={1}>

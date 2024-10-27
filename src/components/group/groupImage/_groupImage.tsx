@@ -10,6 +10,6 @@ export default function GroupImage({ image, logo }: { image: string, logo?: bool
             alt={image}
             style={{ objectFit: logo ? "contain" : "cover" }}
             quality={90}
-            unoptimized />
+            sizes="368px" />
     </div>
 }

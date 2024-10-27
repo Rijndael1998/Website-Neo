@@ -28,6 +28,7 @@ const IPF: GroupPreviewContent = {
     isDemo: false,
     url: preURL + "ipf",
     image: imageFolder + "ipf.png",
+    logo: true,
 };
 
 const LBU: GroupPreviewContent = {
@@ -40,6 +41,7 @@ const LBU: GroupPreviewContent = {
     isDemo: false,
     url: "https://www.leedsbeckett.ac.uk/student-information/course-information/course-representatives/",
     image: imageFolder + "lbu.png",
+    logo: true,
 };
 
 const Shreem: GroupPreviewContent = {
@@ -51,6 +53,7 @@ const Shreem: GroupPreviewContent = {
     isDemo: false,
     url: preURL + "shreem",
     image: imageFolder + "shreem.png",
+    logo: true,
 };
 
 const FAH: GroupPreviewContent = {
@@ -63,6 +66,7 @@ const FAH: GroupPreviewContent = {
     isDemo: false,
     url: "https://stats.foldingathome.org/donor/name/rijn.dev",
     image: imageFolder + "foldingAtHome.webp",
+    logo: true,
 };
 
 const TOR: GroupPreviewContent = {
@@ -75,6 +79,7 @@ const TOR: GroupPreviewContent = {
             `,
     isDemo: false,
     image: imageFolder + "tor.webp",
+    logo: true,
 };
 
 const RAI: GroupPreviewContent = {
@@ -191,6 +196,7 @@ const HAL: GroupPreviewContent = {
     isDemo: false,
     image: imageFolder + "hal.webp",
     url: "https://www.halsystemsltd.co.uk",
+    logo: true,
 }
 
 const OSM: GroupPreviewContent = {
@@ -199,6 +205,7 @@ const OSM: GroupPreviewContent = {
     isDemo: false,
     image: imageFolder + "osm.svg",
     url: "https://hdyc.neis-one.org/?Rijndael1998",
+    logo: true,
 };
 
 const Lineage: GroupPreviewContent = {
@@ -207,6 +214,7 @@ const Lineage: GroupPreviewContent = {
     isDemo: false,
     image: imageFolder + "los.svg",
     url: "https://hdyc.neis-one.org/?C3ypt1c",
+    logo: true,
 };
 
 export const irlContent: GroupViewArray = [

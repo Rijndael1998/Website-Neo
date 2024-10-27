@@ -16,7 +16,7 @@
     border-radius: 1ch;
     overflow: hidden;
 
-    transition: all 0.25s cubic-bezier(.65,.05,.54,1);
+    transition: all 0.25s cubic-bezier(.65, .05, .54, 1);
 
     $b_width: 0.2ex;
     $borer_hover_col: lighten($secondaryBg, 20);
@@ -52,7 +52,12 @@
 
         width: 100%;
 
-        h2 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             display: block;
             margin: auto;
             padding: 1ch;
