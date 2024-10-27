@@ -13,13 +13,14 @@ import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMa
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import GridItem from "../grid/gridItem/_gridItem";
-import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, Switch } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch } from "@mui/material";
 import * as React from 'react';
 import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AStarContent, AStarContent2 } from "@/content/portfolio/aStar/AStar";
 import { ifTrue } from "@/components/reactUtils";
 import ToolTip from "@/components/toolTip/_toolTip";
+import { elementPropsType } from "../sudoku/sudokuConstants";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
@@ -29,8 +30,22 @@ function buttonVariant(v: boolean): ButtonOwnProps["variant"] {
     return v ? "contained" : "outlined";
 }
 
+const containerProps: elementPropsType["container"] = {
+    sx: {
+        padding: "1em 0",
+        overflowX: "auto",
+        maxWidth: "calc(100vw - 9em)",
+        width: "max-content",
+        margin: "auto",
+    },
+};
+
+const paperProps: elementPropsType["paper"] = {
+    elevation: 1,
+};
+
 export default function AStarComponent() {
-    const initialSize = 10;
+    const initialSize = 20;
     const maxSize = 22;
 
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
@@ -156,9 +171,11 @@ export default function AStarComponent() {
             }
         </Alert>
 
-        <div className={styles.gridWrapper}>
-            <Grid className={styles.grid} state={state} extraStyleFunction={styleCallback} callback={callback} />
-        </div>
+        <Container {...containerProps}>
+            <Paper {...paperProps}>
+                <Grid className={styles.grid} state={state} extraStyleFunction={styleCallback} callback={callback} />
+            </Paper>
+        </Container>
 
         <div>
             <Accordion>

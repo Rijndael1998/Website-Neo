@@ -18,6 +18,7 @@ const containerProps: elementPropsType["container"] = {
         margin: "auto",
     },
 };
+
 const paperProps: elementPropsType["paper"] = {
     elevation: elementProps.paper.elevation,
 };
@@ -30,7 +31,6 @@ function EmptyGridGen() {
 
     return grid;
 }
-
 
 export default function SudokuCollection() {
     const [grid, setGrid] = useState<Array<Array<number>>>(EmptyGridGen());
