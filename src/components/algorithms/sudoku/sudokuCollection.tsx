@@ -9,8 +9,18 @@ import { Button, Container, Paper, Snackbar, SnackbarCloseReason } from "@mui/ma
 import { default as Grid } from "@mui/material/Grid2";
 import { elementProps, elementPropsType } from "./sudokuConstants";
 
-const paperProps: elementPropsType["paper"] = {...elementProps.paper};
-const containerProps: elementPropsType["container"] = {...elementProps.container, sx: {padding: "1em 0"}};
+const containerProps: elementPropsType["container"] = {
+    sx: {
+        padding: "1em 0",
+        overflowX: "auto",
+        maxWidth: "calc(100vw - 10em)",
+        width: "max-content",
+        margin: "auto",
+    },
+};
+const paperProps: elementPropsType["paper"] = {
+    elevation: elementProps.paper.elevation,
+};
 
 function EmptyGridGen() {
     const grid: Array<Array<number>> = [];
@@ -79,7 +89,7 @@ export default function SudokuCollection() {
             </Grid>
             <Grid size={12}>
                 <Grid container justifyContent={"space-around"} marginBottom={"1em"}>
-                    <Grid>
+                    <Grid >
                         <Button onClick={() => puzzleHandler("easy")}>Easy Puzzle</Button>
                     </Grid>
                     <Grid>

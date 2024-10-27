@@ -14,12 +14,12 @@ const paperProps = elementProps.paper;
 const containerProps = elementProps.container;
 
 export default function Sudoku() {
-    return <Lazy>
-        <h1>Sudoku Solver</h1>
+    return <Lazy doNothing>
+        <h1 style={{ margin: "1rem 0" }}>Sudoku Solver</h1>
 
         <SudokuCollection />
 
-        <div>
+        <div style={{ margin: "1em 0" }}>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}

@@ -14,6 +14,13 @@
     &>ol>li {
         padding-bottom: 2rem;
     }
+
+    &.doNothing {
+        &>* {
+            margin: unset;
+            max-width: unset;
+        }
+    }
 }
 
 .lazyCollapse {
