@@ -3,6 +3,7 @@ import styles from "./lazy.module.scss";
 import classNames from "classnames";
 import { DEFAULT_IMAGE_QUALITY } from "./defaults";
 import LazyImageCaption from "./_lazyImageCaption";
+import { JSX } from "react";
 
 export type LazyImageProps = {
     aspectRatio: number,
