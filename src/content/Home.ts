@@ -13,7 +13,7 @@ I'm not a designer so a lot of the website is ugly but this will change very soo
 `;
 
 export const about = `
-I'm a Full Stack Web Developer with a BSc in Computer Security. I have a lot of experience in a lot of different things (C#, TS, React, Next.js, Python, AWS, and more). I'm pretty cool. 😎
+I'm a Full Stack Web Developer with a BSc in Computer Security. I have a lot of experience in a lot of different things (C#, TS, React, Next.js, Python, AWS, and more). 😎
 `;
 
 export const contact = `
