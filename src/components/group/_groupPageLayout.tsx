@@ -9,7 +9,7 @@ export type GroupPageLayoutProps = {
 };
 
 export default function GroupPageLayout({ groups, title, subtitle }: GroupPageLayoutProps) {
-    return <Card>
+    return <Card sx={{background: "#0d0d0d"}}>
         <CardContent>
             <Typography variant="h4">
                 {title}

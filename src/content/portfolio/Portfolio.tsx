@@ -118,6 +118,7 @@ const THIS: GroupPreviewContent = {
     isDemo: false,
     image: "/favico.png",
     url: "https://github.com/Rijndael1998/Website-Neo",
+    logo: true,
 }
 
 const Nomad: GroupPreviewContent = {
