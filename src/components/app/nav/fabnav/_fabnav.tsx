@@ -8,6 +8,7 @@ import SpeedDialAction from '@mui/material/SpeedDialAction';
 import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
 import { Links } from '../navLinkCollection/navLink/links';
 import { useMediaQuery } from '@mui/material';
+import { useEffect } from 'react';
 
 const brightness = 220;
 const col = `rgba(${brightness}, ${brightness}, ${brightness}, 0.2)`;
@@ -23,7 +24,11 @@ export default function FabNav() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    // TODO: add hiding during movement
+    useEffect(() => {
+        const resize = () => setOpen(false);
+        window.addEventListener("resize", resize);
+        return () => window.removeEventListener("resize", resize);
+    }, []);
 
     return <DarkModeFix>
         <Backdrop open={open} sx={{
@@ -38,10 +43,6 @@ export default function FabNav() {
                 right: "1em",
 
                 color: "white",
-
-                [`media`]: {
-
-                }
             }}
 
             FabProps={{
