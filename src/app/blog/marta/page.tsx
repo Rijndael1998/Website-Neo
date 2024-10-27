@@ -42,21 +42,19 @@ function Gallery() {
     />
 }
 
-export default async function Marta() {
-    let i = 0; // this shouldn't be working... 🤯
-
+export default function Marta() {
     return <Lazy>
         <h1>{"Marta Fundraiser's"}</h1>
 
         <Gallery />
 
-        <p>{content[i++]}</p>
-        <p>{content[i++]}</p>
-        <p>{content[i++]}</p>
-        <p>{content[i++]}</p>
+        <p>{content[0]}</p>
+        <p>{content[1]}</p>
+        <p>{content[2]}</p>
+        <p>{content[3]}</p>
 
         <LazyImage src="/fun/marta/v1.jpg" alt="" aspectRatio={vertical_aspect_ratio} />
-        <p>{content[i++]}</p>
+        <p>{content[4]}</p>
 
         <h3>References</h3>
         <ul>

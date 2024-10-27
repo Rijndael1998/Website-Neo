@@ -20,12 +20,13 @@ export type ImageGalleryProps = {
 
 export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps) {
     const [index, setIndex] = useState(0);
+    const [touchSupport, setTouchSupport] = useState(true);
     const [minimalAspectRatio, setMinimalAspectRatio] = useState(Number.MAX_SAFE_INTEGER);
     const [hovering, setHovering] = useState(false);
 
-    const touchSupport =
-        (('ontouchstart' in window) ||
-            (navigator.maxTouchPoints > 0));
+    useEffect(() => {
+        setTouchSupport((('ontouchstart' in window) || (navigator.maxTouchPoints > 0)))
+    }, []);
 
     useEffect(() => {
         if (aspectRatio) {
