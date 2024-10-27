@@ -9,6 +9,7 @@ import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
 import { Links } from '../navLinkCollection/navLink/links';
 import { useMediaQuery } from '@mui/material';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const brightness = 220;
 const col = `rgba(${brightness}, ${brightness}, ${brightness}, 0.2)`;
@@ -23,6 +24,8 @@ export default function FabNav() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const router = useRouter();
 
     useEffect(() => {
         const resize = () => setOpen(false);
@@ -69,16 +72,18 @@ export default function FabNav() {
             open={open}
             direction='down'
         >
-            {Links.map(link =>
-                <SpeedDialAction
-                    key={link[1]}
-                    icon={link[2]}
-                    tooltipTitle={link[0]}
-                    tooltipOpen
-                    onClick={() => { handleClose() }}
-                    sx={{ [`&, & button`]: { transition: "all 0.25s ease !important" } }}
-                />
-            )}
+            {
+                Links.map(link =>
+                    <SpeedDialAction
+                        key={link[1]}
+                        icon={link[2]}
+                        tooltipTitle={link[0]}
+                        tooltipOpen
+                        onClick={() => { handleClose(); router.push(link[1]); }}
+                        sx={{ [`&, & button`]: { transition: "all 0.25s ease !important" } }}
+                    />
+                )
+            }
 
 
         </SpeedDial>
