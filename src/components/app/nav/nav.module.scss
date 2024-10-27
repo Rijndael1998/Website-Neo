@@ -46,7 +46,8 @@
 
 @media screen and (max-width: $navBreak) {
     .nav {
-        padding-left: 3em;
+        padding-left: 0;
+        padding-right: 0;
         
         a {
             font-size: 0;
