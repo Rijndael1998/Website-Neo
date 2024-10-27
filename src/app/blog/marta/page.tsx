@@ -46,7 +46,7 @@ export default async function Marta() {
     let i = 0; // this shouldn't be working... 🤯
 
     return <Lazy>
-        <h1>Marta Fundraiser's</h1>
+        <h1>{"Marta Fundraiser's"}</h1>
 
         <Gallery />
 
