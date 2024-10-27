@@ -79,7 +79,6 @@ export default function GroupItem({ portfolio }: GroupProps) {
                             <Button
                                 href={portfolio.url}
                                 aria-label={text}
-                                color="info"
                                 variant="contained"
                                 endIcon={<Icon fontSize="inherit" />}
                             >
