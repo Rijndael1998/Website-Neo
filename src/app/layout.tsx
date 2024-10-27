@@ -9,16 +9,17 @@ import { defaultMetadata } from '@/content/Metadata'
 import { headers } from 'next/headers'
 import { Kanit, Noto_Sans, Noto_Serif } from 'next/font/google';
 import { Container } from '@mui/material';
+import FabNav from '@/components/app/nav/fabnav/_fabnav';
 
 
-const ns = Noto_Sans({ 
-  subsets: ["latin"], 
-  variable: '--noto-sans' 
+const ns = Noto_Sans({
+  subsets: ["latin"],
+  variable: '--noto-sans'
 });
 
-const nss = Noto_Serif({ 
-  subsets: ["latin"], 
-  variable: '--noto-serif' 
+const nss = Noto_Serif({
+  subsets: ["latin"],
+  variable: '--noto-serif'
 });
 
 const cn = Kanit({
@@ -63,6 +64,7 @@ export default function RootLayout({
           {children}
         </Container>
         <Footer />
+        <FabNav />
       </body>
     </html>
   )

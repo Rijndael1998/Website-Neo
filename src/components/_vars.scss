@@ -2,7 +2,7 @@ $headerHeight: 8ch;
 
 /// breaks
 // nav bar
-$navBreak: 90ch;
+$navBreak: 90ch; // When changing this, make sure to also change @/components/app/nav/fabnav/_fabnav.tsx
 
 // for title
 $titleBreak: 40ch;
