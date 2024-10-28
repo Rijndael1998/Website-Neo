@@ -9,6 +9,7 @@ export type HamburgerProps = {
 }
 
 export default function Hamburger({ crossed, onTop, dynamic, onClick }: HamburgerProps) {
+    console.warn("Hamburger is deprecated.");
 
     const hamburgerClassName = classNames(
         styles.hamburger,

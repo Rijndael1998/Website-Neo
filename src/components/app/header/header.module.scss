@@ -2,7 +2,6 @@
 
 .header {
     overflow: hidden;
-    position: relative;
 
     display: flex;
     justify-content: space-between;
@@ -15,5 +14,12 @@
 
     * {
         font-family: inherit;
+    }
+
+    filter: hue-rotate(0deg);
+    transition: all 1s ease;
+
+    &.red {
+        filter: hue-rotate(100deg);
     }
 }

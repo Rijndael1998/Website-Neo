@@ -1,29 +1,51 @@
 "use client";
 
 import styles from "./styles/aStar.module.scss";
-import button from "./../../input/genericButton/genericButton.module.scss";
 import colors from "./styles/aStarStyleMap.module.scss";
-import GenericButton from "@/components/input/genericButton/_genericButton";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
-import classNames from "classnames";
 import Grid from "../grid/_grid";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { GridState } from "../grid/gridState"
-import AStar from "@/components/algorithms/aStar/_aStar";
+import AStar, { CanContinueReason } from "@/components/algorithms/aStar/_aStar";
 
 import { AStarResult } from "@/components/algorithms/aStar/utils/aStarResult";
 import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMap";
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
-import ColorSquare from "@/components/colorSquare/_colorSquare";
 import GridItem from "../grid/gridItem/_gridItem";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch } from "@mui/material";
+import * as React from 'react';
+import { default as MGrid } from '@mui/material/Grid2';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { AStarContent, AStarContent2 } from "@/content/portfolio/aStar/AStar";
+import { ifTrue } from "@/components/reactUtils";
+import ToolTip from "@/components/toolTip/_toolTip";
+import { elementPropsType } from "../sudoku/sudokuConstants";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
 }
 
+function buttonVariant(v: boolean): ButtonOwnProps["variant"] {
+    return v ? "contained" : "outlined";
+}
+
+const containerProps: elementPropsType["container"] = {
+    sx: {
+        padding: "1em 0",
+        overflowX: "auto",
+        maxWidth: "calc(100vw - 9em)",
+        width: "max-content",
+        margin: "auto",
+    },
+};
+
+const paperProps: elementPropsType["paper"] = {
+    elevation: 1,
+};
+
 export default function AStarComponent() {
-    const initialSize = 10;
+    const initialSize = 20;
     const maxSize = 22;
 
     const [callback, setCallback] = useState<(x: number, y: number) => void>();
@@ -32,7 +54,8 @@ export default function AStarComponent() {
     const [state, setState] = useState<GridState<AStarStates>>();
     const [stage, setStage] = useState<AStarStages>(AStarStages.Start);
     const [canStep, setCanStep] = useState<boolean>(false);
-    const [canStepReason, setCanStepReason] = useState<string>();
+    const [canStepReason, setCanStepReason] = useState<AStarResult["canContinueReason"]>();
+    const [extraStyle, setExtraStyle] = useState<AStarResult["gridExtraStyle"]>();
     const [auto, setAuto] = useState<boolean>(false);
 
     const [InputWidth, setInputWidth] = useState<number>(initialSize);
@@ -45,6 +68,7 @@ export default function AStarComponent() {
         setState(result.gridState);
         setCanStep(result.canContinue);
         setCanStepReason(result.canContinueReason);
+        setExtraStyle(result.gridExtraStyle);
     }
 
     const refreshState = () => {
@@ -57,6 +81,7 @@ export default function AStarComponent() {
         const as = new AStar(generateGridState(initialSize, initialSize));
         setAS(as);
         setState(as.state);
+        setAuto(true);
     }, []);
 
     useEffect(() => {
@@ -75,74 +100,244 @@ export default function AStarComponent() {
         if (AS)
             applyResult(AS.setAuto(auto));
     }, [AS, auto]);
+
+    const mGridProps = {
+        sx: { "*": { margin: "auto", textAlign: "center" } },
+        size: {
+            xs: 6,
+            sm: 1.65,
+        },
+        alignContent: "center",
+        justifyItems: "center",
+    }
+
+    const defaultCardProps: CardProps = {
+        sx: {
+            "&": { padding: "0.5ch", marginTop: "1ex", marginBottom: "1ex" },
+            "&>*": { margin: "0" },
+            "&>*:first-of-type": { marginLeft: "1ch", marginBottom: "0.5ex" }
+        },
+        variant: "outlined",
+    }
+
+    const smoothOperator = { "&, *": { transition: "all 0.5s ease" } };
+
+    const styleCallback = (x: number, y: number): CSSProperties | void => {
+        return {};
+
+        // if(!extraStyle)
+        //     return;
+
+        // return extraStyle[y][x];
+    }
+
+    const reason = (canStepReason && canStepReason[0]) ?? "All ok! Ready to step."
+    const preciseDistance = (canStepReason && canStepReason.length > 1) ? canStepReason[1] : undefined;
+    const distance = preciseDistance !== undefined ? Math.round(preciseDistance * 10) / 10 : undefined;
+
     return <div>
-        <div className={styles.options}>
-            <div className={styles.newGridOptionsWrapper}>
-                <div className={styles.widthHeightOptions}>
-                    <div>Width</div>
-                    <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputWidth(num)} /></div>
-                    <div>Height</div>
-                    <div><NumUpDown start={initialSize} min={initialSize} max={maxSize} callback={(num) => setInputHeight(num)} /></div>
-                </div>
-                <GenericButton className={classNames(styles.newGridButton, button.medButton)} onClick={() => {
-                    const newAS = new AStar(generateGridState(InputWidth, InputHeight));
-                    setAS(newAS);
-                    setStage(AStarStages.Start);
-                    setState(newAS.state);
-                }}><p>New Grid</p></GenericButton>
-            </div>
+        {/* This could do with better and more specific tweaking */}
+        <FormControl sx={smoothOperator}>
+            <FormLabel id="demo-radio-buttons-group-label">Tile Selection</FormLabel>
+            <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                name="radio-buttons-group"
+                defaultValue={AStarStages.Start}
+                onChange={(_, v) => setStage(Number.parseInt(v))}
+                value={stage}
+            >
+                <Stack spacing={1} direction={"row"} width={"100%"}>
+                    <FormControlLabel value={AStarStages.Start} control={<Radio />} label="Start" />
+                    <FormControlLabel value={AStarStages.End} control={<Radio />} label="End" />
+                    <FormControlLabel value={AStarStages.Wall} control={<Radio />} label="Wall" />
+                </Stack>
+            </RadioGroup>
+        </FormControl>
 
-            <div className={classNames(styles.tileSelection, styles.stageButtons)}>
-                <div>Tile Selection:</div>
-                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Start)} selected={stage == AStarStages.Start}><p>Select start</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.End)} selected={stage == AStarStages.End}><p>Select end</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => setStage(AStarStages.Wall)} selected={stage == AStarStages.Wall}><p>Select walls</p></GenericButton>
-            </div>
+        <Alert sx={smoothOperator} severity={canStepReason ? (canStepReason[0] == CanContinueReason.FOUND ? "success" : "warning") : "info"}>
+            {reason}
+            {
+                ifTrue(
+                    distance !== undefined,
+                    <>
+                        {" Distance: "}
+                        <ToolTip tip={`Exactly ${preciseDistance} squares`}>
+                            <span>
+                                {`${distance} squares.`}
+                            </span>
+                        </ToolTip>
+                    </>
+                )
+            }
+        </Alert>
 
-            <div className={classNames(styles.stepSelection, styles.stageButtons)}>
-                <GenericButton className={styles.stageButton} onClick={() => setAuto(!auto)} selected={auto}><p>Auto step: {auto ? "Enabled" : "Disabled"}</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => { refreshState() }} selected={canStep} disabled={auto || canStepReason !== undefined}><p>Step</p></GenericButton>
-                <GenericButton className={styles.stageButton} onClick={() => AS && applyResult(AS.reset())} selected={true} disabled={auto}><p>Reset Steps</p></GenericButton>
-            </div>
-        </div>
-        <p>
-            {canStepReason === undefined ? "All ok" : canStepReason}
-        </p>
+        <Container {...containerProps}>
+            <Paper {...paperProps}>
+                <Grid className={styles.grid} state={state} extraStyleFunction={styleCallback} callback={callback} />
+            </Paper>
+        </Container>
 
-        <div className={styles.gridWarpper}>
-            <Grid className={styles.grid} state={state} callback={callback} />
-        </div>
+        <div>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                >
+                    {"Settings and info"}
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Card {...defaultCardProps}>
+                        <h3>Key</h3>
+                        <MGrid
+                            container
+                            spacing={{ xs: 0.5, md: 1 }}
+                            marginBottom={1}
+                        >
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.Node} />
+                                <div>Node</div>
+                            </MGrid>
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.Wall} />
+                                <div>Wall</div>
+                            </MGrid>
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.Start} />
+                                <div>Start</div>
+                            </MGrid>
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.End} />
+                                <div>End</div>
+                            </MGrid>
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.Path} />
+                                <div>Path</div>
+                            </MGrid>
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.Explored} />
+                                <div>Explored</div>
+                            </MGrid>
+                            <MGrid {...mGridProps}>
+                                <GridItem item={colors.Removed} />
+                                <div>Removed</div>
+                            </MGrid>
+                        </MGrid>
+                    </Card>
+                    <Card {...defaultCardProps}>
+                        <h3>Make a new grid</h3>
+                        <MGrid
+                            sx={{ "&": { margin: "2ex auto" } }}
+                            container
+                            direction={{ xs: 'column', sm: 'row' }}
+                            spacing={{ xs: 2 }}
+                        >
+                            <MGrid size={{ sm: 3 }} sx={{ "*": { height: "100%", width: "100%" } }}>
+                                <NumUpDown
+                                    label="Width"
+                                    start={initialSize}
+                                    min={initialSize}
+                                    max={maxSize}
+                                    callback={(num) => setInputWidth(num)}
+                                />
+                            </MGrid>
+                            <MGrid size={{ sm: 3 }} sx={{ "*": { height: "100%", width: "100%" } }}>
+                                <NumUpDown
+                                    label="Height"
+                                    start={initialSize}
+                                    min={initialSize}
+                                    max={maxSize}
+                                    callback={(num) => setInputHeight(num)}
+                                />
+                            </MGrid>
+                            <MGrid size={{ sm: 6 }} sx={{ "*": { display: "block !important", height: "100%", marginLeft: "auto !important" } }}>
+                                <Button
+                                    variant="contained"
+                                    onClick={() => {
+                                        const newAS = new AStar(generateGridState(InputWidth, InputHeight));
+                                        setAS(newAS);
+                                        setStage(AStarStages.Start);
+                                        setState(newAS.state);
+                                    }}>
+                                    New Grid
+                                </Button>
+                            </MGrid>
+                        </MGrid>
+                    </Card>
+                    <Card {...defaultCardProps}>
+                        <h3>Execute algorithm step by step</h3>
+                        <MGrid
+                            container
+                            spacing={2}
+                            sx={{ "&": { textAlign: "center" } }}
+                        >
+                            <MGrid size={{ xs: 12, sm: 4 }}>
+                                <FormControlLabel
+                                    label="Auto step"
+                                    control={
+                                        <Switch
+                                            checked={auto}
+                                            onClick={() => { setAuto(!auto); auto && AS && applyResult(AS.reset()) }}
+                                        />
+                                    } />
 
-        <div className={styles.key}>
-            <h3>Key:</h3>
-            <div>
-                <GridItem item={colors.Node} callback={undefined} />
-                <div>Node</div>
-            </div>
-            <div>
-                <GridItem item={colors.Wall} callback={undefined} />
-                <div>Wall</div>
-            </div>
-            <div>
-                <GridItem item={colors.Start} callback={undefined} />
-                <div>Start</div>
-            </div>
-            <div>
-                <GridItem item={colors.End} callback={undefined} />
-                <div>End</div>
-            </div>
-            <div>
-                <GridItem item={colors.Path} callback={undefined} />
-                <div>Path</div>
-            </div>
-            <div>
-                <GridItem item={colors.Explored} callback={undefined} />
-                <div>Explored</div>
-            </div>
-            <div>
-                <GridItem item={colors.Removed} callback={undefined} />
-                <div>Removed</div>
-            </div>
+                            </MGrid>
+                            <MGrid size={{ xs: 12, sm: 4 }}>
+                                <Button
+                                    variant={buttonVariant(canStep)}
+                                    disabled={auto || canStepReason !== undefined}
+                                    onClick={() => { refreshState() }}>
+                                    Step
+                                </Button>
+                            </MGrid>
+                            <MGrid size={{ xs: 12, sm: 4 }}>
+                                <Button
+                                    color="warning"
+                                    disabled={auto}
+                                    onClick={() => AS && applyResult(AS.reset())}>
+                                    Reset Steps
+                                </Button>
+                            </MGrid>
+                        </MGrid>
+                    </Card>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2-content"
+                    id="panel2-header"
+                >
+                    {`What is A Star??`}
+                </AccordionSummary>
+                <AccordionDetails>
+                    {
+                        AStarContent.map((par, i) => {
+                            return <p key={i}>
+                                {par}
+                            </p>
+                        })
+                    }
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                >
+                    {`Why I'm fascinated with A Star?`}
+                </AccordionSummary>
+                <AccordionDetails>
+                    <ol>
+                        {
+                            AStarContent2.map((par, i) => {
+                                return <li style={{ margin: "1em" }} key={i}>
+                                    {par}
+                                </li>
+                            })
+                        }
+                    </ol>
+                </AccordionDetails>
+            </Accordion>
         </div>
     </div>
 }

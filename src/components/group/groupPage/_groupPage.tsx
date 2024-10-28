@@ -1,5 +1,6 @@
+import { Card, Stack } from "@mui/material";
 import GroupPageLayout, { GroupPageLayoutProps } from "../_groupPageLayout";
-import styles from "./page.module.scss";
+import DarkModeFix from "@/components/muiWrappers/darkModeFix/_darkModeFix";
 
 export type GroupPageProps = {
     title: string,
@@ -7,9 +8,10 @@ export type GroupPageProps = {
 };
 
 export default function GroupPage({ title, groups }: GroupPageProps) {
-    return <>
-        <div className={styles.contentWrapper}>
-            <h1>{title}</h1>
+    return <DarkModeFix>
+        <h1>{title}</h1>
+
+        <Stack gap={5}>
             {
                 groups.map(
                     (
@@ -23,6 +25,6 @@ export default function GroupPage({ title, groups }: GroupPageProps) {
                     )
                 )
             }
-        </div>
-    </>
+        </Stack>
+    </DarkModeFix>
 }

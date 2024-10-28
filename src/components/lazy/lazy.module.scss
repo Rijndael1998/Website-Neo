@@ -1,10 +1,6 @@
 @import "./../colors";
 
 .lazy {
-    display: block;
-    margin: auto;
-    max-width: 80ch;
-
     &>* {
         margin: 0 2.5rem 2rem 2.5rem;
         max-width: calc(100% - 5rem);
@@ -17,6 +13,13 @@
 
     &>ol>li {
         padding-bottom: 2rem;
+    }
+
+    &.doNothing {
+        &>* {
+            margin: unset;
+            max-width: unset;
+        }
     }
 }
 
@@ -35,8 +38,8 @@
 .lazyImageWrapper {
     .lazyImage {
         position: relative;
-        max-height: 70vh;
-        
+        // max-height: 70vh; // this causes images to be weird
+
         display: block;
         margin: auto;
     }
@@ -44,16 +47,6 @@
     .lazyCaption {
         color: $text;
         font-size: small;
-    }
-}
-
-.collapseBar {
-    margin: auto;
-    text-decoration: dashed;
-    background-color: red;
-
-    &.open {
-        background-color: green;
     }
 }
 

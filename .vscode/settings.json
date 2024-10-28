@@ -1,17 +1,45 @@
 {
-    "spellright.language": [
-        "en-US-10-1."
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "typescriptreact",
-        "typescript",
-        "html"
-    ],
     "cSpell.words": [
+        "Baldyga",
+        "clickaway",
+        "Creality",
+        "Disklabel",
+        "Esports",
+        "fabnav",
+        "favico",
+        "fdisk",
+        "fiberoptic",
+        "FOSS",
         "gameplay",
-        "microtransactions"
-    ]
+        "Klipper",
+        "lifecycles",
+        "Lukasz",
+        "LUKS",
+        "microtransactions",
+        "nextjs",
+        "Octaplus",
+        "openwrt",
+        "pathing",
+        "platformer",
+        "rijn",
+        "Rijndael",
+        "Shreem"
+    ],
+    "cSpell.ignorePaths": [
+        "package-lock.json",
+        "package.json",
+        "node_modules",
+        "vscode-extension",
+        ".git/{info,lfs,logs,refs,objects}/**",
+        ".git/{index,*refs,*HEAD}",
+        ".vscode",
+        ".vscode-insiders",
+        "yarn.lock",
+        ".vscode/**",
+    ],
+    "CodeGPT.Autocomplete.enabled": false,
+    "CodeGPT.Autocomplete.maxTokens": 1024,
+    "CodeGPT.Autocomplete.suggestionDelay": 1000,
+    "CodeGPT.apiKey": "OpenAI",
+    "CodeGPT.Autocomplete.provider": "Ollama - codellama:code",
 }

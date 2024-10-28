@@ -1,8 +1,9 @@
 {
   "name": "neo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
+    "newdev": "next dev --turbopack",
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
@@ -17,20 +18,20 @@
     "@mui/icons-material": "^6.1.5",
     "@mui/lab": "^6.0.0-beta.13",
     "@mui/material": "^6.1.5",
-    "@next/mdx": "^15.0.1",
-    "@remixicon/react": "^4.4.0",
+    "@next/mdx": "15.0.1",
+    "@remixicon/react": "^4.3.0",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.7.9",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/node": "^22.7.8",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@xyflow/react": "^12.3.2",
     "classnames": "^2.5.1",
     "eslint": "^9.13.0",
-    "eslint-config-next": "^15.0.1",
+    "eslint-config-next": "15.0.1",
     "micromark-extension-gfm-footnote": "^2.1.0",
-    "next": "^14.2.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "next": "15.0.1",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
     "react-draggable": "^4.4.6",
     "remark-gfm": "^4.0.0",
     "sass": "^1.80.4",
@@ -38,5 +39,9 @@
     "sharp": "^0.33.5",
     "typescript": "^5.6.3",
     "webpack": "^5.95.0"
+  },
+  "resolutions": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }

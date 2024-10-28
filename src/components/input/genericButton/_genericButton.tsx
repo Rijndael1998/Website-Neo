@@ -2,8 +2,6 @@
 
 import { ReactNode } from "react"
 import { GenericCallback } from "../../util"
-import styles from "./genericButton.module.scss"
-import classNames from "classnames"
 
 export type GenericButtonProps = {
     className?: string,
@@ -14,19 +12,5 @@ export type GenericButtonProps = {
 }
 
 export default function GenericButton({children, className, selected, disabled, onClick}: GenericButtonProps) {
-    const fullClassName = classNames(
-        styles.button,
-        selected && styles.selected,
-        disabled && styles.disabled,
-        className ?? "",
-    )
-
-    const callback = () => {
-        if(onClick && !disabled)
-            onClick();
-    }
-
-    return <div onClick={callback} className={fullClassName}>
-        {children}
-    </div>
+    throw new Error("Generic button is being replaced with MUI");
 }

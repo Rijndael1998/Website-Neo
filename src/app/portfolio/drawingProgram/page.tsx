@@ -54,7 +54,7 @@ export default function DrawingProject() {
         </ul>
 
         <h2>Gallery</h2>
-        <ImageGallery images={gallery} aspectRatio={0} />
+        <ImageGallery images={gallery} />
 
         <h2>Documentation</h2>
         <p>

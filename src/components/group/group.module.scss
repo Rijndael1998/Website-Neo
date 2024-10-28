@@ -1,16 +1,38 @@
 @import "./../colors";
-@import "./sizes.scss";
 
 .portfolio {
+    position: relative;
     background-color: $secondaryBg;
-    display: flex;
-    flex-direction: column;
+
+    display: grid;
+
+    $imgShares: 3fr;
+    $textShares: 12ex;
+    grid-template-rows: $imgShares $textShares 0;
+
     max-width: 100%;
+    height: 30ex;
 
     border-radius: 1ch;
     overflow: hidden;
 
-    transition: filter 0.15s ease;
+    transition: all 0.25s cubic-bezier(.65, .05, .54, 1);
+
+    $b_width: 0.2ex;
+    $borer_hover_col: lighten($secondaryBg, 20);
+
+    $border_declaration: $b_width lighten($secondaryBg, 5) solid;
+    $border_declaration_hover: $b_width $borer_hover_col solid;
+
+    border: $border_declaration;
+
+    &:hover {
+        border: $border_declaration_hover;
+        grid-template-rows: $imgShares 0 $textShares;
+
+        box-shadow: 0 .4ch 1ch 0 rgba(73, 73, 73, 0.7);
+    }
+
     filter: saturate(1);
 
     &.empty:hover {
@@ -18,43 +40,69 @@
     }
 
     div.portfolioMainContent {
-        height: auto;
-        padding: 0.5em;
+        display: grid;
+        text-align: center;
+
+        transition: inherit;
+        transform: rotateX(0deg);
+        opacity: 1;
+        border-top: $border_declaration;
+
+        overflow: hidden;
+
+        width: 100%;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            display: block;
+            margin: auto;
+            padding: 1ch;
+        }
 
         * {
-            margin: 0 0 0.5em 0;
+            transition: inherit;
         }
     }
-}
 
-.content {
-    display: grid;
-    justify-content: stretch;
-    justify-items: stretch;
+    &:hover div.portfolioMainContent {
+        // transform: rotateX(90deg);
+        opacity: 0;
+        border-top-width: 0;
 
-    // set the width to have a max of 3 cols or less
-    width: calc(100% - $gapping * 2);
-    max-width: calc($size * 3);
-
-    // center if smaller than main
-    margin: auto;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: $gapping;
-
-    padding: 0 $gapping;
-    padding-bottom: 6rem;
-}
-
-@media screen and (max-width: calc( ($size * 2) + ($gapping * 4))) {
-    .content {
-        grid-template-columns: 1fr 1fr;
+        * {
+            transform: translateY(-100%);
+        }
     }
-}
 
-@media screen and (max-width: calc(($size * 1) + ($gapping * 4))) {
-    .content {
-        grid-template-columns: 1fr;
+    div.portfolioMainContentHover {
+        transition: inherit;
+        opacity: 0;
+
+        backdrop-filter: blur(0);
+        background-color: rgba(0, 0, 0, 0);
+
+        border-top: $border_declaration;
+        border-width: 0;
+
+        display: grid;
+
+        align-items: center;
+        justify-items: center;
+
+        overflow: hidden;
+
+        width: 100%;
+    }
+
+    &:hover div.portfolioMainContentHover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(1ch);
+
+        border-top: $border_declaration_hover;
     }
 }

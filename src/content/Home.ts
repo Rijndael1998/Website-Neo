@@ -13,12 +13,10 @@ I'm not a designer so a lot of the website is ugly but this will change very soo
 `;
 
 export const about = `
-An experienced Full Stack Web Developer with a BSc in Computer Security. Developed secure tools
-such as a robust password manager and AI tools like a conversationally-aware Discord bot.
-I bring a grounding in security, a willingness to learn and a commitment to overcoming challenges. 
+I'm a Full Stack Web Developer with a BSc in Computer Security. I have a lot of experience in a lot of different things (C#, TS, React, Next.js, Python, AWS, and more). 😎
 `;
 
 export const contact = `
 The easiest way to contact me would be through email. 
-Send me an email to lukasz [at] baldy.ga.
+Send me an email to lukasz [at] baldy.ga. You can also use any of the methods below to get in contact. 🧑‍💻
 `;

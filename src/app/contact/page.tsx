@@ -1,9 +1,24 @@
+import { ContactPage, ContactPageEmail } from "@/content/Contact";
+import { generateCustomMetadata } from "@/content/Metadata";
+import { Metadata } from "next";
+import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
+
+const title = "Lukasz Baldyga - Contact";
+const description = ContactPageEmail;
+
+export const metadata: Metadata = generateCustomMetadata({
+    title,
+    description,
+    openGraph: {
+        title,
+        description,
+        emails: "lukasz+web [at] baldy.ga"
+    } as OpenGraph,
+});
+
 export default function Contact() {
     return <>
         <h1>Contact</h1>
-        <p>The easiest way to contat me would be through email. 
-            Send me an email to lukasz+web [at] baldy.ga. 
-            Though, every email that goes to baldy.ga ends up in my mailbox, 
-            so you can do whatever you want really.</p>
+        <p>{ContactPage}</p>
     </>;
 }
