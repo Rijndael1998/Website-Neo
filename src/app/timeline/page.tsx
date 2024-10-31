@@ -84,14 +84,17 @@ const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<
     // ],
 ];
 
+const color = "#ababab";
 
 export default function TimelinePage() {
     return <Lazy>
         <h1>Timeline</h1>
         <Timeline
             sx={{
-                [`& .${timelineOppositeContentClasses.root}`]: {
-                    flex: 0.2,
+                [`& .${timelineItemClasses.root}`]: {
+                    display: "grid",
+                    gridTemplateColumns: "8ch 16ch auto",
+                    gridTemplateRows: "1fr",
                 },
                 [`& .${timelineItemClasses.root}:before`]: {
                     display: "none",
@@ -107,7 +110,11 @@ export default function TimelinePage() {
                     minHeight: `8ch`,
                 },
                 [`& .${timelineConnectorClasses.root}`]: {
+                    background: color,
                     width: "0.5ex",
+                },
+                [`& .${timelineItemClasses.root} `]: {
+                    position: "relative",
                 },
                 [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
                     position: "absolute",
@@ -115,10 +122,18 @@ export default function TimelinePage() {
                     right: 0,
                     bottom: 0,
                     left: 0,
+
                     background: "transparent",
-                    border: "unset",
-                    margin: 0,
-                    padding: 0,
+                    border: "none",
+                    margin: "auto",
+                },
+                [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
+                    margin: "auto",
+                    // color: "black",
+                    background: "transparent",
+                    border: "0.5ex solid",
+                    borderColor: color,
+                    padding: "1.2ex",
                 },
             }}
         >
