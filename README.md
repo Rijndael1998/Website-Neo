@@ -1,4 +1,5 @@
 [![Node.js CI](https://github.com/Rijndael1998/Website-Neo/actions/workflows/main.yml/badge.svg)](https://github.com/Rijndael1998/Website-Neo/actions/workflows/main.yml)
+[![Test Docker Build](https://github.com/Rijndael1998/Website-Neo/actions/workflows/test-docker.yml/badge.svg)](https://github.com/Rijndael1998/Website-Neo/actions/workflows/test-docker.yml)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
