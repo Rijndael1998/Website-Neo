@@ -1,5 +1,14 @@
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Rijndael1998/Website-Neo)
+![GitHub last commit](https://img.shields.io/github/last-commit/Rijndael1998/Website-Neo)
+![Code Climate issues](https://img.shields.io/codeclimate/tech-debt/Rijndael1998/Website-Neo)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/Rijndael1998/Website-Neo)
+![Code Climate technical debt](https://img.shields.io/codeclimate/issues/Rijndael1998/Website-Neo)
+
+
 [![Node.js CI](https://github.com/Rijndael1998/Website-Neo/actions/workflows/main.yml/badge.svg)](https://github.com/Rijndael1998/Website-Neo/actions/workflows/main.yml)
 [![Test Docker Build](https://github.com/Rijndael1998/Website-Neo/actions/workflows/test-docker.yml/badge.svg)](https://github.com/Rijndael1998/Website-Neo/actions/workflows/test-docker.yml)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Frijn.pl%2F)
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
