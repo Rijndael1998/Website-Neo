@@ -2,7 +2,14 @@ import ImageGallery from "@/components/imageGallery/_imageGallery";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import LazyList from "@/components/lazy/_lazyList";
-import { AIContent1, AIContent2, AIContent3, AIContent4, AIContent5, AIContent6, AIImagesPrompts, AISub1, AISub2, AISub3, AITitle, MusicDesc1, MusicDesc2, MusicDesc3, MusicDesc4, MusicICanPlay } from "@/content/portfolio/hobbies/Hobbies";
+import { generateCustomMetadata } from "@/content/Metadata";
+import * as Content from "@/content/portfolio/hobbies/Hobbies";
+import { Metadata } from "next";
+
+export const metadata: Metadata = generateCustomMetadata({
+    title: 'LB - Hobbies',
+    description: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
+});
 
 export default function Hobbies() {
     return <Lazy>
@@ -10,13 +17,13 @@ export default function Hobbies() {
 
         {/* TODO: Please remove this hack */}
         <p style={{ marginBottom: "0" }}>
-            {MusicDesc1}
+            {Content.MusicDesc1}
         </p>
 
-        <LazyList items={MusicICanPlay} />
+        <LazyList items={Content.MusicICanPlay} />
 
         <p>
-            {MusicDesc2}
+            {Content.MusicDesc2}
         </p>
 
         <LazyImage
@@ -27,26 +34,26 @@ export default function Hobbies() {
 
         {/* TODO: Please remove this hack */}
         <p style={{ marginBottom: "0" }}>
-            {MusicDesc3}
+            {Content.MusicDesc3}
         </p>
 
         <audio controls src="/fun/hobbies/music/crab_rave.mp3" />
 
         <p>
-            {MusicDesc4}
+            {Content.MusicDesc4}
         </p>
 
-        <h1>{AITitle}</h1>
+        <h1>{Content.AITitle}</h1>
         <p>
             {
-                AIContent1
+                Content.AIContent1
             }
         </p>
 
-        <h3>{AISub1}</h3>
+        <h3>{Content.AISub1}</h3>
         <p>
             {
-                AIContent2
+                Content.AIContent2
             }
         </p>
 
@@ -54,7 +61,7 @@ export default function Hobbies() {
         <ImageGallery
             aspectRatio={469 / 928}
             images={
-                AIImagesPrompts.map((item) => {
+                Content.AIImagesPrompts.map((item) => {
                     return { src: item }
                 })
             }
@@ -62,14 +69,14 @@ export default function Hobbies() {
 
         <p>
             {
-                AIContent3
+                Content.AIContent3
             }
         </p>
 
-        <h3>{AISub2}</h3>
+        <h3>{Content.AISub2}</h3>
         <p>
             {
-                AIContent4
+                Content.AIContent4
             }
         </p>
 
@@ -84,17 +91,17 @@ export default function Hobbies() {
 
         <p>
             {
-                AIContent5
+                Content.AIContent5
             }
         </p>
 
         <LazyImage alt="Inpainting" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
 
-        <h3>{AISub3}</h3>
+        <h3>{Content.AISub3}</h3>
 
         <p>
             {
-                AIContent6
+                Content.AIContent6
             }
         </p>
 

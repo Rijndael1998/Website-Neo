@@ -1,19 +1,27 @@
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Container } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
 import Lazy from "@/components/lazy/_lazy";
 
-import logo from "@/../public/blog/3d printer/3d printer.webp";
-import s1 from "@/../public/blog/3d printer/s1.png";
-import s2 from "@/../public/blog/3d printer/s2.png";
-import s3 from "@/../public/blog/3d printer/s3.png";
-import s4 from "@/../public/blog/3d printer/s4.png";
-import s5 from "@/../public/blog/3d printer/s5.png";
+import logo from "./opengraph-image.png";
+import s1 from "./images//s1.png";
+import s2 from "./images//s2.png";
+import s3 from "./images//s3.png";
+import s4 from "./images//s4.png";
+import s5 from "./images//s5.png";
 
-<Lazy>
+export const title = "Recover your Creality Ender-3 V3 SE";
 
-# Recover your Creality Ender-3 V3 SE
+export const metadata = {
+    title: `LB - ${title}`,
+    description: "There are a couple of things that Creality support doesn't say about resetting the printer. Here's my quick guide to recovering your Ender-3 V3 SE.",
+};
+
+<DarkModeFix>
+<Container maxWidth="md">
+
+# {metadata.title}
 
 <LazyLocalImage 
     aspectRatio={1}
@@ -45,31 +53,29 @@ Device     Boot Start     End Sectors  Size Id Type
 From this `fdisk` output, you can see that my 128GB SD card has only one 4GB partition. I have also partitioned it in MBR/DOS rather than GPT for compatibility, but I'm actually not sure if that's important.
 
 <div>
-    <DarkModeFix>
-        <Accordion>
-            <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-            >
-                {"Rough steps"}
-            </AccordionSummary>
-            <AccordionDetails>
-                <div>
-                    Reformat your SD card to MBR/DOS
-                    <LazyLocalImage src={s1} />
+    <Accordion>
+        <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+        >
+            {"Rough steps"}
+        </AccordionSummary>
+        <AccordionDetails>
+            <div>
+                Reformat your SD card to MBR/DOS
+                <LazyLocalImage src={s1} />
 
-                    Create a partition smaller than 8GB.
-                    <LazyLocalImage src={s3} />
+                Create a partition smaller than 8GB.
+                <LazyLocalImage src={s3} />
 
-                    Select the FAT32 option.
-                    <LazyLocalImage src={s4} />
+                Select the FAT32 option.
+                <LazyLocalImage src={s4} />
 
-                    Now, you've successfully formatted your SD card to "spec".
+                Now, you've successfully formatted your SD card to "spec".
 
-                    <LazyLocalImage src={s5} />
-                </div>
-            </AccordionDetails>
-        </Accordion>
-    </DarkModeFix>
+                <LazyLocalImage src={s5} />
+            </div>
+        </AccordionDetails>
+    </Accordion>
 </div>
 
 ## Make sure you update the screen, too.
@@ -83,5 +89,5 @@ You can get all firmware from this official link: https://www.creality.com/pages
 
 With this, I'm never again going to lobotomize my (borrowed) 3d printing machine. Not until I get myself one that I didn't borrow.
 
-
-</Lazy>
+</Container>
+</DarkModeFix>

@@ -46,6 +46,7 @@ const OpenWRT: GroupPreviewContent = {
     isDemo: false,
     url: "blog/city_fibre",
     image: `${preURL}city_fibre/logos.webp`,
+    logo: true,
 };
 
 const Ender: GroupPreviewContent = {

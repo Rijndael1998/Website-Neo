@@ -32,6 +32,7 @@ export function generateCustomMetadata(newMetadata: Metadata): Metadata {
         openGraph: {
             ...defaultOG,
             ...newMetadata.openGraph,
+            description: newMetadata.description ?? undefined,
         }
     }
 }

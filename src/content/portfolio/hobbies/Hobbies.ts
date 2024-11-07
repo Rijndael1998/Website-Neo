@@ -1,5 +1,5 @@
 export const MusicDesc1 = `
-On occassion, I like to do stuff to do with music. I can play the piano. I can play: 
+On occasion, I like to do stuff to do with music. I can play the piano. I can play: 
 `
 
 export const MusicICanPlay: Array<[string, string]> = [
