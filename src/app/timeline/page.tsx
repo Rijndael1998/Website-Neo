@@ -1,16 +1,19 @@
-import Lazy from "@/components/lazy/_lazy";
+// imports
 import * as React from 'react';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import TimelineSeparator, { timelineSeparatorClasses } from '@mui/lab/TimelineSeparator';
 import TimelineConnector, { timelineConnectorClasses } from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineContent, { timelineContentClasses } from '@mui/lab/TimelineContent';
 import TimelineDot, { timelineDotClasses } from '@mui/lab/TimelineDot';
-import TimelineOppositeContent, {
-    timelineOppositeContentClasses,
-} from '@mui/lab/TimelineOppositeContent';
-import { ifTrue, ifTruthy } from "@/components/reactUtils";
+import TimelineOppositeContent, { timelineOppositeContentClasses } from '@mui/lab/TimelineOppositeContent';
+import { ifTrue } from "@/components/reactUtils";
+import style from "./timeline.module.scss";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material/SvgIcon";
+import { Container } from "@mui/material";
 
+// icons
 import CakeIcon from '@mui/icons-material/Cake';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
@@ -22,13 +25,10 @@ import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import LanIcon from '@mui/icons-material/Lan';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import ComputerIcon from '@mui/icons-material/Computer';
 
-import style from "./timeline.module.scss";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { SvgIconTypeMap } from "@mui/material/SvgIcon";
+
 
 const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<SvgIconTypeMap> & { muiName: string }]> = [
     [
@@ -84,14 +84,29 @@ const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<
     // ],
 ];
 
+const color = "#ababab";
 
 export default function TimelinePage() {
-    return <Lazy>
+    return <Container maxWidth="md">
         <h1>Timeline</h1>
         <Timeline
             sx={{
-                [`& .${timelineOppositeContentClasses.root}`]: {
-                    flex: 0.2,
+                [`& .${timelineItemClasses.root}`]: {
+                    display: "grid",
+                    gridTemplateColumns: "6ch 8ch auto",
+                    gridTemplateRows: "1fr",
+                },
+                [`& .${timelineOppositeContentClasses.root}, & .${timelineContentClasses.root}`]: {
+                    width: "100%",
+                    height: "100%",
+                },
+                [`& .${timelineOppositeContentClasses.root} p`]: {
+                    textAlign: "center",
+                },
+                [`& .${timelineOppositeContentClasses.root} p, & .${timelineContentClasses.root} p`]: {
+                    display: "block",
+                    background: "brick",
+                    margin: "auto 0",
                 },
                 [`& .${timelineItemClasses.root}:before`]: {
                     display: "none",
@@ -107,7 +122,11 @@ export default function TimelinePage() {
                     minHeight: `8ch`,
                 },
                 [`& .${timelineConnectorClasses.root}`]: {
+                    background: color,
                     width: "0.5ex",
+                },
+                [`& .${timelineItemClasses.root} `]: {
+                    position: "relative",
                 },
                 [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
                     position: "absolute",
@@ -115,10 +134,18 @@ export default function TimelinePage() {
                     right: 0,
                     bottom: 0,
                     left: 0,
+
                     background: "transparent",
-                    border: "unset",
-                    margin: 0,
-                    padding: 0,
+                    border: "none",
+                    margin: "auto",
+                },
+                [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
+                    margin: "auto",
+                    // color: "black",
+                    background: "transparent",
+                    border: "0.5ex solid",
+                    borderColor: color,
+                    padding: "1.2ex",
                 },
             }}
         >
@@ -127,7 +154,9 @@ export default function TimelinePage() {
                     const [left, right, Dot] = item;
                     return <TimelineItem key={item[0] + item[1]} className={style.item}>
                         <TimelineOppositeContent className={style.left}>
-                            {left}
+                            <p>
+                                {left}
+                            </p>
                         </TimelineOppositeContent>
                         <TimelineSeparator>
                             <TimelineDot>
@@ -136,11 +165,13 @@ export default function TimelinePage() {
                             {ifTrue(index < timelineItems.length - 1, <TimelineConnector />)}
                         </TimelineSeparator>
                         <TimelineContent>
-                            {right}
+                            <p>
+                                {right}
+                            </p>
                         </TimelineContent>
                     </TimelineItem>
                 })
             }
         </Timeline>
-    </Lazy >
+    </Container >
 }

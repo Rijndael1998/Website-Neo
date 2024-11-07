@@ -12,8 +12,8 @@
     width: 2ch;
 
     &,
-    * {
-        transition: color 0.5s ease, transform 0.5s ease;
+    & > * {
+        transition: color 0.5s ease, transform 0.5s ease !important; // css files get compiled differently
     }
 
     .copy {
