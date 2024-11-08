@@ -2,12 +2,9 @@ import ImageGallery from "@/components/imageGallery/_imageGallery";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import { content, citations } from "@/content/portfolio/marta/Marta";
-import { generateCustomMetadata } from "@/content/Metadata";
-
-const title = "Marta Fundraiser's";
 
 export const metadata = {
-    title: `LB - ${title}`,
+    title: "Marta Fundraiser's",
     description: content[0] as string,
 };
 
@@ -52,7 +49,7 @@ function Gallery() {
 
 export default function Marta() {
     return <Lazy>
-        <h1>{title}</h1>
+        <h1>{"Marta Fundraiser's"}</h1>
 
         <Gallery />
 

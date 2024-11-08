@@ -5,10 +5,10 @@ import { imageFolder } from "@/content/portfolio/Portfolio";
 
 const preURL = "/blog/";
 
-const title = "Lukasz Baldyga - Blog";
-const description = "Small tidbits that I'm interested in.";
-
-export const metadata = { title, description };
+export const metadata = { 
+    title: "Blog",
+    description: "Small tidbits that I'm interested in.",
+};
 
 const Marta: GroupPreviewContent = {
     title: "Marta's Fundraiser",

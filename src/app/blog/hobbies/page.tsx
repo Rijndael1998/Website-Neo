@@ -2,14 +2,13 @@ import ImageGallery from "@/components/imageGallery/_imageGallery";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import LazyList from "@/components/lazy/_lazyList";
-import { generateCustomMetadata } from "@/content/Metadata";
 import * as Content from "@/content/portfolio/hobbies/Hobbies";
 import { Metadata } from "next";
 
-export const metadata: Metadata = generateCustomMetadata({
-    title: 'LB - Hobbies',
+export const metadata: Metadata = {
+    title: 'Hobbies',
     description: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
-});
+};
 
 export default function Hobbies() {
     return <Lazy>

@@ -1,22 +1,13 @@
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
-import { generateCustomMetadata } from "@/content/Metadata";
 import { Paragraphs, MirrorTitle, MirrorSynopsis } from "@/content/blog/mirrorsEdge";
 import { Metadata } from "next";
-import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
-const title = `Lukasz Baldyga - ${MirrorTitle}`;
-const description = MirrorSynopsis;
-export const metadata: Metadata = generateCustomMetadata({
-    title,
-    description,
-    openGraph: {
-        title,
-        description,
-        images: "/blog/mirrors_edge/blender/final.png",
-    } as OpenGraph,
-});
+export const metadata: Metadata = {
+    title: MirrorTitle,
+    description: MirrorSynopsis,
+};
 
 export default function MirrorsEdge() {
     return <Lazy>

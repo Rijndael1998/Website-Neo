@@ -26,11 +26,3 @@ export const defaultMetadata: Metadata = {
     description,
     robots: "index, follow",
 }
-
-export function generateCustomMetadata(title: string, description: string): Metadata {
-    console.log("the generateCustomMetadata shouldn't really be used")
-    return {
-        title,
-        description,
-    };
-}
