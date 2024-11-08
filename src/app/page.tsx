@@ -2,7 +2,7 @@ import Lazy from "@/components/lazy/_lazy";
 import { about, contact } from "./../content/Home";
 import styles from "./page.module.scss";
 import Link from "next/link";
-import logo from "@/../public/opengraph.webp";
+import logo from "./opengraph.webp";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 
 

@@ -19,7 +19,11 @@ export const defaultOG: OpenGraph = {
 };
 
 export const defaultMetadata: Metadata = {
-    title,
+    title: {
+        default: title,
+        template: '%s | LB',
+    },
+
     description,
     robots: "index, follow",
     openGraph: defaultOG,
@@ -33,6 +37,7 @@ export function generateCustomMetadata(newMetadata: Metadata): Metadata {
             ...defaultOG,
             ...newMetadata.openGraph,
             description: newMetadata.description ?? undefined,
+            title: newMetadata.title ?? undefined,
         }
     }
 }

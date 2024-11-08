@@ -1,8 +1,15 @@
 import Lazy from "@/components/lazy/_lazy";
 import MermaidFlow from "@/components/flow/MermaidFlow";
 
+import { generateCustomMetadata } from "@/content/Metadata";
+
+export const metadata = generateCustomMetadata({
+    title: "LB - My home lab topology",
+    description: "You're not really meant to see this page yet, oh well...",
+});
+
 <Lazy>
-# Topology
+# Home lab topology
 
 <MermaidFlow style={{height: "60ex"}}
 mermaidFlow={`

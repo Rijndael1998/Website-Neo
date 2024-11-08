@@ -2,6 +2,14 @@ import ImageGallery from "@/components/imageGallery/_imageGallery";
 import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import { content, citations } from "@/content/portfolio/marta/Marta";
+import { generateCustomMetadata } from "@/content/Metadata";
+
+const title = "Marta Fundraiser's";
+
+export const metadata = generateCustomMetadata({
+    title: `LB - ${title}`,
+    description: content[0] as string,
+});
 
 const horizontal_aspect_ratio = 2016 / 1512;
 const vertical_aspect_ratio = 1512 / 2016;
@@ -44,7 +52,7 @@ function Gallery() {
 
 export default function Marta() {
     return <Lazy>
-        <h1>{"Marta Fundraiser's"}</h1>
+        <h1>{title}</h1>
 
         <Gallery />
 

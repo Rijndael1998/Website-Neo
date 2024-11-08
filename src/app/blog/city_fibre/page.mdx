@@ -3,6 +3,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
 import Lazy from "@/components/lazy/_lazy";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import { generateCustomMetadata } from "@/content/Metadata";
 
 import logo from "./opengraph-image.png";
 import s0 from "./images/s0.png";
@@ -15,10 +16,10 @@ import s5 from "./images/s5.png";
 import s6 from "./images/s6.png";
 import s7 from "./images/s7.png";
 
-export const metadata = {
+export const metadata = generateCustomMetadata({
     title: 'LB - Get OpenWRT 5.15 to work on Octaplus networks',
     description: "There are a couple of things that Creality support doesn't say about resetting the printer. Here's my quick guide to recovering your Ender-3 V3 SE.",
-};
+});
 
 <DarkModeFix>
 <Container maxWidth="md">
