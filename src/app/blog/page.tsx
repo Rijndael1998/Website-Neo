@@ -1,24 +1,14 @@
 import { GroupPreviewContent } from "@/components/group/_groupTypes";
 import GroupPage from "@/components/group/groupPage/_groupPage";
-import { generateCustomMetadata } from "@/content/Metadata";
 import { MirrorSynopsis, MirrorTitle } from "@/content/blog/mirrorsEdge";
 import { imageFolder } from "@/content/portfolio/Portfolio";
-import { Metadata } from "next";
-import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 const preURL = "/blog/";
 
 const title = "Lukasz Baldyga - Blog";
 const description = "Small tidbits that I'm interested in.";
 
-export const metadata: Metadata = generateCustomMetadata({
-    title,
-    description,
-    openGraph: {
-        title,
-        description,
-    } as OpenGraph,
-});
+export const metadata = { title, description };
 
 const Marta: GroupPreviewContent = {
     title: "Marta's Fundraiser",

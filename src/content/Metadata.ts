@@ -7,37 +7,30 @@ export const description = formatMetadata(about);
 export const url = "https://testing.baldy.ga";
 
 export function formatMetadata(text: string) {
-    return text.replace(/\s+/g,' ');
+    return text.replace(/\s+/g, ' ');
 }
 
 export const defaultOG: OpenGraph = {
     title,
     description,
     url,
-    images: "/opengraph.webp",
     type: "website",
 };
 
 export const defaultMetadata: Metadata = {
     title: {
         default: title,
-        template: '%s | LB',
+        template: '%s | Lukasz Baldyga',
     },
 
     description,
     robots: "index, follow",
-    openGraph: defaultOG,
 }
 
-export function generateCustomMetadata(newMetadata: Metadata): Metadata {
+export function generateCustomMetadata(title: string, description: string): Metadata {
+    console.log("the generateCustomMetadata shouldn't really be used")
     return {
-        ...defaultMetadata,
-        ...newMetadata,
-        openGraph: {
-            ...defaultOG,
-            ...newMetadata.openGraph,
-            description: newMetadata.description ?? undefined,
-            title: newMetadata.title ?? undefined,
-        }
-    }
+        title,
+        description,
+    };
 }

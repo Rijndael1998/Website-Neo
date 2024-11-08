@@ -6,10 +6,10 @@ import { generateCustomMetadata } from "@/content/Metadata";
 
 const title = "Marta Fundraiser's";
 
-export const metadata = generateCustomMetadata({
+export const metadata = {
     title: `LB - ${title}`,
     description: content[0] as string,
-});
+};
 
 const horizontal_aspect_ratio = 2016 / 1512;
 const vertical_aspect_ratio = 1512 / 2016;
