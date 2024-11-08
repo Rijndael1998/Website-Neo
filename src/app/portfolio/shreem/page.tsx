@@ -1,6 +1,11 @@
 import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
 
+export const metadata = {
+    title: "Shreem",
+    description: "My experiences working for Shreem.",
+}
+
 export default function Shreem() {
     return <Lazy>
         <h1>Shreem</h1>

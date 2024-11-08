@@ -1,6 +1,11 @@
 import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
 
+export const metadata = {
+    title: "IPF",
+    description: "My experiences with IPF.",
+}
+
 export default function IPF() {
     return <Lazy>
         <h1>International Personal Finance</h1>

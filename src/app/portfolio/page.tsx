@@ -1,6 +1,10 @@
 import { personalProjects, demos, games, irlContent, collegeWork, volunteering } from "../../content/portfolio/Portfolio";
 import GroupPage from "@/components/group/groupPage/_groupPage";
 
+export const metadata = {
+    title: "Portfolio",
+}
+
 export default function Portfolio() {
     return <GroupPage
         title={"Portfolio"}

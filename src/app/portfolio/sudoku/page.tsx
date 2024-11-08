@@ -10,6 +10,11 @@ import { Accordion, AccordionDetails, AccordionSummary, Container, Paper } from 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { elementProps } from "@/components/algorithms/sudoku/sudokuConstants";
 
+export const metadata = {
+    title: "How to solve a Sudoku Puzzle? + Solver!",
+    description: "This page guides you step by step on how to solve a sudoku puzzle and also includes an interactive solver.",
+}
+
 const paperProps = elementProps.paper;
 const containerProps = elementProps.container;
 

@@ -4,6 +4,11 @@ import Lazy from "@/components/lazy/_lazy";
 import { points, ps1, ps2 } from "@/content/portfolio/lagrange/Lagrange";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Langrage",
+    description: ps1[0],
+};
+
 export default function Langrage() {
     return <Lazy>
         <h1>Langrage</h1>
@@ -34,7 +39,7 @@ export default function Langrage() {
 
         <p>
             {
-                `These polynomials, and therefore Shamir’s Secret Sharing, can be used in a `
+                `These polynomials, and therefore Shamir's Secret Sharing, can be used in a `
             }
             <Link href={"/fun/passwordManager"}>password manager</Link>
             {

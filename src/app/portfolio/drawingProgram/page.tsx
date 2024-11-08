@@ -10,6 +10,11 @@ const demo = "/fun/ase/Advanced Software Engineering.exe";
 const docs = "/fun/ase/Advanced Software Engineering/Docs/html/index.html";
 const guidelines = "/fun/ase/L6ASE2020assignmentSpec.pdf";
 
+export const metadata = {
+    title: "C# Drawing Program",
+    description: "This is one of my third year university projects. The program can let you draw anything that you might like.",
+}
+
 export default function DrawingProject() {
     return <Lazy>
         <h1>Drawing Program</h1>

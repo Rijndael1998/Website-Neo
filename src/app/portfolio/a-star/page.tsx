@@ -3,7 +3,7 @@ import Lazy from "@/components/lazy/_lazy";
 
 export const metadata = {
     title: "A* Algorithm",
-    description: "A* is a popular and influential pathfinding algorithm in computer science. It was introduced by Peter Hart, Nils Nilsson, and Bertram Raphael in 1968. A* forms the basis of many pathfinding algorithms used in video games and web-based maps.",
+    description: "A* is a popular pathfinding algorithm in computer science. It was introduced by Peter Hart, Nils Nilsson, and Bertram Raphael in 1968. A* forms the basis of many pathfinding algorithms used in video games and web-based maps.",
 }
 
 export default function A_Star() {
