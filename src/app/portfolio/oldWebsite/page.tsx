@@ -3,6 +3,11 @@ import Lazy from "@/components/lazy/_lazy";
 import { http2, msLink } from "@/content/portfolio/oldWebsite/OldWebsite";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Langrage",
+    description: "My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy.",
+};
+
 export default function PythonSPAWebsite() {
     return <Lazy>
         <h1>Python SPA Website</h1>

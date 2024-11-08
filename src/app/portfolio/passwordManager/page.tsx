@@ -3,6 +3,11 @@ import LazyImage from "@/components/lazy/_lazyImage";
 import { links } from "@/content/portfolio/passwordManager/PasswordManager";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Internet Nomad Password Manager",
+    description: "During my final year of university, I developed a security-related product that encompassed various aspects of project management. This entailed conducting risk assessment, allocating resources, implementing a development methodology, and more."
+};
+
 export default function PasswordManager() {
     return <Lazy>
         <h1>Internet Nomad Password Manager</h1>

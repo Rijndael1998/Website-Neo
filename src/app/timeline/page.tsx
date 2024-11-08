@@ -29,7 +29,6 @@ import TerminalIcon from '@mui/icons-material/Terminal';
 import ComputerIcon from '@mui/icons-material/Computer';
 
 
-
 const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<SvgIconTypeMap> & { muiName: string }]> = [
     [
         "2000", "Born in Poland.", CakeIcon
@@ -85,6 +84,11 @@ const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<
 ];
 
 const color = "#ababab";
+
+export const metadata = {
+    title: "Timeline",
+    description: "Shows the rough outlines from the beginning of my life till now.",
+}
 
 export default function TimelinePage() {
     return <Container maxWidth="md">

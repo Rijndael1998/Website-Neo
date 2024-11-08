@@ -3,6 +3,11 @@ import Lazy from "@/components/lazy/_lazy";
 import LazyImage from "@/components/lazy/_lazyImage";
 import { content, citations } from "@/content/portfolio/marta/Marta";
 
+export const metadata = {
+    title: "Marta Fundraiser's",
+    description: content[0] as string,
+};
+
 const horizontal_aspect_ratio = 2016 / 1512;
 const vertical_aspect_ratio = 1512 / 2016;
 
