@@ -1,10 +1,9 @@
 // imports
 import * as React from 'react';
 import { ifTrue } from "@/components/reactUtils";
-import style from "./timeline.module.scss";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material/SvgIcon";
-import { Box, Container, Grid2, Stack, Typography } from "@mui/material";
+import { Container, Grid2, Stack, Typography } from "@mui/material";
 
 // icons
 import CakeIcon from '@mui/icons-material/Cake';
@@ -77,7 +76,7 @@ const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<
 ];
 
 const color = "#ababab";
-const yearW = 1.1;
+const yearW = 1;
 const iconW = 1;
 
 export const metadata = {
