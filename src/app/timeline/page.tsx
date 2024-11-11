@@ -1,17 +1,10 @@
 // imports
 import * as React from 'react';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
-import TimelineSeparator, { timelineSeparatorClasses } from '@mui/lab/TimelineSeparator';
-import TimelineConnector, { timelineConnectorClasses } from '@mui/lab/TimelineConnector';
-import TimelineContent, { timelineContentClasses } from '@mui/lab/TimelineContent';
-import TimelineDot, { timelineDotClasses } from '@mui/lab/TimelineDot';
-import TimelineOppositeContent, { timelineOppositeContentClasses } from '@mui/lab/TimelineOppositeContent';
 import { ifTrue } from "@/components/reactUtils";
 import style from "./timeline.module.scss";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material/SvgIcon";
-import { Container } from "@mui/material";
+import { Box, Container, Grid2, Stack, Typography } from "@mui/material";
 
 // icons
 import CakeIcon from '@mui/icons-material/Cake';
@@ -84,6 +77,8 @@ const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<
 ];
 
 const color = "#ababab";
+const yearW = 1.1;
+const iconW = 1;
 
 export const metadata = {
     title: "Timeline",
@@ -93,104 +88,40 @@ export const metadata = {
 export default function TimelinePage() {
     return <Container maxWidth="md" disableGutters>
         <h1>Timeline</h1>
-        <Timeline
-            sx={{
-                [`&`]: {
-                    padding: "0",
-                },
-                [`& *`]: {
-                    padding: "0",
-                    transition: "all 0.5s ease",
-                },
-                [`& .${timelineItemClasses.root}`]: {
-                    display: "grid",
-                    gridTemplateColumns: "6ch 8ch auto",
-                    gridTemplateRows: "1fr",
-                },
-                [`& .${timelineOppositeContentClasses.root}, & .${timelineContentClasses.root}`]: {
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    flexWrap: "nowrap",
-                    justifyContent: "flex-start",
-                },
-                [`& .${timelineOppositeContentClasses.root} p`]: {
-                    textAlign: "center",
-                    padding: 0,
-                },
-                [`& .${timelineOppositeContentClasses.root} p, & .${timelineContentClasses.root} p`]: {
-                    display: "block",
-                },
-                [`& .${timelineOppositeContentClasses.root}::after, & .${timelineContentClasses.root}::after`]: {
-                    display: "block",
-                    content: '""',
-
-                    width: "100%",
-                    height: "1ex",
-                },
-                [`& .${timelineItemClasses.root}:before`]: {
-                    display: "none",
-                },
-                [`& .${timelineSeparatorClasses.root}`]: {
-                    position: "relative",
-                    padding: "0",
-                    flex: "unset",
-                    minWidth: `8ch`,
-                    minHeight: `8ch`,
-                },
-                [`& .${timelineConnectorClasses.root}`]: {
-                    background: color,
-                    width: "0.5ex",
-                },
-                [`& .${timelineItemClasses.root} `]: {
-                    position: "relative",
-                },
-                [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0,
-
-                    background: "transparent",
-                    border: "none",
-                    margin: "auto",
-                },
-                [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
-                    margin: "auto",
-                    marginTop: 0,
-                    background: "transparent",
-                    border: "0.5ex solid",
-                    borderColor: color,
-                    padding: "1.2ex",
-                    borderRadius: "1em",
-                },
-            }}
-        >
+        <Stack>
             {
                 timelineItems.map((item, index) => {
-                    const [left, right, Dot] = item;
-                    return <TimelineItem key={item[0] + item[1]} className={style.item}>
-                        <TimelineOppositeContent className={style.left} sx={{ display: "grid", padding: 0 }}>
-                            <p>
-                                {left}
-                            </p>
-                        </TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot>
-                                <Dot />
-                            </TimelineDot>
-                            {ifTrue(index < timelineItems.length - 1, <TimelineConnector />)}
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            <p>
-                                {right}
-                            </p>
-                        </TimelineContent>
-                    </TimelineItem>
+                    const [year, desc, Icon] = item;
+                    return <>
+                        <Grid2 container>
+                            <Grid2 size={yearW}>
+                                <Typography variant='overline'>
+                                    {year}
+                                </Typography>
+                            </Grid2>
+
+                            <Grid2 size={iconW}>
+                                <Icon />
+                            </Grid2>
+
+                            <Grid2 size={12 - yearW - iconW}>
+                                <Typography>
+                                    {desc}
+                                </Typography>
+                            </Grid2>
+                            {
+                                ifTrue(
+                                    index + 1 != timelineItems.length,
+                                    <>
+                                        <Grid2 size={yearW} sx={{ height: "1ch" }} />
+                                        <Grid2 size={iconW} sx={{ height: "1ch" }} />
+                                    </>
+                                )
+                            }
+                        </Grid2>
+                    </>
                 })
             }
-        </Timeline>
+        </Stack>
     </Container >
 }
