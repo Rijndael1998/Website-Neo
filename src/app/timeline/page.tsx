@@ -91,10 +91,17 @@ export const metadata = {
 }
 
 export default function TimelinePage() {
-    return <Container maxWidth="md">
+    return <Container maxWidth="md" disableGutters>
         <h1>Timeline</h1>
         <Timeline
             sx={{
+                [`&`]: {
+                    padding: "0",
+                },
+                [`& *`]: {
+                    padding: "0",
+                    transition: "all 0.5s ease",
+                },
                 [`& .${timelineItemClasses.root}`]: {
                     display: "grid",
                     gridTemplateColumns: "6ch 8ch auto",
@@ -103,24 +110,31 @@ export default function TimelinePage() {
                 [`& .${timelineOppositeContentClasses.root}, & .${timelineContentClasses.root}`]: {
                     width: "100%",
                     height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "nowrap",
+                    justifyContent: "flex-start",
                 },
                 [`& .${timelineOppositeContentClasses.root} p`]: {
                     textAlign: "center",
+                    padding: 0,
                 },
                 [`& .${timelineOppositeContentClasses.root} p, & .${timelineContentClasses.root} p`]: {
                     display: "block",
-                    background: "brick",
-                    margin: "auto 0",
+                },
+                [`& .${timelineOppositeContentClasses.root}::after, & .${timelineContentClasses.root}::after`]: {
+                    display: "block",
+                    content: '""',
+
+                    width: "100%",
+                    height: "1ex",
                 },
                 [`& .${timelineItemClasses.root}:before`]: {
                     display: "none",
                 },
-                [`& *`]: {
-                    transition: "all 0.5s ease",
-                },
                 [`& .${timelineSeparatorClasses.root}`]: {
                     position: "relative",
-                    padding: "0 1ch",
+                    padding: "0",
                     flex: "unset",
                     minWidth: `8ch`,
                     minHeight: `8ch`,
@@ -145,11 +159,12 @@ export default function TimelinePage() {
                 },
                 [`& .${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
                     margin: "auto",
-                    // color: "black",
+                    marginTop: 0,
                     background: "transparent",
                     border: "0.5ex solid",
                     borderColor: color,
                     padding: "1.2ex",
+                    borderRadius: "1em",
                 },
             }}
         >
@@ -157,7 +172,7 @@ export default function TimelinePage() {
                 timelineItems.map((item, index) => {
                     const [left, right, Dot] = item;
                     return <TimelineItem key={item[0] + item[1]} className={style.item}>
-                        <TimelineOppositeContent className={style.left}>
+                        <TimelineOppositeContent className={style.left} sx={{ display: "grid", padding: 0 }}>
                             <p>
                                 {left}
                             </p>
