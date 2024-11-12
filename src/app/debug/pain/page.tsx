@@ -9,7 +9,7 @@ export const metadata = {
 }
 
 export default async function DebugIndex() {
-    const dirPath = path.join(process.cwd(), 'src/app/debug');
+    const dirPath = path.join(process.cwd(), 'src/app/debug/pain');
     const files = fs.readdirSync(dirPath).filter(f => !f.includes("."));
 
     return (
@@ -19,7 +19,7 @@ export default async function DebugIndex() {
             <ul>
                 {files.map((file) => (
                     <li key={file}>
-                        <Link href={`debug/${file}`}>
+                        <Link href={`pain/${file}`}>
                             {file}
                         </Link>
                     </li>
