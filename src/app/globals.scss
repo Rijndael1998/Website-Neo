@@ -43,4 +43,7 @@ html {
 code, tt, pre {
   color: $nicePink;
   white-space: pre;
+
+  max-width: 100%;
+  overflow: scroll;
 }
