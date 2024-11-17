@@ -56,7 +56,7 @@ export default function RootLayout({
           </Header>
         </header>
         <DarkModeFix>
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" disableGutters>
             {children}
           </Container>
         </DarkModeFix>

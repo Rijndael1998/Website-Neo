@@ -40,7 +40,14 @@ html {
   }
 }
 
-code, tt, pre {
+pre {
+  display: block;
   color: $nicePink;
-  white-space: pre;
+
+  margin: 0;
+  min-width: 100%;
+  max-width: 1px; // This feels like a hack...
+  margin: 1em auto;
+
+  overflow-x: auto;
 }

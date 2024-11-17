@@ -1,0 +1,122 @@
+import ImageGallery from "@/components/imageGallery/_imageGallery";
+import { Container } from "@mui/material";
+import GalleryImage from "@/components/imageGallery/galleryImage";
+import YoutubeEmbed from "@/components/external/youtube/_embed";
+
+export const metadata = {
+    title: "C# Drawing Program",
+    description: "This is one of my third year university projects. The program can let you draw anything that you might like.",
+}
+
+export const imageBaseURL = "/fun/hobbies/ase/";
+export const gallery = [
+    {
+        src: imageBaseURL + "HuePattern.png",
+        aspectRatio: 644 / 696,
+    },
+    {
+        src: imageBaseURL + "Squares.png",
+        aspectRatio: 549 / 599,
+    },
+    {
+        src: imageBaseURL + "Face.png",
+        aspectRatio: 533 / 588,
+    },
+    {
+        src: imageBaseURL + "AdvancedSoftwareEngineering.png",
+        aspectRatio: 668 / 938,
+    }
+];
+
+export const example = [
+    {
+        src: imageBaseURL + "Example Code.png",
+        aspectRatio: 732 / 664,
+    },
+    {
+        src: imageBaseURL + "Example Output.png",
+        aspectRatio: 386 / 431,
+    },
+];
+
+
+<Container maxWidth="md">
+
+# Drawing Program
+
+<GalleryImage src={imageBaseURL + "Hue.png"} aspectRatio={382 / 439} alt="" />
+
+This is one of my third year university projects. The program can let you draw anything that you might like. You can download a demo [here](/fun/ase/Advanced%20Software%20Engineering.exe). Simply run the executable. It should run under Wine, but I experienced problems with the file locator. The source available repository is [here](https://github.com/Rijndael1998/Advanced-Software-Engineering-Drawing-Project).
+
+## Custom language
+It is a simple drawing program that uses a programming language designed for this project. I was instructed to create a program to meet a specific set of [guidelines](/fun/ase/L6ASE2020assignmentSpec.pdf). I achieved 100% of the available marks in this project, meeting all of the criteria necessary.
+
+Some of the requirements were:
+ - Drawing of basic shapes and lines, like circles and squares.
+ - The ability to store and retrieve variables.
+ - Flow control, more specifically, <code>if</code> statements.
+ - Methods and functions. Specifically functions with or without parameters (recursions was not required).
+ - Loading and unloading programs.
+ - Error detection.
+
+## Gallery
+<ImageGallery images={gallery} />
+
+## Documentation
+It was required that the software engineering project is fully documented. Every class has documentation regarding its use and place in the program. The documentation was generated using [Doxygen](https://github.com/doxygen/doxygen). You can read the documentation [here](/fun/ase/Advanced%20Software%20Engineering/Docs/html/index.html).
+
+## Videos
+I go over these and my code in two videos. 
+I don't recommend watching them because they are really long and might 
+be really boring. It was requirement for the project. They're here:
+<YoutubeEmbed videoID="Mu8wZJZAwrU" />
+<YoutubeEmbed videoID="R9EyubWpI3g" />
+
+## Example with code
+<ImageGallery images={example} />
+
+### Code: 
+```
+var x = 0
+var y = 0
+var offset = 128
+
+while x < offset 
+  y = 0
+  while y < offset 
+    move x, y
+    pen x, y, x + y
+    dot
+    y = y + 1
+  end
+  y = 0
+  while y < offset 
+    move x + offset, y
+    pen y + x, y, x
+    dot
+    y = y + 1
+  end
+  x = x + 1
+end
+
+x = 0
+while x < offset 
+  y = 0
+  while y < offset 
+    move x, y + offset, 
+    pen y + x, offset - y, offset - x
+    dot
+    y = y + 1
+  end
+  y = 0
+  while y < offset 
+    move x + offset, y + offset
+    pen x + y, offset - x, offset - y
+    dot
+    y = y + 1
+  end
+  x = x + 1
+end
+```
+
+</Container>
