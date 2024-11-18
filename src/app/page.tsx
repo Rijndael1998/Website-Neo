@@ -1,45 +1,44 @@
-import Lazy from "@/components/lazy/_lazy";
 import { about, contact } from "./../content/Home";
-import styles from "./page.module.scss";
 import Link from "next/link";
 import logo from "./opengraph.webp";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import { Container, Stack, Typography } from "@mui/material";
 
 
 export default function Home() {
   return (
-    <Lazy>
-      <div className={styles.page}>
-        <div className={styles.item}>
-          <h1>
+    <Container maxWidth={"md"}>
+      <Stack gap={4}>
+        <Stack>
+          <Typography variant="h1">
             Hi!
-          </h1>
-          <p>
+          </Typography>
+          <Typography>
             Visit my <Link href="/portfolio">portfolio</Link> page to see my previous work and experience. 🧐
-          </p>
-          <LazyLocalImage
-            src={logo}
-            alt={"Computer on a desk showing the website logo: a white L in a green square on a black background."}
-            quality={50}
-            />
-        </div>
-        <div className={styles.item}>
-          <h2>
+          </Typography>
+        </Stack>
+        <LazyLocalImage
+          src={logo}
+          alt={"Computer on a desk showing the website logo: a white L in a green square on a black background."}
+          quality={50}
+        />
+        <Stack>
+          <Typography variant="h2">
             About Me
-          </h2>
-          <p>
+          </Typography>
+          <Typography>
             {about}
-          </p>
-        </div>
-        <div className={styles.item}>
-          <h2>
+          </Typography>
+        </Stack>
+        <Stack>
+          <Typography variant="h2">
             Contact
-          </h2>
-          <p>
+          </Typography>
+          <Typography>
             {contact}
-          </p>
-        </div>
-      </div>
-    </Lazy>
+          </Typography>
+        </Stack>
+      </Stack>
+    </Container>
   )
 }
