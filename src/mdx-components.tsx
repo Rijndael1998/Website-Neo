@@ -1,4 +1,4 @@
-import { Box, Container, Stack, Typography as T } from '@mui/material';
+import { Container, Typography as T } from '@mui/material';
 import type { MDXComponents } from 'mdx/types';
 import DarkModeFix from './components/muiWrappers/darkModeFix/_darkModeFix';
 
