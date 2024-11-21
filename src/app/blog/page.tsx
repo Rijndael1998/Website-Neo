@@ -3,6 +3,9 @@ import GroupPage from "@/components/group/groupPage/_groupPage";
 import { MirrorSynopsis, MirrorTitle } from "@/content/blog/mirrorsEdge";
 import { imageFolder } from "@/content/portfolio/Portfolio";
 
+import enderImage from "@/app/blog/3d_printer/opengraph-image.png";
+import openWRTImage from "@/app/blog/city_fibre/opengraph-image.png";
+
 const preURL = "/blog/";
 
 export const metadata = { 
@@ -35,7 +38,7 @@ const OpenWRT: GroupPreviewContent = {
     `,
     isDemo: false,
     url: "blog/city_fibre",
-    image: `${preURL}city_fibre/logos.webp`,
+    image: openWRTImage,
     logo: true,
 };
 
@@ -46,7 +49,7 @@ const Ender: GroupPreviewContent = {
     `,
     isDemo: false,
     url: "blog/3d_printer",
-    image: `${preURL}3d printer/3d printer.webp`,
+    image: enderImage,
 };
 
 const Mirror: GroupPreviewContent = {
