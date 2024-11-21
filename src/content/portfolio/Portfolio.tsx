@@ -116,9 +116,8 @@ const THIS: GroupPreviewContent = {
     It is mainly a celebration of everything I have done. Like everything else, it's FOSS.
     `,
     isDemo: false,
-    image: "/favico.png",
+    image: "/opengraph.webp",
     url: "https://github.com/Rijndael1998/Website-Neo",
-    logo: true,
 }
 
 const Nomad: GroupPreviewContent = {
