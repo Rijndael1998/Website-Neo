@@ -1,4 +1,4 @@
-import { Container, Typography as T } from '@mui/material';
+import { Container, Stack, Typography as T } from '@mui/material';
 import type { MDXComponents } from 'mdx/types';
 import DarkModeFix from './components/muiWrappers/darkModeFix/_darkModeFix';
 
@@ -16,8 +16,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     wrapper: ({ children }) => (
       <>
         <DarkModeFix>
-          <Container maxWidth="md">
-            {children}
+          <Container maxWidth="md" disableGutters>
+            <Stack gap={2}>
+              {children}
+            </Stack>
           </Container>
         </DarkModeFix>
       </>
