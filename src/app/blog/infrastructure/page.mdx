@@ -1,6 +1,9 @@
 import Lazy from "@/components/lazy/_lazy";
-import LazyImage from "@/components/lazy/_lazyImage.tsx";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage.tsx";
 import MermaidFlow from "@/components/flow/MermaidFlow";
+
+import lan from "./images/lan.png";
+import server from "./images/server.png";
 
 export const metadata = {
     title: "My home lab infrastructure",
@@ -29,14 +32,14 @@ I run Apache on Debian 12 as a reverse proxy to my system.
 
 ### Issues
  - When you use [XCP-ng](https://xcp-ng.org/) with the default [Xen Orchestra](https://xen-orchestra.com/#!/xoa), you will not be able to perform updates.
-  <LazyImage src={"/blog/infrastructure/server.png"} aspectRatio={736 / 315}/> The very simple solution to this is to use the [community version](https://github.com/Jarli01/xenorchestra_installer). It's good enough to just update but I'm still unsure if I want to use this as a daily driver just yet.
+  <LazyLocalImage src={server} /> The very simple solution to this is to use the [community version](https://github.com/Jarli01/xenorchestra_installer). It's good enough to just update but I'm still unsure if I want to use this as a daily driver just yet.
  - The first time that I ran XCP-ng, I couldn't open LUKS2, only LUKS1 volumes. This was really annoying because I couldn't easily copy over my data that already existed.
  - I wanted to run [Folding @ Home](https://foldingathome.org/) on my graphics card attached to the host but there was a lot of issues getting that set up. I simply couldn't detect OpenCL on those cards. I'm not sure if it's because my cards are rather old and under-powered or if there's another reason for this. I wasn't able to find a solution to this so I only run Folding on my CPU.
  - At the time of writing there was no way to do USB passthrough on XO. I had to follow a tutorial that I found [here](https://www.techtutorials.tv/sections/xcp-ng/xcp-ng-usb-passthrough/).
 
 ## Network
 ### ISP
-My internet service provider gave me very vague instructions on how to set up my WAN connection, but after a bunch of searching online, I figured out [how to get OpenWRT to work on Octaplus networks](:/221cb66ba89c43cda6494345a2f2217f). If you're struggling and are with setting up Octaplus on OpenWRT or similar, this article is for you. Overall, it's a very simple process, it just lacks documentation from the ISP.
+My internet service provider gave me very vague instructions on how to set up my WAN connection, but after a bunch of searching online, I figured out [how to get OpenWRT to work on Octaplus networks](/blog/city_fibre). If you're struggling and are with setting up Octaplus on OpenWRT or similar, this article is for you. Overall, it's a very simple process, it just lacks documentation from the ISP.
 
 ### OpenWRT
 I use [OpenWRT](https://openwrt.org/) as the router software running on my old computer. The old computer has a brand new 4 port 2.5 Gigabit [PCIe network card](https://www.amazon.co.uk/gp/product/B09SS8GVHC/ref=ppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&th=1). It's only PCIe x4 and I only have 1 x16 and 2 x1 ports on [my motherboard](https://www.gigabyte.com/Motherboard/GA-B75M-D2V-rev-10#ov). It's a bit of an issue and I had to buy some switches to separate my networks out.
@@ -96,11 +99,10 @@ There's a lot of things that I could have done better in my system if I knew and
 I don't understand VLANs on a higher level. It seems to me that they're some kind of black magic. Because of this, I couldn't really get it to work nicely with the rest of my network. I'm not sure how I can set up a VLAN for wireless clients and use a single wire instead of two. For example, there's no option to do a wireless VLAN tagging which makes my whole idea bust.
 
 I used two wires instead of one to make my network separated. 
-![5df8c68b69c864f8a4a583148a93e751.png](:/lan.png)
+<LazyLocalImage src={lan} /> 
 The 2 networks have their own bridge tied to their own ports. From the WiFi screen, I just selected the bridge and it added them on. The wires go to their respected switches.
 
 ### Network Layout
-
 If you're interested in how my network is structured, you can read more about it [here](/blog/infrastructure/topology/).
 
 
