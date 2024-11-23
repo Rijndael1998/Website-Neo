@@ -1,15 +1,5 @@
-export const MusicDesc1 = `
-On occasion, I like to do stuff to do with music. I can play the piano. I can play: 
-`
-
-export const MusicICanPlay: Array<[string, string]> = [
-    [`For river (Johnny's Version)`, `https://www.youtube.com/watch?v=hiW6akLxrCM`],
-    [`Shelter`, `https://www.youtube.com/watch?v=ItpJJmZtXL0`],
-    [`After Dark`, `https://www.youtube.com/watch?v=CeZW57CMgpo`],
-]
-
 export const MusicDesc2 = `
-The list isn't extensive but I just can't remember what I can play right now. 
+
 `
 
 export const MusicDesc3 = `

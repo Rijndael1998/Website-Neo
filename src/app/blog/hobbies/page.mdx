@@ -1,0 +1,101 @@
+import ImageGallery from "@/components/imageGallery/_imageGallery";
+import Lazy from "@/components/lazy/_lazy";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import * as Content from "@/content/portfolio/hobbies/Hobbies";
+
+
+
+export const metadata = {
+    title: 'Hobbies',
+    description: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
+};
+
+# Music
+On occasion, I like to do stuff to do with music. I can play the piano. I can play: 
+ - [For river (Johnny's Version)](https://www.youtube.com/watch?v=hiW6akLxrCM)
+ - [Shelter](https://www.youtube.com/watch?v=ItpJJmZtXL0)
+ - [After Dark](https://www.youtube.com/watch?v=CeZW57CMgpo)
+ - Others, but probably not as well.
+
+The list isn't extensive but I just can't remember what I can play right now. 
+
+<LazyLocalImage
+    src="/fun/hobbies/music/fl_studio.png"
+    alt="FL Studio Screenshot"
+    cap
+/>
+
+{/* TODO: Please remove this hack */}
+<p style={{ marginBottom: "0" }}>
+    {Content.MusicDesc3}
+</p>
+
+<audio controls src="/fun/hobbies/music/crab_rave.mp3" />
+
+<p>
+    {Content.MusicDesc4}
+</p>
+
+<h1>{Content.AITitle}</h1>
+<p>
+    {
+        Content.AIContent1
+    }
+</p>
+
+<h3>{Content.AISub1}</h3>
+<p>
+    {
+        Content.AIContent2
+    }
+</p>
+
+
+<ImageGallery
+    aspectRatio={469 / 928}
+    images={
+        Content.AIImagesPrompts.map((item) => {
+            return { src: item }
+        })
+    }
+/>
+
+<p>
+    {
+        Content.AIContent3
+    }
+</p>
+
+<h3>{Content.AISub2}</h3>
+<p>
+    {
+        Content.AIContent4
+    }
+</p>
+
+<ImageGallery
+    aspectRatio={574 / 1281}
+    images={
+        ["/fun/hobbies/ai/mod1.png", "/fun/hobbies/ai/mod2.png"].map((item) => {
+            return { src: item }
+        })
+    }
+/>
+
+<p>
+    {
+        Content.AIContent5
+    }
+</p>
+
+<LazyImage alt="Inpainting" aspectRatio={574 / 1281} src="/fun/hobbies/ai/modfinal.png" />
+
+<h3>{Content.AISub3}</h3>
+
+<p>
+    {
+        Content.AIContent6
+    }
+</p>
+
+<LazyImage alt="Final Picture" aspectRatio={1} src="/fun/crab_rave.png" />
