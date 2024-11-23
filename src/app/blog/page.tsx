@@ -1,10 +1,11 @@
 import { GroupPreviewContent } from "@/components/group/_groupTypes";
 import GroupPage from "@/components/group/groupPage/_groupPage";
-import { MirrorSynopsis, MirrorTitle } from "@/content/blog/mirrorsEdge";
 import { imageFolder } from "@/content/portfolio/Portfolio";
 
 import enderImage from "@/app/blog/3d_printer/opengraph-image.png";
 import openWRTImage from "@/app/blog/city_fibre/opengraph-image.png";
+
+import { metadata as mirrors_edge_metadata } from "./mirrors_edge/page.mdx";
 
 const preURL = "/blog/";
 
@@ -53,8 +54,8 @@ const Ender: GroupPreviewContent = {
 };
 
 const Mirror: GroupPreviewContent = {
-    title: MirrorTitle,
-    desc: MirrorSynopsis,
+    title: mirrors_edge_metadata.title,
+    desc: mirrors_edge_metadata.description,
     isDemo: false,
     url: "blog/mirrors_edge",
     image: `${preURL}mirrors_edge/1x1 partial logo.png`,
