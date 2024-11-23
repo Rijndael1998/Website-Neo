@@ -1,0 +1,109 @@
+import YoutubeEmbed from "@/components/external/youtube/_embed";
+import Lazy from "@/components/lazy/_lazy";
+import LazyImage from "@/components/lazy/_lazyImage";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import { Paragraphs, MirrorTitle, MirrorSynopsis } from "@/content/blog/mirrorsEdge";
+import { Metadata } from "next";
+
+import * as image from "./images/index.tsx";
+
+export const metadata = {
+    title: MirrorTitle,
+    description: MirrorSynopsis,
+};
+
+<Lazy>
+# {MirrorTitle}
+
+<LazyLocalImage
+    src={image.partial_1x1}
+    alt={"My own render of the Mirror's Edge: Catalyst world in the style of Mirror's Edge's menu screen."}
+    cap
+    capCol="#64a3c6"
+/>
+
+{Paragraphs[0]}
+
+<LazyLocalImage
+    src={image.screenshot2}
+    alt="Simple architecture mixed with only tones of green."
+    cap
+    capCol="#64bd2e"
+/>
+
+{Paragraphs[1]}
+
+<LazyLocalImage
+    src={image.screenshot11}
+    alt="Mirror's Edge: bright primary colors, their shades and simple room designs."
+    cap
+    capCol="#dd9b04"
+/>
+
+{Paragraphs[2]}
+
+<LazyLocalImage
+    src={image.screenshot31}
+    alt="Mirror's Edge menu screen. Notice how shadows are blue, not gray."
+    cap
+/>
+
+{Paragraphs[3]}
+
+
+<LazyLocalImage
+    src={image.render1}
+    alt="My first render."
+    cap
+/>
+
+{Paragraphs[4]}
+
+<LazyLocalImage
+    src={image.render3}
+    alt="My second attempt at a render."
+    cap
+/>
+
+{Paragraphs[5]}
+
+<LazyLocalImage
+    src={image.blender_comp}
+    alt="My stylistic color correction compositing process."
+    cap
+/>
+
+{Paragraphs[6]}
+
+<LazyLocalImage
+    src={image.blender_hdri}
+    alt="HDRI Result"
+    cap
+/>
+<LazyLocalImage
+    aspectRatio={2424 / 787}
+    src={image.blender_world}
+    alt="My world shader"
+    cap
+/>
+
+{Paragraphs[7]}
+
+<LazyLocalImage
+    aspectRatio={1}
+    src={image.blender_raw}
+    alt="Raw Render"
+    cap
+/>
+
+<LazyLocalImage
+    aspectRatio={1}
+    src={image.blender_final}
+    alt="Processed Render"
+    cap
+/>
+
+{Paragraphs[8]}
+
+<YoutubeEmbed videoID={"AOaenVRjcTE"}/>
+</Lazy>
