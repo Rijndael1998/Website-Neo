@@ -58,7 +58,7 @@ export default function Marta() {
         <p>{content[2]}</p>
         <p>{content[3]}</p>
 
-        <LazyImage src="/fun/marta/v1.jpg" alt="" aspectRatio={vertical_aspect_ratio} />
+        <LazyImage src="/fun/marta/v1.jpg" aspectRatio={vertical_aspect_ratio} />
         <p>{content[4]}</p>
 
         <h3>References</h3>
