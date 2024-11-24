@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import styles from "./imageGallery.module.scss";
 import { ifTruthyElse } from "../reactUtils";
 
 export type GalleryImageProps = {
     show?: boolean,
-    src: string,
+    src: ImageProps["src"],
     alt?: string,
     aspectRatio?: number,
 }

@@ -1,7 +1,7 @@
 import ImageGallery from "@/components/imageGallery/_imageGallery";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 
-import fl_studio from "./images/fl_studio.png";
+import * as images from "./images/index.tsx";
 
 export const metadata = {
     title: 'Hobbies',
@@ -11,16 +11,18 @@ export const metadata = {
 # Hobbies
 
 ## Music
+<div>
 On occasion, I like to do stuff to do with music. I can play the piano. I can play: 
  - [For river (Johnny's Version)](https://www.youtube.com/watch?v=hiW6akLxrCM)
  - [Shelter](https://www.youtube.com/watch?v=ItpJJmZtXL0)
  - [After Dark](https://www.youtube.com/watch?v=CeZW57CMgpo)
  - Others, but probably not as well.
+</div>
 
 The list isn't extensive but I just can't remember what I can play right now. 
 
 <LazyLocalImage
-    src={fl_studio}
+    src={images.fl_studio}
     alt="FL Studio Screenshot"
     cap
 />
@@ -37,7 +39,7 @@ I started off by doing some basic prompting:
 
 <ImageGallery
     aspectRatio={469 / 928}
-    images={[]}
+    images={images.allIs}
 />
 
 As you can see, prompting is a gradual process. It really helps if you understand what the model might be 
@@ -48,18 +50,14 @@ After prompting, you can pick an image you like and check out its variations, li
 
 <ImageGallery
     aspectRatio={574 / 1281}
-    images={[]}
+    images={[{src: images.mod_1}, {src: images.mod_2}]}
 />
 
-import mod_final from "./images/mod_final.png";
-
 If you're not exactly happy with the image that you have, you can always inpaint the parts that you want to change, then run the image with a prompt. This is what I got when I made this last image:
-<LazyLocalImage alt="Inpainting" src={mod_final} />
+<LazyLocalImage alt="Inpainting" src={images.mod_final} />
 
 ### Finished product
 
-import crab_rave from "./opengraph-image.png";
-
 And here's the finished result. Unfortunately, image generation AI still doesn't know how to count. Crabs typically have 10 legs, but the AI generated a crab with 6... That's 4 too fewer. However, the crab in the image reminds me of a poison headcrab from Half Life, so maybe that's the cause?????? Regardless, I liked the picture enough to put it here.
 
-<LazyLocalImage alt="Final Picture" src={crab_rave} />
+<LazyLocalImage alt="Final Picture" src={images.crab_rave} />
