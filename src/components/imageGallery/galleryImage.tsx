@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import Image from "next/image";
 import styles from "./imageGallery.module.scss";
+import { ifTruthyElse } from "../reactUtils";
 
 export type GalleryImageProps = {
     show?: boolean,
@@ -11,18 +12,14 @@ export type GalleryImageProps = {
 
 
 export default function GalleryImage({ show, src, alt, aspectRatio }: GalleryImageProps) {
-    return <>
-        {
-            !aspectRatio &&
-            <GalleryImageInner show={show} src={src} alt={alt} />
-        }
-        {
-            aspectRatio &&
-            <figure style={{ aspectRatio }} className={classNames(styles.container, styles.standAlone)}>
-                <GalleryImageInner show={show} src={src} alt={alt} />
-            </figure>
-        }
-    </>
+    const GII = <GalleryImageInner show={show} src={src} alt={alt} />
+    return ifTruthyElse(
+        aspectRatio,
+        <figure style={{ aspectRatio }} className={classNames(styles.container, styles.standAlone)}>
+            {GII}
+        </figure>,
+        GII,
+    )
 }
 
 export function GalleryImageInner({ show, src, alt }: GalleryImageProps) {
