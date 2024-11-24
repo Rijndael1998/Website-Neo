@@ -1,7 +1,8 @@
 import ImageGallery from "@/components/imageGallery/_imageGallery";
 import Lazy from "@/components/lazy/_lazy";
-import LazyImage from "@/components/lazy/_lazyImage";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 import { content, citations } from "@/content/portfolio/marta/Marta";
+import * as images from "./images";
 
 export const metadata = {
     title: "Marta Fundraiser's",
@@ -16,31 +17,31 @@ function Gallery() {
         aspectRatio={horizontal_aspect_ratio}
         images={[
             {
-                src: "/fun/marta/1.jpg",
+                src: images.i1,
             },
             {
-                src: "/fun/marta/2.jpg",
+                src: images.i2,
             },
             {
-                src: "/fun/marta/3.jpg",
+                src: images.i3,
             },
             {
-                src: "/fun/marta/4.jpg",
+                src: images.i4,
             },
             {
-                src: "/fun/marta/v2.jpg",
+                src: images.v2,
                 aspectRatio: vertical_aspect_ratio,
             },
             {
-                src: "/fun/marta/v3.jpg",
+                src: images.v3,
                 aspectRatio: vertical_aspect_ratio,
             },
             {
-                src: "/fun/marta/v4.jpg",
+                src: images.v4,
                 aspectRatio: vertical_aspect_ratio,
             },
             {
-                src: "/fun/marta/v5.jpg",
+                src: images.v5,
                 aspectRatio: vertical_aspect_ratio,
             },
         ]}
@@ -58,7 +59,7 @@ export default function Marta() {
         <p>{content[2]}</p>
         <p>{content[3]}</p>
 
-        <LazyImage src="/fun/marta/v1.jpg" aspectRatio={vertical_aspect_ratio} />
+        <LazyLocalImage src={images.v1}  />
         <p>{content[4]}</p>
 
         <h3>References</h3>

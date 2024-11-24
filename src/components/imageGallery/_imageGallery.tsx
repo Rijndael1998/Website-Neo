@@ -3,13 +3,13 @@
 import styles from "./imageGallery.module.scss";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import GalleryImage from "./galleryImage";
+import GalleryImage, { GalleryImageProps } from "./galleryImage";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export type ImageProps = Array<{
     alt?: string,
-    src: string,
+    src: GalleryImageProps["src"],
     aspectRatio?: number,
 }>
 
