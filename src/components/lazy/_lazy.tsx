@@ -1,13 +1,12 @@
 import { ReactNode } from "react";
 import styles from "./lazy.module.scss";
-import DarkModeFix from "../muiWrappers/darkModeFix/_darkModeFix";
 import { Container } from "@mui/material";
 import classNames from "classnames";
 
-export default function Lazy({ children, doNothing }: { children?: ReactNode, doNothing?: boolean}) {
+export default function Lazy({ children, doNothing }: { children?: ReactNode, doNothing?: boolean }) {
     console.warn("Lazy will be the next element to be removed");
 
-    return <DarkModeFix>
-        <Container className={classNames(styles.lazy, doNothing && styles.doNothing)} maxWidth={"md"}>{children}</Container>
-    </DarkModeFix>
+    return <Container className={classNames(styles.lazy, doNothing && styles.doNothing)} maxWidth={"md"}>
+        {children}
+    </Container>
 }
