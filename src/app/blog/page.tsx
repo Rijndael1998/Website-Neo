@@ -1,9 +1,11 @@
 import { GroupPreviewContent } from "@/components/group/_groupTypes";
 import GroupPage from "@/components/group/groupPage/_groupPage";
-import { imageFolder } from "@/content/portfolio/Portfolio";
 
-import enderImage from "@/app/blog/3d_printer/opengraph-image.png";
-import openWRTImage from "@/app/blog/city_fibre/opengraph-image.png";
+import enderImage from "./3d_printer/opengraph-image.png";
+import openWRTImage from "./city_fibre/opengraph-image.png";
+import hobbiesImage from "./hobbies/opengraph-image.png";
+import martaImage from "./marta/opengraph-image.jpg";
+import mirrorsEdgeImage from "./mirrors_edge/images/1x1 partial logo 200.png";
 
 import { metadata as mirrors_edge_metadata } from "./mirrors_edge/page.mdx";
 
@@ -20,7 +22,7 @@ const Marta: GroupPreviewContent = {
     My mom and I helped organize a community fundraiser in Bolton and Bury for Marta, a single mother with cancer who lacked basics like furniture and a clothes dryer. Thanks to the generosity of our communities, we were able to gather the funds needed to support her and her three young children during this challenging time.
     `,
     isDemo: false,
-    image: imageFolder + "marta.jpg",
+    image: martaImage,
     url: preURL + "marta",
 }
 
@@ -29,7 +31,7 @@ const crab: GroupPreviewContent = {
     desc: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
     isDemo: false,
     url: preURL + "hobbies",
-    image: imageFolder + "crab_rave.png",
+    image: hobbiesImage,
 };
 
 const OpenWRT: GroupPreviewContent = {
@@ -58,7 +60,7 @@ const Mirror: GroupPreviewContent = {
     desc: mirrors_edge_metadata.description,
     isDemo: false,
     url: "blog/mirrors_edge",
-    image: `${preURL}mirrors_edge/1x1 partial logo.png`,
+    image: mirrorsEdgeImage,
 };
 
 export default function Blog() {
