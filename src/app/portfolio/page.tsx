@@ -1,5 +1,5 @@
 import GroupPage from "@/components/group/groupPage/_groupPage";
-import { GroupPreviewContent, GroupViewArray } from "@/components/group/_groupTypes";
+import { GroupViewArray } from "@/components/group/_groupTypes";
 import { chalk } from "./chalk/page.preview";
 import { IPF } from "./ipf/page.preview";
 import { LBU } from "./lbu/page.preview";
