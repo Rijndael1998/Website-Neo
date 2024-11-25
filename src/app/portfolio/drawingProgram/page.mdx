@@ -3,6 +3,15 @@ import { Container } from "@mui/material";
 import GalleryImage from "@/components/imageGallery/galleryImage";
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 
+import ASE from "./images/AdvancedSoftwareEngineering.png";
+import CodeExample from "./images/Example Code.png";
+import CodeOutput from "./images/Example Output.png";
+import Face from "./images/Face.png";
+import FaceProgram from "./images/FaceProgram.png";
+import Hue from "./images/Hue.png";
+import HuePattern from "./images/HuePattern.png";
+import Squares from "./images/Squares.png";
+
 export const metadata = {
     title: "C# Drawing Program",
     description: "This is one of my third year university projects. The program can let you draw anything that you might like.",
@@ -11,30 +20,30 @@ export const metadata = {
 export const imageBaseURL = "/fun/hobbies/ase/";
 export const gallery = [
     {
-        src: imageBaseURL + "HuePattern.png",
+        src: HuePattern,
         aspectRatio: 644 / 696,
     },
     {
-        src: imageBaseURL + "Squares.png",
+        src: Squares,
         aspectRatio: 549 / 599,
     },
     {
-        src: imageBaseURL + "Face.png",
+        src: Face,
         aspectRatio: 533 / 588,
     },
     {
-        src: imageBaseURL + "AdvancedSoftwareEngineering.png",
+        src: ASE,
         aspectRatio: 668 / 938,
     }
 ];
 
 export const example = [
     {
-        src: imageBaseURL + "Example Code.png",
+        src: CodeExample,
         aspectRatio: 732 / 664,
     },
     {
-        src: imageBaseURL + "Example Output.png",
+        src: CodeOutput,
         aspectRatio: 386 / 431,
     },
 ];
@@ -44,7 +53,7 @@ export const example = [
 
 # Drawing Program
 
-<GalleryImage src={imageBaseURL + "Hue.png"} aspectRatio={382 / 439} alt="" />
+<GalleryImage src={Hue} aspectRatio={382 / 439} alt="" />
 
 This is one of my third year university projects. The program can let you draw anything that you might like. You can download a demo [here](/fun/ase/Advanced%20Software%20Engineering.exe). Simply run the executable. It should run under Wine, but I experienced problems with the file locator. The source available repository is [here](https://github.com/Rijndael1998/Advanced-Software-Engineering-Drawing-Project).
 
