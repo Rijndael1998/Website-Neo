@@ -2,10 +2,12 @@ import { GroupPreviewContent } from "@/components/group/_groupTypes";
 import GroupPage from "@/components/group/groupPage/_groupPage";
 import { imageFolder } from "@/content/portfolio/Portfolio";
 
-import enderImage from "@/app/blog/3d_printer/opengraph-image.png";
-import openWRTImage from "@/app/blog/city_fibre/opengraph-image.png";
+import adventOfCodeImage from "./advent_of_code/opengraph-image.png";
+import enderImage from "./3d_printer/opengraph-image.png";
+import openWRTImage from "./city_fibre/opengraph-image.png";
 
 import { metadata as mirrors_edge_metadata } from "./mirrors_edge/page.mdx";
+import { metadata as advent_of_code_metadata } from "./advent_of_code/page.mdx";
 
 const preURL = "/blog/";
 
@@ -23,6 +25,15 @@ const Marta: GroupPreviewContent = {
     image: imageFolder + "marta.jpg",
     url: preURL + "marta",
 }
+
+const advent: GroupPreviewContent = {
+    title: advent_of_code_metadata.title,
+    desc: advent_of_code_metadata.description,
+    isDemo: false,
+    url: preURL + "advent_of_code",
+    image: adventOfCodeImage,
+    logo: true,
+};
 
 const crab: GroupPreviewContent = {
     title: "Hobbies",
@@ -73,6 +84,7 @@ export default function Blog() {
                         Ender,
                         OpenWRT,
                         Mirror,
+                        advent,
                     ],
                 },
                 {
