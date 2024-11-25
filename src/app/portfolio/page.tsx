@@ -22,37 +22,37 @@ export const metadata = {
     title: "Portfolio",
 }
 
-export const irlContent: GroupViewArray = [
+const irlContent: GroupViewArray = [
     IPF,
     Shreem,
     HAL,
 ];
 
-export const volunteering: GroupViewArray = [
+const volunteering: GroupViewArray = [
     FAH,
     LBU,
     OSM,
 ];
 
-export const personalProjects: GroupViewArray = [
+const personalProjects: GroupViewArray = [
     RAI,
     oldWebsite,
     THIS,
 ];
 
-export const collegeWork: GroupViewArray = [
+const collegeWork: GroupViewArray = [
     Nomad,
     Drawing,
     ToDo,
 ];
 
-export const demos: GroupViewArray = [
+const demos: GroupViewArray = [
     AS,
     Sudoku,
     Langrage,
 ];
 
-export const games: GroupViewArray = [
+const games: GroupViewArray = [
     chalk,
 ];
 
