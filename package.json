@@ -21,7 +21,7 @@
     "@next/mdx": "15.0.3",
     "@remixicon/react": "^4.5.0",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.3",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@xyflow/react": "^12.3.4",
@@ -37,7 +37,7 @@
     "sass": "^1.81.0",
     "scss": "^0.2.4",
     "sharp": "^0.33.5",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "webpack": "^5.96.1"
   }
 }
