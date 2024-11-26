@@ -1,41 +1,55 @@
 import { GroupPreviewContent } from "@/components/group/_groupTypes";
 import GroupPage from "@/components/group/groupPage/_groupPage";
-import { MirrorSynopsis, MirrorTitle } from "@/content/blog/mirrorsEdge";
-import { imageFolder } from "@/content/portfolio/Portfolio";
 
-import enderImage from "@/app/blog/3d_printer/opengraph-image.png";
-import openWRTImage from "@/app/blog/city_fibre/opengraph-image.png";
+import adventOfCodeImage from "./advent_of_code/opengraph-image.png";
+import enderImage from "./3d_printer/opengraph-image.png";
+import openWRTImage from "./city_fibre/opengraph-image.png";
+import hobbiesImage from "./hobbies/opengraph-image.png";
+import martaImage from "./marta/opengraph-image.jpg";
+import mirrorsEdgeImage from "./mirrors_edge/images/1x1 partial logo 200.png";
+
+import { metadata as advent_of_code_metadata } from "./advent_of_code/page.mdx";
+import { metadata as ender_metadata } from "./3d_printer/page.mdx"
+import { metadata as openwrt_metadata } from "./city_fibre/page.mdx";
+import { metadata as hobbies_metadata } from "./hobbies/page.mdx";
+import { metadata as marta_metadata } from "./marta/page.mdx";
+import { metadata as mirrors_edge_metadata } from "./mirrors_edge/page.mdx";
 
 const preURL = "/blog/";
 
-export const metadata = { 
+export const metadata = {
     title: "Blog",
     description: "Small tidbits that I'm interested in.",
 };
 
-const Marta: GroupPreviewContent = {
-    title: "Marta's Fundraiser",
-    desc: `
-    My mom and I helped organize a community fundraiser in Bolton and Bury for Marta, a single mother with cancer who lacked basics like furniture and a clothes dryer. Thanks to the generosity of our communities, we were able to gather the funds needed to support her and her three young children during this challenging time.
-    `,
+const advent: GroupPreviewContent = {
+    title: advent_of_code_metadata.title,
+    desc: advent_of_code_metadata.description,
     isDemo: false,
-    image: imageFolder + "marta.jpg",
+    url: preURL + "advent_of_code",
+    image: adventOfCodeImage,
+    logo: true,
+};
+
+const Marta: GroupPreviewContent = {
+    title: marta_metadata.title,
+    desc: marta_metadata.description,
+    isDemo: false,
+    image: martaImage,
     url: preURL + "marta",
 }
 
-const crab: GroupPreviewContent = {
-    title: "Hobbies",
-    desc: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
+const hobbies: GroupPreviewContent = {
+    title: hobbies_metadata.title,
+    desc: hobbies_metadata.description,
     isDemo: false,
     url: preURL + "hobbies",
-    image: imageFolder + "crab_rave.png",
+    image: hobbiesImage,
 };
 
 const OpenWRT: GroupPreviewContent = {
-    title: "OpenWRT 5.15 on Octaplus networks",
-    desc: `
-    This article serves as a detailed guide for setting up OpenWRT 5.15 on an Octaplus network using a custom router. It highlights the basic configuration steps needed for users to connect their routers to CityFibre's fiberoptic internet service through Octaplus. Key instructions include tagging the VLAN with 911, configuring device settings using the OpenWRT interface, setting up PPPoE with specific username and password instructions, and ensuring proper network interface configuration. The guide also addresses potential challenges, such as MAC address binding and troubleshooting advice to ensure a successful connection.
-    `,
+    title: openwrt_metadata.title,
+    desc: openwrt_metadata.description,
     isDemo: false,
     url: "blog/city_fibre",
     image: openWRTImage,
@@ -43,21 +57,19 @@ const OpenWRT: GroupPreviewContent = {
 };
 
 const Ender: GroupPreviewContent = {
-    title: "Recover your Creality Ender-3 V3 SE",
-    desc: `
-    In this article, I recount my harrowing experience of trying to revive a borrowed Creality Ender-3 V3 SE after a failed Klipper installation. Spoiler alert: I aged a few years in the process! I'll walk you through the lesser-known, crucial steps to properly format your SD card to meet the 3D printer's finicky requirements and explain why updating the screen firmware is just as important as updating the main firmware. Learn from my mishaps and avoid your own 3D printing nightmares with these handy recovery tips.
-    `,
+    title: ender_metadata.title,
+    desc: ender_metadata.description,
     isDemo: false,
     url: "blog/3d_printer",
     image: enderImage,
 };
 
 const Mirror: GroupPreviewContent = {
-    title: MirrorTitle,
-    desc: MirrorSynopsis,
+    title: mirrors_edge_metadata.title,
+    desc: mirrors_edge_metadata.description,
     isDemo: false,
     url: "blog/mirrors_edge",
-    image: `${preURL}mirrors_edge/1x1 partial logo.png`,
+    image: mirrorsEdgeImage,
 };
 
 export default function Blog() {
@@ -72,6 +84,7 @@ export default function Blog() {
                         Ender,
                         OpenWRT,
                         Mirror,
+                        advent,
                     ],
                 },
                 {
@@ -79,7 +92,7 @@ export default function Blog() {
                     subtitle: "Miscellaneous things I could not find a place for",
                     groups: [
                         Marta,
-                        crab,
+                        hobbies,
                     ],
                 },
             ]

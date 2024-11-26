@@ -5,8 +5,12 @@ export function ifTrue(condition: boolean, Item: ReactNode) {
 }
 
 export function ifTruthy(condition: any, Item: ReactNode) {
-    if(condition)
-        return Item;
+    return ifTruthyElse(condition, Item, <></>);
+}
 
-    return <></>
+export function ifTruthyElse(condition: any, ItemA: ReactNode, ItemB: ReactNode) {
+    if (condition)
+        return ItemA;
+
+    return ItemB;
 }

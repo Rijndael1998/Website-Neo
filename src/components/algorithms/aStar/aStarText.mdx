@@ -1,0 +1,48 @@
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+export default function Layout({children}) {
+  return <>{children}</>;
+}
+
+<>
+<Accordion>
+<AccordionSummary
+    expandIcon={<ExpandMoreIcon />}
+    aria-controls="panel2-content"
+    id="panel2-header"
+>
+    What is A Star??
+</AccordionSummary>
+<AccordionDetails>
+A* (pronounced "A-star") is a popular and influential pathfinding algorithm in computer science. It was introduced by Peter Hart, Nils Nilsson, and Bertram Raphael in 1968. A* forms the basis of many pathfinding algorithms used in video games and web-based maps.
+
+A* is commonly used because it is both complete and optimal, meaning it always finds a path if one exists and it always finds the least costly path (assuming the cost function is monotonic).
+
+The algorithm calculates a heuristic value for each node, typically the estimated distance to the target, and prefers to explore nodes with the lowest total cost plus this heuristic. The cumulative cost and the estimated remaining cost gives an approximate cost to reach the target from the current node, which allows A* to make informed decisions on the likely best path before it has been fully explored. 
+
+This approach combines the advantages of Dijkstra's algorithm (which is best at finding the shortest path) and Greedy Best-First-Search (which is best at quickly exploring in the right general direction), making A* a very efficient and accurate pathfinding algorithm.
+</AccordionDetails>
+</Accordion>
+<Accordion>
+<AccordionSummary
+    expandIcon={<ExpandMoreIcon />}
+    aria-controls="panel1-content"
+    id="panel1-header"
+>
+    Why I'm fascinated with A Star?
+</AccordionSummary>
+<AccordionDetails>
+- Ingenuity: A* combines the strengths of Dijkstra's algorithm and the Greedy Best-First-Search, thus finding the most cost-effective path while also doing it quickly and accurately. The way it balances these considerations can be fascinating from a computer science and problem-solving perspective.
+
+- Efficiency: A* is admired for being efficient in both time and space. Despite expanding nodes on a graph, it prioritizes those with lower costs, reducing the number of nodes it needs to examine before reaching the goal. This efficiency can be exciting to observe, especially in real-time applications like video games or robotics.
+
+- Applications: A* can be used in various domains, such as artificial intelligence, video games, routing protocols, and GPS systems. Its interesting to see a single algorithm having such wide and diverse utility.
+
+- Visual Appeal: Visualizing the A* algorithm can be intriguing. Seeing the path unfold and how the algorithm systematically explores different paths based on their heuristic value can be quite engaging.
+
+- Problem Solving: Studying A* offers insight into problem-solving strategies, heuristic methods, and the concept of optimality in decision-making. This can be fascinating for those interested in artificial intelligence and computational thinking.
+
+</AccordionDetails>
+</Accordion>
+</>

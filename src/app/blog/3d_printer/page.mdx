@@ -6,11 +6,11 @@ import Lazy from "@/components/lazy/_lazy";
 import { generateCustomMetadata } from "@/content/Metadata";
 
 import logo from "./opengraph-image.png";
-import s1 from "./images//s1.png";
-import s2 from "./images//s2.png";
-import s3 from "./images//s3.png";
-import s4 from "./images//s4.png";
-import s5 from "./images//s5.png";
+import s1 from "./images/s1.png";
+import s2 from "./images/s2.png";
+import s3 from "./images/s3.png";
+import s4 from "./images/s4.png";
+import s5 from "./images/s5.png";
 
 export const title = "Recover your Creality Ender-3 V3 SE";
 
@@ -18,9 +18,6 @@ export const metadata = {
     title,
     description: "There are a couple of things that Creality support doesn't say about resetting the printer. Here's my quick guide to recovering your Ender-3 V3 SE.",
 };
-
-<DarkModeFix>
-<Container maxWidth="md">
 
 # {metadata.title}
 
@@ -53,15 +50,15 @@ Device     Boot Start     End Sectors  Size Id Type
 
 From this `fdisk` output, you can see that my 128GB SD card has only one 4GB partition. I have also partitioned it in MBR/DOS rather than GPT for compatibility, but I'm actually not sure if that's important.
 
-<div>
-    <Accordion>
+<Container disableGutters sx={{margin: "1ex 0"}}>
+    <Accordion >
         <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
         >
-            {"Rough steps"}
+            Rough steps
         </AccordionSummary>
         <AccordionDetails>
-            <div>
+            <Container>
                 Reformat your SD card to MBR/DOS
                 <LazyLocalImage src={s1} />
 
@@ -74,10 +71,10 @@ From this `fdisk` output, you can see that my 128GB SD card has only one 4GB par
                 Now, you've successfully formatted your SD card to "spec".
 
                 <LazyLocalImage src={s5} />
-            </div>
+            </Container>
         </AccordionDetails>
     </Accordion>
-</div>
+</Container>
 
 ## Make sure you update the screen, too.
 I spent far too long only updating the main firmware, but after stumbling for ages, I was informed that screen should also be updated *every* time you make any changes to the main firmware, even if you've not changed the version of the firmware. So, my advice, update the main firmware and then update the screen firmware. Once you put the firmware onto the sd card properly, you will see a white screen with red letters showing you the progress of the firmware flashing.
@@ -89,6 +86,3 @@ You can get all firmware from this official link: https://www.creality.com/pages
 ## Summary
 
 With this, I'm never again going to lobotomize my (borrowed) 3d printing machine. Not until I get myself one that I didn't borrow.
-
-</Container>
-</DarkModeFix>

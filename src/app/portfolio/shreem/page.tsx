@@ -1,5 +1,6 @@
-import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import image from "./opengraph-image.png";
 
 export const metadata = {
     title: "Shreem",
@@ -10,7 +11,7 @@ export default function Shreem() {
     return <Lazy>
         <h1>Shreem</h1>
 
-        <GalleryImage src="/fun/shreem.png" aspectRatio={1} />
+        <LazyLocalImage src={image} />
 
         <h2>The Company</h2>
         <p>

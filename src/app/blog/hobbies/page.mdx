@@ -1,0 +1,63 @@
+import ImageGallery from "@/components/imageGallery/_imageGallery";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+
+import * as images from "./images/index.ts";
+
+export const metadata = {
+    title: 'Hobbies',
+    description: "Sometimes I like to take a break from programming. I enjoy making 3d art, music and other random things.",
+};
+
+# Hobbies
+
+## Music
+<div>
+On occasion, I like to do stuff to do with music. I can play the piano. I can play: 
+ - [For river (Johnny's Version)](https://www.youtube.com/watch?v=hiW6akLxrCM)
+ - [Shelter](https://www.youtube.com/watch?v=ItpJJmZtXL0)
+ - [After Dark](https://www.youtube.com/watch?v=CeZW57CMgpo)
+ - Others, but probably not as well.
+</div>
+
+The list isn't extensive but I just can't remember what I can play right now. 
+
+<LazyLocalImage
+    src={images.fl_studio}
+    alt="FL Studio Screenshot"
+    cap
+/>
+
+I have also tried my hand at remixing music, here I am remixing Crab Rave as a ring tone: <audio controls src="/music/crab_rave.mp3" />
+
+It might sound a little weird because it was specifically designed as a looping ring tone for my phone. When I listen to it on my computer using my headphones, it sounds very empty on the lower frequencies but on the phone, it's a lot better, as the phone has less of an ability to produce lower frequency sounds. It arguably sounds "correct" on a phone.
+
+## AI
+I tried my hand at AI generation using Open AI's DALL·E. It's how I made the image to go with this portfolio page. I think the way in which the content is rather interesting. It involves a lot of trial and error, and it's not as straight forward as some people imagine, but it's a lot easier than learning to paint or getting someone else to paint your mind.
+
+### Prompting
+I started off by doing some basic prompting: 
+
+<ImageGallery
+    aspectRatio={469 / 928}
+    images={images.allIs}
+/>
+
+As you can see, prompting is a gradual process. It really helps if you understand what the model might be 
+misinterpreting or misunderstanding
+
+### Refining
+After prompting, you can pick an image you like and check out its variations, like you can do here:
+
+<ImageGallery
+    aspectRatio={574 / 1281}
+    images={[{src: images.mod_1}, {src: images.mod_2}]}
+/>
+
+If you're not exactly happy with the image that you have, you can always inpaint the parts that you want to change, then run the image with a prompt. This is what I got when I made this last image:
+<LazyLocalImage alt="Inpainting" src={images.mod_final} />
+
+### Finished product
+
+And here's the finished result. Unfortunately, image generation AI still doesn't know how to count. Crabs typically have 10 legs, but the AI generated a crab with 6... That's 4 too fewer. However, the crab in the image reminds me of a poison headcrab from Half Life, so maybe that's the cause?????? Regardless, I liked the picture enough to put it here.
+
+<LazyLocalImage alt="Final Picture" src={images.crab_rave} />

@@ -2,7 +2,7 @@
 
 import ToolTip from "@/components/toolTip/_toolTip";
 import { ChooseRandomElement } from "@/components/util";
-import { quotes } from "@/content/footer/Quotes";
+import { quotes } from "./quote_text";
 import Link from "next/link";
 import { ReactElement, ReactNode } from "react";
 

@@ -1,17 +1,21 @@
-import GalleryImage from "@/components/imageGallery/galleryImage";
 import Lazy from "@/components/lazy/_lazy";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 import { http2, msLink } from "@/content/portfolio/oldWebsite/OldWebsite";
 import Link from "next/link";
 
+import old_website from "./opengraph-image.png";
+import old_website_low from "./images/LibreOfficeWriter.png";
+import old_website_err from "./images/Errors.png";
+
 export const metadata = {
-    title: "Langrage",
+    title: "Website Neo",
     description: "My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy.",
 };
 
 export default function PythonSPAWebsite() {
     return <Lazy>
         <h1>Python SPA Website</h1>
-        <GalleryImage src="/fun/old_website.png" aspectRatio={1} />
+        <LazyLocalImage src={old_website} />
         <p style={{ marginTop: "4rem" }}>{
             `
             My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy. 
@@ -51,8 +55,8 @@ export default function PythonSPAWebsite() {
         </p>
 
         <p>
-            <Link href="/fun/website/down.html">{`Here's a sample`}</Link> of the old website. 
-            Please note that none of the links pointing to <code>baldy.ga</code> will work. You can right click and save as, 
+            <Link href="/fun/website/down.html">{`Here's a sample`}</Link> of the old website.
+            Please note that none of the links pointing to <code>baldy.ga</code> will work. You can right click and save as,
             just like the Founding Fathers intended.
         </p>
 
@@ -108,7 +112,7 @@ export default function PythonSPAWebsite() {
             important tools to help me write.
         </p>
 
-        <GalleryImage src="/fun/hobbies/oldWebsite/LibreOfficeWriter.png" aspectRatio={1039 / 740} />
+        <LazyLocalImage src={old_website_low} />
 
         <p>
             This is important because as the technologies will evolve and the tools will evolve,
@@ -132,10 +136,10 @@ export default function PythonSPAWebsite() {
             or the content that was used to generate the site.
         </p>
 
-        <GalleryImage src="/fun/hobbies/oldWebsite/Errors.png" aspectRatio={1208 / 467} />
+        <LazyLocalImage src={old_website_err} />
 
         <p>
-            Upon completion, the script can automatically send the HTML to the service to be analysed.
+            Upon completion, the script can automatically send the HTML to the service to be analyzed.
             The script receives the info/warnings/errors if any are found and displays them, like above.
             This helps to find any potential errors before they are shipped to the public. This also
             doubles as a debugger if necessary.

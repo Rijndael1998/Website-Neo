@@ -17,10 +17,11 @@ import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwn
 import * as React from 'react';
 import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { AStarContent, AStarContent2 } from "@/content/portfolio/aStar/AStar";
 import { ifTrue } from "@/components/reactUtils";
 import ToolTip from "@/components/toolTip/_toolTip";
 import { elementPropsType } from "../sudoku/sudokuConstants";
+
+import AStarText from "./aStarText.mdx";
 
 function generateGridState(width: number, height: number) {
     return new GridState(width, height, AStarStyleMap, AStarStates.Node)
@@ -300,44 +301,7 @@ export default function AStarComponent() {
                     </Card>
                 </AccordionDetails>
             </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                >
-                    {`What is A Star??`}
-                </AccordionSummary>
-                <AccordionDetails>
-                    {
-                        AStarContent.map((par, i) => {
-                            return <p key={i}>
-                                {par}
-                            </p>
-                        })
-                    }
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    {`Why I'm fascinated with A Star?`}
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ol>
-                        {
-                            AStarContent2.map((par, i) => {
-                                return <li style={{ margin: "1em" }} key={i}>
-                                    {par}
-                                </li>
-                            })
-                        }
-                    </ol>
-                </AccordionDetails>
-            </Accordion>
+            <AStarText/>
         </div>
     </div>
 }

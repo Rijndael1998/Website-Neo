@@ -2,14 +2,8 @@
 
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 type child = string | React.JSX.Element | React.JSX.Element[];
-
-const titleTypography: TypographyOptions["h1"] = {
-    fontFamily: "var(--noto-serif)",
-    fontWeight: "bold",
-};
 
 const darkTheme = createTheme({
     palette: {
@@ -25,15 +19,35 @@ const darkTheme = createTheme({
         }
     },
     typography: {
+        fontFamily: 'Kanit',
         allVariants: {
             fontFamily: "var(--main-body)",
         },
-        h1: titleTypography,
-        h2: titleTypography,
-        h3: titleTypography,
-        h4: titleTypography,
-        h5: titleTypography,
-        h6: titleTypography,
+        h1: {
+            fontSize: '2rem',
+            fontWeight: 1000,
+        },
+        h2: {
+            fontSize: '1.8rem',
+            fontWeight: 700,
+        },
+        h3: {
+            fontSize: '1.7rem',
+            fontWeight: 500,
+        },
+        h4: {
+            fontSize: '1.6rem',
+            fontWeight: 500,
+        },
+        h5: {
+            fontSize: '1.5rem',
+            fontWeight: 500,
+        },
+        h6: {
+            fontSize: '1.2rem',
+            fontWeight: 500,
+        },
+
     },
 });
 

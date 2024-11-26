@@ -1,7 +1,5 @@
 @import "../components/vars";
 @import "../components/colors";
-@import "../components/fonts";
-
 
 html {
   position: relative;
@@ -50,4 +48,8 @@ pre {
   margin: 1em auto;
 
   overflow-x: auto;
+}
+
+code {
+  color: $nicePink;
 }
