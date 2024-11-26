@@ -7,7 +7,7 @@ import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
 import { defaultMetadata } from '@/content/Metadata'
 import { headers } from 'next/headers'
-import { Kanit, Noto_Sans, Noto_Serif } from 'next/font/google';
+import { Kanit, Noto_Sans, Noto_Serif, Ubuntu_Mono } from 'next/font/google';
 import { Container } from '@mui/material';
 import FabNav from '@/components/app/nav/fabnav/_fabnav';
 import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
@@ -29,7 +29,13 @@ const cn = Kanit({
   weight: '400'
 });
 
-const fontClassStrings = [cn, ns, nss].reduce<string>((prev, font) => `${prev} ${font.variable}`, "");
+const ub = Ubuntu_Mono({
+  subsets: ["latin"],
+  variable: "--mono",
+  weight: "400",
+})
+
+const fontClassStrings = [cn, ns, nss, ub].reduce<string>((prev, font) => `${prev} ${font.variable}`, "");
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = headers();
