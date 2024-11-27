@@ -1,6 +1,6 @@
 import Lazy from "@/components/lazy/_lazy";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
-import { http2, msLink } from "@/content/portfolio/oldWebsite/OldWebsite";
+import { http2, msLink } from "@/app/portfolio/oldWebsite/OldWebsite";
 import Link from "next/link";
 
 import old_website from "./opengraph-image.png";
