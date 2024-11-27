@@ -1,6 +1,6 @@
 import Lazy from "@/components/lazy/_lazy";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
-import { links } from "@/content/portfolio/passwordManager/PasswordManager";
+import { links } from "@/app/portfolio/passwordManager/PasswordManager";
 import Link from "next/link";
 
 import accountsImage from "./images/accounts.png";
