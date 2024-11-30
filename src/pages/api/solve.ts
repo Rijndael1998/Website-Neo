@@ -26,24 +26,11 @@ export default async function handler(
     res: NextApiResponse<PuzzleSolution>
 ) {
     console.log(req.body);
-    let request: AdventOfCodeRequest;
-    try {
-        request = JSON.parse(req.body) as AdventOfCodeRequest;
-
-    } catch (e) {
-        res.status(500).json({ error: `Parse error: ${String(e)}` });
-        return;
-    }
+    const request = req.body as AdventOfCodeRequest;
 
     let solution: string;
     try {
-        console.log(request);
-
-        request.day = Number(request.day);
-        request.message = String(request.message);
-
-        console.log(request);
-        solution = solutions[request.day](request.message);
+        solution = solutions[Number(request.day)](String(request.message));
 
     } catch (e) {
         res.status(500).json({ error: String(e) });
