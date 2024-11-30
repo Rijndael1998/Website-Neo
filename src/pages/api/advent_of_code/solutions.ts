@@ -1,5 +1,9 @@
-export type AdventOfCodeSolution = (input: string) => string;
+import { solution_0 } from "./0";
 
-export const solutions: {[number: number]: AdventOfCodeSolution} = {
-    0: (input) => "Test: " + input,
+export type AdventOfCodeSolution = string;
+export type AdventOfCodeSolutionInput = string;
+export type AdventOfCodeSolutionFunction = (input: AdventOfCodeSolutionInput) => AdventOfCodeSolution;
+
+export const solutions: {[number: number]: AdventOfCodeSolutionFunction} = {
+    0: solution_0,
 };
