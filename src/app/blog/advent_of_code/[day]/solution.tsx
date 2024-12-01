@@ -93,6 +93,12 @@ export default function Solution({ day }: SolutionProps) {
                         Clear Data
                     </Button>
                     <Button
+                        onClick={() => setText(initialInput ?? "")}
+                        disabled={isDisabled || initialInput === undefined}
+                        color={"secondary"}>
+                        Example input
+                    </Button>
+                    <Button
                         onClick={getSolution}
                         disabled={isDisabled}>
                         Solve
