@@ -2,8 +2,9 @@
 
 import { AdventOfCodeRequest, PuzzleSolution } from "@/pages/api/solve";
 import { Button, Container, Stack, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
+import { FileRequest } from "@/pages/api/getInput";
 
 export type SolutionProps = {
     day: number,
@@ -15,7 +16,35 @@ export default function Solution({ day }: SolutionProps) {
     const [awaitingAPI, setAwaitingAPI] = useState<boolean>(false);
     const [initialInput, setInitialInput] = useState<string | undefined>();
 
-    const isDisabled = awaitingAPI || !initialInput;
+    const isDisabled = awaitingAPI || initialInput === undefined;
+
+    useEffect(() => {
+        (async () => {
+            const dataToSend: FileRequest = { day };
+            try {
+                const data = await fetch('/api/getInput', {
+                    method: "POST",
+                    body: JSON.stringify(dataToSend),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const newText = await data.text();
+
+                if (data.status != 200)
+                    throw Error("Not 200");
+
+                setInitialInput(newText);
+                setText(newText);
+
+            } catch {
+
+                setInitialInput("");
+                setText("");
+            }
+        })();
+    }, []);
 
     const getSolution = async () => {
         if (awaitingAPI)

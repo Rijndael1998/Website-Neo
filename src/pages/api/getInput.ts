@@ -18,8 +18,11 @@ export default async function handler(
         if(![0, 1].includes(request))
             throw Error("Request out of bounds");
 
-        fileContents = await fs.readFile(process.cwd() + `/advent_of_code/inputs/${request}.txt`, 'utf8');
+        const filePath = `${process.cwd()}/src/pages/api/advent_of_code/inputs/${request}.txt`;
+        console.log(`getting ${filePath}`);
 
+        fileContents = await fs.readFile(filePath, 'utf8');
+        console.log(fileContents);
     } catch (e) {
         res.status(500).send("No data or malformed request");
         return;
