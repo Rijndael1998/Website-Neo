@@ -65,7 +65,6 @@ export default function ImageGallery({ images, aspectRatio }: ImageGalleryProps)
 
     const Control = (control: Controls, e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         e.preventDefault();
-        console.log("control");
         switch (control) {
             case Controls.Next:
                 return setIndexFlow(index + 1);
