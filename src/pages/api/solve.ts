@@ -12,8 +12,10 @@ export const config = {
 
 export type PuzzleSolution = {
     solution: string,
+    hasError: false,
 } | {
     error: string,
+    hasError: true,
 }
 
 export type AdventOfCodeRequest = {
@@ -33,9 +35,9 @@ export default async function handler(
         solution = solutions[Number(request.day)](String(request.message));
 
     } catch (e) {
-        res.status(500).json({ error: String(e) });
+        res.status(500).json({ error: String(e), hasError: true });
         return;
     }
 
-    res.status(200).json({ solution });
+    res.status(200).json({ solution, hasError: false });
 }
