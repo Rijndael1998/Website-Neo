@@ -8,7 +8,7 @@ import classNames from "classnames";
 
 export default function Header({children}: {children: ReactNode}): JSX.Element {
     const pathname = usePathname();
-    const red = pathname.includes("/debug");
+    const red = pathname?.includes("/debug") ?? false;
 
     return <>
         <div className={classNames(headerStyles.header, red && headerStyles.red)}>

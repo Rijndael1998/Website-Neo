@@ -9,8 +9,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<string>
 ) {
-    console.log(req.body);
-
     let fileContents: string;
     try {
         const request = (req.body as FileRequest).day;
@@ -19,10 +17,8 @@ export default async function handler(
             throw Error("Request out of bounds");
 
         const filePath = `${process.cwd()}/src/pages/api/advent_of_code/inputs/${request}.txt`;
-        console.log(`getting ${filePath}`);
 
         fileContents = await fs.readFile(filePath, 'utf8');
-        console.log(fileContents);
     } catch (e) {
         res.status(500).send("No data or malformed request");
         return;

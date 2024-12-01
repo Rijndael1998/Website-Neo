@@ -27,7 +27,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<PuzzleSolution>
 ) {
-    console.log(req.body);
     const request = req.body as AdventOfCodeRequest;
 
     let solution: string;
