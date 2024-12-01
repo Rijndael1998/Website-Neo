@@ -1,5 +1,22 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 
+function InstancesOf(sorted_array: Array<number>, value: number) {
+    const index = sorted_array.indexOf(value);
+    if(index == -1)
+        return 0;
+
+    let sum = 1;
+
+    for (let array_index = index + 1; array_index < sorted_array.length; array_index++) {
+        if(sorted_array[array_index] != value)
+            break;
+        
+        sum += 1;
+    }
+
+    return sum;
+}
+
 export const solution_1: AdventOfCodeSolutionFunction = (input) => {
     const left: Array<number> = [];
     const right: Array<number> = [];
@@ -28,8 +45,15 @@ export const solution_1: AdventOfCodeSolutionFunction = (input) => {
         sum += Math.abs(leftValue - rightValue);
     }
 
-    console.log(left.length, right.length)
+    const part1 = `Part 1: ${sum}`;
 
-    return `${sum}`;
+    sum = 0;
+    for (let index = 0; index < left.length; index++) {
+        sum += left[index] * InstancesOf(right, left[index]);
+    }
+
+    const part2 = `Part 2: ${sum}`;
+
+    return `${part1}\n${part2}`;
 };
 
