@@ -44,7 +44,7 @@ export default function Solution({ day }: SolutionProps) {
                 setText("");
             }
         })();
-    }, []);
+    }, [day]);
 
     const getSolution = async () => {
         if (awaitingAPI)
@@ -73,7 +73,7 @@ export default function Solution({ day }: SolutionProps) {
         <Stack gap={1}>
             <Typography variant="h1">{`Day ${day} solution`}</Typography>
 
-            <Typography variant="body1">Fill in your puzzle's input</Typography>
+            <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
 
             <Stack gap={1}>
                 <TextField
