@@ -14,7 +14,7 @@ export default function Solution({ day }: SolutionProps) {
     const [solution, setSolution] = useState<PuzzleSolution | undefined>();
     const [awaitingAPI, setAwaitingAPI] = useState<boolean>(false);
 
-    const getSolution = () => {
+    const getSolution = async () => {
         if (awaitingAPI)
             return;
 
@@ -25,40 +25,42 @@ export default function Solution({ day }: SolutionProps) {
             message: text,
         }
 
-        fetch('/api/solve', {
+        const data = await fetch('/api/solve', {
             method: "POST",
             body: JSON.stringify(dataToSend),
             headers: {
                 "Content-Type": "application/json",
             },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setSolution(data)
-                setAwaitingAPI(false)
-            });
+        });
+
+        setSolution(await data.json())
+        setAwaitingAPI(false)
     }
 
     return <Container maxWidth="md">
-        <Typography variant="h1">{`Day ${day} solution`}</Typography>
+        <Stack gap={1}>
+            <Typography variant="h1">{`Day ${day} solution`}</Typography>
 
 
-        <Typography variant="body1">Fill in your puzzle's input</Typography>
+            <Typography variant="body1">Fill in your puzzle's input</Typography>
 
-        <Stack>
-            <TextField
-                label="Puzzle input"
-                variant="filled"
-                multiline
-                sx={{ maxHeight: "5em", overflow: "scroll" }}
-                value={text}
-                onChange={(ev) => setText(ev.target.value)}
-            />
-            <Button onClick={getSolution}>Solve</Button>
+            <Stack gap={1}>
+                <TextField
+                    label="Puzzle input"
+                    variant="filled"
+                    multiline
+                    sx={{ maxHeight: "5em", overflow: "scroll" }}
+                    value={text}
+                    onChange={(ev) => setText(ev.target.value)}
+                />
+                <Stack direction="row" gap={2}>
+                    <Button onClick={() => setText("")}>Clear Data</Button>
+                    <Button onClick={getSolution}>Solve</Button>
+                </Stack>
+            </Stack>
+
+            <Typography variant="h2">Solution</Typography>
+            <DisplaySolution solution={solution} />
         </Stack>
-
-        <Typography variant="h2">Solution</Typography>
-        <DisplaySolution solution={solution} />
-
     </Container>
 }
