@@ -25,7 +25,7 @@ export function EvaluateLineSafe(levels: Array<number>) {
             continue; // compare the next numbers
         }
 
-        //  check if increasing then decreasing 
+        // check if increasing then decreasing 
         if (!(isIncreasing && diff > 0 || !isIncreasing && diff < 0))
             return levelIndex; // go to the next report
     }
@@ -54,8 +54,8 @@ export const solution_2: AdventOfCodeSolutionFunction = (input) => {
             continue;
         }
         
-        // search around where it failed
-        for (let offset = evaluation - 2; offset <= evaluation + 2; offset++) {
+        // try work out what failed
+        for (let offset = 0; offset < levels.length; offset++) {
             // delete an evaluation in accordance to the offset
             let newLevels = [...levels];
             newLevels.splice(offset, 1);
