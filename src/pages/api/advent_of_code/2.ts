@@ -64,10 +64,7 @@ export const solution_2: AdventOfCodeSolutionFunction = (input) => {
                 safe_damp++;
                 continue main;
             }
-            console.log(newLevels, newEval);
         }
-        
-        console.log("failed", levels, evaluation);
     }
 
     return `Part 1: ${safe} Part 2: ${safe + safe_damp}`;
