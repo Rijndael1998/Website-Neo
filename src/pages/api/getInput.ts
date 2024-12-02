@@ -13,7 +13,7 @@ export default async function handler(
     try {
         const request = (req.body as FileRequest).day;
 
-        if(![0, 1].includes(request))
+        if(![0, 1, 2].includes(request))
             throw Error("Request out of bounds");
 
         const filePath = `${process.cwd()}/src/pages/api/advent_of_code/inputs/${request}.txt`;

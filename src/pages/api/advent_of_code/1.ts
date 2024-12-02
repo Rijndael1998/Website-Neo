@@ -37,22 +37,18 @@ export const solution_1: AdventOfCodeSolutionFunction = (input) => {
     left.sort(numSort);
     right.sort(numSort);
 
-    let sum = 0;
+    let sum1 = 0;
+    let sum2 = 0;
     for (let index = 0; index < left.length; index++) {
         const leftValue = left[index];
         const rightValue = right[index];
         
-        sum += Math.abs(leftValue - rightValue);
+        sum1 += Math.abs(leftValue - rightValue);
+        sum2 += left[index] * InstancesOf(right, left[index]);
     }
 
-    const part1 = `Part 1: ${sum}`;
-
-    sum = 0;
-    for (let index = 0; index < left.length; index++) {
-        sum += left[index] * InstancesOf(right, left[index]);
-    }
-
-    const part2 = `Part 2: ${sum}`;
+    const part1 = `Part 1: ${sum1}`;
+    const part2 = `Part 2: ${sum2}`;
 
     return `${part1}\n${part2}`;
 };
