@@ -67,5 +67,8 @@ export const solution_2: AdventOfCodeSolutionFunction = (input) => {
         }
     }
 
-    return `Part 1: ${safe} Part 2: ${safe + safe_damp}`;
+    return {
+        part_1: safe,
+        part_2: safe + safe_damp,
+    }
 }
