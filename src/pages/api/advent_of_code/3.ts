@@ -32,8 +32,6 @@ export const solution_3: AdventOfCodeSolutionFunction = (input) => {
         if (pointer == Number.POSITIVE_INFINITY)
             break
 
-        console.log(pointer, nextMul, nextDo, nextDoNot);
-
         // handle found command
         switch (pointer) {
             case nextDo: {
@@ -57,7 +55,7 @@ export const solution_3: AdventOfCodeSolutionFunction = (input) => {
 
                 // add the length of the whole capture to the pointer
                 pointer += res[0].length;
-                
+
                 // multiply capture groups
                 const comp = Number(res[1]) * Number(res[2]);
 
@@ -65,7 +63,7 @@ export const solution_3: AdventOfCodeSolutionFunction = (input) => {
                 part_1 += comp;
 
                 // part 2 sum
-                if(isEnabled)
+                if (isEnabled)
                     part_2 += comp;
 
                 break;
