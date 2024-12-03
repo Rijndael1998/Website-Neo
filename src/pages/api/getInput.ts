@@ -11,9 +11,9 @@ export default async function handler(
 ) {
     let fileContents: string;
     try {
-        const request = (req.body as FileRequest).day;
+        const request = Number((req.body as FileRequest).day);
 
-        if(![0, 1, 2].includes(request))
+        if(request > 25 || request < 0 || Number.isNaN(request) || !Number.isSafeInteger(request))
             throw Error("Request out of bounds");
 
         const filePath = `${process.cwd()}/src/pages/api/advent_of_code/inputs/${request}.txt`;
