@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { solutions } from './advent_of_code/solutions';
+import { AdventOfCodeSolution, solutions } from './advent_of_code/solutions';
 
 export const config = {
     api: {
@@ -11,7 +11,7 @@ export const config = {
 }
 
 export type PuzzleSolution = {
-    solution: string,
+    solution: AdventOfCodeSolution,
     hasError: false,
 } | {
     error: string,
@@ -29,7 +29,7 @@ export default async function handler(
 ) {
     const request = req.body as AdventOfCodeRequest;
 
-    let solution: string;
+    let solution: AdventOfCodeSolution;
     try {
         solution = solutions[Number(request.day)](String(request.message));
 

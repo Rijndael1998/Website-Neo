@@ -57,15 +57,36 @@ export default function Solution({ day }: SolutionProps) {
             message: text,
         }
 
-        const data = await fetch('/api/solve', {
-            method: "POST",
-            body: JSON.stringify(dataToSend),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        try {
+            const data = await fetch('/api/solve', {
+                method: "POST",
+                body: JSON.stringify(dataToSend),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
-        setSolution(await data.json());
+            setSolution(await data.json());
+
+        } catch (e) {
+            let errorString = "";
+            try {
+                if (e instanceof Error) {
+                    errorString += `${e.name}\n`;
+                    errorString += `${e.message}\n`;
+                    if (e.stack) errorString += `${e.stack}\n`;
+                    if (e.cause) errorString += `${e.cause}\n`;
+                } else {
+                    errorString = "Unknown error";
+                }
+            } catch {
+                errorString = "Unknown error";
+            }
+
+            setSolution({ error: errorString, hasError: true });
+
+        }
+
         setAwaitingAPI(false);
     }
 

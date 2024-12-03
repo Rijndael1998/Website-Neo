@@ -47,9 +47,8 @@ export const solution_1: AdventOfCodeSolutionFunction = (input) => {
         sum2 += left[index] * InstancesOf(right, left[index]);
     }
 
-    const part1 = `Part 1: ${sum1}`;
-    const part2 = `Part 2: ${sum2}`;
-
-    return `${part1}\n${part2}`;
-};
-
+    return {
+        part_1: sum1,
+        part_2: sum2,
+    }
+}
