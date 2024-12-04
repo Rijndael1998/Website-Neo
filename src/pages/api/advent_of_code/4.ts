@@ -1,9 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 
-const isSearch = (row: Array<string>, search: string) => {
-    return row.reduce<string>((prev, curr) => prev + curr, "") == search ? 1 : 0;
-}
-
 enum Direction {
     UP,
     UP_RIGHT,
@@ -46,8 +42,6 @@ const search_direction = (grid: Array<Array<string>>, x: number, y: number, dire
     // make new mutable list
     const newFind = [...find];
     const searchChar = newFind.shift();
-
-    console.log(direction, newFind);
 
     // wrong character
     if (grid[y][x] !== searchChar)
@@ -102,7 +96,6 @@ export const solution_4: AdventOfCodeSolutionFunction = (input) => {
     for (let y = 0; y < grid.length; y++) {
         const row = grid[y];
         for (let x = 0; x < row.length; x++) {
-            console.log(x, y);
             part_1 += search_around(grid, x, y, find);
         }
     }
