@@ -22,13 +22,6 @@ const ALL_DIRECTIONS = [
     Direction.UP_RIGHT,
 ];
 
-const DIAGONALS = [
-    Direction.BOTTOM_RIGHT,
-    Direction.BOTTOM_LEFT,
-    Direction.UP_LEFT,
-    Direction.UP_RIGHT,
-];
-
 const check_coords = (grid: Array<Array<string>>, x: number, y: number) => {
     return y >= grid.length ||
         y < 0 ||
@@ -111,12 +104,9 @@ export const solution_4: AdventOfCodeSolutionFunction = (input) => {
     const find_2 = "MAS".split("");
 
     for (let y = 0; y < grid.length; y++) {
-        const row = grid[y];
-        for (let x = 0; x < row.length; x++) {
+        for (let x = 0; x < grid[y].length; x++) {
             part_1 += part_1_search(grid, x, y, find_1);
-            const res = part_2_search(grid, x, y, find_2);
-            if(res) console.log(x, y, res);
-            part_2 += res;
+            part_2 += part_2_search(grid, x, y, find_2);
         }
     }
 
