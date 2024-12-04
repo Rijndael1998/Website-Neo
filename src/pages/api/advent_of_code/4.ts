@@ -5,40 +5,17 @@ const isSearch = (row: Array<string>, search: string) => {
 }
 
 const search_around = (grid: Array<Array<string>>, x: number, y: number, find: string) => {
-    const leftLimit = x - find.length >= -1;
-    const rightLimit = x + find.length < grid[y].length;
-    const bottomLimit = y - find.length >= -1;
-    const topLimit = y + find.length < grid.length;
+    const leftLimit = x - find.length + 1 >= 0;
+    const rightLimit = x + find.length - 1 < grid[y].length - 1;
+    const bottomLimit = y - find.length + 1 >= 0;
+    const topLimit = y + find.length - 1 < grid.length - 1;
+
+    if(leftLimit) {
+        const res = grid[y].slice(x - find.length, x);
+        console.log(res);
+    }
 
     let instances = 0;
-
-    if (leftLimit) {
-        const res = grid[y].slice(x - find.length + 1, x + 1);
-        console.log(res);
-        instances += isSearch(res.toReversed(), find);
-
-        // check diag up
-
-        // check diag down
-    }
-
-    if (rightLimit) {
-        instances += isSearch(grid[y].slice(x, x + find.length), find);
-
-        // check diag up
-
-        // check diag down
-    }
-
-    if (bottomLimit)
-        instances += isSearch(grid.slice(y - find.length + 1, y + 1).map((v => v[x])), find);
-
-
-    if (topLimit) {
-        const res = grid.slice(y, y + find.length).map((v => v[x]));
-        console.log(res);
-    }
-
 
     return instances;
 }
