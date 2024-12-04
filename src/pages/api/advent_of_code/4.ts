@@ -22,6 +22,13 @@ const ALL_DIRECTIONS = [
     Direction.UP_RIGHT,
 ];
 
+const DIAGONALS = [
+    Direction.BOTTOM_RIGHT,
+    Direction.BOTTOM_LEFT,
+    Direction.UP_LEFT,
+    Direction.UP_RIGHT,
+];
+
 const check_coords = (grid: Array<Array<string>>, x: number, y: number) => {
     return y >= grid.length ||
         y < 0 ||
@@ -77,12 +84,21 @@ const search_direction = (grid: Array<Array<string>>, x: number, y: number, dire
     }
 }
 
-const search_around = (grid: Array<Array<string>>, x: number, y: number, find: Array<string>) => {
+const part_1_search = (grid: Array<Array<string>>, x: number, y: number, find: Array<string>) => {
     return ALL_DIRECTIONS.reduce<number>(
         (instances, direction) =>
             instances + search_direction(grid, x, y, direction, find),
         0
     );
+}
+
+const part_2_search = (grid: Array<Array<string>>, x: number, y: number, find: Array<string>) => {
+    return (
+        search_direction(grid, x - 1, y + 1, Direction.BOTTOM_RIGHT, find) +
+        search_direction(grid, x + 1, y + 1, Direction.BOTTOM_LEFT, find) +
+        search_direction(grid, x - 1, y - 1, Direction.UP_RIGHT, find) +
+        search_direction(grid, x + 1, y - 1, Direction.UP_LEFT, find)
+    ) == 2 ? 1 : 0;
 }
 
 export const solution_4: AdventOfCodeSolutionFunction = (input) => {
@@ -91,12 +107,16 @@ export const solution_4: AdventOfCodeSolutionFunction = (input) => {
     let part_1 = 0;
     let part_2 = 0;
 
-    const find = "XMAS".split("");
+    const find_1 = "XMAS".split("");
+    const find_2 = "MAS".split("");
 
     for (let y = 0; y < grid.length; y++) {
         const row = grid[y];
         for (let x = 0; x < row.length; x++) {
-            part_1 += search_around(grid, x, y, find);
+            part_1 += part_1_search(grid, x, y, find_1);
+            const res = part_2_search(grid, x, y, find_2);
+            if(res) console.log(x, y, res);
+            part_2 += res;
         }
     }
 
