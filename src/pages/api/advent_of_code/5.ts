@@ -32,7 +32,21 @@ const CheckPages = (pages: Array<number>, rules: RulesType): [true] | [false, nu
 
 
 const Reposition = (pages: Array<number>, rules: RulesType) => {
-    let res = CheckPages(pages, rules);
+    console.log("new repo", pages);
+    const newPages = [...pages];
+    let res = CheckPages(newPages, rules);
+    let i = 0;
+    while(!res[0] && i++ < 10000) {
+        console.log(i, res);
+        const moveThisRight = newPages[res[1]];
+        const moveThisLeft = newPages[res[2]];
+        newPages[res[1]] = moveThisLeft;
+        newPages[res[2]] = moveThisRight;
+
+        res = CheckPages(newPages, rules);
+    }
+
+    return [...newPages];
 }
 
 export const solution_5: AdventOfCodeSolutionFunction = (input) => {
@@ -60,15 +74,17 @@ export const solution_5: AdventOfCodeSolutionFunction = (input) => {
 
     const part_1 = correctArray.reduce<number>(ReduceMiddleNumbers, 0);
 
-    incorrectArray.map((v) => {
+    console.log(rules);
+
+    const part_2 = incorrectArray.map((v) => {
         const res = Reposition([...v], rules);
         console.log(v, res);
         return res;
-    });
+    }).reduce<number>(ReduceMiddleNumbers, 0);
 
     return {
         part_1,
-        part_2: content_input,
+        part_2,
     }
 }
 
