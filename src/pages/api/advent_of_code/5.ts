@@ -4,7 +4,7 @@ type RulesType = Map<number, Array<number>>;
 
 const ReduceMiddleNumbers = (p: number, v: Array<number>) => p + v[(v.length - 1) / 2];
 
-const CheckPages = (pages: Array<number>, rules: RulesType) => {
+const CheckPages = (pages: Array<number>, rules: RulesType): [true] | [false, number, number] => {
     for (let index = 0; index < pages.length; index++) {
         const page = pages[index]; // [97,61,53,29,13] => 97
         const elementRules = rules.get(page);
