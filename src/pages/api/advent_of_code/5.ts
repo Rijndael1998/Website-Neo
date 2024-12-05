@@ -32,12 +32,12 @@ const CheckPages = (pages: Array<number>, rules: RulesType): [true] | [false, nu
 
 
 const Reposition = (pages: Array<number>, rules: RulesType) => {
-    console.log("new repo", pages);
     const newPages = [...pages];
     let res = CheckPages(newPages, rules);
-    let i = 0;
+    let i = 0; 
+    // this will be public facing api and it's possible to create inf loops so, 10k limit
     while(!res[0] && i++ < 10000) {
-        console.log(i, res);
+        // yes I know the trick, but tricks < semantics
         const moveThisRight = newPages[res[1]];
         const moveThisLeft = newPages[res[2]];
         newPages[res[1]] = moveThisLeft;
@@ -73,14 +73,7 @@ export const solution_5: AdventOfCodeSolutionFunction = (input) => {
     });
 
     const part_1 = correctArray.reduce<number>(ReduceMiddleNumbers, 0);
-
-    console.log(rules);
-
-    const part_2 = incorrectArray.map((v) => {
-        const res = Reposition([...v], rules);
-        console.log(v, res);
-        return res;
-    }).reduce<number>(ReduceMiddleNumbers, 0);
+    const part_2 = incorrectArray.map((v) => Reposition([...v], rules)).reduce<number>(ReduceMiddleNumbers, 0);
 
     return {
         part_1,
