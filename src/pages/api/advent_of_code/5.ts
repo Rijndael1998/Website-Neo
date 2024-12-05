@@ -1,5 +1,7 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 
+const ReduceMiddleNumbers = (p: number, v: Array<number>) => p + v[(v.length - 1) / 2];
+
 export const solution_5: AdventOfCodeSolutionFunction = (input) => {
     const [rules_input, content_input] = input.split("\n\n").map(v => v.trim());
 
@@ -14,7 +16,10 @@ export const solution_5: AdventOfCodeSolutionFunction = (input) => {
     });
 
 
-    const part_1 = content_input.split("\n").map(v => v.split(",").map(v => Number(v))).filter(pages => {
+    const correctArray: Array<Array<number>> = [];
+    const incorrectArray: Array<Array<number>> = [];
+
+    content_input.split("\n").map(v => v.split(",").map(v => Number(v))).forEach(pages => {
         for (let index = 0; index < pages.length; index++) {
             const page = pages[index]; // [97,61,53,29,13] => 97
             const elementRules = rules.get(page);
@@ -31,13 +36,17 @@ export const solution_5: AdventOfCodeSolutionFunction = (input) => {
                     continue;
 
                 // the number came before our current index, meaning it's bad.
-                if (index > rulePos)
-                    return false;
+                if (index > rulePos) {
+                    incorrectArray.push(pages);
+                    return;
+                }
             }
         }
 
-        return true;
-    }).reduce<number>((p, v) => p + v[(v.length - 1) / 2], 0);
+        correctArray.push(pages);
+    });
+    
+    const part_1 = correctArray.reduce<number>(ReduceMiddleNumbers, 0);
 
     return {
         part_1,
