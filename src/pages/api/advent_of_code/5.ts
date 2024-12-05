@@ -4,7 +4,7 @@ type RulesType = Map<number, Array<number>>;
 
 const ReduceMiddleNumbers = (p: number, v: Array<number>) => p + v[(v.length - 1) / 2];
 
-const CheckPage = (pages: Array<number>, rules: RulesType) => {
+const CheckPages = (pages: Array<number>, rules: RulesType) => {
     for (let index = 0; index < pages.length; index++) {
         const page = pages[index]; // [97,61,53,29,13] => 97
         const elementRules = rules.get(page);
@@ -23,16 +23,16 @@ const CheckPage = (pages: Array<number>, rules: RulesType) => {
 
             // the number came before our current index, meaning it's bad.
             if (index > rulePos) 
-                return false;
+                return [false, index, rulePos];
         }
     }
 
-    return true;
+    return [true];
 }
 
 
-const Reposition = (page: Array<number>, rules: RulesType) => {
-
+const Reposition = (pages: Array<number>, rules: RulesType) => {
+    let res = CheckPages(pages, rules);
 }
 
 export const solution_5: AdventOfCodeSolutionFunction = (input) => {
@@ -52,7 +52,7 @@ export const solution_5: AdventOfCodeSolutionFunction = (input) => {
     const incorrectArray: Array<Array<number>> = [];
 
     content_input.split("\n").map(v => v.split(",").map(v => Number(v))).forEach(pages => {
-        if(CheckPage(pages, rules))
+        if(CheckPages(pages, rules)[0])
             correctArray.push(pages);
         else
             incorrectArray.push(pages);
