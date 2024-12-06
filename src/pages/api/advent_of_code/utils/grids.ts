@@ -19,23 +19,24 @@ export enum Direction {
 /**
  * This function should return true if it wants the search function to continue
  */
-export type SearchFindFunction = (currChar: string) => boolean;
+export type SearchFindFunction = (currChar: string, x: number, y: number) => boolean;
 
 export type Grid = Array<Array<string>>;
 
-export const search_direction = (grid: Grid, x: number, y: number, direction: Direction, find: SearchFindFunction): 0 | 1 => {
-    // exit conditions
-    // no more to find
-    if (find.length == 0)
-        return 1; // found the end
+enum SearchExitReason {
+    OUT_OF_BOUNDS,
+    FUNCTION_FINISHED,
+    INVALID_DIRECTION,
+}
 
+export const search_direction = (grid: Grid, x: number, y: number, direction: Direction, find: SearchFindFunction): SearchExitReason => {
     // invalid coords
     if (check_coords(grid, x, y))
-        return 0;
+        return SearchExitReason.OUT_OF_BOUNDS;
 
-    // wrong character
-    if (!find(grid[y][x]))
-        return 0;
+    // search failed
+    if (!find(grid[y][x], x, y))
+        return SearchExitReason.FUNCTION_FINISHED;
 
     switch (direction) {
         case Direction.UP:
@@ -63,17 +64,17 @@ export const search_direction = (grid: Grid, x: number, y: number, direction: Di
             return search_direction(grid, x - 1, y + 1, direction, find);
 
         default:
-            return 0;
+            return SearchExitReason.INVALID_DIRECTION;
     }
 }
 
 export const gridSearch = (grid: Grid, st: SearchFindFunction): [x: number, y: number] => {
-    for (let searchY = 0; searchY < grid.length; searchY++) {
-        const row = grid[searchY];
-        for (let searchX = 0; searchX < row.length; searchX++) {
-            const element = row[searchX];
-            if(!st(element))
-                return [searchX, searchY];
+    for (let y = 0; y < grid.length; y++) {
+        const row = grid[y];
+        for (let x = 0; x < row.length; x++) {
+            const char = row[x];
+            if(!st(char, x, y))
+                return [x, y];
         }
     }
 
