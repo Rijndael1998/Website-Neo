@@ -30,7 +30,7 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
         const log = `${x}:${y}:${dir}`;
 
         if (visited.has(log)) {
-            console.log("here!!");
+            // console.log("here!!");
             return false;
         }
 
@@ -49,9 +49,9 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
                 return false;
 
             [lastX, lastY] = [currX, currY];
-            
+
             res = addToVisited(currX, currY, dir);
-            console.log(currX, currY, dir, res);
+            // console.log(currX, currY, dir, res);
             return res;
         });
 
@@ -105,7 +105,7 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
         const [newX, newY] = v;
         const newGrid = Duplicate2DArray(grid);
         newGrid[newY][newX] = "#"; // add a block
-        console.log("obs", v, newGrid);
+        // console.log("obs", v, newGrid);
         if (!NoLoops(newGrid, initialX, initialY, Direction.UP))
             part_2++;
     });
