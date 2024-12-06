@@ -51,7 +51,6 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
             [lastX, lastY] = [currX, currY];
 
             res = addToVisited(currX, currY, dir);
-            // console.log(currX, currY, dir, res);
             return res;
         });
 
@@ -105,13 +104,13 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
         const [newX, newY] = v;
         const newGrid = Duplicate2DArray(grid);
         newGrid[newY][newX] = "#"; // add a block
-        // console.log("obs", v, newGrid);
+
         if (!NoLoops(newGrid, initialX, initialY, Direction.UP))
             part_2++;
     });
 
     return {
         part_1, // 4656
-        part_2,
+        part_2, // 1575
     }
 }
