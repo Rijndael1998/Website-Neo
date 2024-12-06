@@ -25,7 +25,7 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
     const addToVisited = (x: number, y: number) =>
         visited.add(`${x}:${y}`);
 
-    let dir: Direction = Direction.BOTTOM;
+    let dir: Direction = Direction.UP;
     let [x, y] = gridSearch(grid, (ch) => ch !== "^");
 
     addToVisited(x, y);

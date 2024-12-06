@@ -40,28 +40,28 @@ export const search_direction = (grid: Grid, x: number, y: number, direction: Di
 
     switch (direction) {
         case Direction.UP:
-            return search_direction(grid, x, y + 1, direction, find);
+            return search_direction(grid, x, y - 1, direction, find);
 
         case Direction.UP_RIGHT:
-            return search_direction(grid, x + 1, y + 1, direction, find);
+            return search_direction(grid, x + 1, y - 1, direction, find);
 
         case Direction.RIGHT:
             return search_direction(grid, x + 1, y, direction, find);
 
         case Direction.BOTTOM_RIGHT:
-            return search_direction(grid, x + 1, y - 1, direction, find);
+            return search_direction(grid, x + 1, y + 1, direction, find);
 
         case Direction.BOTTOM:
-            return search_direction(grid, x, y - 1, direction, find);
+            return search_direction(grid, x, y + 1, direction, find);
 
         case Direction.BOTTOM_LEFT:
-            return search_direction(grid, x - 1, y - 1, direction, find);
+            return search_direction(grid, x - 1, y + 1, direction, find);
 
         case Direction.LEFT:
             return search_direction(grid, x - 1, y, direction, find);
 
         case Direction.UP_LEFT:
-            return search_direction(grid, x - 1, y + 1, direction, find);
+            return search_direction(grid, x - 1, y - 1, direction, find);
 
         default:
             return SearchExitReason.INVALID_DIRECTION;
