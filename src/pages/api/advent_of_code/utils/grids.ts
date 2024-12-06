@@ -23,7 +23,7 @@ export type SearchFindFunction = (currChar: string, x: number, y: number) => boo
 
 export type Grid = Array<Array<string>>;
 
-enum SearchExitReason {
+export enum SearchExitReason {
     OUT_OF_BOUNDS,
     FUNCTION_FINISHED,
     INVALID_DIRECTION,

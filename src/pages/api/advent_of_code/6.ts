@@ -1,5 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
-import { Direction, gridSearch, search_direction } from "./utils/grids";
+import { Direction, gridSearch, search_direction, SearchExitReason } from "./utils/grids";
 import { makeGridFromMultilineString } from "./utils/utils";
 
 const NextDirection = (dir: Direction) => {
@@ -29,19 +29,25 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
     let [x, y] = gridSearch(grid, (ch) => ch !== "^");
 
     addToVisited(x, y);
-    const res = search_direction(grid, x, y, dir, (ch, currX, currY) => {
-        console.log(currX, currY, ch);
-        if (ch == "#")
-            return false;
 
-        [x, y] = [currX, currY];
-        return true;
-    });
+    let res: SearchExitReason = SearchExitReason.FUNCTION_FINISHED;
 
-    console.log(x, y, grid[y][x]);
+    while (res !== SearchExitReason.OUT_OF_BOUNDS) {
+        res = search_direction(grid, x, y, dir, (ch, currX, currY) => {
+            console.log(currX, currY, ch);
+            if (ch == "#")
+                return false;
+
+            [x, y] = [currX, currY];
+            addToVisited(x, y);
+            return true;
+        });
+        dir = NextDirection(dir);
+        console.log(x, y, grid[y][x], res, dir);
+    }
 
     return {
-        part_1: `${x}, ${y}`,
+        part_1: `${x}, ${y}, ${visited.size}`,
         part_2: res,
     }
 }
