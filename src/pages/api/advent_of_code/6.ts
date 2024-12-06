@@ -63,19 +63,18 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
 
 export const solution_6: AdventOfCodeSolutionFunction = (input) => {
     const grid = makeGridFromMultilineString(input);
-    const visited = new Map<string, [x: number, y: number]>();
-
-    const addToVisited = (x: number, y: number) => {
-        const loc = `${x}:${y}`;
-        if (!visited.has(loc))
-            visited.set(loc, [x, y]);
-    }
-
-    let dir: Direction = Direction.UP;
+    const visited = new Map<string, [x: number, y: number, dir: Direction, prevX: number, prevY: number]>();
     let [x, y] = gridSearch(grid, (ch) => ch !== "^");
     const [initialX, initialY] = [x, y];
+    let dir: Direction = Direction.UP;
 
-    addToVisited(x, y);
+    const addToVisited = (visitedX: number, visitedY: number, dir: Direction) => {
+        const loc = `${visitedX}:${visitedY}`;
+        if (!visited.has(loc))
+            visited.set(loc, [visitedX, visitedY, dir, x, y]);
+    }
+
+    addToVisited(x, y, dir);
 
     let res: SearchExitReason = SearchExitReason.FUNCTION_FINISHED;
     let i = 0; // rate limited for API
@@ -84,8 +83,8 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
             if (ch == "#")
                 return false;
 
+            addToVisited(currX, currY, dir);
             [x, y] = [currX, currY];
-            addToVisited(x, y);
             return true;
         });
         dir = NextDirection(dir);
@@ -98,12 +97,12 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
 
     let part_2 = 0;
     visited.forEach((v) => {
-        const [newX, newY] = v;
+        const [visitedX, visitedY, visitedDirection, prevX, prevY] = v;
         const newGrid = Duplicate2DArray(grid);
-        newGrid[newY][newX] = "#"; // add a block
+        newGrid[visitedY][visitedX] = "#"; // add a block
 
         // look for loops
-        if (!NoLoops(newGrid, initialX, initialY, Direction.UP))
+        if (!NoLoops(newGrid, prevX, prevY, visitedDirection))
             part_2++;
     });
 
