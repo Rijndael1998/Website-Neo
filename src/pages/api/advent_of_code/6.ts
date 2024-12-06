@@ -43,7 +43,7 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
     let res = true;
     let i = 0; // rate limited for API
     let [lastX, lastY] = [x, y];
-    while (searchResult !== SearchExitReason.OUT_OF_BOUNDS && i < 10_000) {
+    while (searchResult !== SearchExitReason.OUT_OF_BOUNDS && i++ < 10_000) {
         searchResult = search_direction(grid, lastX, lastY, dir, (ch, currX, currY) => {
             if (ch == "#")
                 return false;
@@ -83,7 +83,7 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
 
     let res: SearchExitReason = SearchExitReason.FUNCTION_FINISHED;
     let i = 0; // rate limited for API
-    while (res !== SearchExitReason.OUT_OF_BOUNDS && i < 10_000) {
+    while (res !== SearchExitReason.OUT_OF_BOUNDS && i++ < 10_000) {
         res = search_direction(grid, x, y, dir, (ch, currX, currY) => {
             if (ch == "#")
                 return false;
