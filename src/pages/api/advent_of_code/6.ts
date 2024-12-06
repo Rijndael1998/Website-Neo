@@ -29,12 +29,9 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
     const addToVisited = (x: number, y: number, dir: Direction) => {
         const log = `${x}:${y}:${dir}`;
 
-        if (visited.has(log)) {
-            // console.log("here!!");
+        if (visited.has(log))
             return false;
-        }
 
-        
         visited.add(log);
         return true;
     }
@@ -105,6 +102,7 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
         const newGrid = Duplicate2DArray(grid);
         newGrid[newY][newX] = "#"; // add a block
 
+        // look for loops
         if (!NoLoops(newGrid, initialX, initialY, Direction.UP))
             part_2++;
     });
