@@ -28,11 +28,13 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
      */
     const addToVisited = (x: number, y: number, dir: Direction) => {
         const log = `${x}:${y}:${dir}`;
-        console.log(log);
 
-        if (visited.has(log))
+        if (visited.has(log)) {
+            console.log("here!!");
             return false;
+        }
 
+        
         visited.add(log);
         return true;
     }
@@ -40,15 +42,22 @@ const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
     let searchResult: SearchExitReason = SearchExitReason.FUNCTION_FINISHED;
     let res = true;
     let i = 0; // rate limited for API
+    let [lastX, lastY] = [x, y];
     while (searchResult !== SearchExitReason.OUT_OF_BOUNDS && i < 10_000) {
-        searchResult = search_direction(grid, x, y, dir, (ch, currX, currY) => {
+        searchResult = search_direction(grid, lastX, lastY, dir, (ch, currX, currY) => {
             if (ch == "#")
                 return false;
 
+            [lastX, lastY] = [currX, currY];
+            
             res = addToVisited(currX, currY, dir);
-            console.log(x, y, dir, res);
+            console.log(currX, currY, dir, res);
             return res;
         });
+
+        if (!res)
+            break;
+
         dir = NextDirection(dir);
     }
 
@@ -96,8 +105,8 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
         const [newX, newY] = v;
         const newGrid = Duplicate2DArray(grid);
         newGrid[newY][newX] = "#"; // add a block
-        console.log("obs", v);
-        if(!NoLoops(grid, initialX, initialY, Direction.UP))
+        console.log("obs", v, newGrid);
+        if (!NoLoops(newGrid, initialX, initialY, Direction.UP))
             part_2++;
     });
 
