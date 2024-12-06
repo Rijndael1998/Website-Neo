@@ -31,10 +31,9 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
     addToVisited(x, y);
 
     let res: SearchExitReason = SearchExitReason.FUNCTION_FINISHED;
-
-    while (res !== SearchExitReason.OUT_OF_BOUNDS) {
+    let i = 0; // rate limited for API
+    while (res !== SearchExitReason.OUT_OF_BOUNDS && i < 10_000) {
         res = search_direction(grid, x, y, dir, (ch, currX, currY) => {
-            console.log(currX, currY, ch);
             if (ch == "#")
                 return false;
 
@@ -43,11 +42,10 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
             return true;
         });
         dir = NextDirection(dir);
-        console.log(x, y, grid[y][x], res, dir);
     }
 
     return {
-        part_1: `${x}, ${y}, ${visited.size}`,
+        part_1: visited.size, // 4656
         part_2: res,
     }
 }
