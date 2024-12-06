@@ -29,7 +29,7 @@ const check_coords = (grid: Array<Array<string>>, x: number, y: number) => {
         x < 0
 }
 
-const search_direction = (grid: Array<Array<string>>, x: number, y: number, direction: Direction, find: Array<string>) => {
+const search_direction = (grid: Array<Array<string>>, x: number, y: number, direction: Direction, find: Array<string>): 0 | 1 => {
     // exit conditions
     // no more to find
     if (find.length == 0)

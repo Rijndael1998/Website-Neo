@@ -4,6 +4,7 @@ import { solution_2 } from "./2";
 import { solution_3 } from "./3";
 import { solution_4 } from "./4";
 import { solution_5 } from "./5";
+import { solution_6 } from "./6";
 
 export type AdventOfCodeSolution = {
     part_1: string | number,
@@ -20,4 +21,5 @@ export const solutions: {[number: number]: AdventOfCodeSolutionFunction} = {
     3: solution_3,
     4: solution_4,
     5: solution_5,
+    6: solution_6,
 };
