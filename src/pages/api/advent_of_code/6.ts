@@ -31,18 +31,14 @@ export const solution_6: AdventOfCodeSolutionFunction = (input) => {
     addToVisited(x, y);
     const res = search_direction(grid, x, y, dir, (ch, currX, currY) => {
         console.log(currX, currY, ch);
+        if (ch == "#")
+            return false;
 
-        switch (ch) {
-            case "#":
-                return false;
-
-            default:
-                [x, y] = [currX, currY];
-                return true;
-        }
+        [x, y] = [currX, currY];
+        return true;
     });
 
-
+    console.log(x, y, grid[y][x]);
 
     return {
         part_1: `${x}, ${y}`,
