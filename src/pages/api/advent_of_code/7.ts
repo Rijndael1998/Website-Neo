@@ -70,8 +70,6 @@ function ApplyOperatorsToNumbers(numbers: Array<number>, ops: Array<Op>): number
 }
 
 export const solution_7: AdventOfCodeSolutionFunction = (input) => {
-    const res = "Test: " + input;
-
     const numbers = // [{target: 123, numbers: [1, 2, 3, ...]}, ...]
         input.split("\n")
             .map(
@@ -90,8 +88,11 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
     for (let index = 0; index < numbers.length; index++) {
         const target = numbers[index].target;
         const numbs = numbers[index].numbers;
-        const combinations = GenerateCombinations([Op.ADD, Op.MUL], numbs.length - 1);
 
+        // GenerateCombinations(["+", "*"], 2) => [["+", "+"], ["+", "*"], ["*", "+"], ["*", "*"]]
+        const combinations = GenerateCombinations([Op.ADD, Op.MUL], numbs.length - 1); 
+
+        // part 1 calculations
         for (let combinationIndex = 0; combinationIndex < combinations.length; combinationIndex++) {
             const combination = combinations[combinationIndex];
             const result = ApplyOperatorsToNumbers(numbs, combination);
@@ -103,6 +104,7 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
 
         const combinations2 = GenerateCombinations([Op.ADD, Op.MUL, Op.CON], numbs.length - 1);
 
+        // part 2 calculations
         for (let combinationIndex = 0; combinationIndex < combinations2.length; combinationIndex++) {
             const combination = combinations2[combinationIndex];
             const result = ApplyOperatorsToNumbers(numbs, combination);
