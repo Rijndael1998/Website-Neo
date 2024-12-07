@@ -9,8 +9,12 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
                 (v) => v.trim()
                     .split(":")
                     .map(v => v.trim().split(" ").map(v => Number(v)))
+            ).map(
+                (v) => {
+                    return { target: v[0][0], numbers: v[1] }
+                }
             );
-    
+
     console.log(numbers);
 
     return {
