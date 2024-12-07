@@ -6,7 +6,7 @@ function MakeCombination<T>(choices: Array<T>, state: Array<number>): Array<T> {
 
 function MakeStateArray(length: number) {
     const newArray = [];
-    while(length-- > 0)
+    while (length-- > 0)
         newArray.push(0);
 
     return newArray;
@@ -31,7 +31,6 @@ function IncrementState(state: Array<number>, max: number): [state: Array<number
 function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array<T>> {
     const states = MakeStateArray(length);
     const combinations: Array<Array<T>> = [];
-    let index = 0;
 
     let done = false
     while (!done) {
@@ -46,14 +45,17 @@ function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array
 enum Op {
     MUL = "*",
     ADD = "+",
+    CON = "|",
 }
 
-function ApplyOp(a: number, b:number, op: Op): number {
-    switch(op) {
+function ApplyOp(a: number, b: number, op: Op): number {
+    switch (op) {
         case Op.MUL:
             return a * b;
         case Op.ADD:
             return a + b;
+        case Op.CON:
+            return Number(`${a}${b}`);
     }
 }
 
@@ -61,7 +63,7 @@ function ApplyOperatorsToNumbers(numbers: Array<number>, ops: Array<Op>): number
     let prev = ApplyOp(numbers[0], numbers[1], ops[0]);
 
     for (let index = 2; index < numbers.length; index++) {
-        prev = ApplyOp(prev, numbers[index], ops[index -1])
+        prev = ApplyOp(prev, numbers[index], ops[index - 1])
     }
 
     return prev;
@@ -83,6 +85,7 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
             );
 
     let part_1 = 0;
+    let part_2 = 0;
 
     for (let index = 0; index < numbers.length; index++) {
         const target = numbers[index].target;
@@ -92,17 +95,28 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
         for (let combinationIndex = 0; combinationIndex < combinations.length; combinationIndex++) {
             const combination = combinations[combinationIndex];
             const result = ApplyOperatorsToNumbers(numbs, combination);
-            if(result == target) {
+            if (result == target) {
                 part_1 += result;
                 break;
             }
         }
-        
+
+        const combinations2 = GenerateCombinations([Op.ADD, Op.MUL, Op.CON], numbs.length - 1);
+
+        for (let combinationIndex = 0; combinationIndex < combinations2.length; combinationIndex++) {
+            const combination = combinations2[combinationIndex];
+            const result = ApplyOperatorsToNumbers(numbs, combination);
+            if (result == target) {
+                part_2 += result;
+                break;
+            }
+        }
+
     }
 
     return {
         part_1,
-        part_2: res,
+        part_2,
     }
 }
 
