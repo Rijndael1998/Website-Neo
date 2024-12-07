@@ -7,7 +7,7 @@ export const config = {
             sizeLimit: '1mb',
         },
     },
-    maxDuration: 2,
+    maxDuration: 10, //10s
 }
 
 export type PuzzleSolution = {
