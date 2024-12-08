@@ -86,7 +86,7 @@ export const solution_8: AdventOfCodeSolutionFunction = (input) => {
 
     return {
         part_1, //390
-        part_2,
+        part_2, //1246
     }
 }
 
