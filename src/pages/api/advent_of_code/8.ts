@@ -77,10 +77,9 @@ export const solution_8: AdventOfCodeSolutionFunction = (input) => {
         }
     });
 
-    const singleAntinodeCount = (prev: number, curr: Array<number>) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0);
-    const resonantAntinodeCount = (prev: number, curr: Array<number>) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0);
-    const part_1 = singleAntinodeLocations.reduce<number>(singleAntinodeCount, 0);
-    const part_2 = resonantAntinodeLocations.reduce<number>(resonantAntinodeCount, 0);
+    const antinodeCount = (prev: number, curr: Array<number>) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0);
+    const part_1 = singleAntinodeLocations.reduce<number>(antinodeCount, 0);
+    const part_2 = resonantAntinodeLocations.reduce<number>(antinodeCount, 0);
 
     console.log(prettyPrint(resonantAntinodeLocations));
 
