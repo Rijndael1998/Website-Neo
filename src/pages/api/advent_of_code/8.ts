@@ -12,10 +12,6 @@ const Add = (x1: number, y1: number, x2: number, y2: number): v2 => {
     return [x1 + x2, y1 + y2];
 }
 
-const prettyPrint = (grid: Array<Array<number>>) => {
-    return grid.reduce<string>((prev, curr) => prev + curr.reduce((prev, curr) => `${prev}${curr > 0 ? "#" : "."}`, "") + "\n", "")
-}
-
 export const solution_8: AdventOfCodeSolutionFunction = (input) => {
     const grid = makeGridFromMultilineString(input);
     const nodes = new Map<string, Array<v2>>();
@@ -36,8 +32,6 @@ export const solution_8: AdventOfCodeSolutionFunction = (input) => {
             nodeKinds.push(item);
         }
     }));
-
-    console.log(nodes);
 
     nodeKinds.forEach((nodeKind) => {
         const nodesOfKind = nodes.get(nodeKind)!;
@@ -77,12 +71,9 @@ export const solution_8: AdventOfCodeSolutionFunction = (input) => {
         }
     });
 
-    const singleAntinodeCount = (prev: number, curr: Array<number>) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0);
-    const resonantAntinodeCount = (prev: number, curr: Array<number>) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0);
-    const part_1 = singleAntinodeLocations.reduce<number>(singleAntinodeCount, 0);
-    const part_2 = resonantAntinodeLocations.reduce<number>(resonantAntinodeCount, 0);
-
-    console.log(prettyPrint(resonantAntinodeLocations));
+    const antinodeCount = (prev: number, curr: Array<number>) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0);
+    const part_1 = singleAntinodeLocations.reduce<number>(antinodeCount, 0);
+    const part_2 = resonantAntinodeLocations.reduce<number>(antinodeCount, 0);
 
     return {
         part_1, //390
