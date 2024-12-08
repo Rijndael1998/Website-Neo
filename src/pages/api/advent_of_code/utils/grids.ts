@@ -1,4 +1,4 @@
-export const check_coords = (grid: Grid, x: number, y: number) => {
+export const check_coords = (grid: Array<Array<any>>, x: number, y: number) => {
     return y >= grid.length ||
         y < 0 ||
         x >= grid[y].length ||
