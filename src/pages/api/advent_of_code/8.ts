@@ -1,6 +1,7 @@
+import { assert } from "console";
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { check_coords } from "./utils/grids";
-import { MakeEmpty2DArray, MakeEmptyArray, makeGridFromMultilineString } from "./utils/utils";
+import { MakeEmpty2DArray, makeGridFromMultilineString } from "./utils/utils";
 
 type v2 = [x: number, y: number];
 
@@ -47,20 +48,16 @@ export const solution_8: AdventOfCodeSolutionFunction = (input) => {
                 const [x1, y1] = Add(...first, ...diff);
                 const [x2, y2] = Sub(...second, ...diff);
 
-                console.log([x1, y1], [x2, y2])
-
                 if(!check_coords(antinodeLocations, x1, y1)) antinodeLocations[y1][x1]++;
-                if(!check_coords(antinodeLocations, x2, y2)) antinodeLocations[x2][y2]++;
+                if(!check_coords(antinodeLocations, x2, y2)) antinodeLocations[y2][x2]++;
             }
         }
     });
 
-    console.log(antinodeLocations);
-
     const part_1 = antinodeLocations.reduce<number>((prev, curr) => prev + curr.reduce((prev, curr) => prev + (curr > 0 ? 1 : 0), 0), 0)
 
     return {
-        part_1,
+        part_1, //390
         part_2,
     }
 }
