@@ -6,6 +6,8 @@ const pretty_print = (disk: Array<number>) => disk.reduce<string>((prev, curr) =
 export const solution_9: AdventOfCodeSolutionFunction = (input) => {
     let isFile = false;
     let id = 0;
+
+    // make the disk
     const disk = input.split("").flatMap((v) => {
         isFile = !isFile;
         const count = Number(v);
@@ -36,7 +38,7 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
 
         // swap the values
         [disk[start], disk[end]] = [disk[end], disk[start]];
-        console.log(pretty_print(disk), start, end);
+        // console.log(pretty_print(disk), start, end);
 
         start++;
         end--;
@@ -44,10 +46,12 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
 
     console.log(pretty_print(disk));
 
-    const res = "Test: " + input;
+    // calculate the checksum
+    const part_1 = disk.filter((v) => v != -1).reduce<number>((prev, curr, index) => prev + curr * index, 0);
+
     return {
-        part_1: res,
-        part_2: res,
+        part_1,
+        part_2:  "Test: " + input,
     }
 }
 
