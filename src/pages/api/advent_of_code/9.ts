@@ -20,30 +20,34 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
         return MakeEmptyGenericArray(count, () => -1);
     });
 
+    // make a copy of the disk
+    const fragmentedDisk = [...disk];
+
     // start moving elements on the disk
     let start = 0
-    let end = disk.length - 1;
+    let end = fragmentedDisk.length - 1;
     while(start < end) {
-        if(disk[start] != -1) {
+        if(fragmentedDisk[start] != -1) {
             start++;
             continue;
         }
 
-        if(disk[end] == -1) {
+        if(fragmentedDisk[end] == -1) {
             end--;
             continue;
         }
 
         // swap the values
-        [disk[start], disk[end]] = [disk[end], disk[start]];
-        // console.log(pretty_print(disk), start, end);
+        [fragmentedDisk[start], fragmentedDisk[end]] = [fragmentedDisk[end], fragmentedDisk[start]];
 
         start++;
         end--;
     }
 
-    // calculate the checksum
-    const part_1 = disk.filter((v) => v != -1).reduce<number>((prev, curr, index) => prev + curr * index, 0);
+    
+
+    // calculate the checksums
+    const part_1 = fragmentedDisk.filter((v) => v != -1).reduce<number>((prev, curr, index) => prev + curr * index, 0);
 
     return {
         part_1,
