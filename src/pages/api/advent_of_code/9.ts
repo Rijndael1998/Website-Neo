@@ -20,8 +20,6 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
         return MakeEmptyGenericArray(count, () => -1);
     });
 
-    console.log(pretty_print(disk));
-
     // start moving elements on the disk
     let start = 0
     let end = disk.length - 1;
@@ -44,14 +42,12 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
         end--;
     }
 
-    console.log(pretty_print(disk));
-
     // calculate the checksum
     const part_1 = disk.filter((v) => v != -1).reduce<number>((prev, curr, index) => prev + curr * index, 0);
 
     return {
         part_1,
-        part_2:  "Test: " + input,
+        part_2: -1,
     }
 }
 
