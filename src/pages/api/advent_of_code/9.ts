@@ -52,7 +52,8 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
         }
 
         // swap the values
-        [fragmentedDisk[start], fragmentedDisk[end]] = [fragmentedDisk[end], fragmentedDisk[start]];
+        fragmentedDisk[start] = fragmentedDisk[end]
+        fragmentedDisk[end] = -1;
 
         start++;
         end--;
@@ -67,7 +68,6 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
         // find any section that can fit the file
         let freeStart;
         let freeEnd = 0;
-        let freeLength;
         do {
             [freeStart, freeEnd] = findSlice(disk, -1, freeEnd);
 
@@ -75,17 +75,13 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
             if (freeStart == -1 || freeStart > sectionStart)
                 continue main;
 
-            freeLength = freeEnd - freeStart;
-
-        } while (freeLength < sectionLength);
+        } while (freeEnd - freeStart < sectionLength);
 
         // switch places
         let i = 0;
         while(sectionStart + i < sectionEnd) {
             disk[freeStart + i] = id;
-            disk[sectionStart + i] = -1;
-
-            i++;
+            disk[sectionStart + i++] = -1;
         }
     }
 
