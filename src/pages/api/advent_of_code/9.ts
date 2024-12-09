@@ -18,8 +18,29 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
         return MakeEmptyGenericArray(count, () => -1);
     });
 
+    console.log(pretty_print(disk));
+
     // start moving elements on the disk
-    
+    let start = 0
+    let end = disk.length - 1;
+    while(start < end) {
+        if(disk[start] != -1) {
+            start++;
+            continue;
+        }
+
+        if(disk[end] == -1) {
+            end--;
+            continue;
+        }
+
+        // swap the values
+        [disk[start], disk[end]] = [disk[end], disk[start]];
+        console.log(pretty_print(disk), start, end);
+
+        start++;
+        end--;
+    }
 
     console.log(pretty_print(disk));
 
