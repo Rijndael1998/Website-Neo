@@ -8,16 +8,18 @@ export const solution_9: AdventOfCodeSolutionFunction = (input) => {
     let id = 0;
     const disk = input.split("").flatMap((v) => {
         isFile = !isFile;
-        console.log(v);
-        
         const count = Number(v);
-        if(isFile) {
+
+        if (isFile) {
             id++;
             return MakeEmptyGenericArray(count, () => id - 1);
         }
-            
+
         return MakeEmptyGenericArray(count, () => -1);
     });
+
+    // start moving elements on the disk
+    
 
     console.log(pretty_print(disk));
 
