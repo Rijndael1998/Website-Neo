@@ -1,7 +1,6 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { MakeEmptyGenericArray } from "./utils/utils";
 
-const pretty_print = (disk: Array<number>) => disk.reduce<string>((prev, curr) => prev + (curr == -1 ? "." : curr), "");
 const checksum = (disk: Array<number>) => disk.reduce<number>((prev, curr, index) => prev + (curr == -1 ? 0 : curr * index), 0);
 
 const findSlice = (disk: Array<number>, id: number, startFrom?: number) => {
