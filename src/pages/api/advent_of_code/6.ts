@@ -1,5 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
-import { Direction, Grid, gridSearch, search_direction, SearchExitReason } from "./utils/stringGrids";
+import { Direction, Grid, gridSearch, search_direction, SearchExitReason } from "./utils/grids";
 import { Duplicate2DArray, makeGridFromMultilineString } from "./utils/utils";
 
 const NextDirection = (dir: Direction) => {

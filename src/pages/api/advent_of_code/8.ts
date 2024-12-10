@@ -1,5 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
-import { check_coords } from "./utils/stringGrids";
+import { check_coords } from "./utils/grids";
 import { MakeEmpty2DArray, makeGridFromMultilineString } from "./utils/utils";
 
 type v2 = [x: number, y: number];
