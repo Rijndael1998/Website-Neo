@@ -22,6 +22,8 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
     console.log(startNodes);
     startNodes.forEach(v => v.lookAround());
 
+    console.log(startNodes[0]);
+
     return {
         part_1,
         part_2,
