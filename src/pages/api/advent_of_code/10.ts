@@ -1,13 +1,13 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { DirectDirections, Grid, search_direction } from "./utils/grids";
-import { Duplicate2DArray, makeGridFromMultilineString, prettyPrint3d } from "./utils/utils";
+import { Duplicate2DArray, makeGridFromMultilineString, prettyPrint2d } from "./utils/utils";
 
 export const solution_10: AdventOfCodeSolutionFunction = (input) => {
     let part_1 = 0;
     let part_2 = 0;
 
     const map: Grid<number> = makeGridFromMultilineString(input).map(v => v.map(v => v != "." ? Number(v) : -1));
-    console.log(prettyPrint3d(map));
+    console.log(prettyPrint2d(map));
 
     type XYArray = Array<[x: number, y: number]>;
     let searchNodes: XYArray = [];
@@ -31,7 +31,8 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
 
             const mapView = Duplicate2DArray(map);
             mapView[y][x] = -2;
-            console.log(x, y, searchItem, prettyPrint3d(mapView));
+            // console.log(x, y, searchItem);
+            // console.log(prettyPrint2d(mapView));
 
             // find new nodes
             DirectDirections.forEach((direction) => search_direction(map, x, y, direction, (v, itemX, itemY) => {
@@ -46,6 +47,18 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
             }));
             
         }
+
+        console.log("initial");
+        console.log(prettyPrint2d(map));
+
+        console.log("results");
+        const mapView = Duplicate2DArray(map);
+        result.forEach((v) => {
+            const [x, y] = v;
+            mapView[y][x] = -2;
+        });
+
+        console.log(prettyPrint2d(mapView));
 
         searchNodes = [...result];
     }

@@ -22,4 +22,18 @@ prettyPrintMap.set(-1, ".");
 prettyPrintMap.set(-2, "*");
 
 export const prettyPrint = (disk: Array<number>) => disk.reduce<string>((prev, curr) => prev + (prettyPrintMap.get(curr) ?? `${curr}`), "");
-export const prettyPrint3d = (disk: Array<Array<number>>) => disk.reduce<string>((prev, curr, i) => `${prev}${prettyPrint(curr)}${i < curr.length - 1 ? "\n" : ""}`, "");
+export const prettyPrint2d = (disk: Array<Array<number>>) => {
+    if(disk.length == 0) 
+        return "";
+
+    let top = "  ";
+    for (let index = 0; index < disk.length; index++) {
+        const element = index % 10;
+        top += element;
+    }
+
+    let pp = disk.reduce<string>((prev, curr, i) => `${prev}${i} ${prettyPrint(curr)}${i < curr.length - 1 ? "\n" : ""}`, "");
+
+
+    return `${top}\n${pp}`;
+};
