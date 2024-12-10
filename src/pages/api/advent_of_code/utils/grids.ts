@@ -1,3 +1,6 @@
+/**
+ * @returns True if out of bounds
+ */
 export const check_coords = <T>(grid: Array<Array<T>>, x: number, y: number) => {
     return y >= grid.length ||
         y < 0 ||

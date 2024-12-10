@@ -13,7 +13,7 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
         .map((row) => row.map((item) => item != "." ? Number(item) : -1))
         .map((row, y) => row.map((item, x) => new LinkedPoint(x, y, item, undefined!)));
 
-    map.flat().forEach((v) => v.grid = map);
+    map.flat().forEach((v) => v.grid = map); // promise is a promise
 
     console.log(prettyPrint2d(map.map((v) => v.map(v => v.item))));
 
