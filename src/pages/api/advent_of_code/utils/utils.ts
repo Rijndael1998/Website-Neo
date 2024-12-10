@@ -17,5 +17,9 @@ export const MakeEmptyGenericArray = <T>(length: number, fn: (index: number) => 
 export const MakeEmptyArray = (length: number) => MakeEmptyGenericArray(length, () => 0);
 export const MakeEmpty2DArray = (x: number, y: number) => MakeEmptyArray(y).map(() => MakeEmptyArray(x));
 
-export const prettyPrint = (disk: Array<number>) => disk.reduce<string>((prev, curr) => prev + (curr == -1 ? "." : curr), "");
+export const prettyPrintMap = new Map<number, string>();
+prettyPrintMap.set(-1, ".");
+prettyPrintMap.set(-2, "*");
+
+export const prettyPrint = (disk: Array<number>) => disk.reduce<string>((prev, curr) => prev + (prettyPrintMap.get(curr) ?? `${curr}`), "");
 export const prettyPrint3d = (disk: Array<Array<number>>) => disk.reduce<string>((prev, curr, i) => `${prev}${prettyPrint(curr)}${i < curr.length - 1 ? "\n" : ""}`, "");
