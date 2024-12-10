@@ -16,6 +16,22 @@ export enum Direction {
     UP_LEFT,
 };
 
+export const DirectDirections = [
+    Direction.UP,
+    Direction.RIGHT,
+    Direction.BOTTOM,
+    Direction.LEFT,
+];
+
+export const DiagonalDirections = [
+    Direction.UP_RIGHT,
+    Direction.UP_LEFT,
+    Direction.BOTTOM_RIGHT,
+    Direction.BOTTOM_LEFT,
+];
+
+export const AllDirections = [...DirectDirections, ...DiagonalDirections].sort();
+
 /**
  * This function should return true if it wants the search function to continue
  */
