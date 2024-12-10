@@ -521,15 +521,15 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@mui/base@5.0.0-beta.63":
-  version "5.0.0-beta.63"
-  resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.63.tgz#7d64a8f077b7c0bf3f53a4ccb59382929039c78d"
-  integrity sha512-W6aIqKP9X8VUX0KhSnYWo2+5C7MnKV1IhYVd517L/apvfkVq5KaTdlnxSBVwnaWt46whayVgQ/9KXwUVCXp6+w==
+"@mui/base@5.0.0-beta.64":
+  version "5.0.0-beta.64"
+  resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.64.tgz#694992e79d28beaf66205187022c9e68afb3cc12"
+  integrity sha512-nu663PoZs/Pee0fkPYkjUADfT+AAi2QWvvHghDhLeSx8sa3i+GGaOoUsFmB4CPlyYqWfq9hRGA7H1T3d6VrGgw==
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@floating-ui/react-dom" "^2.1.1"
     "@mui/types" "^7.2.19"
-    "@mui/utils" "^6.1.9"
+    "@mui/utils" "^6.1.10"
     "@popperjs/core" "^2.11.8"
     clsx "^2.1.1"
     prop-types "^15.8.1"
@@ -546,16 +546,16 @@
   dependencies:
     "@babel/runtime" "^7.26.0"
 
-"@mui/lab@^6.0.0-beta.17":
-  version "6.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-6.0.0-beta.17.tgz#4abef5b932f4d8e5b38cde10f658a399c57b849e"
-  integrity sha512-Ls1pIuYi5D9wq9mUwncky6CWokd6CCqQDCxXbm0TP0e7ksU5DcCPUZXBmTWQgbkldLu14aUXbJHyts63L0rycQ==
+"@mui/lab@^6.0.0-beta.18":
+  version "6.0.0-beta.18"
+  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-6.0.0-beta.18.tgz#f0e853d04188b1c0a77b844238904626dc370a93"
+  integrity sha512-O7jNn36Jb0530NOZeFLj33RGB57x3kfyiYOaj5sL/j/Pmq9T0tonKMkoW/AUCucmBa7RuEzEYMyqBpfqminebA==
   dependencies:
     "@babel/runtime" "^7.26.0"
-    "@mui/base" "5.0.0-beta.63"
-    "@mui/system" "^6.1.9"
+    "@mui/base" "5.0.0-beta.64"
+    "@mui/system" "^6.1.10"
     "@mui/types" "^7.2.19"
-    "@mui/utils" "^6.1.9"
+    "@mui/utils" "^6.1.10"
     clsx "^2.1.1"
     prop-types "^15.8.1"
 
@@ -598,7 +598,7 @@
     csstype "^3.1.3"
     prop-types "^15.8.1"
 
-"@mui/system@^6.1.10", "@mui/system@^6.1.9":
+"@mui/system@^6.1.10":
   version "6.1.10"
   resolved "https://registry.yarnpkg.com/@mui/system/-/system-6.1.10.tgz#d8a6f9099883880182cfafc08fc8ab8099647c01"
   integrity sha512-5YNIqxETR23SIkyP7MY2fFnXmplX/M4wNi2R+10AVRd3Ub+NLctWY/Vs5vq1oAMF0eSDLhRTGUjaUe+IGSfWqg==
@@ -617,7 +617,7 @@
   resolved "https://registry.yarnpkg.com/@mui/types/-/types-7.2.19.tgz#c941954dd24393fdce5f07830d44440cf4ab6c80"
   integrity sha512-6XpZEM/Q3epK9RN8ENoXuygnqUQxE+siN/6rGRi2iwJPgBUR25mphYQ9ZI87plGh58YoZ5pp40bFvKYOCDJ3tA==
 
-"@mui/utils@^6.1.10", "@mui/utils@^6.1.9":
+"@mui/utils@^6.1.10":
   version "6.1.10"
   resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-6.1.10.tgz#edf8c5c9cf930a8290b5347550ece15f5800b1c3"
   integrity sha512-1ETuwswGjUiAf2dP9TkBy8p49qrw2wXa+RuAjNTRE5+91vtXJ1HKrs7H9s8CZd1zDlQVzUcUAPm9lpQwF5ogTw==
