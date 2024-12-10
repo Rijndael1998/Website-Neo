@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
 import { FileRequest } from "@/pages/api/getInput";
 import Link from "next/link";
-import { ifTrue, ifTruthyElse } from "@/components/reactUtils";
+import {  ifTruthyElse } from "@/components/reactUtils";
 import { DAY } from "../day";
 
 export type SolutionProps = {
