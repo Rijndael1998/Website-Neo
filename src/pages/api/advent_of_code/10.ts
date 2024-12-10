@@ -4,7 +4,8 @@ import { Point } from "./utils/structures/point";
 import { Duplicate2DArray, makeGridFromMultilineString, prettyPrint2d } from "./utils/utils";
 
 class LinkedPoint extends Point<number> {
-    next?: LinkedPoint;
+    next: Array<LinkedPoint> = [];
+    prev?: LinkedPoint;
 
     constructor(x: number, y: number, val: number) {
         super(x, y, val);
@@ -22,24 +23,13 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
 
     console.log(prettyPrint2d(map.map((v) => v.map(v => v.item))));
 
-    let searchNodes: Array<LinkedPoint> = [];
+    const startNodes: Array<LinkedPoint> = map.flat().filter(v => v.item == 0);
 
-    // find the starts
-    map.forEach((row) => row.forEach((v) => {
-        if (v.item == 0)
-            searchNodes.push(v);
-    }));
+    console.log(startNodes);
 
-    console.log(searchNodes);
-
-    for (let searchItem = 1; searchItem < 10; searchItem++) {
-
-    }
-
-    console.log(searchNodes);
 
     return {
-        part_1: searchNodes.length,
+        part_1,
         part_2,
     }
 }
