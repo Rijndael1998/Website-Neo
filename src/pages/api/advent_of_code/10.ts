@@ -1,66 +1,39 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { DirectDirections, Grid, search_direction } from "./utils/grids";
+import { Point } from "./utils/structures/point";
 import { Duplicate2DArray, makeGridFromMultilineString, prettyPrint2d } from "./utils/utils";
+
+class LinkedPoint extends Point<number> {
+    next?: LinkedPoint;
+
+    constructor(x: number, y: number, val: number) {
+        super(x, y, val);
+    }
+}
 
 export const solution_10: AdventOfCodeSolutionFunction = (input) => {
     let part_1 = 0;
     let part_2 = 0;
 
-    const map: Grid<number> = makeGridFromMultilineString(input).map(v => v.map(v => v != "." ? Number(v) : -1));
-    console.log(prettyPrint2d(map));
+    const map: Grid<LinkedPoint> =
+        makeGridFromMultilineString(input)
+        .map((row) => row.map((item) => item != "." ? Number(item) : -1))
+        .map((row, y) => row.map((item, x) => new LinkedPoint(x, y, item)));
 
-    type XYArray = Array<[x: number, y: number]>;
-    let searchNodes: XYArray = [];
+    console.log(prettyPrint2d(map.map((v) => v.map(v => v.item))));
+
+    let searchNodes: Array<LinkedPoint> = [];
 
     // find the starts
-    map.forEach((row, y) => row.forEach((v, x) => {
-        if (v == 0)
-            searchNodes.push([x, y]);
+    map.forEach((row) => row.forEach((v) => {
+        if (v.item == 0)
+            searchNodes.push(v);
     }));
 
     console.log(searchNodes);
 
-    for(let searchItem = 1; searchItem < 10; searchItem++) {
-        const result: XYArray = [];
-        console.log("searching for", searchItem);
+    for (let searchItem = 1; searchItem < 10; searchItem++) {
 
-        for (let searchNodeIndex = 0; searchNodeIndex < searchNodes.length; searchNodeIndex++) {
-            // location of search
-            const [x, y] = searchNodes[searchNodeIndex];
-            // console.log(searchItem, x, y);
-
-            const mapView = Duplicate2DArray(map);
-            mapView[y][x] = -2;
-            // console.log(x, y, searchItem);
-            // console.log(prettyPrint2d(mapView));
-
-            // find new nodes
-            DirectDirections.forEach((direction) => search_direction(map, x, y, direction, (v, itemX, itemY) => {
-                // we don't need to keep searching in any direction more than once
-                if(x == itemX && y == itemY)
-                    return true;
-
-                if(v == searchItem)
-                    result.push([itemX, itemY]);
-
-                return false;
-            }));
-            
-        }
-
-        console.log("initial");
-        console.log(prettyPrint2d(map));
-
-        console.log("results");
-        const mapView = Duplicate2DArray(map);
-        result.forEach((v) => {
-            const [x, y] = v;
-            mapView[y][x] = -2;
-        });
-
-        console.log(prettyPrint2d(mapView));
-
-        searchNodes = [...result];
     }
 
     console.log(searchNodes);
