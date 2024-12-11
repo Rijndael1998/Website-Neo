@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function PythonSPAWebsite() {
     return <Lazy>
-        <h1>Python SPA Website</h1>
+        <h1>{metadata.title}</h1>
         <LazyLocalImage src={old_website} />
         <p style={{ marginTop: "4rem" }}>{
             `
