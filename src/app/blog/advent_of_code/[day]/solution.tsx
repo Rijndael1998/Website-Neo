@@ -1,10 +1,13 @@
 "use client";
 
 import { AdventOfCodeRequest, PuzzleSolution } from "@/pages/api/solve";
-import { Button, Container, Stack, TextField, Typography } from "@mui/material";
+import { Button, Container, Divider, Stack, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
 import { FileRequest } from "@/pages/api/getInput";
+import Link from "next/link";
+import {  ifTruthyElse } from "@/components/reactUtils";
+import { DAY } from "../day";
 
 export type SolutionProps = {
     day: number,
@@ -93,6 +96,39 @@ export default function Solution({ day }: SolutionProps) {
     return <Container maxWidth="md">
         <Stack gap={1}>
             <Typography variant="h1">{`Day ${day} solution`}</Typography>
+
+            <Divider orientation="horizontal" />
+            <Stack
+                direction={"row"}
+                spacing={2}
+                divider={<Divider orientation="vertical" flexItem />}
+                sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
+                <Typography>
+                    {
+                        ifTruthyElse(
+                            day - 1 > 0,
+                            <Link href={`./${day - 1}`}>Previous</Link>,
+                            "Previous"
+                        )
+                    }
+                </Typography>
+                <Typography>
+                    <Link href={"."}>Return to list</Link>
+                </Typography>
+                <Typography>
+                    {
+                        ifTruthyElse(
+                            day + 1 <= DAY,
+                            <Link href={`./${day + 1}`}>Next</Link>,
+                            "Next"
+                        )
+                    }
+                </Typography>
+            </Stack>
+            <Divider orientation="horizontal" />
 
             <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
 

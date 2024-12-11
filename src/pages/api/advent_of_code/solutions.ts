@@ -1,5 +1,6 @@
 import { solution_0 } from "./0";
 import { solution_1 } from "./1";
+import { solution_10 } from "./10";
 import { solution_2 } from "./2";
 import { solution_3 } from "./3";
 import { solution_4 } from "./4";
@@ -28,4 +29,5 @@ export const solutions: {[number: number]: AdventOfCodeSolutionFunction} = {
     7: solution_7,
     8: solution_8,
     9: solution_9,
+    10: solution_10,
 };
