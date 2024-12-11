@@ -28,6 +28,7 @@ function IncrementState(state: Array<number>, max: number): [state: Array<number
     return [state, false];
 }
 
+// GenerateCombinations(["+", "*"], 2) => [["+", "+"], ["+", "*"], ["*", "+"], ["*", "*"]]
 function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array<T>> {
     const states = MakeStateArray(length);
     const combinations: Array<Array<T>> = [];
@@ -85,12 +86,15 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
     let part_1 = 0;
     let part_2 = 0;
 
+    // these will be single references which can be memoised
+    const part1Ops = [Op.ADD, Op.MUL];
+    const part2Ops = [Op.ADD, Op.MUL, Op.CON];
+
     for (let index = 0; index < numbers.length; index++) {
         const target = numbers[index].target;
         const numbs = numbers[index].numbers;
 
-        // GenerateCombinations(["+", "*"], 2) => [["+", "+"], ["+", "*"], ["*", "+"], ["*", "*"]]
-        const combinations = GenerateCombinations([Op.ADD, Op.MUL], numbs.length - 1); 
+        const combinations = GenerateCombinations(part1Ops, numbs.length - 1); 
 
         // part 1 calculations
         for (let combinationIndex = 0; combinationIndex < combinations.length; combinationIndex++) {
@@ -102,7 +106,7 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
             }
         }
 
-        const combinations2 = GenerateCombinations([Op.ADD, Op.MUL, Op.CON], numbs.length - 1);
+        const combinations2 = GenerateCombinations(part2Ops, numbs.length - 1);
 
         // part 2 calculations
         for (let combinationIndex = 0; combinationIndex < combinations2.length; combinationIndex++) {
