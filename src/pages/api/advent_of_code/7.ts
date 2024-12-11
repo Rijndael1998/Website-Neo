@@ -64,6 +64,11 @@ enum Op {
     CON = "|",
 }
 
+function concat(a: number, b: number){ 
+    const exp = (Math.floor(Math.log10(b))) + 1;
+    return a * (10 ** exp) + b
+}
+
 function ApplyOp(a: number, b: number, op: Op): number {
     switch (op) {
         case Op.MUL:
@@ -71,7 +76,7 @@ function ApplyOp(a: number, b: number, op: Op): number {
         case Op.ADD:
             return a + b;
         case Op.CON:
-            return Number(`${a}${b}`);
+            return concat(a, b);
     }
 }
 
