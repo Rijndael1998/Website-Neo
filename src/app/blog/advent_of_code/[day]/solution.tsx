@@ -1,13 +1,10 @@
 "use client";
 
 import { AdventOfCodeRequest, PuzzleSolution } from "@/pages/api/solve";
-import { Button, Container, Divider, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
 import { FileRequest } from "@/pages/api/getInput";
-import Link from "next/link";
-import { ifTruthyElse } from "@/components/reactUtils";
-import { DAY } from "../day";
 
 export type SolutionProps = {
     day: number,
@@ -94,8 +91,6 @@ export default function Solution({ day }: SolutionProps) {
     }
 
     return <>
-        <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
-
         <Stack gap={1}>
             <TextField
                 label="Puzzle input"

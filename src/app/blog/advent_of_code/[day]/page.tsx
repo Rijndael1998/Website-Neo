@@ -12,6 +12,8 @@ export default async function AdventOfCodeDays({ params }: AdventOfCodeDaysProps
         <Stack gap={1}>
             <Typography variant="h1">{`Day ${day} solution`}</Typography>
             <DisplayNav day={day}/>
+
+            <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
             <Solution day={day} />
         </Stack>
     </Container>
