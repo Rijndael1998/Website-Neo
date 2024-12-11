@@ -40,7 +40,7 @@ function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array
     const states = MakeStateArray(length);
     const combinations: Array<Array<T>> = [];
 
-    let done = false
+    let done = false;
     while (!done) {
         combinations.push(MakeCombination(choices, states));
         done = IncrementState(states, choices.length)[1];
@@ -135,8 +135,8 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
     }
 
     return {
-        part_1,
-        part_2,
-    }
+        part_1, // 2314935962622
+        part_2, // 401477450831495
+    } // 4000-3000ms
 }
 
