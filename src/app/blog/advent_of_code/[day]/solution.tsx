@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
 import { FileRequest } from "@/pages/api/getInput";
 import Link from "next/link";
-import {  ifTruthyElse } from "@/components/reactUtils";
+import { ifTruthyElse } from "@/components/reactUtils";
 import { DAY } from "../day";
 
 export type SolutionProps = {
@@ -93,79 +93,75 @@ export default function Solution({ day }: SolutionProps) {
         setAwaitingAPI(false);
     }
 
-    return <Container maxWidth="md">
-        <Stack gap={1}>
-            <Typography variant="h1">{`Day ${day} solution`}</Typography>
-
-            <Divider orientation="horizontal" />
-            <Stack
-                direction={"row"}
-                spacing={2}
-                divider={<Divider orientation="vertical" flexItem />}
-                sx={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}>
-                <Typography>
-                    {
-                        ifTruthyElse(
-                            day - 1 > 0,
-                            <Link href={`./${day - 1}`}>Previous</Link>,
-                            "Previous"
-                        )
-                    }
-                </Typography>
-                <Typography>
-                    <Link href={"."}>Return to list</Link>
-                </Typography>
-                <Typography>
-                    {
-                        ifTruthyElse(
-                            day + 1 <= DAY,
-                            <Link href={`./${day + 1}`}>Next</Link>,
-                            "Next"
-                        )
-                    }
-                </Typography>
-            </Stack>
-            <Divider orientation="horizontal" />
-
-            <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
-
-            <Stack gap={1}>
-                <TextField
-                    label="Puzzle input"
-                    variant="filled"
-                    multiline
-                    sx={{ maxHeight: "5em", overflow: "scroll" }}
-                    value={text}
-                    onChange={(ev) => setText(ev.target.value)}
-                    disabled={isDisabled}
-                />
-                <Stack direction="row" gap={2}>
-                    <Button
-                        onClick={() => setText("")}
-                        disabled={isDisabled}
-                        color={"secondary"}>
-                        Clear Data
-                    </Button>
-                    <Button
-                        onClick={() => setText(initialInput ?? "")}
-                        disabled={isDisabled || initialInput === undefined || initialInput == ""}
-                        color={"secondary"}>
-                        Example input
-                    </Button>
-                    <Button
-                        onClick={getSolution}
-                        disabled={isDisabled}
-                        >
-                        Solve
-                    </Button>
-                </Stack>
-            </Stack>
-
-            <Typography variant="h2">Solution</Typography>
-            <DisplaySolution solution={solution} />
+    return <>
+        <Divider orientation="horizontal" />
+        <Stack
+            direction={"row"}
+            spacing={2}
+            divider={<Divider orientation="vertical" flexItem />}
+            sx={{
+                justifyContent: "center",
+                alignItems: "center",
+            }}>
+            <Typography>
+                {
+                    ifTruthyElse(
+                        day - 1 > 0,
+                        <Link href={`./${day - 1}`}>Previous</Link>,
+                        "Previous"
+                    )
+                }
+            </Typography>
+            <Typography>
+                <Link href={"."}>Return to list</Link>
+            </Typography>
+            <Typography>
+                {
+                    ifTruthyElse(
+                        day + 1 <= DAY,
+                        <Link href={`./${day + 1}`}>Next</Link>,
+                        "Next"
+                    )
+                }
+            </Typography>
         </Stack>
-    </Container>
+        <Divider orientation="horizontal" />
+
+        <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
+
+        <Stack gap={1}>
+            <TextField
+                label="Puzzle input"
+                variant="filled"
+                multiline
+                sx={{ maxHeight: "5em", overflow: "scroll" }}
+                value={text}
+                onChange={(ev) => setText(ev.target.value)}
+                disabled={isDisabled}
+            />
+            <Stack direction="row" gap={2}>
+                <Button
+                    onClick={() => setText("")}
+                    disabled={isDisabled}
+                    color={"secondary"}>
+                    Clear Data
+                </Button>
+                <Button
+                    onClick={() => setText(initialInput ?? "")}
+                    disabled={isDisabled || initialInput === undefined || initialInput == ""}
+                    color={"secondary"}>
+                    Example input
+                </Button>
+                <Button
+                    onClick={getSolution}
+                    disabled={isDisabled}
+                >
+                    Solve
+                </Button>
+            </Stack>
+        </Stack>
+
+        <Typography variant="h2">Solution</Typography>
+        <DisplaySolution solution={solution} />
+    </>
 }
