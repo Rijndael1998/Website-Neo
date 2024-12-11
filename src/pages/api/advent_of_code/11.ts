@@ -23,6 +23,24 @@ export const solution_11: AdventOfCodeSolutionFunction = (input) => {
     const stones = input.trim().split(" ").map((v) => Number(v));
     log(stones);
 
+    // blink the stones
+    for (let index = 0; index < stones.length; index++) {
+        if(stones[index] == 0) {
+            stones[index] = 1;
+            continue;
+        }
+
+        if(numHasEvenDigits(stones[index])) {
+            stones.splice(index, 1, ...numSplit(stones[index]));
+            index++;
+            continue;
+        }
+
+        stones[index] *= 2024;
+    }
+
+    log(stones);
+
     const part_1 = 0;
 
     return {
