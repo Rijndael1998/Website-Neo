@@ -28,16 +28,32 @@ function IncrementState(state: Array<number>, max: number): [state: Array<number
     return [state, false];
 }
 
+const GenerateCombinationsMemo: Map<number, Map<Array<any>, Array<Array<any>>>> = new Map();
+
+// GenerateCombinations(["+", "*"], 2) => [["+", "+"], ["+", "*"], ["*", "+"], ["*", "*"]]
 function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array<T>> {
+    // return early if cached
+    const potentialCombination = GenerateCombinationsMemo.get(length)?.get(choices);
+    if (potentialCombination)
+        return potentialCombination;
+
     const states = MakeStateArray(length);
     const combinations: Array<Array<T>> = [];
 
-    let done = false
+    let done = false;
     while (!done) {
         combinations.push(MakeCombination(choices, states));
         done = IncrementState(states, choices.length)[1];
     }
 
+    // memoize if not cached
+    if (!GenerateCombinationsMemo.has(length))
+        GenerateCombinationsMemo.set(length, new Map());
+
+    const lengthMap = GenerateCombinationsMemo.get(length)!;
+
+    if (!lengthMap.has(choices))
+        lengthMap.set(choices, combinations);
 
     return combinations;
 }
@@ -48,6 +64,10 @@ enum Op {
     CON = "|",
 }
 
+function concat(a: number, b: number) {
+    return a * (10 ** ((Math.floor(Math.log10(b))) + 1)) + b
+}
+
 function ApplyOp(a: number, b: number, op: Op): number {
     switch (op) {
         case Op.MUL:
@@ -55,7 +75,7 @@ function ApplyOp(a: number, b: number, op: Op): number {
         case Op.ADD:
             return a + b;
         case Op.CON:
-            return Number(`${a}${b}`);
+            return concat(a, b);
     }
 }
 
@@ -85,12 +105,18 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
     let part_1 = 0;
     let part_2 = 0;
 
+    // these will be single references which can be memoised
+    const part1Ops = [Op.ADD, Op.MUL];
+    const part2Ops = [Op.ADD, Op.MUL, Op.CON];
+
     for (let index = 0; index < numbers.length; index++) {
         const target = numbers[index].target;
         const numbs = numbers[index].numbers;
 
-        // GenerateCombinations(["+", "*"], 2) => [["+", "+"], ["+", "*"], ["*", "+"], ["*", "*"]]
-        const combinations = GenerateCombinations([Op.ADD, Op.MUL], numbs.length - 1); 
+        const combinations = GenerateCombinations(part1Ops, numbs.length - 1);
+
+        // TODO: there's a speedup here that might be possible.
+        // the part 2 calculations could be memoised for part 1
 
         // part 1 calculations
         for (let combinationIndex = 0; combinationIndex < combinations.length; combinationIndex++) {
@@ -102,7 +128,7 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
             }
         }
 
-        const combinations2 = GenerateCombinations([Op.ADD, Op.MUL, Op.CON], numbs.length - 1);
+        const combinations2 = GenerateCombinations(part2Ops, numbs.length - 1);
 
         // part 2 calculations
         for (let combinationIndex = 0; combinationIndex < combinations2.length; combinationIndex++) {
@@ -113,12 +139,11 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
                 break;
             }
         }
-
     }
 
     return {
-        part_1,
-        part_2,
-    }
+        part_1, // 2314935962622
+        part_2, // 401477450831495
+    } // 2000 - 1355ms
 }
 
