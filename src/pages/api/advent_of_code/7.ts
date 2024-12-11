@@ -64,7 +64,7 @@ enum Op {
     CON = "|",
 }
 
-function concat(a: number, b: number){ 
+function concat(a: number, b: number) {
     return a * (10 ** ((Math.floor(Math.log10(b))) + 1)) + b
 }
 
@@ -114,6 +114,9 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
         const numbs = numbers[index].numbers;
 
         const combinations = GenerateCombinations(part1Ops, numbs.length - 1);
+
+        // TODO: there's a speedup here that might be possible.
+        // the part 2 calculations could be memoised for part 1
 
         // part 1 calculations
         for (let combinationIndex = 0; combinationIndex < combinations.length; combinationIndex++) {
