@@ -65,8 +65,7 @@ enum Op {
 }
 
 function concat(a: number, b: number){ 
-    const exp = (Math.floor(Math.log10(b))) + 1;
-    return a * (10 ** exp) + b
+    return a * (10 ** ((Math.floor(Math.log10(b))) + 1)) + b
 }
 
 function ApplyOp(a: number, b: number, op: Op): number {
@@ -142,6 +141,6 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
     return {
         part_1, // 2314935962622
         part_2, // 401477450831495
-    } // 4000-3000ms
+    } // 1355ms
 }
 
