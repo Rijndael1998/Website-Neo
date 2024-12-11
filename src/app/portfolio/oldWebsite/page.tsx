@@ -8,13 +8,13 @@ import old_website_low from "./images/LibreOfficeWriter.png";
 import old_website_err from "./images/Errors.png";
 
 export const metadata = {
-    title: "Website Neo",
+    title: "Python Generated SPA",
     description: "My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy.",
 };
 
 export default function PythonSPAWebsite() {
     return <Lazy>
-        <h1>Python SPA Website</h1>
+        <h1>{metadata.title}</h1>
         <LazyLocalImage src={old_website} />
         <p style={{ marginTop: "4rem" }}>{
             `
