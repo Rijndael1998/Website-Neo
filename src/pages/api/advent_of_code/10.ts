@@ -17,8 +17,8 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
     const part_2 = SumArray(startNodes.map(v => v.findAllValidPeaksWithReps().length));
 
     return {
-        part_1,
-        part_2,
+        part_1, // 557
+        part_2, // 1062
     }
 }
 
