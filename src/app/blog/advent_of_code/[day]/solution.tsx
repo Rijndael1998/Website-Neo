@@ -94,39 +94,6 @@ export default function Solution({ day }: SolutionProps) {
     }
 
     return <>
-        <Divider orientation="horizontal" />
-        <Stack
-            direction={"row"}
-            spacing={2}
-            divider={<Divider orientation="vertical" flexItem />}
-            sx={{
-                justifyContent: "center",
-                alignItems: "center",
-            }}>
-            <Typography>
-                {
-                    ifTruthyElse(
-                        day - 1 > 0,
-                        <Link href={`./${day - 1}`}>Previous</Link>,
-                        "Previous"
-                    )
-                }
-            </Typography>
-            <Typography>
-                <Link href={"."}>Return to list</Link>
-            </Typography>
-            <Typography>
-                {
-                    ifTruthyElse(
-                        day + 1 <= DAY,
-                        <Link href={`./${day + 1}`}>Next</Link>,
-                        "Next"
-                    )
-                }
-            </Typography>
-        </Stack>
-        <Divider orientation="horizontal" />
-
         <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
 
         <Stack gap={1}>
