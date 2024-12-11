@@ -3,13 +3,17 @@ import { Grid } from "./utils/grids";
 import { LinkedPoint } from "./utils/structures/linkedPoint";
 import { makeGridFromMultilineString, SumArray } from "./utils/utils";
 
-class TrailPoint extends LinkedPoint<number> {
-    lookAroundValid() {
+class TrailPoint extends LinkedPoint<number, TrailPoint> {
+    constructor(x: number, y: number, item: number, grid: Grid<TrailPoint>) {
+        super(x, y, item, grid);
+    }
+
+    lookAroundValid(): Array<TrailPoint> {
         return this.lookAround().filter(v => v.item == this.item + 1);
     }
 
     findAllValidPeaks(): Array<TrailPoint> {
-        if(this.item == 9)
+        if (this.item == 9)
             return [this];
 
         // filter for distinct references (this theoretically saves time)
@@ -17,7 +21,7 @@ class TrailPoint extends LinkedPoint<number> {
     }
 
     findAllValidPeaksWithReps(): Array<TrailPoint> {
-        if(this.item == 9)
+        if (this.item == 9)
             return [this];
 
         // don't filter

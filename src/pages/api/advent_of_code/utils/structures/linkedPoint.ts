@@ -16,25 +16,25 @@ export const PointDirections = [
     PointDirectionsVectors.LEFT,
 ];
 
-export class LinkedPoint<T> extends Point<T> {
-    grid: Grid<LinkedPoint<T>>;
+export class LinkedPoint<T, P extends LinkedPoint<T, P>> extends Point<T> {
+    grid: Grid<P>;
 
-    constructor(x: number, y: number, val: T, grid: Grid<LinkedPoint<T>>) {
+    constructor(x: number, y: number, val: T, grid: Grid<P>) {
         super(x, y, val);
         this.grid = grid;
     }
 
-    lookAround() {
+    lookAround(): Array<P> {
         // find elements around
         return PointDirections
             .map(v => this.look(v))
-            .filter(v => v != undefined);
+            .filter(v => v !== undefined);
     }
 
-    look(direction: Vector) {
+    look(direction: Vector): P | undefined {
         const [x, y] = direction.add(this.pos).toArray();
         if (check_coords(this.grid, x, y))
-            return;
+            return undefined;
 
         return this.grid[y][x];
     }
