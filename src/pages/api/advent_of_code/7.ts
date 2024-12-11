@@ -141,6 +141,6 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
     return {
         part_1, // 2314935962622
         part_2, // 401477450831495
-    } // 1355ms
+    } // 2000 - 1355ms
 }
 
