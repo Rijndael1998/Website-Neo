@@ -10,16 +10,22 @@ export type AdventOfCodeDaysProps = {
 
 export default async function AdventOfCodeDays({ params }: AdventOfCodeDaysProps) {
     const day = Number((await params).day);
-    const enable = day <= DAY && day > 0;
+    const enable = day <= DAY && day >= 0;
+    const neg = day < 0;
 
     const SolutionElement = <>
         <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
         <Solution day={day} />
     </>
 
-    const NotFoundElement = <Typography>
-        The solution to this problem is currently in construction. A+ for effort, though 😅.
-    </Typography>
+    const NotFoundElement = ifTruthyElse(!neg,
+        <Typography>
+            The solution to this problem is currently in construction. A+ for effort, though 😅.
+        </Typography>,
+        <Typography>
+            Time doesn't go backwards! 😉
+        </Typography>
+    );
 
     return <Container maxWidth="md">
         <Stack gap={1}>
