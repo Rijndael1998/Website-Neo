@@ -24,23 +24,35 @@ class Stone {
 
     blink(): Array<Stone> {
         if (this.val == 0) {
-            this.val = 1;
-            return [this];
+            return [new Stone(1)];
         }
 
         if(this.hasEvenDigits())
             return this.split();
 
-        this.val = 2024;
-        return [this];
+        return [new Stone(this.val * 2024)];
     }
 }
 
+const prettyPrint = (input: Array<Stone>) =>
+    input.reduce<string>((prev, curr) => `${prev} ${curr.val}`, "");
+
+const log = (input: Array<Stone>) =>
+    console.log(prettyPrint(input));
+
 export const solution_11: AdventOfCodeSolutionFunction = (input) => {
-    const res = "Test: " + input;
+    let stones = input.trim().split(" ").map((v) => new Stone(Number(v)));
+    log(stones);
+
+    // blink 25 times
+    for(let blink = 0; blink < 25; blink++) {
+        stones = stones.flatMap(stone => stone.blink());
+        //console.log(blink, prettyPrint(stones));
+    }
+
     return {
-        part_1: res,
-        part_2: res,
+        part_1: stones.length,
+        part_2: 0,
     }
 }
 
