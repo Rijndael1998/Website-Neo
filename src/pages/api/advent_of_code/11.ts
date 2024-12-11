@@ -27,7 +27,7 @@ class Stone {
             return [new Stone(1)];
         }
 
-        if(this.hasEvenDigits())
+        if (this.hasEvenDigits())
             return this.split();
 
         return [new Stone(this.val * 2024)];
@@ -45,14 +45,20 @@ export const solution_11: AdventOfCodeSolutionFunction = (input) => {
     log(stones);
 
     // blink 25 times
-    for(let blink = 0; blink < 25; blink++) {
+    for (let blink = 0; blink < 25; blink++) {
         stones = stones.flatMap(stone => stone.blink());
-        //console.log(blink, prettyPrint(stones));
+    }
+
+    const part_1 = stones.length; // 193607
+
+    // blink 50 times 
+    for (let blink = 0; blink < 50; blink++) {
+        stones = stones.flatMap(stone => stone.blink());
     }
 
     return {
-        part_1: stones.length,
-        part_2: 0,
+        part_1,
+        part_2: stones.length,
     }
 }
 
