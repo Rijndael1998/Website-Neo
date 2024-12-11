@@ -17,7 +17,7 @@ export const PointDirections = [
 ];
 
 export class LinkedPoint extends Point<number> {
-    next: Array<LinkedPoint> = [];
+    // next: Array<LinkedPoint> = [];
     grid: Grid<LinkedPoint>;
 
     constructor(x: number, y: number, val: number, grid: Grid<LinkedPoint>) {
@@ -26,16 +26,22 @@ export class LinkedPoint extends Point<number> {
     }
 
     lookAround() {
-        if (this.item == 9)
-            return 1;
-
-        const find = this.item + 1;
-
-        // find suitable candidates
-        this.next = PointDirections
+        // find elements around
+        return PointDirections
             .map(v => this.look(v))
-            .filter(v => v != undefined)
-            .filter(v => v.item == find);
+            .filter(v => v != undefined);
+    }
+
+    lookAroundValid() {
+        return this.lookAround().filter(v => v.item == this.item + 1);
+    }
+
+    findAllValidPeaks(): Array<LinkedPoint> {
+        if(this.item == 9)
+            return [this];
+
+        // filter for distinct references
+        return [...(new Set(this.lookAroundValid().flatMap(v => v.findAllValidPeaks())))];
     }
 
     look(direction: Vector) {

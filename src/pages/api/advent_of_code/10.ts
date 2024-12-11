@@ -20,9 +20,9 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
     const startNodes: Array<LinkedPoint> = map.flat().filter(v => v.item == 0);
 
     console.log(startNodes);
-    startNodes.forEach(v => v.lookAround());
+    // startNodes.forEach(v => v.lookAround());
 
-    console.log(startNodes[0]);
+    console.log(...startNodes.map(v => v.findAllValidPeaks().length));
 
     return {
         part_1,
