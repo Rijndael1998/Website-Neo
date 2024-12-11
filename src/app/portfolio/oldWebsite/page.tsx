@@ -8,7 +8,7 @@ import old_website_low from "./images/LibreOfficeWriter.png";
 import old_website_err from "./images/Errors.png";
 
 export const metadata = {
-    title: "Website Neo",
+    title: "Python Generated SPA",
     description: "My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy.",
 };
 
