@@ -19,41 +19,30 @@ const prettyPrint = (input: Array<number>) =>
 const log = (input: Array<number>) =>
     console.log(prettyPrint(input));
 
-const blinkInPlace = (stones: Array<number>) => {
-    for (let index = 0; index < stones.length; index++) {
-        if (stones[index] == 0) {
-            stones[index] = 1;
-            continue;
-        }
 
-        if (numHasEvenDigits(stones[index])) {
-            stones.splice(index, 1, ...numSplit(stones[index]));
-            index++;
-            continue;
-        }
+const calculatePaths = (input: number, depthLimit = 50, depthCount = 0): number => {
+    if(depthCount == depthLimit)
+        return 1;
 
-        stones[index] *= 2024;
+    if(input == 0)
+        return calculatePaths(1, depthLimit, depthCount + 1);
+
+    if(numHasEvenDigits(input)) {
+        // copied from numSplit as to not create and destruct an object as that causes the GC to get cranky
+        const valSplitPoint = 10 ** (numLength(input) / 2);
+        const valRight = input % valSplitPoint;
+        const valLeft = Math.floor((input - valRight) / valSplitPoint);
+        return calculatePaths(valRight, depthLimit, depthCount + 1) + calculatePaths(valLeft, depthLimit, depthCount + 1);
     }
+    
+    return calculatePaths(input * 2024, depthLimit, depthCount + 1);
 }
 
 export const solution_11: AdventOfCodeSolutionFunction = (input) => {
     const stones = input.trim().split(" ").map((v) => Number(v));
 
-    // blink the stones 25 times
-    for (let blink = 0; blink < 25; blink++)
-        blinkInPlace(stones);
-
-    const part_1 = stones.length;
-
-    // blink the stones 50 more times
-    for (let blink = 0; blink < 50; blink++) {
-        blinkInPlace(stones);
-        console.log(blink + 25, Date());
-    }
-        
-
     return {
-        part_1,
+        part_1: stones.reduce<number>((prev, curr) => prev + calculatePaths(curr, 25), 0),
         part_2: stones.length,
     }
 }
