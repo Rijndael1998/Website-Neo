@@ -45,5 +45,7 @@ export const solution_11: AdventOfCodeSolutionFunction = (input) => {
         // ???
         part_2: stones.length,
     }
+
+    // 41807c97c2a79838e175016b4236723ddca80568 p1 runs in 30-20ms
 }
 
