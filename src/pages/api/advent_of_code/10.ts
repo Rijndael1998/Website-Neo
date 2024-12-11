@@ -5,12 +5,10 @@ import { Point } from "./utils/structures/point";
 import { Duplicate2DArray, makeGridFromMultilineString, prettyPrint2d } from "./utils/utils";
 
 export const solution_10: AdventOfCodeSolutionFunction = (input) => {
-    let part_2 = 0;
-
     const map: Grid<LinkedPoint> =
         makeGridFromMultilineString(input)
-        .map((row) => row.map((item) => item != "." ? Number(item) : -1))
-        .map((row, y) => row.map((item, x) => new LinkedPoint(x, y, item, undefined!)));
+            .map((row) => row.map((item) => item != "." ? Number(item) : -1))
+            .map((row, y) => row.map((item, x) => new LinkedPoint(x, y, item, undefined!)));
 
     map.flat().forEach((v) => v.grid = map); // promise is a promise
 
@@ -19,6 +17,7 @@ export const solution_10: AdventOfCodeSolutionFunction = (input) => {
     const startNodes: Array<LinkedPoint> = map.flat().filter(v => v.item == 0);
 
     const part_1 = startNodes.map(v => v.findAllValidPeaks().length).reduce((prev, curr) => prev + curr, 0);
+    const part_2 = startNodes.map(v => v.findAllValidPeaksWithReps().length).reduce((prev, curr) => prev + curr, 0);
 
     return {
         part_1,

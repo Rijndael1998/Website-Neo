@@ -44,6 +44,13 @@ export class LinkedPoint extends Point<number> {
         return [...(new Set(this.lookAroundValid().flatMap(v => v.findAllValidPeaks())))];
     }
 
+    findAllValidPeaksWithReps(): Array<LinkedPoint> {
+        if(this.item == 9)
+            return [this];
+        
+        return this.lookAroundValid().flatMap(v => v.findAllValidPeaksWithReps());
+    }
+
     look(direction: Vector) {
         const [x, y] = direction.add(this.pos).toArray();
         if (check_coords(this.grid, x, y))
