@@ -19,8 +19,7 @@ const prettyPrint = (input: Array<number>) =>
 const log = (input: Array<number>) =>
     console.log(prettyPrint(input));
 
-const pathMemo: Map<number, Map<number, number>> = new Map();
-
+let pathMemo: Map<number, Map<number, number>> = new Map();
 const addToPathMemoProxy = (input: number, ttl: number, result: number) => {
     if (!pathMemo.has(input))
         pathMemo.set(input, new Map());
@@ -29,7 +28,7 @@ const addToPathMemoProxy = (input: number, ttl: number, result: number) => {
     return result;
 }
 
-const calculatePaths = (input: number, ttl = 50): number => {
+const calculatePaths = (input: number, ttl = 25): number => {
     // check and get stored value from memo
     const memo = pathMemo.get(input)?.get(ttl);
     if (memo !== undefined)
@@ -41,7 +40,6 @@ const calculatePaths = (input: number, ttl = 50): number => {
     if (input == 0) {
         return addToPathMemoProxy(input, ttl, calculatePaths(1, ttl - 1));
     }
-
 
     if (numHasEvenDigits(input)) {
         const valSplitPoint = 10 ** (numLength(input) / 2);
@@ -55,11 +53,14 @@ const calculatePaths = (input: number, ttl = 50): number => {
 export const solution_11: AdventOfCodeSolutionFunction = (input) => {
     const stones = input.trim().split(" ").map((v) => Number(v));
 
+    const part_1 = stones.reduce<number>((prev, curr) => prev + calculatePaths(curr), 0);
+    // pathMemo = new Map();
+
+    const part_2 = stones.reduce<number>((prev, curr) => prev + calculatePaths(curr, 75), 0);
+
     return {
-        // 193607
-        part_1: stones.reduce<number>((prev, curr) => prev + calculatePaths(curr, 25), 0),
-        // ???
-        part_2: stones.length,
+        part_1, // 193607
+        part_2, // 229557103025807
     }
 }
 
