@@ -37,3 +37,5 @@ export const prettyPrint2d = (disk: Array<Array<number>>) => {
 
     return `${top}\n${pp}`;
 };
+
+export const SumArray = (array: Array<number>) => array.reduce((prev, curr) => prev + curr, 0)
