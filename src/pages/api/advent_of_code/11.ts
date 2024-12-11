@@ -19,11 +19,7 @@ const prettyPrint = (input: Array<number>) =>
 const log = (input: Array<number>) =>
     console.log(prettyPrint(input));
 
-export const solution_11: AdventOfCodeSolutionFunction = (input) => {
-    const stones = input.trim().split(" ").map((v) => Number(v));
-    log(stones);
-
-    // blink the stones
+const blinkInPlace = (stones: Array<number>) => {
     for (let index = 0; index < stones.length; index++) {
         if(stones[index] == 0) {
             stones[index] = 1;
@@ -38,6 +34,14 @@ export const solution_11: AdventOfCodeSolutionFunction = (input) => {
 
         stones[index] *= 2024;
     }
+}
+
+export const solution_11: AdventOfCodeSolutionFunction = (input) => {
+    const stones = input.trim().split(" ").map((v) => Number(v));
+    log(stones);
+
+    // blink the stones
+    blinkInPlace(stones);
 
     log(stones);
 
