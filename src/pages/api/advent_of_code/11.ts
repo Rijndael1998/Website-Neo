@@ -28,11 +28,9 @@ const calculatePaths = (input: number, ttl = 50): number => {
         return calculatePaths(1, ttl - 1);
 
     if (numHasEvenDigits(input)) {
-        // copied from numSplit as to not create and destruct an object as that causes the GC to get cranky
         const valSplitPoint = 10 ** (numLength(input) / 2);
         const valRight = input % valSplitPoint;
-        const valLeft = Math.floor((input - valRight) / valSplitPoint);
-        return calculatePaths(valRight, ttl - 1) + calculatePaths(valLeft, ttl - 1);
+        return calculatePaths(valRight, ttl - 1) + calculatePaths(Math.floor((input - valRight) / valSplitPoint), ttl - 1);
     }
 
     return calculatePaths(input * 2024, ttl - 1);
