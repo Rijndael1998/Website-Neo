@@ -28,8 +28,15 @@ function IncrementState(state: Array<number>, max: number): [state: Array<number
     return [state, false];
 }
 
+const GenerateCombinationsMemo: Map<number, Map<Array<any>, Array<Array<any>>>> = new Map();
+
 // GenerateCombinations(["+", "*"], 2) => [["+", "+"], ["+", "*"], ["*", "+"], ["*", "*"]]
 function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array<T>> {
+    // return early if cached
+    const potentialCombination = GenerateCombinationsMemo.get(length)?.get(choices);
+    if (potentialCombination)
+        return potentialCombination;
+
     const states = MakeStateArray(length);
     const combinations: Array<Array<T>> = [];
 
@@ -39,6 +46,14 @@ function GenerateCombinations<T>(choices: Array<T>, length: number): Array<Array
         done = IncrementState(states, choices.length)[1];
     }
 
+    // memoize if not cached
+    if (!GenerateCombinationsMemo.has(length))
+        GenerateCombinationsMemo.set(length, new Map());
+
+    const lengthMap = GenerateCombinationsMemo.get(length)!;
+
+    if (!lengthMap.has(choices))
+        lengthMap.set(choices, combinations);
 
     return combinations;
 }
@@ -94,7 +109,7 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
         const target = numbers[index].target;
         const numbs = numbers[index].numbers;
 
-        const combinations = GenerateCombinations(part1Ops, numbs.length - 1); 
+        const combinations = GenerateCombinations(part1Ops, numbs.length - 1);
 
         // part 1 calculations
         for (let combinationIndex = 0; combinationIndex < combinations.length; combinationIndex++) {
@@ -117,7 +132,6 @@ export const solution_7: AdventOfCodeSolutionFunction = (input) => {
                 break;
             }
         }
-
     }
 
     return {
