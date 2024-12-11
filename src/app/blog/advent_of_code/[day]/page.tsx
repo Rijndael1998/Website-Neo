@@ -5,5 +5,6 @@ export type AdventOfCodeDaysProps = {
 };
 
 export default async function AdventOfCodeDays({ params }: AdventOfCodeDaysProps) {
-    return <Solution day={Number((await params).day)}/>
+    const day = Number((await params).day);
+    return <Solution day={day}/>
 }

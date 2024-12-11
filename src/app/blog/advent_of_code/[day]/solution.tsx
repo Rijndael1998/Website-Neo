@@ -151,13 +151,14 @@ export default function Solution({ day }: SolutionProps) {
                     </Button>
                     <Button
                         onClick={() => setText(initialInput ?? "")}
-                        disabled={isDisabled || initialInput === undefined}
+                        disabled={isDisabled || initialInput === undefined || initialInput == ""}
                         color={"secondary"}>
                         Example input
                     </Button>
                     <Button
                         onClick={getSolution}
-                        disabled={isDisabled}>
+                        disabled={isDisabled}
+                        >
                         Solve
                     </Button>
                 </Stack>
