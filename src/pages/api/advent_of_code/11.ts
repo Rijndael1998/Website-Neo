@@ -21,6 +21,7 @@ export const solution_11: AdventOfCodeSolutionFunction = (input) => {
         return result;
     }
 
+    // return the number of stones that the number will produce after a given amount of blinks
     const calculatePaths = (input: number, ttl = 25): number => {
         // check and get stored value from memo
         const memo = pathMemo.get(input)?.get(ttl);
