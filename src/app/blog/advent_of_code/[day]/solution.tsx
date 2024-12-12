@@ -1,13 +1,10 @@
 "use client";
 
 import { AdventOfCodeRequest, PuzzleSolution } from "@/pages/api/solve";
-import { Button, Container, Divider, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
 import { FileRequest } from "@/pages/api/getInput";
-import Link from "next/link";
-import {  ifTruthyElse } from "@/components/reactUtils";
-import { DAY } from "../day";
 
 export type SolutionProps = {
     day: number,
@@ -93,78 +90,40 @@ export default function Solution({ day }: SolutionProps) {
         setAwaitingAPI(false);
     }
 
-    return <Container maxWidth="md">
+    return <>
         <Stack gap={1}>
-            <Typography variant="h1">{`Day ${day} solution`}</Typography>
-
-            <Divider orientation="horizontal" />
-            <Stack
-                direction={"row"}
-                spacing={2}
-                divider={<Divider orientation="vertical" flexItem />}
-                sx={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}>
-                <Typography>
-                    {
-                        ifTruthyElse(
-                            day - 1 > 0,
-                            <Link href={`./${day - 1}`}>Previous</Link>,
-                            "Previous"
-                        )
-                    }
-                </Typography>
-                <Typography>
-                    <Link href={"."}>Return to list</Link>
-                </Typography>
-                <Typography>
-                    {
-                        ifTruthyElse(
-                            day + 1 <= DAY,
-                            <Link href={`./${day + 1}`}>Next</Link>,
-                            "Next"
-                        )
-                    }
-                </Typography>
-            </Stack>
-            <Divider orientation="horizontal" />
-
-            <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
-
-            <Stack gap={1}>
-                <TextField
-                    label="Puzzle input"
-                    variant="filled"
-                    multiline
-                    sx={{ maxHeight: "5em", overflow: "scroll" }}
-                    value={text}
-                    onChange={(ev) => setText(ev.target.value)}
+            <TextField
+                label="Puzzle input"
+                variant="filled"
+                multiline
+                sx={{ maxHeight: "5em", overflow: "scroll" }}
+                value={text}
+                onChange={(ev) => setText(ev.target.value)}
+                disabled={isDisabled}
+            />
+            <Stack direction="row" gap={2}>
+                <Button
+                    onClick={() => setText("")}
                     disabled={isDisabled}
-                />
-                <Stack direction="row" gap={2}>
-                    <Button
-                        onClick={() => setText("")}
-                        disabled={isDisabled}
-                        color={"secondary"}>
-                        Clear Data
-                    </Button>
-                    <Button
-                        onClick={() => setText(initialInput ?? "")}
-                        disabled={isDisabled || initialInput === undefined}
-                        color={"secondary"}>
-                        Example input
-                    </Button>
-                    <Button
-                        onClick={getSolution}
-                        disabled={isDisabled}>
-                        Solve
-                    </Button>
-                </Stack>
+                    color={"secondary"}>
+                    Clear Data
+                </Button>
+                <Button
+                    onClick={() => setText(initialInput ?? "")}
+                    disabled={isDisabled || initialInput === undefined || initialInput == ""}
+                    color={"secondary"}>
+                    Example input
+                </Button>
+                <Button
+                    onClick={getSolution}
+                    disabled={isDisabled}
+                >
+                    Solve
+                </Button>
             </Stack>
-
-            <Typography variant="h2">Solution</Typography>
-            <DisplaySolution solution={solution} />
         </Stack>
-    </Container>
+
+        <Typography variant="h2">Solution</Typography>
+        <DisplaySolution solution={solution} />
+    </>
 }
