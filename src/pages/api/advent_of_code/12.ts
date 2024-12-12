@@ -10,6 +10,24 @@ class Plot {
     constructor(kind: string) {
         this.kind = kind;
     }
+
+    addPoint(point: PlotPoint) {
+        // skip points that are not the right kind
+        if(point.item !== this.kind)
+            return;
+
+        this.points.push(point);
+        point.item = "."; // deactivate point
+
+        // flood fill
+        point.lookAround().forEach(v => this.addPoint(v));
+    }
+
+    getArea() {
+        return this.points.length;
+    }
+
+    
 }
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> {
@@ -18,9 +36,22 @@ class PlotPoint extends LinkedPoint<string, PlotPoint> {
 
 export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     const grid = makeGridFromMultilineString(input).map((v, y) => v.map((v, x) => new PlotPoint(x, y, v, undefined!)));
-    grid.flat().map(v => v.grid = grid);
+    const flatGrid = grid.flat();
+    flatGrid.map(v => v.grid = grid);
 
-    console.log(grid);
+    const plots: Array<Plot> = [];
+    flatGrid.forEach(v => {
+        // skip deactivated item
+        if(v.item == ".")
+            return;
+
+        const plot = new Plot(v.item);
+        plot.addPoint(v);
+        plots.push(plot);
+    });
+
+
+    console.log(plots);
     
     const res = "Test: " + input;
     return {
