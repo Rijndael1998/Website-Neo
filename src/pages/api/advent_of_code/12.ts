@@ -4,7 +4,7 @@ import { Point } from "./utils/structures/point";
 import { makeGridFromMultilineString } from "./utils/utils";
 
 class Plot {
-    points: Array<Point<string>> = [];
+    points: Array<PlotPoint> = [];
     kind: string;
 
     constructor(kind: string) {
@@ -27,14 +27,20 @@ class Plot {
         return this.points.length;
     }
 
+    getPerimeter() {
+        return this.points.reduce<number>((prev, curr) => prev + curr.getPerimeter(), 0);
+    }
 
+    getCost() {
+        return this.getArea() * this.getPerimeter();
+    }
 }
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> { 
     checked = false;
 
     getPerimeter() {
-        
+        return 4 - super.lookAround().filter((v) => v.item == this.item).length;
     }
 }
 
@@ -54,12 +60,11 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-
-    console.log(plots);
+    const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getCost(), 0);
 
     const res = "Test: " + input;
     return {
-        part_1: res,
+        part_1,
         part_2: res,
     }
 }
