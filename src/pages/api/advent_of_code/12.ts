@@ -29,10 +29,6 @@ class Plot {
     getPerimeter() {
         return this.points.reduce<number>((prev, curr) => prev + curr.getPerimeter(), 0);
     }
-
-    getCost() {
-        return this.getArea() * this.getPerimeter();
-    }
 }
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> { 
@@ -59,7 +55,7 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-    const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getCost(), 0);
+    const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
     const res = "Test: " + input;
     return {
