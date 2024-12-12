@@ -20,10 +20,10 @@ export default async function AdventOfCodeDays({ params }: AdventOfCodeDaysProps
 
     const NotFoundElement = ifTruthyElse(!neg,
         <Typography>
-            The solution to this problem is currently in construction. A+ for effort, though 😅.
+            {"The solution to this problem is currently in construction. A+ for effort, though 😅."}
         </Typography>,
         <Typography>
-            Time doesn't go backwards! 😉
+            {"Time doesn't go backwards! 😉"}
         </Typography>
     );
 
