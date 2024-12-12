@@ -13,11 +13,11 @@ class Plot {
 
     addPoint(point: PlotPoint) {
         // skip points that are not the right kind
-        if (point.item !== this.kind)
+        if (point.checked || point.item !== this.kind)
             return;
 
         this.points.push(point);
-        point.item = "."; // deactivate point
+        point.checked = true; // deactivate point
 
         // flood fill
         point.lookAround().forEach(v => this.addPoint(v));
@@ -30,7 +30,13 @@ class Plot {
 
 }
 
-class PlotPoint extends LinkedPoint<string, PlotPoint> { }
+class PlotPoint extends LinkedPoint<string, PlotPoint> { 
+    checked = false;
+
+    getPerimeter() {
+        
+    }
+}
 
 export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     const grid = makeGridFromMultilineString(input).map((v, y) => v.map((v, x) => new PlotPoint(x, y, v, undefined!)));
