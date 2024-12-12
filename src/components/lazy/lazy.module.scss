@@ -1,4 +1,4 @@
-@import "./../colors";
+@use "./../colors";
 
 .lazy {
     &>* {
@@ -45,7 +45,7 @@
     }
     
     .lazyCaption {
-        color: $text;
+        color: colors.$text;
         font-size: small;
     }
 }

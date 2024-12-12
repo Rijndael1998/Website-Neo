@@ -1,6 +1,9 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 
 export const solution_12: AdventOfCodeSolutionFunction = (input) => {
+    
+
+    
     const res = "Test: " + input;
     return {
         part_1: res,
