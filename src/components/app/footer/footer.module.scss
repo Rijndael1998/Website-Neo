@@ -1,9 +1,9 @@
-@import "./../../vars";
-@import "./../../colors";
+@use "./../../vars";
+@use "./../../colors";
 
 .footer {
     padding: 4ex 4ch;
-    background-color: $secondaryBg;
+    background-color: colors.$secondaryBg;
 
     display: grid;
     grid-template-rows: auto 1fr;
@@ -25,7 +25,7 @@
         column-gap: 2ch;
 
         width: calc(100% - 2em);
-        max-width: calc($pageWidth * 2 - 2em);
+        max-width: calc(vars.$pageWidth * 2 - 2em);
 
         div, a {
             display: flex;
@@ -52,19 +52,19 @@
     }
 }
 
-@media screen and (max-width: $footerBreakXl) {
+@media screen and (max-width: vars.$footerBreakXl) {
     .footer .centre {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media screen and (max-width: $footerBreak) {
+@media screen and (max-width: vars.$footerBreak) {
     .footer .centre {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media screen and (max-width: $footerBreakXs) {
+@media screen and (max-width: vars.$footerBreakXs) {
     .footer .centre {
         grid-template-columns: 1fr;
     }

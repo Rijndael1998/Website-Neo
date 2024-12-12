@@ -1,4 +1,4 @@
-@import "./../../../vars";
+@use "./../../../vars";
 
 .wrapper {
     display: flex;
@@ -37,7 +37,7 @@
     }
 }
 
-@media screen and (max-width: $titleBreak) {
+@media screen and (max-width: vars.$titleBreak) {
     .span {
         &:not(:nth-child(1)) {
             font-size: 0px;
@@ -45,7 +45,7 @@
     }
 }
 
-@media screen and (max-width: $titleBreakNone) {
+@media screen and (max-width: vars.$titleBreakNone) {
     .span {
         &:nth-child(1) {
             font-size: 0px;

@@ -1,4 +1,4 @@
-@import "./../../vars";
+@use "./../../vars";
 
 .nav,
 .menu {
@@ -8,12 +8,12 @@
     padding: 0.5ch 2ch;
     background: linear-gradient(90deg, transparent 0%, black 25%);
 
+    overflow: hidden;
+
     &,
     & a {
         transition: all ease 0.4s;
     }
-
-    overflow: hidden;
 }
 
 .nav {
@@ -44,7 +44,7 @@
     }
 }
 
-@media screen and (max-width: $navBreak) {
+@media screen and (max-width: vars.$navBreak) {
     .nav {
         padding-left: 0;
         padding-right: 0;

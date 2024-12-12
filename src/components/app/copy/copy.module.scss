@@ -1,4 +1,4 @@
-@import "./../../colors";
+@use "./../../colors";
 
 .toolTipFix {
     background-color: red !important;
@@ -30,7 +30,7 @@
         }
 
         &.copied {
-            color: $accent;
+            color: colors.$accent;
             transform: rotateY(360deg) translateY(-50%);
         }
     }
