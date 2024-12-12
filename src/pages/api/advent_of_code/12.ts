@@ -1,6 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { LinkedPoint } from "./utils/structures/linkedPoint";
-import { Point } from "./utils/structures/point";
 import { makeGridFromMultilineString } from "./utils/utils";
 
 class Plot {
