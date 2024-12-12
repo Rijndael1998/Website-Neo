@@ -31,7 +31,8 @@ export default async function handler(
 
     let solution: AdventOfCodeSolution;
     try {
-        solution = solutions[Number(request.day)](String(request.message));
+        const solutionNumber = Number(request.day);
+        solution = solutions[solutionNumber](String(request.message));
 
     } catch (e) {
         res.status(500).json({ error: String(e), hasError: true });
