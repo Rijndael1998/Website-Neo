@@ -47,7 +47,7 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     const plots: Array<Plot> = [];
     flatGrid.forEach(v => {
         // skip deactivated item
-        if (v.item == ".")
+        if (v.checked)
             return;
 
         const plot = new Plot(v.item);
@@ -57,10 +57,9 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
-    const res = "Test: " + input;
     return {
         part_1,
-        part_2: res,
+        part_2: "",
     }
 }
 
