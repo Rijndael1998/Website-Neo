@@ -13,7 +13,7 @@ class Plot {
 
     addPoint(point: PlotPoint) {
         // skip points that are not the right kind
-        if(point.item !== this.kind)
+        if (point.item !== this.kind)
             return;
 
         this.points.push(point);
@@ -27,12 +27,10 @@ class Plot {
         return this.points.length;
     }
 
-    
-}
-
-class PlotPoint extends LinkedPoint<string, PlotPoint> {
 
 }
+
+class PlotPoint extends LinkedPoint<string, PlotPoint> { }
 
 export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     const grid = makeGridFromMultilineString(input).map((v, y) => v.map((v, x) => new PlotPoint(x, y, v, undefined!)));
@@ -42,7 +40,7 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     const plots: Array<Plot> = [];
     flatGrid.forEach(v => {
         // skip deactivated item
-        if(v.item == ".")
+        if (v.item == ".")
             return;
 
         const plot = new Plot(v.item);
@@ -52,7 +50,7 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
 
 
     console.log(plots);
-    
+
     const res = "Test: " + input;
     return {
         part_1: res,
