@@ -38,9 +38,14 @@ class Plot {
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> { 
     checked = false;
+    private perimeterMemo?: number;
 
     getPerimeter() {
-        return 4 - super.lookAround().filter((v) => v.item == this.item).length;
+        if(this.perimeterMemo)
+            return this.perimeterMemo;
+
+        this.perimeterMemo = 4 - super.lookAround().filter((v) => v.item == this.item).length;
+        return this.perimeterMemo;
     }
 }
 
