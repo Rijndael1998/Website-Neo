@@ -13,8 +13,16 @@ export class Vector {
         return new Vector(this.x + b.x, this.y + b.y);
     }
 
+    sub(b: Vector) {
+        return new Vector(this.x - b.x, this.y - b.y);
+    }
+
     mul(b: Vector) {
         return new Vector(this.x * b.x, this.y * b.y);
+    }
+
+    div(b: Vector) {
+        return new Vector(this.x / b.x, this.y / b.y);
     }
 
     toArray(): [x: number, y: number] {
