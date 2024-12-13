@@ -60,7 +60,7 @@ const prettyPrint = (points: Array<Vector>) => {
     const grid = MakeEmpty2DArray(xL + 1, yL + 1).map(r => r.map(_ => " "));
 
     points.forEach((v) => {
-        grid[v.y - minY][v.x - minX] = "*";
+        grid[v.y - minY][v.x - minX] = "█";
     });
 
     return grid.reduce((prev, curr) => `${prev}\n${curr.reduce((prev, curr) => `${prev}${curr}`, "")}`, "");
@@ -82,7 +82,7 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-    plots.forEach(plot => console.log(plot.kind, prettyPrint(plot.getPointsOnEdges().map(v => v.pos))));
+    plots.forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
