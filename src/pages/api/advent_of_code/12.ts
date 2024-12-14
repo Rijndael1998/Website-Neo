@@ -34,6 +34,10 @@ class Plot {
     getPointsOnEdges() {
         return this.points.filter(v => v.getPerimeter() > 0);
     }
+
+    lineSearch(point: PlotPoint, direction: Vector) {
+
+    }
 }
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> { 
@@ -82,9 +86,24 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-    plots.forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
+    plots.forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.getPointsOnEdges().map(v => v.pos))));
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
+
+    let vector = new Vector(1, 0);
+    console.log(vector);
+
+    vector = vector.rotateRight();
+    console.log(vector);
+
+    vector = vector.rotateRight();
+    console.log(vector);
+
+    vector = vector.rotateRight();
+    console.log(vector);
+
+    vector = vector.rotateRight();
+    console.log(vector);
 
     return {
         part_1,

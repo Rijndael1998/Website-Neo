@@ -25,6 +25,10 @@ export class Vector {
         return new Vector(this.x / b.x, this.y / b.y);
     }
 
+    rotateRight() {
+        return new Vector(this.y, -this.x);
+    }
+
     toArray(): [x: number, y: number] {
         return [this.x, this.y];
     }

@@ -16,6 +16,22 @@ export const PointDirections = [
     PointDirectionsVectors.LEFT,
 ];
 
+export const PointAllDirectionsVectors = {
+    ...PointDirectionsVectors,
+    UP_RIGHT: PointDirectionsVectors.UP.add(PointDirectionsVectors.RIGHT),
+    UP_LEFT: PointDirectionsVectors.UP.add(PointDirectionsVectors.LEFT),
+    DOWN_RIGHT: PointDirectionsVectors.DOWN.add(PointDirectionsVectors.RIGHT),
+    DOWN_LEFT: PointDirectionsVectors.DOWN.add(PointDirectionsVectors.LEFT),
+}
+
+export const PointAllDirections = [
+    ...PointDirections,
+    PointAllDirectionsVectors.UP_RIGHT,
+    PointAllDirectionsVectors.UP_LEFT,
+    PointAllDirectionsVectors.DOWN_RIGHT,
+    PointAllDirectionsVectors.DOWN_LEFT,
+];
+
 export class LinkedPoint<T, P extends LinkedPoint<T, P>> extends Point<T> {
     grid: Grid<P>;
 
