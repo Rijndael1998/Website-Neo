@@ -34,6 +34,10 @@ export class Vector {
         return this.rotateRight().rotateRight().rotateRight();
     }
 
+    compare(b: Vector) {
+        return this.x == b.x && this.y == b.y;
+    }
+
     toArray(): [x: number, y: number] {
         return [this.x, this.y];
     }
