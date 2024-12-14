@@ -49,15 +49,19 @@ class Plot {
             return 1; // means there's no more elements
 
 
-        if(point.item == point) {
-            
-        }
-
         // get the next element
         const nextElement = point.look(direction);
 
+        // get the element perpendicular to the current one.
+        const normalElement = point.look(direction.rotateLeft());
+
+        
+        const needToTurn = 
+            !nextElement || point.item !== nextElement.item || // the next element differs from ours
+            normalElement && (normalElement.item == point.item) // the normal got flooded by itself so it needs to turn
+
         // the element is correct, continue in that direction
-        if(nextElement && point.item == nextElement.item)
+        if(!needToTurn)
             return this.lineSearch(nextElement, direction, pointList);
 
 
