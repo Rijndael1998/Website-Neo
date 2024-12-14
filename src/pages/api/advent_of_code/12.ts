@@ -51,8 +51,12 @@ class PlotPoint extends LinkedPoint<string, PlotPoint> {
     getNormals() {
         return PointDirections.map((v) => {
             const otherPoint = this.look(v);
-            if(!otherPoint || otherPoint.item == this.item)
-                return;
+
+            if(!otherPoint)
+                return v;
+
+            if(otherPoint.item == this.item)
+                return undefined;
 
             return v;
         }).filter((v) => v !== undefined);
@@ -92,10 +96,12 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-    plots.forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
+    plots.filter((_, i) => i == 0).forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
+    const testItem = plots[0].points[0];
+    console.log(testItem.item, testItem.pos, testItem.getNormals());
 
     return {
         part_1,
