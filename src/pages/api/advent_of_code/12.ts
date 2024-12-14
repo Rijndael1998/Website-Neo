@@ -1,5 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
-import { LinkedPoint } from "./utils/structures/linkedPoint";
+import { LinkedPoint, PointDirections } from "./utils/structures/linkedPoint";
 import { Vector } from "./utils/structures/vector";
 import { MakeEmpty2DArray, makeGridFromMultilineString } from "./utils/utils";
 
@@ -34,38 +34,6 @@ class Plot {
     getPointsOnEdges() {
         return this.points.filter(v => v.getPerimeter() > 0);
     }
-
-    lineSearch(point?: PlotPoint, direction?: Vector, pointList?: Array<PlotPoint>): number {
-        if(!point || !direction || !pointList) {
-            const edges = [...this.points];
-            return this.lineSearch(edges[0], new Vector(1, 0), edges);
-        }
-
-        // remove point from list
-        const pointIndex = pointList.indexOf(point);
-        if(pointIndex != -1)
-            pointList.splice(pointIndex, 1);
-        else 
-            return 1; // means there's no more elements
-
-
-        // get the next element
-        const nextElement = point.look(direction);
-
-        // get the element perpendicular to the current one.
-        const normalElement = point.look(direction.rotateLeft());
-
-        
-        const needToTurn = 
-            !nextElement || point.item !== nextElement.item || // the next element differs from ours
-            normalElement && (normalElement.item == point.item) // the normal got flooded by itself so it needs to turn
-
-        // the element is correct, continue in that direction
-        if(!needToTurn)
-            return this.lineSearch(nextElement, direction, pointList);
-
-
-    }
 }
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> { 
@@ -78,6 +46,16 @@ class PlotPoint extends LinkedPoint<string, PlotPoint> {
 
         this.perimeterMemo = 4 - super.lookAround().filter((v) => v.item == this.item).length;
         return this.perimeterMemo;
+    }
+
+    getNormals() {
+        return PointDirections.map((v) => {
+            const otherPoint = this.look(v);
+            if(!otherPoint || otherPoint.item == this.item)
+                return;
+
+            return v;
+        }).filter((v) => v !== undefined);
     }
 }
 
