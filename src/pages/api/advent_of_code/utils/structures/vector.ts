@@ -29,6 +29,11 @@ export class Vector {
         return new Vector(this.y, -this.x);
     }
 
+    rotateLeft() {
+        // todo: fix this hack
+        return this.rotateRight().rotateRight().rotateRight();
+    }
+
     toArray(): [x: number, y: number] {
         return [this.x, this.y];
     }

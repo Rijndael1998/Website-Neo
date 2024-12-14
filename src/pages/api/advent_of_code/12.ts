@@ -35,7 +35,31 @@ class Plot {
         return this.points.filter(v => v.getPerimeter() > 0);
     }
 
-    lineSearch(point: PlotPoint, direction: Vector) {
+    lineSearch(point?: PlotPoint, direction?: Vector, pointList?: Array<PlotPoint>): number {
+        if(!point || !direction || !pointList) {
+            const edges = [...this.points];
+            return this.lineSearch(edges[0], new Vector(1, 0), edges);
+        }
+
+        // remove point from list
+        const pointIndex = pointList.indexOf(point);
+        if(pointIndex != -1)
+            pointList.splice(pointIndex, 1);
+        else 
+            return 1; // means there's no more elements
+
+
+        if(point.item == point) {
+            
+        }
+
+        // get the next element
+        const nextElement = point.look(direction);
+
+        // the element is correct, continue in that direction
+        if(nextElement && point.item == nextElement.item)
+            return this.lineSearch(nextElement, direction, pointList);
+
 
     }
 }
@@ -86,24 +110,10 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-    plots.forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.getPointsOnEdges().map(v => v.pos))));
+    plots.forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
-    let vector = new Vector(1, 0);
-    console.log(vector);
-
-    vector = vector.rotateRight();
-    console.log(vector);
-
-    vector = vector.rotateRight();
-    console.log(vector);
-
-    vector = vector.rotateRight();
-    console.log(vector);
-
-    vector = vector.rotateRight();
-    console.log(vector);
 
     return {
         part_1,
