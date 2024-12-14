@@ -27,9 +27,9 @@ class Plot {
         point.checked = true; // deactivate point
 
         this.maxX = Math.max(point.pos.x, this.maxX);
-        this.maxY = Math.max(point.pos.y, this.maxY); 
-        this.minX = Math.min(point.pos.x, this.minX); 
-        this.minY = Math.min(point.pos.y, this.minY); 
+        this.maxY = Math.max(point.pos.y, this.maxY);
+        this.minX = Math.min(point.pos.x, this.minX);
+        this.minY = Math.min(point.pos.y, this.minY);
 
         // flood fill
         point.lookAround().forEach(v => this.addPoint(v));
@@ -49,11 +49,33 @@ class Plot {
 
     getLines() {
         let count = 0;
-        let looking = true;
 
-        for(let y = this.minY; y <= this.maxY; y++) {
-            for(let x = this.minX; x <= this.maxX; x++) {
+        // only true if the current element is not in a line
+        let seekingNextValidElement = true;
+
+        for (let y = this.minY; y <= this.maxY; y++) {
+            for (let x = this.minX; x <= this.maxX; x++) {
                 const point = this.grid[y][x];
+                const valid = point.item == this.kind;
+
+                if (seekingNextValidElement && valid) {
+                    count++;
+                    seekingNextValidElement = false;
+                    continue;
+                }
+
+                if (seekingNextValidElement && !valid) {
+                    continue;
+                }
+
+                if (!seekingNextValidElement && valid) {
+                    continue;
+                }
+
+                if (!seekingNextValidElement && !valid) {
+                    seekingNextValidElement = false;
+                    continue;
+                }
             }
         }
 
