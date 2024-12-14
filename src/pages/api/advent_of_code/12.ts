@@ -7,6 +7,11 @@ class Plot {
     points: Array<PlotPoint> = [];
     kind: string;
 
+    minX = Number.POSITIVE_INFINITY;
+    minY = Number.POSITIVE_INFINITY;
+    maxX = Number.NEGATIVE_INFINITY;
+    maxY = Number.NEGATIVE_INFINITY;
+
     constructor(kind: string) {
         this.kind = kind;
     }
@@ -18,6 +23,11 @@ class Plot {
 
         this.points.push(point);
         point.checked = true; // deactivate point
+
+        this.maxX = Math.max(point.pos.x, this.maxX);
+        this.maxY = Math.max(point.pos.y, this.maxY); 
+        this.minX = Math.min(point.pos.x, this.minX); 
+        this.minY = Math.min(point.pos.y, this.minY); 
 
         // flood fill
         point.lookAround().forEach(v => this.addPoint(v));
@@ -34,14 +44,16 @@ class Plot {
     getPointsOnEdges() {
         return this.points.filter(v => v.getPerimeter() > 0);
     }
+
+    
 }
 
-class PlotPoint extends LinkedPoint<string, PlotPoint> { 
+class PlotPoint extends LinkedPoint<string, PlotPoint> {
     checked = false;
     private perimeterMemo?: number;
 
     getPerimeter() {
-        if(this.perimeterMemo)
+        if (this.perimeterMemo)
             return this.perimeterMemo;
 
         this.perimeterMemo = 4 - super.lookAround().filter((v) => v.item == this.item).length;
@@ -52,10 +64,10 @@ class PlotPoint extends LinkedPoint<string, PlotPoint> {
         return PointDirections.map((v) => {
             const otherPoint = this.look(v);
 
-            if(!otherPoint)
+            if (!otherPoint)
                 return v;
 
-            if(otherPoint.item == this.item)
+            if (otherPoint.item == this.item)
                 return undefined;
 
             return v;
@@ -96,12 +108,15 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
+    console.log(plots[0]);
+
     plots.filter((_, i) => i == 0).forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
-    const testItem = plots[0].points[0];
-    console.log(testItem.item, testItem.pos, testItem.getNormals());
+    plots[0].points.forEach(testItem => {
+        console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""));
+    });
 
     return {
         part_1,
