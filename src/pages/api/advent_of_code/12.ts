@@ -5,6 +5,7 @@ import { MakeEmpty2DArray, makeGridFromMultilineString } from "./utils/utils";
 
 class Plot {
     points: Array<PlotPoint> = [];
+    grid: Array<Array<PlotPoint>>;
     kind: string;
 
     minX = Number.POSITIVE_INFINITY;
@@ -12,8 +13,9 @@ class Plot {
     maxX = Number.NEGATIVE_INFINITY;
     maxY = Number.NEGATIVE_INFINITY;
 
-    constructor(kind: string) {
+    constructor(kind: string, grid: Array<Array<PlotPoint>>) {
         this.kind = kind;
+        this.grid = grid;
     }
 
     addPoint(point: PlotPoint) {
@@ -45,7 +47,18 @@ class Plot {
         return this.points.filter(v => v.getPerimeter() > 0);
     }
 
-    
+    getLines() {
+        let count = 0;
+        let looking = true;
+
+        for(let y = this.minY; y <= this.maxY; y++) {
+            for(let x = this.minX; x <= this.maxX; x++) {
+                const point = this.grid[y][x];
+            }
+        }
+
+        return count;
+    }
 }
 
 class PlotPoint extends LinkedPoint<string, PlotPoint> {
@@ -103,7 +116,7 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         if (v.checked)
             return;
 
-        const plot = new Plot(v.item);
+        const plot = new Plot(v.item, grid);
         plot.addPoint(v);
         plots.push(plot);
     });
