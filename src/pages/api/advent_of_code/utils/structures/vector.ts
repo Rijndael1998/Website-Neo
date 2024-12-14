@@ -38,6 +38,10 @@ export class Vector {
         return this.x == b.x && this.y == b.y;
     }
 
+    duplicate() {
+        return new Vector(...this.toArray());
+    }
+
     toArray(): [x: number, y: number] {
         return [this.x, this.y];
     }
