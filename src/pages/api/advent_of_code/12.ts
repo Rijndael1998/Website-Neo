@@ -13,6 +13,8 @@ class Plot {
     maxX = Number.NEGATIVE_INFINITY;
     maxY = Number.NEGATIVE_INFINITY;
 
+    pointsByNormal?: Map<Vector, Array<PlotPoint>>;
+
     constructor(kind: string, grid: Array<Array<PlotPoint>>) {
         this.kind = kind;
         this.grid = grid;
@@ -50,34 +52,16 @@ class Plot {
     getLines() {
         let count = 0;
 
-        // only true if the current element is not in a line
-        let seekingNextValidElement = true;
+        if (!this.pointsByNormal)
+            this.pointsByNormal = new Map<Vector, Array<PlotPoint>>();
 
-        for (let y = this.minY; y <= this.maxY; y++) {
-            for (let x = this.minX; x <= this.maxX; x++) {
-                const point = this.grid[y][x];
-                const valid = point.item == this.kind;
+        this.points.forEach((v) => {
+            const normals = v.getNormals();
+            if(normals.length == 0)
+                return;
 
-                if (seekingNextValidElement && valid) {
-                    count++;
-                    seekingNextValidElement = false;
-                    continue;
-                }
-
-                if (seekingNextValidElement && !valid) {
-                    continue;
-                }
-
-                if (!seekingNextValidElement && valid) {
-                    continue;
-                }
-
-                if (!seekingNextValidElement && !valid) {
-                    seekingNextValidElement = false;
-                    continue;
-                }
-            }
-        }
+            
+        });
 
         return count;
     }
