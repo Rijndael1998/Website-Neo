@@ -1,7 +1,7 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { LinkedPoint, PointDirections } from "./utils/structures/linkedPoint";
 import { Vector } from "./utils/structures/vector";
-import { MakeEmpty2DArray, makeGridFromMultilineString } from "./utils/utils";
+import { MakeEmpty2DArray, MakeEmptyArray, makeGridFromMultilineString } from "./utils/utils";
 
 class Plot {
     points: Array<PlotPoint> = [];
@@ -50,7 +50,30 @@ class Plot {
     }
 
     getLines() {
-        return 0;
+        let lines = 0;
+
+        const check: Array<[plot: PlotPoint, normal: Vector]> = [];
+
+        this.getPointsOnEdges().forEach((plot) => {
+            plot.getNormals().forEach(v => check.push([plot, v]))
+        });
+
+        for (let checkIndex = 0; checkIndex < check.length; checkIndex++) {
+            lines++;
+            const [point, normal] = check[checkIndex];
+            // remove every plot
+            point.walkAmongNormal(normal).forEach(plot => {
+                // remove plot
+                for (let findCheckIndex = 0; findCheckIndex < check.length; findCheckIndex++) {
+                    if(check[findCheckIndex][0] == plot && check[findCheckIndex][1] == normal) {
+                        check.splice(findCheckIndex, 1);
+                        break;
+                    }
+                }
+            })
+        }
+
+        return lines;
     }
 }
 
@@ -142,12 +165,12 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
     plots[0].points.forEach(testItem => {
-        console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""), testItem.walkAmongNormal(new Vector(0, -1)));
+        console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""));
     });
 
     return {
         part_1,
-        part_2: 0,
+        part_2: plots[0].getLines(),
     }
 }
 
