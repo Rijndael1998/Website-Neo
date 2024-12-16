@@ -55,12 +55,17 @@ class Plot {
         if (!this.pointsByNormal)
             this.pointsByNormal = new Map<Vector, Array<PlotPoint>>();
 
-        this.points.forEach((v) => {
-            const normals = v.getNormals();
+        this.points.forEach((point) => {
+            const normals = point.getNormals();
             if(normals.length == 0)
                 return;
 
-            
+            normals.forEach(normal => {
+                if(!this.pointsByNormal!.has(normal))
+                    this.pointsByNormal!.set(normal, []);
+
+                this.pointsByNormal!.get(normal)!.push(point);
+            });
         });
 
         return count;
@@ -136,6 +141,9 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     plots[0].points.forEach(testItem => {
         console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""));
     });
+
+    plots[0].getLines();
+    console.log(plots[0].pointsByNormal!);
 
     return {
         part_1,
