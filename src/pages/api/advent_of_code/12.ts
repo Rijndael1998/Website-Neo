@@ -50,69 +50,7 @@ class Plot {
     }
 
     getLines() {
-        if (!this.pointsByNormal)
-            this.pointsByNormal = new Map<Vector, Array<PlotPoint>>();
-
-        this.points.forEach((point) => {
-            const normals = point.getNormals();
-            if (normals.length == 0)
-                return;
-
-            normals.forEach(normal => {
-                if (!this.pointsByNormal!.has(normal))
-                    this.pointsByNormal!.set(normal, []);
-
-                this.pointsByNormal!.get(normal)!.push(point);
-            });
-        });
-
-        const origin = new Vector(0, 0);
-
-        let count = 0;
-
-        PointDirections.map((direction) => {
-            // sort the points
-            const points = this.pointsByNormal?.get(direction);
-            if (!points || points.length === 0)
-                return;
-
-            points.sort((a, b) => a.pos.sub(b.pos).mul(direction).manhattanDistance(origin));
-
-            return direction;
-        }).filter(d => d !== undefined).forEach((direction) => {
-            // count all lines
-            const points = [...this.pointsByNormal!.get(direction)!];
-            const lookDirection = direction.rotateLeft();
-            const lookNormal = direction.add(lookDirection);
-
-            count++;
-            do {
-                // remove the point from the list
-                const point = points.splice(0, 1)[0];
-                const next = point.look(lookDirection);
-                const nextNormal = point.look(lookNormal);
-
-                if(next == undefined) {
-                    // no wall
-                    count++;
-                    continue;
-                }
-
-                const nextPointIndex = points.indexOf(next);
-
-                if(nextPointIndex === -1) {
-                    // not continuous
-                    count++;
-                    continue;
-                }
-
-                if(nextNormal?.item != this.kind)
-                    continue;
-
-            } while(points.length > 0);
-        });
-
-        return count;
+        return 0;
     }
 }
 
@@ -140,6 +78,27 @@ class PlotPoint extends LinkedPoint<string, PlotPoint> {
 
             return v;
         }).filter((v) => v !== undefined);
+    }
+
+    walkAmongNormal(normal: Vector) {
+        const left = normal.rotateLeft();
+        const right = normal.rotateRight();
+
+        let leftElement = this.look(left);
+        let rightElement = this.look(right);
+        const line: Array<PlotPoint> = [this];
+
+        while (leftElement && leftElement.item == this.item && leftElement.look(normal)?.item !== this.item) {
+            line.push(leftElement);
+            leftElement = leftElement.look(left);
+        }
+
+        while (rightElement && rightElement.item == this.item && rightElement.look(normal)?.item !== this.item) {
+            line.push(rightElement);
+            rightElement = rightElement.look(right);
+        }
+
+        return line;
     }
 }
 
@@ -176,24 +135,19 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         plots.push(plot);
     });
 
-    console.log(plots[0]);
+    // console.log(plots[0]);
 
     plots.filter((_, i) => i == 0).forEach(plot => console.log("\n\n", plot.kind, prettyPrint(plot.points.map(v => v.pos))));
 
     const part_1 = plots.reduce<number>((prev, curr) => prev + curr.getArea() * curr.getPerimeter(), 0);
 
     plots[0].points.forEach(testItem => {
-        console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""));
+        console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""), testItem.walkAmongNormal(new Vector(0, -1)));
     });
-
-    const part_2 = plots[0].getLines();
-    PointDirections.forEach(direction =>
-        console.log(direction, plots[0].pointsByNormal?.get(direction)?.map(p => p.pos))
-    );
 
     return {
         part_1,
-        part_2,
+        part_2: 0,
     }
 }
 
