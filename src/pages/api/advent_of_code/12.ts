@@ -57,15 +57,24 @@ class Plot {
 
         this.points.forEach((point) => {
             const normals = point.getNormals();
-            if(normals.length == 0)
+            if (normals.length == 0)
                 return;
 
             normals.forEach(normal => {
-                if(!this.pointsByNormal!.has(normal))
+                if (!this.pointsByNormal!.has(normal))
                     this.pointsByNormal!.set(normal, []);
 
                 this.pointsByNormal!.get(normal)!.push(point);
             });
+        });
+
+        // sort the points
+        PointDirections.forEach((direction) => {
+            const points = this.pointsByNormal?.get(direction);
+            if (!points)
+                return;
+
+            points.sort((a, b) => a.pos.sub(b.pos).mul(direction).manhattanDistance(new Vector(0, 0)));
         });
 
         return count;
@@ -143,7 +152,9 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
     });
 
     plots[0].getLines();
-    console.log(plots[0].pointsByNormal!);
+    PointDirections.forEach(direction =>
+        console.log(direction, plots[0].pointsByNormal?.get(direction)?.map(p => p.pos))
+    );
 
     return {
         part_1,
