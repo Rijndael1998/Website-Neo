@@ -50,8 +50,6 @@ class Plot {
     }
 
     getLines() {
-        let count = 0;
-
         if (!this.pointsByNormal)
             this.pointsByNormal = new Map<Vector, Array<PlotPoint>>();
 
@@ -68,13 +66,50 @@ class Plot {
             });
         });
 
-        // sort the points
-        PointDirections.forEach((direction) => {
+        const origin = new Vector(0, 0);
+
+        let count = 0;
+
+        PointDirections.map((direction) => {
+            // sort the points
             const points = this.pointsByNormal?.get(direction);
-            if (!points)
+            if (!points || points.length === 0)
                 return;
 
-            points.sort((a, b) => a.pos.sub(b.pos).mul(direction).manhattanDistance(new Vector(0, 0)));
+            points.sort((a, b) => a.pos.sub(b.pos).mul(direction).manhattanDistance(origin));
+
+            return direction;
+        }).filter(d => d !== undefined).forEach((direction) => {
+            // count all lines
+            const points = [...this.pointsByNormal!.get(direction)!];
+            const lookDirection = direction.rotateLeft();
+            const lookNormal = direction.add(lookDirection);
+
+            count++;
+            do {
+                // remove the point from the list
+                const point = points.splice(0, 1)[0];
+                const next = point.look(lookDirection);
+                const nextNormal = point.look(lookNormal);
+
+                if(next == undefined) {
+                    // no wall
+                    count++;
+                    continue;
+                }
+
+                const nextPointIndex = points.indexOf(next);
+
+                if(nextPointIndex === -1) {
+                    // not continuous
+                    count++;
+                    continue;
+                }
+
+                if(nextNormal?.item != this.kind)
+                    continue;
+
+            } while(points.length > 0);
         });
 
         return count;
@@ -151,14 +186,14 @@ export const solution_12: AdventOfCodeSolutionFunction = (input) => {
         console.log(testItem.item, testItem.pos, testItem.getNormals().reduce<string>((prev, curr) => prev + ` (${curr.x},${curr.y})`, ""));
     });
 
-    plots[0].getLines();
+    const part_2 = plots[0].getLines();
     PointDirections.forEach(direction =>
         console.log(direction, plots[0].pointsByNormal?.get(direction)?.map(p => p.pos))
     );
 
     return {
         part_1,
-        part_2: "",
+        part_2,
     }
 }
 
