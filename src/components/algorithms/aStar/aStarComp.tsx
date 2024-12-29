@@ -122,16 +122,6 @@ export default function AStarComponent() {
     }
 
     const smoothOperator = { "&, *": { transition: "all 0.5s ease" } };
-
-    const styleCallback = (x: number, y: number): CSSProperties | void => {
-        return {};
-
-        // if(!extraStyle)
-        //     return;
-
-        // return extraStyle[y][x];
-    }
-
     const reason = (canStepReason && canStepReason[0]) ?? "All ok! Ready to step."
     const preciseDistance = (canStepReason && canStepReason.length > 1) ? canStepReason[1] : undefined;
     const distance = preciseDistance !== undefined ? Math.round(preciseDistance * 10) / 10 : undefined;
@@ -174,7 +164,7 @@ export default function AStarComponent() {
 
         <Container {...containerProps}>
             <Paper {...paperProps}>
-                <Grid className={styles.grid} state={state} extraStyleFunction={styleCallback} callback={callback} />
+                <Grid className={styles.grid} state={state} callback={callback} />
             </Paper>
         </Container>
 
