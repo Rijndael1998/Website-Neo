@@ -1,6 +1,6 @@
 import { GroupPreviewContent } from "@/components/group/_groupTypes";
 import image from "./opengraph-image.png";
-import { metadata } from "./page";
+import { metadata } from "./page.mdx";
 import { preURL } from "../consts";
 
 export const oldWebsite: GroupPreviewContent = {

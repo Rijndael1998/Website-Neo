@@ -1,0 +1,60 @@
+import Lazy from "@/components/lazy/_lazy";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import Link from "next/link";
+
+import old_website from "./opengraph-image.png";
+import old_website_low from "./images/LibreOfficeWriter.png";
+import old_website_err from "./images/Errors.png";
+
+export const metadata = {
+    title: "Python Generated SPA",
+    description: "My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy.",
+};
+
+# {metadata.title}
+<LazyLocalImage src={old_website} />
+
+My old website was written to be completely open-source. It creates a Single Page Application which can be compressed and downloaded for an offline copy.
+
+The program then creates 3 separate variations of the SPA.
+
+The first is a normal copy, which simply links to the resources, and cannot be used offline.
+
+The second copy is a modified versions for people who don't want to use JavaScript or for screen readers or "Reader Mode" in browsers.
+
+The downloadable copy is a HTML file that contains all of the images, style sheets, scripts and 
+some external resources, but not all of them, as linking everything would make the file balloon 
+in size.
+
+[Here's a sample](/fun/website/down.html) of the old website. Please note that none of the links pointing to <code>baldy.ga</code> will work. You can right click and save as.
+
+## Data URIs
+
+[Data URIs](https://css-tricks.com/data-uris/) (Uniform Resource Identifiers) are a web standard used to embed data in-line in web documents as a Uniform Resource Identifier (URI) scheme. Rather than linking to a file stored elsewhere with a URL, a Data URI allows you to include the data itself directly within your HTML, CSS, or JavaScript code. This can be any type of data—notably images, fonts, and other media files. Data URIs are represented as a string of Base64-encoded data.
+
+However, it is not always a very good idea to use URIs everywhere.
+
+One of the features of [HTTP/2](https://medium.com/@factoryhr/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b) and HTTP/3 is multiplexing, which allows multiple requests to be sent in parallel over a single TCP connection, minimizing resource load and improving performance. When you serve just a single large HTML file, you lose these benefits, limiting the performance enhancements these protocols offer.
+
+However, the main benefit of using URIs for embeds is that my website could no longer exist and you would still have a perfect snapshot of it years later. It also impresses my peers.
+
+## Generation
+
+Another part that is very worth mentioning is that I can generate my pages from the [OpenDocument](https://en.wikipedia.org/wiki/OpenDocument) (<code>.odt</code>) format. This format allows me to write this very document in LibreOffice, where I have spell check and other important tools to help me write.
+
+<LazyLocalImage src={old_website_low} />
+
+This is important because as the technologies will evolve and the tools will evolve, it's important to use something solid to base your website on. In my case, I've decided that it would be the best to base it on an open standard that even [Microsoft Office](https://support.microsoft.com/en-us/office/use-word-to-open-or-save-a-document-in-the-opendocument-text-odt-format-20e5189f-86f8-4d8f-ae74-ea06b7df3b0e) supports. Given this stability and availability, I really don't see this format dying any time soon. I can be certain that it will last a long time. And if it doesn't, I could always find a better format.
+
+I can also generate pages from HTML/HTM and plain text files. This allows for a backup method for generation and more control over the page that will be generated.
+
+## Error Checking
+This project can automatically query [W3's NU validator](https://validator.w3.org/nu/) to find any problems with the program or the content that was used to generate the site.
+
+<LazyLocalImage src={old_website_err} />
+
+Upon completion, the script can automatically send the HTML to the service to be analyzed. The script receives the info/warnings/errors if any are found and displays them, like above. This helps to find any potential errors before they are shipped to the public. This also doubles as a debugger if necessary.
+
+## Limitations
+OpenDocument support is lacking in parsing links and more elaborate features of this file format, such as lists and embedded images.
+
