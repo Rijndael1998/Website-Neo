@@ -4,7 +4,7 @@ import styles from "./styles/aStar.module.scss";
 import colors from "./styles/aStarStyleMap.module.scss";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import Grid from "../grid/_grid";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { GridState } from "../grid/gridState"
 import AStar, { CanContinueReason } from "@/components/algorithms/aStar/_aStar";
 
@@ -13,7 +13,7 @@ import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMa
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import GridItem from "../grid/gridItem/_gridItem";
-import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch, Typography } from "@mui/material";
 import * as React from 'react';
 import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -122,16 +122,6 @@ export default function AStarComponent() {
     }
 
     const smoothOperator = { "&, *": { transition: "all 0.5s ease" } };
-
-    const styleCallback = (x: number, y: number): CSSProperties | void => {
-        return {};
-
-        // if(!extraStyle)
-        //     return;
-
-        // return extraStyle[y][x];
-    }
-
     const reason = (canStepReason && canStepReason[0]) ?? "All ok! Ready to step."
     const preciseDistance = (canStepReason && canStepReason.length > 1) ? canStepReason[1] : undefined;
     const distance = preciseDistance !== undefined ? Math.round(preciseDistance * 10) / 10 : undefined;
@@ -174,7 +164,7 @@ export default function AStarComponent() {
 
         <Container {...containerProps}>
             <Paper {...paperProps}>
-                <Grid className={styles.grid} state={state} extraStyleFunction={styleCallback} callback={callback} />
+                <Grid className={styles.grid} state={state} callback={callback} />
             </Paper>
         </Container>
 
@@ -183,7 +173,7 @@ export default function AStarComponent() {
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                 >
-                    {"Settings and info"}
+                    <Typography>Settings and info</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Card {...defaultCardProps}>
@@ -301,7 +291,7 @@ export default function AStarComponent() {
                     </Card>
                 </AccordionDetails>
             </Accordion>
-            <AStarText/>
+            <AStarText />
         </div>
     </div>
 }

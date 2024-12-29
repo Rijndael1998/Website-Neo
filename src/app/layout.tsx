@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/app/nav/_nav'
 import Title from '@/components/app/header/title/_title'
 import Footer from '@/components/app/footer/_footer'
-import { defaultMetadata } from '@/content/Metadata'
+import { defaultMetadata } from '@/Metadata'
 import { headers } from 'next/headers'
 import { Kanit, Noto_Sans, Noto_Serif, Ubuntu_Mono } from 'next/font/google';
 import { Container } from '@mui/material';

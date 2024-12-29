@@ -1,0 +1,23 @@
+import { FAH, desc } from "./page.preview.tsx";
+import FoldingCount from "@/components/external/foldingAtHome/FoldingCount";
+import logo from "./opengraph-image.png";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+
+export const metadata = {
+    title: FAH.title,
+    description: desc,
+}
+
+# {FAH.title}
+
+<LazyLocalImage src={logo}/>
+
+## What is Folding@Home?
+
+{desc}
+
+## My contributions to research
+I run it through a virtual machine on my server. I have delegated around 50% of my compute power when the virtual machine is running. That's 8 out of 16 threads from my Ryzen 7 1800x CPU. I used to also fold using my graphics cards, however, there's no real support for them in my server software.
+
+<FoldingCount /> I have been donating resources for a long time, since the start of the Covid pandemic, to help in developing medicine. I used to have a different username and a much less powerful computer so I decided to start fresh around the time I first published this website. It felt like a nice change. My current account is [`rijn.dev`](https://stats.foldingathome.org/donor/name/rijn.dev). 
+
