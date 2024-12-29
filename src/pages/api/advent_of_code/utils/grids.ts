@@ -1,4 +1,7 @@
-export const check_coords = (grid: Array<Array<any>>, x: number, y: number) => {
+/**
+ * @returns True if out of bounds
+ */
+export const check_coords = <T>(grid: Array<Array<T>>, x: number, y: number) => {
     return y >= grid.length ||
         y < 0 ||
         x >= grid[y].length ||
@@ -16,12 +19,28 @@ export enum Direction {
     UP_LEFT,
 };
 
+export const DirectDirections = [
+    Direction.UP,
+    Direction.RIGHT,
+    Direction.BOTTOM,
+    Direction.LEFT,
+];
+
+export const DiagonalDirections = [
+    Direction.UP_RIGHT,
+    Direction.UP_LEFT,
+    Direction.BOTTOM_RIGHT,
+    Direction.BOTTOM_LEFT,
+];
+
+export const AllDirections = [...DirectDirections, ...DiagonalDirections].sort();
+
 /**
  * This function should return true if it wants the search function to continue
  */
-export type SearchFindFunction = (currChar: string, x: number, y: number) => boolean;
+export type SearchFindFunction<T> = (currChar: T, x: number, y: number) => boolean;
 
-export type Grid = Array<Array<string>>;
+export type Grid<T> = Array<Array<T>>;
 
 export enum SearchExitReason {
     OUT_OF_BOUNDS,
@@ -29,7 +48,7 @@ export enum SearchExitReason {
     INVALID_DIRECTION,
 }
 
-export const search_direction = (grid: Grid, x: number, y: number, direction: Direction, find: SearchFindFunction): SearchExitReason => {
+export const search_direction = <T>(grid: Grid<T>, x: number, y: number, direction: Direction, find: SearchFindFunction<T>): SearchExitReason => {
     // invalid coords
     if (check_coords(grid, x, y))
         return SearchExitReason.OUT_OF_BOUNDS;
@@ -68,7 +87,7 @@ export const search_direction = (grid: Grid, x: number, y: number, direction: Di
     }
 }
 
-export const gridSearch = (grid: Grid, st: SearchFindFunction): [x: number, y: number] => {
+export const gridSearch = <T>(grid: Grid<T>, st: SearchFindFunction<T>): [x: number, y: number] => {
     for (let y = 0; y < grid.length; y++) {
         const row = grid[y];
         for (let x = 0; x < row.length; x++) {

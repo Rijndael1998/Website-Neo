@@ -20,7 +20,7 @@ const NextDirection = (dir: Direction) => {
 /**
  * @returns true if there are no loops
  */
-const NoLoops = (grid: Grid, x: number, y: number, dir: Direction) => {
+const NoLoops = (grid: Grid<string>, x: number, y: number, dir: Direction) => {
     const visited = new Set<string>();
 
     /**

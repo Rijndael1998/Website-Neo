@@ -1,7 +1,7 @@
 "use client";
 
 import { AdventOfCodeRequest, PuzzleSolution } from "@/pages/api/solve";
-import { Button, Container, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import DisplaySolution from "./displaySolution";
 import { FileRequest } from "@/pages/api/getInput";
@@ -90,45 +90,40 @@ export default function Solution({ day }: SolutionProps) {
         setAwaitingAPI(false);
     }
 
-    return <Container maxWidth="md">
+    return <>
         <Stack gap={1}>
-            <Typography variant="h1">{`Day ${day} solution`}</Typography>
-
-            <Typography variant="body1">{`Fill in your puzzle's input`}</Typography>
-
-            <Stack gap={1}>
-                <TextField
-                    label="Puzzle input"
-                    variant="filled"
-                    multiline
-                    sx={{ maxHeight: "5em", overflow: "scroll" }}
-                    value={text}
-                    onChange={(ev) => setText(ev.target.value)}
+            <TextField
+                label="Puzzle input"
+                variant="filled"
+                multiline
+                sx={{ maxHeight: "5em", overflow: "scroll" }}
+                value={text}
+                onChange={(ev) => setText(ev.target.value)}
+                disabled={isDisabled}
+            />
+            <Stack direction="row" gap={2}>
+                <Button
+                    onClick={() => setText("")}
                     disabled={isDisabled}
-                />
-                <Stack direction="row" gap={2}>
-                    <Button
-                        onClick={() => setText("")}
-                        disabled={isDisabled}
-                        color={"secondary"}>
-                        Clear Data
-                    </Button>
-                    <Button
-                        onClick={() => setText(initialInput ?? "")}
-                        disabled={isDisabled || initialInput === undefined}
-                        color={"secondary"}>
-                        Example input
-                    </Button>
-                    <Button
-                        onClick={getSolution}
-                        disabled={isDisabled}>
-                        Solve
-                    </Button>
-                </Stack>
+                    color={"secondary"}>
+                    Clear Data
+                </Button>
+                <Button
+                    onClick={() => setText(initialInput ?? "")}
+                    disabled={isDisabled || initialInput === undefined || initialInput == ""}
+                    color={"secondary"}>
+                    Example input
+                </Button>
+                <Button
+                    onClick={getSolution}
+                    disabled={isDisabled}
+                >
+                    Solve
+                </Button>
             </Stack>
-
-            <Typography variant="h2">Solution</Typography>
-            <DisplaySolution solution={solution} />
         </Stack>
-    </Container>
+
+        <Typography variant="h2">Solution</Typography>
+        <DisplaySolution solution={solution} />
+    </>
 }

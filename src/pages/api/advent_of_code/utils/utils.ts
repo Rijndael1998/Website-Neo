@@ -16,3 +16,26 @@ export const MakeEmptyGenericArray = <T>(length: number, fn: (index: number) => 
 
 export const MakeEmptyArray = (length: number) => MakeEmptyGenericArray(length, () => 0);
 export const MakeEmpty2DArray = (x: number, y: number) => MakeEmptyArray(y).map(() => MakeEmptyArray(x));
+
+export const prettyPrintMap = new Map<number, string>();
+prettyPrintMap.set(-1, ".");
+prettyPrintMap.set(-2, "*");
+
+export const prettyPrint = (disk: Array<number>) => disk.reduce<string>((prev, curr) => prev + (prettyPrintMap.get(curr) ?? `${curr}`), "");
+export const prettyPrint2d = (disk: Array<Array<number>>) => {
+    if(disk.length == 0) 
+        return "";
+
+    let top = "  ";
+    for (let index = 0; index < disk.length; index++) {
+        const element = index % 10;
+        top += element;
+    }
+
+    let pp = disk.reduce<string>((prev, curr, i) => `${prev}${i} ${prettyPrint(curr)}${i < curr.length - 1 ? "\n" : ""}`, "");
+
+
+    return `${top}\n${pp}`;
+};
+
+export const SumArray = (array: Array<number>) => array.reduce((prev, curr) => prev + curr, 0)
