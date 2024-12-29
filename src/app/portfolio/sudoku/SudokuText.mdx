@@ -1,19 +1,11 @@
 import styles from "@/components/algorithms/sudoku/sudoku.module.scss";
 import sudokuStyle from "@/components/algorithms/sudoku/lazyTable.sudoku.module.scss";
-import Lazy from "@/components/lazy/_lazy";
-import Link from "next/link";
-import LazyTable from "@/components/lazy/_lazyTable";
-import SudokuCollection from "@/components/algorithms/sudoku/sudokuCollection";
 import { easyGrid, easyGridDone, easyGridSnippet, easyGridSnippet2, easyGridSnippet3, hardGrid, hardGridDone } from "@/app/portfolio/sudoku/Sudoku";
-import classNames from "classnames";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { elementProps } from "@/components/algorithms/sudoku/sudokuConstants";
-
 import SudokuDisplayGrid from "./sudokuDisplayGrid.tsx";
 
 
 ## How to solve a Sudoku Puzzle?
-The brute-force <Link href="https://en.wikipedia.org/wiki/Sudoku_solving_algorithms#Backtracking">Backtracking algorithm</Link> is the major solving algorithm in this Sudoku solver. The solver works alongside a supporting algorithm that helps remove singles from the graph.
+The brute-force [Backtracking algorithm](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms#Backtracking) is the major solving algorithm in this Sudoku solver. The solver works alongside a supporting algorithm that helps remove singles from the graph.
 
 ### Backtracking
 The backtracking algorithm for solving Sudoku puzzles employs a trial and error strategy in which it fills up every single blank cell in a systematic order (left to right, top to bottom). First, the algorithm chooses the logical candidate number for the current empty cell. If the chosen number complies with all the Sudoku rules, the algorithm 
