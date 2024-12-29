@@ -4,7 +4,7 @@ import styles from "./styles/aStar.module.scss";
 import colors from "./styles/aStarStyleMap.module.scss";
 import NumUpDown from "@/components/input/numUpDown/_numUpDown";
 import Grid from "../grid/_grid";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { GridState } from "../grid/gridState"
 import AStar, { CanContinueReason } from "@/components/algorithms/aStar/_aStar";
 
