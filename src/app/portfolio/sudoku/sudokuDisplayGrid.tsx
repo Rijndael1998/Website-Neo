@@ -1,6 +1,6 @@
 import LazyTable, { LazyTableProps } from "@/components/lazy/_lazyTable"
 import { Container, Paper } from "@mui/material"
-import { containerProps, paperProps } from "./page"
+import { elementProps } from "@/components/algorithms/sudoku/sudokuConstants";
 import classNames from "classnames"
 
 
@@ -10,8 +10,8 @@ export type SudokuDisplayGridType = {
 }
 
 export default function SudokuDisplayGrid({classes, items}: SudokuDisplayGridType) {
-    return <Container {...containerProps}>
-        <Paper {...paperProps}>
+    return <Container {...elementProps.container}>
+        <Paper {...elementProps.paper}>
             <LazyTable className={classNames(...classes)} items={items} />
         </Paper>
     </Container>
