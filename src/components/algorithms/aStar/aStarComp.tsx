@@ -13,7 +13,7 @@ import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMa
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import GridItem from "../grid/gridItem/_gridItem";
-import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch, Typography } from "@mui/material";
 import * as React from 'react';
 import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -183,7 +183,7 @@ export default function AStarComponent() {
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                 >
-                    {"Settings and info"}
+                    <Typography>Settings and info</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Card {...defaultCardProps}>
@@ -301,7 +301,7 @@ export default function AStarComponent() {
                     </Card>
                 </AccordionDetails>
             </Accordion>
-            <AStarText/>
+            <AStarText />
         </div>
     </div>
 }
