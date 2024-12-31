@@ -10,14 +10,45 @@ const getXY = (input: string) => {
     return new Vector(x, y);
 }
 
-class Machine {
-    constructor(public buttonA: Vector, public buttonB: Vector, public prize: Vector) { }
-}
-
 const MAX_PRESSES = 100;
 const A_COST = 3;
 const B_COST = 1;
 const CALIBRATION = 10000000000000;
+
+class Machine {
+    constructor(public buttonA: Vector, public buttonB: Vector, public prize: Vector) {}
+
+    toCalibrated() {
+        const newPrize = new Vector(CALIBRATION, CALIBRATION).add(this.prize);
+        return new Machine(this.buttonA.duplicate(), this.buttonB.duplicate(), newPrize);
+    }
+}
+
+const solve = (machine: Machine) => {
+    let cheapestSolution: number = Number.POSITIVE_INFINITY;
+
+    aCountLoop: for (let aCount = 0; aCount < MAX_PRESSES; aCount++) {
+        for (let bCount = 0; bCount < MAX_PRESSES; bCount++) {
+            const aDistance = machine.buttonA.scale(aCount);
+            const bDistance = machine.buttonB.scale(bCount);
+            const distance = aDistance.add(bDistance);
+
+            const difference = machine.prize.sub(distance);
+            if (difference.x < 0 || difference.y < 0)
+                continue aCountLoop;
+
+            if (distance.compare(machine.prize)) {
+                // found solution
+                const cost = aCount * A_COST + bCount * B_COST;
+                cheapestSolution = Math.min(cheapestSolution, cost);
+            }
+        }
+    }
+
+    return cheapestSolution;
+}
+
+const reduceSum = (prev: number, curr: number) => prev + (curr == Number.POSITIVE_INFINITY ? 0 : curr);
 
 export const solution_13: AdventOfCodeSolutionFunction = (input) => {
     const machines = input.split("\n\n").map((v) => {
@@ -25,30 +56,7 @@ export const solution_13: AdventOfCodeSolutionFunction = (input) => {
         return new Machine(a, b, target);
     });
 
-    const part_1 = machines.map(machine => {
-        let cheapestSolution: number = Number.POSITIVE_INFINITY;
-
-        aCountLoop: for (let aCount = 0; aCount < MAX_PRESSES; aCount++) {
-            for (let bCount = 0; bCount < MAX_PRESSES; bCount++) {
-                const aDistance = machine.buttonA.scale(aCount);
-                const bDistance = machine.buttonB.scale(bCount);
-                const distance = aDistance.add(bDistance);
-
-                const difference = machine.prize.sub(distance);
-                if (difference.x < 0 || difference.y < 0)
-                    continue aCountLoop;
-
-                if (distance.compare(machine.prize)) {
-                    // found solution
-                    const cost = aCount * A_COST + bCount * B_COST;
-                    cheapestSolution = Math.min(cheapestSolution, cost);
-                }
-            }
-        }
-
-        return cheapestSolution;
-    }).reduce((prev, curr) => prev + (curr == Number.POSITIVE_INFINITY ? 0 : curr));
-
+    const part_1 = machines.map(solve).reduce(reduceSum);
 
 
     return {
