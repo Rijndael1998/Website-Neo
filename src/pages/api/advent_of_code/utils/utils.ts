@@ -23,7 +23,7 @@ prettyPrintMap.set(-2, "*");
 
 export const prettyPrint = (disk: Array<number>) => disk.reduce<string>((prev, curr) => prev + (prettyPrintMap.get(curr) ?? `${curr}`), "");
 export const prettyPrint2d = (disk: Array<Array<number>>) => {
-    if(disk.length == 0) 
+    if (disk.length == 0)
         return "";
 
     let top = "  ";
@@ -38,4 +38,27 @@ export const prettyPrint2d = (disk: Array<Array<number>>) => {
     return `${top}\n${pp}`;
 };
 
-export const SumArray = (array: Array<number>) => array.reduce((prev, curr) => prev + curr, 0)
+export const SumArray = (array: Array<number>) => array.reduce((prev, curr) => prev + curr, 0);
+
+export class Memo2D<T1, T2, K> extends Map<T1, Map<T2, K>> {
+    constructor() {
+        super()
+    }
+
+    setResult(a: T1, b: T2, v: K) {
+        let map = this.get(a);
+
+        if (map === undefined) {
+            map = new Map();
+            this.set(a, map);
+        }
+
+        map.set(b, v);
+
+        return v;
+    }
+
+    getResult(a: T1, b: T2) {
+        return this.get(a)?.get(b);
+    }
+}
