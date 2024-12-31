@@ -1,6 +1,5 @@
 import { AdventOfCodeSolutionFunction } from "./solutions";
 import { Vector } from "./utils/structures/vector";
-import { Memo2D } from "./utils/utils";
 
 const find = /X.(\d+), Y.(\d+)/;
 const getXY = (input: string) => {
@@ -24,26 +23,10 @@ class Machine {
     }
 }
 
-const solve = (machine: Machine) => {
+const solve = (machine: Machine, limit: number) => {
     let cheapestSolution: number = Number.POSITIVE_INFINITY;
 
-    aCountLoop: for (let aCount = 0; aCount < MAX_PRESSES; aCount++) {
-        for (let bCount = 0; bCount < MAX_PRESSES; bCount++) {
-            const aDistance = machine.buttonA.scale(aCount);
-            const bDistance = machine.buttonB.scale(bCount);
-            const distance = aDistance.add(bDistance);
 
-            const difference = machine.prize.sub(distance);
-            if (difference.x < 0 || difference.y < 0)
-                continue aCountLoop;
-
-            if (distance.compare(machine.prize)) {
-                // found solution
-                const cost = aCount * A_COST + bCount * B_COST;
-                cheapestSolution = Math.min(cheapestSolution, cost);
-            }
-        }
-    }
 
     return cheapestSolution;
 }
@@ -53,11 +36,12 @@ const reduceSum = (prev: number, curr: number) => prev + (curr == Number.POSITIV
 export const solution_13: AdventOfCodeSolutionFunction = (input) => {
     const machines = input.split("\n\n").map((v) => {
         const [a, b, target] = v.split("\n").map(getXY);
-        return new Machine(a, b, target);
+        const machine = new Machine(a, b, target);
+        return machine;
     });
 
-    const part_1 = machines.map(solve).reduce(reduceSum);
-
+    const part_1 = machines.map(m => solve(m, MAX_PRESSES)).reduce(reduceSum);
+    const part_2 = machines.map(m => solve(m.toCalibrated(), Number.POSITIVE_INFINITY)).reduce(reduceSum);
 
     return {
         // 37901
