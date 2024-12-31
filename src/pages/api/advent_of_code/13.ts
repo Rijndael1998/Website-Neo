@@ -23,6 +23,7 @@ type part1Solution = false | {
 const MAX_PRESSES = 100;
 const A_COST = 3;
 const B_COST = 1;
+const CALIBRATION = 10000000000000;
 
 export const solution_13: AdventOfCodeSolutionFunction = (input) => {
     const machines = input.split("\n\n").map((v) => {
@@ -31,11 +32,15 @@ export const solution_13: AdventOfCodeSolutionFunction = (input) => {
     }).map(machine => {
         let cheapestSolution: part1Solution = false;
 
-        for (let aCount = 0; aCount < MAX_PRESSES; aCount++) {
+        aCountLoop: for (let aCount = 0; aCount < MAX_PRESSES; aCount++) {
             for (let bCount = 0; bCount < MAX_PRESSES; bCount++) {
                 const aDistance = machine.buttonA.scale(aCount);
                 const bDistance = machine.buttonB.scale(bCount);
                 const distance = aDistance.add(bDistance);
+
+                const difference = machine.prize.sub(distance);
+                if(difference.x < 0 || difference.y < 0)
+                    continue aCountLoop;
 
                 if (distance.compare(machine.prize)) {
                     // found solution
@@ -52,6 +57,7 @@ export const solution_13: AdventOfCodeSolutionFunction = (input) => {
 
 
     return {
+        // 37901
         part_1: machines.reduce<number>((prev, curr) => prev + (curr == false ? 0 : curr.cost), 0),
         part_2: ""
     }
