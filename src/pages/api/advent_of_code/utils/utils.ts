@@ -40,11 +40,18 @@ export const prettyPrint2d = (disk: Array<Array<number>>) => {
 
 export const SumArray = (array: Array<number>) => array.reduce((prev, curr) => prev + curr, 0);
 
-export class Memo2D<T1, T2, K> extends Map<T1, Map<T2, K>> {
-    constructor() {
-        super()
+export class Memo1D<T, K> extends Map<T, K> {
+    setResult(a: T, v: K) {
+        this.set(a, v);
+        return v;
     }
 
+    getResult(a: T) {
+        return this.get(a);
+    }
+}
+
+export class Memo2D<T1, T2, K> extends Map<T1, Map<T2, K>> {
     setResult(a: T1, b: T2, v: K) {
         let map = this.get(a);
 
