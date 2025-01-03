@@ -78,6 +78,8 @@ const solve = (machine: Machine, limit: number) => {
         if (!res)
             continue;
 
+        let costBust = false;
+
         for (let index = 0; index < res.length; index++) {
             const [a, b] = res[index].toArray();
             const aDistance = machine.buttonA.scale(a);
@@ -85,18 +87,27 @@ const solve = (machine: Machine, limit: number) => {
             const distance = aDistance.add(bDistance);
             const diff = machine.prize.sub(distance);
 
+            console.log(a, b, diff);
+
             if(diff.compare(ORIGIN))
                 return cost;
 
-            if(a > limit || b > limit)
-                break;
+            if(a > limit || b > limit) {
+                costBust = true;
+                continue;
+            } 
+            
+            costBust = false;
 
             if(diff.x < 0 || diff.y < 0)
-                break main;
+                return Number.POSITIVE_INFINITY;
         }
+
+        if (costBust)
+            break;
     }
 
-    return cost;
+    return Number.POSITIVE_INFINITY;
 }
 
 const reduceSum = (prev: number, curr: number) => prev + (curr == Number.POSITIVE_INFINITY ? 0 : curr);
@@ -109,7 +120,7 @@ export const solution_13: AdventOfCodeSolutionFunction = (input) => {
     });
 
     const part_1 = machines.map(m => solve(m, MAX_PRESSES)).reduce(reduceSum);
-    const part_2 = machines.map(m => solve(m.toCalibrated(), Number.POSITIVE_INFINITY)).reduce(reduceSum);
+    const part_2 = 0; // machines.map(m => solve(m.toCalibrated(), Number.POSITIVE_INFINITY)).reduce(reduceSum);
 
     return {
         // 37901
