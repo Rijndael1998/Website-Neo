@@ -49,4 +49,12 @@ export class Vector {
     toArray(): [x: number, y: number] {
         return [this.x, this.y];
     }
+
+    smaller() {
+        return Math.min(...this.toArray())
+    }
+
+    bigger() {
+        return Math.max(...this.toArray())
+    }
 }
