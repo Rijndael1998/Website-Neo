@@ -24,18 +24,49 @@ class Machine {
     }
 }
 
-const solve = (machine: Machine, bUpper?: number, bLower?: number) => {
+type solution = {
+    aPresses: number,
+    bPresses: number,
+} | undefined;
+
+const solve = (machine: Machine, pressLimit?: number, bUpper?: number, bLower: number = 0, ): solution => {
     const target = machine.prize;
 
     // initial values
+    pressLimit ??= Number.POSITIVE_INFINITY;
     bUpper ??= target.div(machine.buttonB).smaller();
-    bLower ??= 0;
 
-    const midpoint = Math.floor((bUpper - bLower) / 2);
+    bUpper = Math.min(pressLimit, bUpper);
 
+    if(bUpper < bLower)
+        return;
 
+    const midpoint = Math.floor((bUpper - bLower) / 2); // midpoint
 
-    return Number.POSITIVE_INFINITY;
+    // check the upmost bValue
+    const bPressDistance = machine.buttonB.scale(bUpper);
+    const deltaDistance = machine.prize.sub(bPressDistance);
+    const aPresses = Math.min(pressLimit, deltaDistance.div(machine.buttonA).smaller());
+    const countedAPresses = machine.buttonA.scale(aPresses);
+    const distanceNotCovered = deltaDistance.sub(countedAPresses);
+    const foundSolution = distanceNotCovered.x + distanceNotCovered.y == 0;
+
+    console.log("\n\n\nmachine", machine);
+    console.log(bUpper, bLower, midpoint);
+    console.log(bPressDistance, deltaDistance)
+    console.log(aPresses, countedAPresses, distanceNotCovered, foundSolution);
+
+    let bestSolution: solution;
+
+    // exit conditions
+    if(foundSolution)
+        bestSolution = {
+            aPresses,
+            bPresses: midpoint,
+        };
+
+    
+
 }
 
 const reduceSum = (prev: number, curr: number) => prev + (curr == Number.POSITIVE_INFINITY ? 0 : curr);
@@ -47,12 +78,12 @@ export const solution_13: AdventOfCodeSolutionFunction = (input) => {
         return machine;
     });
 
-    const part_1 = machines.map(m => solve(m, MAX_PRESSES)).reduce(reduceSum);
+    const part_1 = machines.map(m => solve(m, MAX_PRESSES));
     const part_2 = 0; // machines.map(m => solve(m.toCalibrated(), Number.POSITIVE_INFINITY)).reduce(reduceSum);
 
     return {
         // 37901
-        part_1,
+        part_1: "",
         part_2: ""
     }
 }

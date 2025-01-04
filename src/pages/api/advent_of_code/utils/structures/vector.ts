@@ -25,6 +25,10 @@ export class Vector {
         return new Vector(this.x / b.x, this.y / b.y);
     }
 
+    mod(b: Vector) {
+        return new Vector(this.x % b.x, this.y % b.y);
+    }
+
     scale(n: number) {
         return this.mul(new Vector(n, n))
     }
