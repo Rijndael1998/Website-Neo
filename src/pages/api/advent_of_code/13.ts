@@ -52,10 +52,10 @@ const solve = (machine: Machine, pressLimit?: number, bUpper?: number, bLower: n
     const distanceNotCovered = deltaDistance.sub(countedAPresses);
     const foundSolution = distanceNotCovered.x + distanceNotCovered.y == 0;
 
-    console.log("\n\n\nmachine", machine);
-    console.log(bUpper, bLower, midpoint);
-    console.log(bPressDistance, deltaDistance)
-    console.log(aPresses, countedAPresses, distanceNotCovered, foundSolution);
+    // console.log("\n\n\nmachine", machine);
+    // console.log(bUpper, bLower, midpoint);
+    // console.log(bPressDistance, deltaDistance)
+    // console.log(aPresses, countedAPresses, distanceNotCovered, foundSolution);
 
     let bestSolution = !foundSolution ? undefined : {
         aPresses,
@@ -83,7 +83,7 @@ export const solution_13: AdventOfCodeSolutionFunction = (input) => {
         return machine;
     });
 
-    const part_1 = machines.map(m => solve(m, MAX_PRESSES)).map(console.log);
+    const part_1 = machines.map(m => solve(m, MAX_PRESSES)).map(v => console.log(v));
     const part_2 = 0; // machines.map(m => solve(m.toCalibrated(), Number.POSITIVE_INFINITY)).reduce(reduceSum);
 
     return {
