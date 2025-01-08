@@ -546,16 +546,16 @@
   dependencies:
     "@babel/runtime" "^7.26.0"
 
-"@mui/lab@^6.0.0-beta.21":
-  version "6.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-6.0.0-beta.21.tgz#1dc660fd7709d6b02be9d85a3d050bac453ddeab"
-  integrity sha512-hiFZgTwBNhJMUlEhmqfW4+5wy3C8UF9KFuzSOux6x4kgc9hsC0l+motXcF1Vyh+jhJYGeZ6yUoImqCf9RWzEvw==
+"@mui/lab@^6.0.0-beta.22":
+  version "6.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-6.0.0-beta.22.tgz#25e85e4f5600de426d12d87b5466e1f77ac31870"
+  integrity sha512-9nwUfBj+UzoQJOCbqV+JcCSJ74T+gGWrM1FMlXzkahtYUcMN+5Zmh2ArlttW3zv2dZyCzp7K5askcnKF0WzFQg==
   dependencies:
     "@babel/runtime" "^7.26.0"
     "@mui/base" "5.0.0-beta.68"
-    "@mui/system" "^6.3.0"
-    "@mui/types" "^7.2.20"
-    "@mui/utils" "^6.3.0"
+    "@mui/system" "^6.3.1"
+    "@mui/types" "^7.2.21"
+    "@mui/utils" "^6.3.1"
     clsx "^2.1.1"
     prop-types "^15.8.1"
 
@@ -598,7 +598,7 @@
     csstype "^3.1.3"
     prop-types "^15.8.1"
 
-"@mui/system@^6.3.0", "@mui/system@^6.3.1":
+"@mui/system@^6.3.1":
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/@mui/system/-/system-6.3.1.tgz#7e51745c9d56423173a0dba7ea2b9bcb6232a90f"
   integrity sha512-AwqQ3EAIT2np85ki+N15fF0lFXX1iFPqenCzVOSl3QXKy2eifZeGd9dGtt7pGMoFw5dzW4dRGGzRpLAq9rkl7A==
