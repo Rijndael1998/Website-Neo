@@ -9,6 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
 import { DiscordIcon } from "@/components/muiWrappers/customIcons/Discord";
+import Git from "./git";
 
 export default function Footer() {
 
@@ -52,5 +53,8 @@ export default function Footer() {
             </div>
         </div>
         <Quotes />
+        <div style={{textAlign: "right", width: "100%", margin: "0 unset 0 0", opacity: 0.12}}>
+            <Git />
+        </div>
     </footer>
 }
