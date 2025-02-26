@@ -26,7 +26,7 @@
     "@types/react-dom": "^18.3.1",
     "@xyflow/react": "^12.4.3",
     "classnames": "^2.5.1",
-    "eslint": "^9.20.1",
+    "eslint": "^9.21.0",
     "eslint-config-next": "15.1.7",
     "micromark-extension-gfm-footnote": "^2.1.0",
     "next": "15.1.7",
