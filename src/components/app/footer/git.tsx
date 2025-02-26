@@ -1,10 +1,12 @@
+"use server";
+
 import { executeCommand } from "@/components/serverUtils";
-import ToolTip from "@/components/toolTip/_toolTip";
-import { Typography } from "@mui/material";
+import { GitCopy } from "./gitCopy";
 
+export type StringOrNull = string | null;
 
-let short: string | null;
-let long: string | null;
+let short: StringOrNull;
+let long: StringOrNull;
 
 export default async function Git() {
     short ??= await executeCommand("git rev-parse --short HEAD");
@@ -13,9 +15,5 @@ export default async function Git() {
     if (short == null || long == null)
         return <></>;
 
-    return <ToolTip tip={long}>
-        <Typography variant="caption">
-            {short}
-        </Typography>
-    </ToolTip>
+    return <GitCopy short={short} long={long} />
 }
