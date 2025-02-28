@@ -14,6 +14,8 @@ export async function getFile(getFilePath: string) {
 // execute a command on server
 const execPromise = promisify(exec);
 export async function executeCommand(command: string) {
+    console.log("running command:", command);
+
     try {
         // Run the hardcoded shell command
         const { stdout, stderr } = await execPromise(command);
