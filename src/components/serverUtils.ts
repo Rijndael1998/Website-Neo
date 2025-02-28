@@ -26,7 +26,9 @@ export async function executeCommand(command: string) {
         }
 
         // Return the standard output (success)
-        return stdout.trim();
+        const out = stdout.trim();
+        console.log("got: ", out)
+        return out;
 
     } catch (error) {
         console.error("Command execution failed:", error);

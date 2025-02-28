@@ -9,6 +9,7 @@ class GitStatus {
     gitHash?: string;
     gitHashShort?: string;
     status: "Invalid Git" | "Behind" | "Current" | "Unset" = "Unset";
+    branchStatus!: [number, number];
 
     constructor() {
         this.Update();
@@ -31,8 +32,10 @@ class GitStatus {
             return this.status = "Invalid Git";
 
         const [behind, ahead] = branch.split(" ").filter(v => v.length > 0).map(v => Number.parseInt(v));
+        this.branchStatus = [behind, ahead];
+
         if (behind > 0)
-            this.status = "Behind";
+            return this.status = "Behind";
 
         this.status = "Current";
     }
@@ -48,6 +51,7 @@ let gitStatus = new GitStatus();
 export default async function Git() {
     await gitStatus.ConsiderUpdate();
 
+    console.log(gitStatus);
 
     if (gitStatus.status == "Invalid Git" || gitStatus.status == "Unset")
         return <></>;
