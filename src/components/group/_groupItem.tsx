@@ -51,46 +51,39 @@ export default function GroupItem({ portfolio }: GroupProps) {
 
 
     return <GroupItemWrapper portfolio={portfolio}>
-        <Grid2 size={{
-            xs: 12 / 1,
-            sm: 12 / 2,
-            md: 12 / 3,
-            lg: 12 / 4,
-            xl: 12 / 5,
-        }}>
-            <DarkModeFix>
-                <div className={classNames(styles.portfolio, empty && styles.empty)}>
-                    {
-                        portfolio.image && <GroupImage image={portfolio.image} logo={portfolio.logo} />
-                    }
-                    <div className={styles.portfolioMainContent}>
-                        <Typography variant="h6">
-                            {portfolio.title}
-                        </Typography>
-                    </div>
-                    <div className={styles.portfolioMainContentHover}>
-                        <Stack direction={"column"} gap={1} padding={1}>
-                            <GroupItemDialog
-                                buttonProps={{ variant: "outlined" }}
-                                content={portfolio.desc}
-                                title={portfolio.title}
-                                link={url}
-                                linkText={text}
-                            />
-                            {ifTrue(!empty,
-                                <Button
-                                    href={portfolio.url}
-                                    aria-label={text}
-                                    variant="contained"
-                                    endIcon={<Icon fontSize="inherit" />}
-                                >
-                                    {text}
-                                </Button>
-                            )}
-                        </Stack>
-                    </div>
+
+        <DarkModeFix>
+            <div className={classNames(styles.portfolio, empty && styles.empty)}>
+                {
+                    portfolio.image && <GroupImage image={portfolio.image} logo={portfolio.logo} />
+                }
+                <div className={styles.portfolioMainContent}>
+                    <Typography variant="h6">
+                        {portfolio.title}
+                    </Typography>
                 </div>
-            </DarkModeFix>
-        </Grid2>
+                <div className={styles.portfolioMainContentHover}>
+                    <Stack direction={"column"} gap={1} padding={1}>
+                        <GroupItemDialog
+                            buttonProps={{ variant: "outlined" }}
+                            content={portfolio.desc}
+                            title={portfolio.title}
+                            link={url}
+                            linkText={text}
+                        />
+                        {ifTrue(!empty,
+                            <Button
+                                href={portfolio.url}
+                                aria-label={text}
+                                variant="contained"
+                                endIcon={<Icon fontSize="inherit" />}
+                            >
+                                {text}
+                            </Button>
+                        )}
+                    </Stack>
+                </div>
+            </div>
+        </DarkModeFix>
     </GroupItemWrapper>
 }
