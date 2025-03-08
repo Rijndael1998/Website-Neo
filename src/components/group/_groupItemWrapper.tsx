@@ -13,7 +13,11 @@ export default function GroupItemWrapper({ children, portfolio }: { children: Re
             xl: 12 / 5,
         }}
 
-        onClick={(e) => console.log(e)}
+        onClick={(e) => {
+            console.log(e);
+            if(e.target == e.currentTarget)
+                console.log("here");
+        }}
     >
 
         {children}

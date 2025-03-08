@@ -19,8 +19,9 @@ export type ScrollDialogProps = {
 export function ScrollDialog({ title, buttonText, body, closeText, link, linkText, buttonProps }: ScrollDialogProps) {
     const [open, setOpen] = React.useState(false);
 
-    const handleClose = () => {
+    const handleClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         setOpen(false);
+        e.stopPropagation();
     };
 
     const descriptionElementRef = React.useRef<HTMLElement>(null);
@@ -35,7 +36,13 @@ export function ScrollDialog({ title, buttonText, body, closeText, link, linkTex
 
     return (
         <DarkModeFix>
-            <Button {...buttonProps} onClick={() => setOpen(true)}>{buttonText}</Button>
+            <Button {...buttonProps}
+                onClick={(e) => {
+                    setOpen(true);
+                    e.stopPropagation();
+                }}>
+                {buttonText}
+            </Button>
             <DialogBox
                 open={open}
                 handleClose={handleClose}

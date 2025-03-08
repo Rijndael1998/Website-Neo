@@ -1,10 +1,11 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogProps, DialogTitle, Link } from "@mui/material"
 import { ScrollDialogProps } from "./_PopUp"
 import { ifTrue } from "@/components/reactUtils"
+import { MouseEventHandler } from "react"
 
 export type DialogBoxProps = {
     open: boolean,
-    handleClose: () => void,
+    handleClose?: MouseEventHandler<HTMLButtonElement>,
     scroll?: DialogProps["scroll"],
     title: string,
     descriptionElementRef: React.RefObject<HTMLElement>,
@@ -34,7 +35,11 @@ export function DialogBox({ open, handleClose, scroll, title, descriptionElement
         </DialogContent>
         <DialogActions>
             <Button onClick={handleClose}>{closeText ?? "Close"}</Button>
-            {ifTrue(link !== undefined, <Link href={link!}><Button onClick={handleClose}>{linkText ?? "Link"}</Button></Link>)}
+            {ifTrue(link !== undefined,
+                <Link href={link!}>
+                    <Button onClick={handleClose}>{linkText ?? "Link"}</Button>
+                </Link>
+            )}
         </DialogActions>
     </Dialog>
 }
