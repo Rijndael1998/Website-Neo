@@ -19,60 +19,150 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import ComputerIcon from '@mui/icons-material/Computer';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import Link from 'next/link';
+// import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
 
-const timelineItems: Array<[year: string, desc: any, icon: OverridableComponent<SvgIconTypeMap> & { muiName: string }]> = [
+const timelineItems: Array<[year: string, desc: React.ReactNode, icon: OverridableComponent<SvgIconTypeMap> & { muiName: string }]> = [
     [
-        "2000", "Born in Poland.", CakeIcon
+        "2000",
+        "Born in Poland.",
+        CakeIcon
     ],
     [
-        "2007", "I moved to the UK.", FlightLandIcon
+        "2007",
+        "I moved to the UK.",
+        FlightLandIcon
     ],
     [
-        "2011", "I got my first computer.", ComputerIcon
+        "2011",
+        "I got my first computer.",
+        ComputerIcon
     ],
     [
-        "2013", "I wrote my first computer program.", TerminalIcon
+        "2013",
+        "I wrote my first computer program.",
+        TerminalIcon
     ],
     [
-        "2015", "I started running a volunteer relay for human rights.", LanIcon
+        "2015",
+        "I started running a volunteer relay for human rights.",
+        LanIcon
     ],
     [
-        "2016", "I started going to Thomas Rotherham College.", SchoolOutlinedIcon
+        "2016",
+        <>
+            {"I started going to "}
+            <Link href="https://trc.ac.uk/">
+                {"Thomas Rotherham College"}
+            </Link>
+            {"."}
+        </>,
+        SchoolOutlinedIcon
     ],
     [
-        "2016", "I started hosting for HAL Systems LTD.", WorkOutlineIcon
+        "2016",
+        <>
+            {"I started hosting for "}
+            <Link href={"/portfolio"}>
+                HAL Systems LTD
+            </Link>
+            {"."}
+        </>,
+        WorkOutlineIcon
     ],
     // [
-    //     "2017", "I won the math contest bronze award.", EmojiEventsOutlinedIcon
+    //     "2017",
+    //     "I won the UKMT Intermediate Bronze award.",
+    //     MilitaryTechIcon
     // ],
     // [
-    //     "2018", "I was awarded the Bacon award for complex algorithms.", EmojiEventsOutlinedIcon
+    //     "2018",
+    //     "I was awarded the David Winton Bacon award for my use of complex algorithms in my coursework.",
+    //     MilitaryTechIcon
     // ],
     [
-        "2018", "I went to Leeds Beckett University and became a student representative for the student body.", SchoolIcon
+        "2018",
+        <>
+            {"I went to "}
+            <Link href={"/portfolio"}>
+                {"Leeds Beckett University"}
+            </Link>
+            {" and became a student representative for the student body."}
+        </>,
+        SchoolIcon
     ],
     [
-        "2019", "I wrote my own 2d physics engine. Used it to make Chalk.", SportsEsportsIcon
+        "2019",
+        <>
+            {"I wrote my own 2d physics engine. Used it to make "}
+            <Link href={"/portfolio"}>
+                {"Chalk"}
+            </Link>
+            {"."}
+        </>,
+        SportsEsportsIcon
     ],
     [
-        "2020", "I participated in supporting Folding @ Home.", DeveloperBoardIcon
+        "2020",
+        <>
+            {"I participated in supporting "}
+            <Link href={"/portfolio/fah"}>
+                {"Folding @ Home"}
+            </Link>
+            {"."}
+        </>,
+        DeveloperBoardIcon
     ],
     [
-        "2021", "I graduated with a First in Cyber Security.", GradeIcon
+        "2021",
+        "I graduated with a First in Cyber Security.",
+        GradeIcon
     ],
     [
-        "2021", "I started working for Shreem (my first 'real' job!).", WorkIcon
+        "2021",
+        <>
+            {"I started working for "}
+            <Link href={"/portfolio/shreem"}>
+                {"Shreem"}
+            </Link >
+            {" (my first 'real' job!)."}
+        </>,
+        WorkIcon
     ],
     [
-        "2022", "I started working for IPF.", WorkIcon
+        "2022",
+        <>
+            {"I started working for "}
+            <Link href={"/portfolio/ipf"}>
+                {"IPF"}
+            </Link>
+            {"."}
+        </>,
+        WorkIcon
     ],
     [
-        "2023", "Developing on AWS certification.", EmojiEventsIcon
+        "2023",
+        "Developing on AWS certification.",
+        EmojiEventsIcon
     ],
-    // [
-    //     "2024", "Passed AWS Practitioner exam.", EmojiEventsIcon // slight white lie: I didn't even start learning yet but given how long this is taking to merge into main, i probably will by the time I'm finished
-    // ],
+    [
+        "2024",
+        <>
+            {"Joined the "}
+            <Link href="https://www.sheffieldhackspace.org.uk/">
+                {"Sheffield Hackspace"}
+            </Link>
+            {"."}
+        </>,
+        RocketLaunchIcon
+    ],
+    [
+        "2025",
+        "Passed AWS Practitioner exam.",
+        EmojiEventsIcon
+    ],
 ];
 
 const color = "#ababab";
