@@ -51,7 +51,6 @@ export default function GroupItem({ portfolio }: GroupProps) {
 
 
     return <GroupItemWrapper portfolio={portfolio}>
-
         <DarkModeFix>
             <div className={classNames(styles.portfolio, empty && styles.empty)}>
                 {
