@@ -1,9 +1,5 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Rijndael1998/Website-Neo)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Rijndael1998/Website-Neo)
-![Code Climate issues](https://img.shields.io/codeclimate/tech-debt/Rijndael1998/Website-Neo)
-![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/Rijndael1998/Website-Neo)
-![Code Climate technical debt](https://img.shields.io/codeclimate/issues/Rijndael1998/Website-Neo)
-
 
 [![Node.js CI](https://github.com/Rijndael1998/Website-Neo/actions/workflows/main.yml/badge.svg)](https://github.com/Rijndael1998/Website-Neo/actions/workflows/main.yml)
 [![Test Docker Build](https://github.com/Rijndael1998/Website-Neo/actions/workflows/test-docker.yml/badge.svg)](https://github.com/Rijndael1998/Website-Neo/actions/workflows/test-docker.yml)
