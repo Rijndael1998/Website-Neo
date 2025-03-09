@@ -4,6 +4,7 @@ import React from "react";
 import { GroupPreviewContent } from "./_groupTypes";
 import { Grid2 } from "@mui/material";
 import { DialogBox } from "../muiWrappers/popup/DialogBox";
+import { ReturnPortfolioItems } from "./_groupItem";
 
 export default function GroupItemWrapper({ children, portfolio }: { children: React.ReactNode, portfolio: GroupPreviewContent }) {
     const [open, setOpen] = React.useState(false);
@@ -22,7 +23,9 @@ export default function GroupItemWrapper({ children, portfolio }: { children: Re
             }
         }
     }, [open]);
-    
+
+    const [url, empty, text, Icon] = ReturnPortfolioItems(portfolio);
+
     return <Grid2
         size={{
             xs: 12 / 1,
@@ -32,24 +35,24 @@ export default function GroupItemWrapper({ children, portfolio }: { children: Re
             xl: 12 / 5,
         }}
         // TODO: this could be done better.
-        // I'm currently removing propagation from other components.
+        // I'm currently removing propagation from other
+        // components to stop this from being triggered.
         onClick={(e) => {
             console.log(e);
             setOpen(true);
             e.stopPropagation();
         }}
     >
-
         {children}
         <DialogBox
-                open={open}
-                handleClose={handleClose}
-                title={portfolio.title}
-                descriptionElementRef={descriptionElementRef}
-                body={portfolio.desc}
-                closeText={"closeText"}
-                link={portfolio.url}
-                linkText={"linkText"}
-            />
+            open={open}
+            handleClose={handleClose}
+            title={portfolio.title}
+            descriptionElementRef={descriptionElementRef}
+            body={portfolio.desc}
+            closeText={undefined}
+            link={url}
+            linkText={text}
+        />
     </Grid2>
 }
