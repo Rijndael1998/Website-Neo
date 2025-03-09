@@ -4,11 +4,13 @@ import classNames from "classnames";
 import { GroupPreviewContent } from "./_groupTypes";
 import LaunchIcon from '@mui/icons-material/Launch';
 import LinkIcon from '@mui/icons-material/Link';
-import { Button, Grid2, Stack, SvgIcon, Typography } from "@mui/material";
+import { Stack, SvgIconTypeMap, Typography } from "@mui/material";
 import GroupItemDialog from "./_groupItemDialog";
 import DarkModeFix from "../muiWrappers/darkModeFix/_darkModeFix";
 import { ifTrue } from "../reactUtils";
 import GroupItemWrapper from "./_groupItemWrapper";
+import GroupItemButton from "./_groupItemButton";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export type GroupProps = {
     portfolio: GroupPreviewContent,
@@ -16,7 +18,7 @@ export type GroupProps = {
 
 export type LinkText = "" | "See Demo" | "External Link" | "Details";
 
-export const IconMatrix: Map<LinkText, typeof SvgIcon> = new Map([
+export const IconMatrix: Map<LinkText, GroupItemIconType> = new Map([
     ["External Link", LaunchIcon],
     ["See Demo", LaunchIcon],
     ["Details", LinkIcon],
@@ -38,6 +40,10 @@ function GetGroupItemText(portfolio: GroupPreviewContent): LinkText {
 
     // if none of the above, it's a relative link
     return "Details";
+}
+
+export type GroupItemIconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    muiName: string;
 }
 
 export default function GroupItem({ portfolio }: GroupProps) {
@@ -71,14 +77,11 @@ export default function GroupItem({ portfolio }: GroupProps) {
                             linkText={text}
                         />
                         {ifTrue(!empty,
-                            <Button
-                                href={portfolio.url}
-                                aria-label={text}
-                                variant="contained"
-                                endIcon={<Icon fontSize="inherit" />}
-                            >
-                                {text}
-                            </Button>
+                            <GroupItemButton 
+                                portfolioURL={url}
+                                text={text}
+                                Icon={Icon}
+                            />
                         )}
                     </Stack>
                 </div>
