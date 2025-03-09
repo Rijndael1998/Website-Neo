@@ -2,15 +2,9 @@
 
 import * as React from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import { GroupPreviewContent } from '../../group/_groupTypes';
 import DarkModeFix from '../darkModeFix/_darkModeFix';
-import { ifTrue } from '../../reactUtils';
-import Link from 'next/link';
+import { DialogBox } from './DialogBox';
 
 export type ScrollDialogProps = {
     title: string,
@@ -24,10 +18,10 @@ export type ScrollDialogProps = {
 
 export function ScrollDialog({ title, buttonText, body, closeText, link, linkText, buttonProps }: ScrollDialogProps) {
     const [open, setOpen] = React.useState(false);
-    const scroll = 'paper';
 
-    const handleClose = () => {
+    const handleClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         setOpen(false);
+        e.stopPropagation();
     };
 
     const descriptionElementRef = React.useRef<HTMLElement>(null);
@@ -42,29 +36,23 @@ export function ScrollDialog({ title, buttonText, body, closeText, link, linkTex
 
     return (
         <DarkModeFix>
-            <Button {...buttonProps} onClick={() => setOpen(true)}>{buttonText}</Button>
-            <Dialog
+            <Button {...buttonProps}
+                onClick={(e) => {
+                    setOpen(true);
+                    e.stopPropagation();
+                }}>
+                {buttonText}
+            </Button>
+            <DialogBox
                 open={open}
-                onClose={handleClose}
-                scroll={scroll}
-                aria-labelledby="scroll-dialog-title"
-                aria-describedby="scroll-dialog-description"
-            >
-                <DialogTitle id="scroll-dialog-title">{title}</DialogTitle>
-                <DialogContent dividers>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        {body}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>{closeText ?? "Close"}</Button>
-                    {ifTrue(link !== undefined, <Link href={link!}><Button onClick={handleClose}>{linkText ?? "Link"}</Button></Link>)}
-                </DialogActions>
-            </Dialog>
+                handleClose={handleClose}
+                title={title}
+                descriptionElementRef={descriptionElementRef}
+                body={body}
+                closeText={closeText}
+                link={link}
+                linkText={linkText}
+            />
         </DarkModeFix>
     );
 }
