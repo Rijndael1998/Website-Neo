@@ -38,7 +38,6 @@ export default function GroupItemWrapper({ children, portfolio }: { children: Re
         // I'm currently removing propagation from other
         // components to stop this from being triggered.
         onClick={(e) => {
-            console.log(e);
             setOpen(true);
             e.stopPropagation();
         }}
