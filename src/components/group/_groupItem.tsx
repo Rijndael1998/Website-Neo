@@ -18,6 +18,17 @@ export type GroupProps = {
 
 export type LinkText = "" | "See Demo" | "External Link" | "Details";
 
+export type GroupItemIconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    muiName: string;
+}
+
+export type ReturnPortfolioItemsReturn = [
+    string,
+    boolean,
+    LinkText,
+    GroupItemIconType,
+];
+
 export const IconMatrix: Map<LinkText, GroupItemIconType> = new Map([
     ["External Link", LaunchIcon],
     ["See Demo", LaunchIcon],
@@ -42,19 +53,20 @@ function GetGroupItemText(portfolio: GroupPreviewContent): LinkText {
     return "Details";
 }
 
-export type GroupItemIconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
-    muiName: string;
-}
-
-export default function GroupItem({ portfolio }: GroupProps) {
+export function ReturnPortfolioItems(portfolio: GroupProps["portfolio"]): ReturnPortfolioItemsReturn {
     // link URL
     const url = portfolio.url ?? "";
     const empty = url == "";
 
     // Interface items
     const text = GetGroupItemText(portfolio);
-    const Icon = IconMatrix.get(text) ?? IconMatrix.get("")!;
+    const Icon = IconMatrix.get(text) ?? IconMatrix.get("") ?? LinkIcon;
 
+    return [url, empty, text, Icon];
+}
+
+export default function GroupItem({ portfolio }: GroupProps) {
+    const [url, empty, text, Icon] = ReturnPortfolioItems(portfolio);
 
     return <GroupItemWrapper portfolio={portfolio}>
         <DarkModeFix>
@@ -77,7 +89,7 @@ export default function GroupItem({ portfolio }: GroupProps) {
                             linkText={text}
                         />
                         {ifTrue(!empty,
-                            <GroupItemButton 
+                            <GroupItemButton
                                 portfolioURL={url}
                                 text={text}
                                 Icon={Icon}
