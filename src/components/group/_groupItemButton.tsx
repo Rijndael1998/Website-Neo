@@ -1,7 +1,6 @@
 "use client";
 
-import { Button, SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { Button } from "@mui/material";
 import { GroupItemIconType } from "./_groupItem";
 
 export type GroupItemButtonProps = {
@@ -10,8 +9,9 @@ export type GroupItemButtonProps = {
     Icon: GroupItemIconType,
 }
 
-export default function GroupItemButton({text, portfolioURL, Icon}: GroupItemButtonProps) {
+export default function GroupItemButton({ text, portfolioURL, Icon }: GroupItemButtonProps) {
     return <Button
+        onClick={(e) => e.stopPropagation()}
         href={portfolioURL}
         aria-label={text}
         variant="contained"
