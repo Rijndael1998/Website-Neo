@@ -51,9 +51,7 @@ const darkTheme = createTheme({
     },
 });
 
-// this needs to be deprecated!!!
 export default function DarkModeFix({ children }: { children: child }) {
-    console.warn("DarkModeFix is deprecated!!!");
     return (
         <ThemeProvider theme={darkTheme}>
             {children}
