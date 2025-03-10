@@ -1,5 +1,5 @@
-@import "./../../../components/vars";
-@import "./../../../components/colors";
+@use "../../../components/vars";
+@use "../../../components/colors";
 
 .controlWrapper {
     display: flex;
@@ -16,7 +16,7 @@
     }
 }
 
-@media screen and (max-width: calc($navBreak + 10ch)) {
+@media screen and (max-width: calc(vars.$navBreak + 10ch)) {
     .controlWrapper {
         flex-direction: column;
 
@@ -37,7 +37,7 @@
     }
 }
 
-@media screen and (max-width: $titleBreak) {
+@media screen and (max-width: vars.$titleBreak) {
     .controlWrapper {
 
         .buttonWrapper {
@@ -65,7 +65,7 @@
         text-decoration-color: transparent;
     }
     50% {
-        text-decoration-color: $accent;
+        text-decoration-color: colors.$accent;
     }
     100% {
         text-decoration-color: transparent;
