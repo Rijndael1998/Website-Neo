@@ -1,4 +1,4 @@
-@import "./../../vars";
+@use "../../vars";
 
 .nav,
 .menu {
@@ -44,7 +44,7 @@
     }
 }
 
-@media screen and (max-width: $navBreak) {
+@media screen and (max-width: vars.$navBreak) {
     .nav {
         padding-left: 0;
         padding-right: 0;
