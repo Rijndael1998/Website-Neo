@@ -1,5 +1,5 @@
-@import "./../../vars";
-@import "./sudokuGridItem.scss";
+@use "../../vars";
+@use "sudokuGridItem.scss";
 
 .gridWrapper {
     .grid {
@@ -21,7 +21,7 @@
 
                 position: relative;
 
-                @include sudokuGridItem;
+                @include sudokuGridItem.sudokuGridItem;
 
                 width: var(--gridSize);
                 height: var(--gridSize);
@@ -64,7 +64,7 @@
     }
 }
 
-@media screen and (max-width: $navBreak) {
+@media screen and (max-width: vars.$navBreak) {
     .gridWrapper {
         overflow-y: auto;
     }

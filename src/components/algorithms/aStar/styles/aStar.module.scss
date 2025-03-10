@@ -1,4 +1,4 @@
-@import "./../../../vars";
+@use "../../../vars";
 
 .gridWrapper {
     max-width: 100%;
@@ -76,7 +76,7 @@
     }
 }
 
-@media (max-width: $navBreak) {
+@media (max-width: vars.$navBreak) {
     .options {
         .tileSelection {
             gap: 1rem;
@@ -97,7 +97,7 @@
     }
 }
 
-@media (max-width: $titleBreak) {
+@media (max-width: vars.$titleBreak) {
     .options {
         .newGridOptionsWrapper {
             flex-direction: column;

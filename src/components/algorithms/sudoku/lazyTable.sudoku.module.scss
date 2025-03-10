@@ -89,8 +89,8 @@
 
             @for $x from 0 through 11 * 11 {
                 $xP: $x % 11;
-                $yP: math.floor($x / 11);
-                $d: hypot($xP - 3, $yP) / 1;
+                $yP: math.floor(math.div($x, 11));
+                $d: calc(hypot($xP - 3, $yP) / 1);
 
                 &:nth-child(#{$x}) {
                     animation-delay: #{$d}s;

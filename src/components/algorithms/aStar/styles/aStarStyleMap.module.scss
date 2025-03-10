@@ -1,29 +1,29 @@
-@import "../../../colors";
+@use "../../../colors";
 
 .Node {
-    background-color: $idk;
+    background-color: colors.$idk;
 }
 
 .Wall {
-    background: $background;
+    background: colors.$background;
 }
 
 .Start {
-    background: $nicePink;
+    background: colors.$nicePink;
 }
 
 .End {
-    background: $nicePinkInv;
+    background: colors.$nicePinkInv;
 }
 
 .Path {
-    background: $text;
+    background: colors.$text;
     // animation: blink 2s ease infinite;
     // animation-direction: reverse;
 }
 
 .Explored {
-    background: $primaryDullDesat;
+    background: colors.$primaryDullDesat;
 }
 
 .Removed {

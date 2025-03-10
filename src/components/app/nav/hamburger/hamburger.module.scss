@@ -1,5 +1,5 @@
-@import "./../../../vars";
-@import "./../../../colors";
+@use "../../../vars";
+@use "../../../colors";
 
 .hamburgerWrapper {
     display: flex;
@@ -62,12 +62,12 @@
 
         div {
             transition: inherit;
-            background-color: $text;
+            background-color: colors.$text;
         }
     }
 }
 
-@media screen and (max-width: $navBreak) {
+@media screen and (max-width: vars.$navBreak) {
     .hamburgerWrapper {
         height: 100%;
         font-size: 1rem;
