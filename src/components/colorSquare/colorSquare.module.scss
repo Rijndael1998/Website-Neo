@@ -1,11 +1,11 @@
-@import "../colors";
+@use "../colors";
 
 .cs {
     display: inline;
     height: 1em;
     aspect-ratio: 1;
-    background-color: $text;
-    border: $text 1px solid;
+    background-color: colors.$text;
+    border: colors.$text 1px solid;
 
     * {
         width: 100%;

@@ -1,4 +1,4 @@
-@import "./../../vars";
+@use "../../vars";
 
 .header {
     overflow: hidden;
@@ -10,14 +10,14 @@
 
     font-family: monospace;
 
-    height: $headerHeight;
+    height: vars.$headerHeight;
+
+    filter: hue-rotate(0deg);
+    transition: all 1s ease;
 
     * {
         font-family: inherit;
     }
-
-    filter: hue-rotate(0deg);
-    transition: all 1s ease;
 
     &.red {
         filter: hue-rotate(100deg);

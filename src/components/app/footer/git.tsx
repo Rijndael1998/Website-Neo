@@ -51,8 +51,6 @@ let gitStatus = new GitStatus();
 export default async function Git() {
     await gitStatus.ConsiderUpdate();
 
-    console.log(gitStatus);
-
     if (gitStatus.status == "Invalid Git" || gitStatus.status == "Unset")
         return <></>;
 

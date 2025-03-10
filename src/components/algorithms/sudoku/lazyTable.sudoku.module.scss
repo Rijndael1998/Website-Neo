@@ -1,14 +1,15 @@
 @use 'sass:math';
 
-@import "./../../colors";
-@import "./sudokuGridItem.scss";
+@use "sass:color";
+@use "../../colors";
+@use "sudokuGridItem.scss";
 
 .common {
     gap: .5em .5em;
     grid-auto-flow: row;
 
     &>div {
-        @include sudokuGridItem;
+        @include sudokuGridItem.sudokuGridItem;
     }
 }
 
@@ -88,8 +89,8 @@
 
             @for $x from 0 through 11 * 11 {
                 $xP: $x % 11;
-                $yP: floor($x / 11);
-                $d: hypot($xP - 3, $yP) / 1;
+                $yP: math.floor(math.div($x, 11));
+                $d: calc(hypot($xP - 3, $yP) / 1);
 
                 &:nth-child(#{$x}) {
                     animation-delay: #{$d}s;
@@ -117,13 +118,13 @@
 
 @keyframes ind2b {
     50% {
-        border: 1px solid $accent;
+        border: 1px solid colors.$accent;
     }
 }
 
 @keyframes ind4b {
     50% {
-        border: 1px solid transparentize($primary, 0.2);
+        border: 1px solid color.adjust(colors.$primary, $alpha: -0.2);
     }
 }
 

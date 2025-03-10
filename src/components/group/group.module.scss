@@ -1,8 +1,9 @@
-@import "./../colors";
+@use "sass:color";
+@use "../colors";
 
 .portfolio {
     position: relative;
-    background-color: $secondaryBg;
+    background-color: colors.$secondaryBg;
 
     display: grid;
 
@@ -19,9 +20,9 @@
     transition: all 0.25s cubic-bezier(.65, .05, .54, 1);
 
     $b_width: 0.2ex;
-    $borer_hover_col: lighten($secondaryBg, 20);
+    $borer_hover_col: color.adjust(colors.$secondaryBg, $lightness: 20%);
 
-    $border_declaration: $b_width lighten($secondaryBg, 5) solid;
+    $border_declaration: $b_width color.adjust(colors.$secondaryBg, $lightness: 5%) solid;
     $border_declaration_hover: $b_width $borer_hover_col solid;
 
     border: $border_declaration;

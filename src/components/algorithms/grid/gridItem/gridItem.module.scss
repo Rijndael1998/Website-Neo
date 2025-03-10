@@ -1,4 +1,4 @@
-@import "./../../../colors";
+@use "../../../colors";
 
 .gridItem {
     position: relative;
@@ -7,7 +7,7 @@
     aspect-ratio: 1;
     height: 2em;
 
-    border: $background 1px solid;
+    border: colors.$background 1px solid;
 
     &,
     * {
@@ -24,8 +24,8 @@
 
         opacity: 0;
 
-        $fore: $bad;
-        $pr: $idk;
+        $fore: colors.$bad;
+        $pr: colors.$idk;
         $size: calc(100% / 4);
         background: repeating-linear-gradient(135deg, $fore, $fore $size, $pr $size, $pr $size * 2);
     }

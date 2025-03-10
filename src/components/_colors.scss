@@ -1,8 +1,10 @@
+@use 'sass:color';
+
 $text: #ffffff;
 $background: #000000;
 
 $primary: #41E041;
-$primaryDull: transparentize($primary, 0.55);
+$primaryDull: color.adjust($primary, $alpha: -0.55);
 $primaryDullDesat: #16522e;
 
 $secondary: #0f2f0f;
@@ -10,7 +12,7 @@ $secondaryBg: #141414;
 $secondaryBright: #509962;
 
 $accent: #0ff08b;
-$accentDull: transparentize($accent, 0.55);
+$accentDull: color.adjust($accent, $alpha: -0.55);
 
 $disabled: rgb(50, 67, 67);
 
