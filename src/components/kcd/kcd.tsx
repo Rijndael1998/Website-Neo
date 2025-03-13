@@ -14,8 +14,10 @@ export default function KCD() {
         setSide(side + 1);
     };
 
+    const sx = { margin: "auto", overflowX: "scroll", overflowY: "visible"};
+
     return <>
-        <Stack direction={"row"}>
+        <Stack direction={"row"} sx={sx}>
             <Stack>
                 <Dice showSide={side} />
                 <Dice showSide={side + 1} />
@@ -26,6 +28,15 @@ export default function KCD() {
                 <Dice showSide={side + 4} />
                 <Dice showSide={side + 5} />
             </Stack>
+        </Stack>
+
+        <Stack direction={"row"} sx={sx}>
+            <Dice showSide={side} />
+            <Dice showSide={side + 1} />
+            <Dice showSide={side + 2} />
+            <Dice showSide={side + 3} />
+            <Dice showSide={side + 4} />
+            <Dice showSide={side + 5} />
         </Stack>
 
         <Button onClick={setSideFn} variant="contained">

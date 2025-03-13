@@ -1,10 +1,16 @@
 .diceRootWrapper {
+    $diceWidth: 6ch;
+    $rootSize: $diceWidth * 2;
+
     margin: auto;
-    padding: 1em;
+
+    width: $diceWidth * 3;
+    height: $diceWidth * 3;
+
+    // wrapper needs to offset down a little, (check if correct)
+    transform: translateY($diceWidth * 0.5);
 
     .diceRoot {
-        $diceWidth: 8ch;
-        $rootSize: $diceWidth * 2;
         width: $rootSize;
         height: $rootSize;
 
