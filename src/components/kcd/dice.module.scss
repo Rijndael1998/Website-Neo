@@ -1,5 +1,5 @@
 .diceRoot {
-    $diceWidth: 10ch;
+    $diceWidth: 8ch;
     $rootSize: $diceWidth * 1.5;
     width: $rootSize;
     height: $rootSize;
@@ -55,10 +55,11 @@
             width: 100%;
             height: 100%;
             background-color: grey;
-            border: 1px black solid;
+            border: 0.2ex black solid;
             border-radius: 1ch;
             overflow: hidden;
             display: grid;
+            box-sizing: border-box;
 
             .contentWrapper {
                 font-size: $diceWidth;
