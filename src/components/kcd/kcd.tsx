@@ -19,6 +19,9 @@ export default function KCD() {
             <Dice showSide={side} />
             <Dice showSide={side + 1} />
             <Dice showSide={side + 2} />
+            <Dice showSide={side + 3} />
+            <Dice showSide={side + 4} />
+            <Dice showSide={side + 5} />
         </Stack>
 
         <Button onClick={setSideFn}>

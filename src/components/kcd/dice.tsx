@@ -27,15 +27,17 @@ export default function Dice({ showSide }: DiceType) {
         transform: `rotateY(${degY}deg) rotateX(${degZ}deg)`,
     };
 
-    return <div className={diceStyle.diceRoot} style={newStyle}>
-        {[1, 2, 3, 4, 5, 6].map(v =>
-            <div key={v} className={diceStyle.side}>
-                <div className={diceStyle.face}>
-                    <div className={diceStyle.contentWrapper}>
-                        {v}
+    return <div className={diceStyle.diceRootWrapper}>
+        <div className={diceStyle.diceRoot} style={newStyle}>
+            {[1, 2, 3, 4, 5, 6].map(v =>
+                <div key={v} className={diceStyle.side}>
+                    <div className={diceStyle.face}>
+                        <div className={diceStyle.contentWrapper}>
+                            {v}
+                        </div>
                     </div>
                 </div>
-            </div>
-        )}
+            )}
+        </div>
     </div>
 }
