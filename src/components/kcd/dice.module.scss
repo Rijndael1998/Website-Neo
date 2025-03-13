@@ -1,0 +1,63 @@
+.diceRoot {
+
+    $diceWidth: 10ch;
+    $rootSize: $diceWidth * 1.5;
+
+    width: $rootSize;
+    height: $rootSize;
+
+    perspective: 350cm;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+    transform: rotateY(75deg) rotateZ(55deg);
+
+    margin: auto;
+
+    .side {
+        width: $diceWidth * 2;
+        height: $diceWidth * 2;
+        position: absolute;
+
+        border: 1px black solid;
+        border-radius: 1em;
+        display: grid;
+
+        &:nth-child(1) {
+            background-color: aqua;
+            transform: rotateY(0deg) translateZ($diceWidth);
+        }
+
+        &:nth-child(2) {
+            background-color: blueviolet;
+            transform: rotateY(180deg) translateZ($diceWidth);
+        }
+
+        &:nth-child(3) {
+            background-color: brown;
+            transform: rotateY(90deg) translateZ($diceWidth);
+        }
+
+        &:nth-child(4) {
+            background-color: coral;
+            transform: rotateY(-90deg) translateZ($diceWidth);
+        }
+
+        &:nth-child(5) {
+            background-color: darkgreen;
+            transform: rotateX(90deg) translateZ($diceWidth);
+        }
+
+        &:nth-child(6) {
+            background-color: steelblue;
+            transform: rotateX(-90deg) translateZ($diceWidth);
+        }
+
+        .face {
+            font-size: $diceWidth;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
