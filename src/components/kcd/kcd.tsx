@@ -15,16 +15,20 @@ export default function KCD() {
     };
 
     return <>
-        <Stack>
-            <Dice showSide={side} />
-            <Dice showSide={side + 1} />
-            <Dice showSide={side + 2} />
-            <Dice showSide={side + 3} />
-            <Dice showSide={side + 4} />
-            <Dice showSide={side + 5} />
+        <Stack direction={"row"}>
+            <Stack>
+                <Dice showSide={side} />
+                <Dice showSide={side + 1} />
+                <Dice showSide={side + 2} />
+            </Stack>
+            <Stack>
+                <Dice showSide={side + 3} />
+                <Dice showSide={side + 4} />
+                <Dice showSide={side + 5} />
+            </Stack>
         </Stack>
 
-        <Button onClick={setSideFn}>
+        <Button onClick={setSideFn} variant="contained">
             Add
         </Button>
     </>
