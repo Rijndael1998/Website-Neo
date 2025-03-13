@@ -1,8 +1,6 @@
 .diceRoot {
-
     $diceWidth: 10ch;
     $rootSize: $diceWidth * 1.5;
-
     width: $rootSize;
     height: $rootSize;
 
@@ -19,45 +17,54 @@
         width: $diceWidth * 2;
         height: $diceWidth * 2;
         position: absolute;
-
-        border: 1px black solid;
-        border-radius: 1em;
         display: grid;
 
+        background-color: rgb(88, 88, 88);
+
         &:nth-child(1) {
-            background-color: aqua;
+            //background-color: aqua;
             transform: rotateY(0deg) translateZ($diceWidth);
         }
 
         &:nth-child(2) {
-            background-color: blueviolet;
+            //background-color: blueviolet;
             transform: rotateY(180deg) translateZ($diceWidth);
         }
 
         &:nth-child(3) {
-            background-color: brown;
+            //background-color: brown;
             transform: rotateY(90deg) translateZ($diceWidth);
         }
 
         &:nth-child(4) {
-            background-color: coral;
+            //background-color: coral;
             transform: rotateY(-90deg) translateZ($diceWidth);
         }
 
         &:nth-child(5) {
-            background-color: darkgreen;
+            //background-color: darkgreen;
             transform: rotateX(90deg) translateZ($diceWidth);
         }
 
         &:nth-child(6) {
-            background-color: steelblue;
+            //background-color: steelblue;
             transform: rotateX(-90deg) translateZ($diceWidth);
         }
 
         .face {
-            font-size: $diceWidth;
-            text-align: center;
-            margin: auto;
+            width: 100%;
+            height: 100%;
+            background-color: grey;
+            border: 1px black solid;
+            border-radius: 1ch;
+            overflow: hidden;
+            display: grid;
+
+            .contentWrapper {
+                font-size: $diceWidth;
+                text-align: center;
+                margin: auto;
+            }
         }
     }
 }
