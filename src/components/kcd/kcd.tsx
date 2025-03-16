@@ -1,11 +1,12 @@
 "use client";
 
 import { Button, Stack } from "@mui/material";
-import Dice, { DiceTypeValidSides } from "./dice";
+import Dice, { DiceType, DiceTypeValidSides } from "./dice";
 import { useState } from "react";
 
 export default function KCD() {
     const [side, setSide] = useState<DiceTypeValidSides>(1);
+    const [size, setSize] = useState<DiceType["size"]>();
 
     const setSideFn = () => {
         if (side >= 6)
@@ -14,33 +15,27 @@ export default function KCD() {
         setSide(side + 1);
     };
 
-    const sx = { margin: "auto", overflowX: "scroll", overflowY: "visible"};
+    const setSizeFn = () => {
+        if(size)
+            return setSize(undefined);
+
+        setSize("small")
+    }
+
+    const sx = { margin: "auto", overflowX: "scroll", overflowY: "visible" };
 
     return <>
-        <Stack direction={"row"} sx={sx}>
-            <Stack>
-                <Dice showSide={side} />
-                <Dice showSide={side + 1} />
-                <Dice showSide={side + 2} />
-            </Stack>
-            <Stack>
-                <Dice showSide={side + 3} />
-                <Dice showSide={side + 4} />
-                <Dice showSide={side + 5} />
-            </Stack>
-        </Stack>
 
-        <Stack direction={"row"} sx={sx}>
-            <Dice showSide={side} />
-            <Dice showSide={side + 1} />
-            <Dice showSide={side + 2} />
-            <Dice showSide={side + 3} />
-            <Dice showSide={side + 4} />
-            <Dice showSide={side + 5} />
-        </Stack>
+        <Dice showSide={side} size={size} />
 
-        <Button onClick={setSideFn} variant="contained">
-            Add
-        </Button>
+        <Stack direction={"row"} gap={1}>
+            <Button onClick={setSideFn} variant="contained">
+                Add
+            </Button>
+
+            <Button onClick={setSizeFn} variant="contained">
+                Size: {size}
+            </Button>
+        </Stack>
     </>
 }
