@@ -34,7 +34,7 @@ export default function KCD() {
             </Button>
 
             <Button onClick={setSizeFn} variant="contained">
-                Size: {size}
+                Size: {size ?? "default"}
             </Button>
         </Stack>
     </>
