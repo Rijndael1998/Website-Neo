@@ -1,13 +1,12 @@
 .diceRootWrapper {
     --diceWidth: 6ch;
-    $rootSize: calc(var(--diceWidth) * 2);
+    --rootSize: calc(var(--diceWidth) * 2);
 
     padding-top: calc(var(--diceWidth) * 0.5);
 
     width: calc(var(--diceWidth) * 3);
     height: calc(var(--diceWidth) * 2.5);
 
-    // wrapper needs to offset down a little
     transform-style: preserve-3d;
 
     &.small {
@@ -19,8 +18,8 @@
     }
 
     .diceRoot {
-        width: $rootSize;
-        height: $rootSize;
+        width: var(--rootSize);
+        height: var(--rootSize);
 
         position: relative;
 
