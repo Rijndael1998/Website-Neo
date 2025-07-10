@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Move to folder of the script
 cd "${0%/*}"
