@@ -16,6 +16,8 @@ const execPromise = promisify(exec);
 
 // I should consider making this be more secure somehow...
 export async function executeCommand(command: string) {
+    console.log(">", command);
+
     try {
         // Run the hardcoded shell command
         const { stdout, stderr } = await execPromise(command);
@@ -30,7 +32,8 @@ export async function executeCommand(command: string) {
         return out;
 
     } catch (error) {
-        console.error("Command execution failed:", error);
+        console.error("Command execution failed:");
+        console.error(error);
         return null;
     }
 }
