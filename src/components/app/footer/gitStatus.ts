@@ -13,8 +13,8 @@ export class GitStatus {
     gitHash?: string;
     gitHashShort?: string;
     status: Status = Status.UNSET;
-    branchStatus!: [number, number];
-    branch!: string;
+    branchStatus?: [number, number];
+    branch?: string;
 
     constructor() {
         this.Update();
@@ -24,7 +24,7 @@ export class GitStatus {
         this.lastUpdate = Date.now();
 
         // get branch name
-        this.branch = (await executeCommand("git branch | grep \*") ?? " * !! unknown !!").replace(" *", "");
+        this.branch = (await executeCommand("git branch | grep \\*") ?? " * !! unknown !!").replace(" *", "");
 
         // update git repo
         await executeCommand("git fetch");
@@ -56,21 +56,39 @@ export class GitStatus {
         if (Date.now() - this.lastUpdate > 1000 * 60 * 60) // ms in sec * sec in min * min in hour
             await this.Update();
     }
-}
 
-export function GitStatusToColor(status: Status): string {
-    switch(status) {
-        case Status.UNSET:
-        case Status.INVALID:
-            return "#606";
+    ToColor(): string {
+        switch (this.status) {
+            case Status.UNSET:
+            case Status.INVALID:
+                return "#00o";
 
-        case Status.CURRENT:
-            return "#0f0";
+            case Status.CURRENT:
+                return "#0f0";
 
-        case Status.DEV:
-            return "#00f";
+            case Status.DEV:
+                return "#66f";
 
-        case Status.BEHIND:
-            return "#f00";
+            case Status.BEHIND:
+                return "#f00";
+        }
+    }
+
+    ToHashObject() {
+        if (this.status == Status.UNSET)
+            return { long: "Still working...", short: "..." };
+
+        if (this.status == Status.INVALID)
+            return { long: "Invalid repository", short: "Invalid" };
+
+        return { long: this.gitHash!, short: this.gitHashShort! };
+    }
+
+    ToShort() {
+        return this.ToHashObject().short;
+    }
+
+    ToLong() {
+        return this.ToHashObject().long;
     }
 }
