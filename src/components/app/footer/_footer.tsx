@@ -44,9 +44,9 @@ export default function Footer() {
                 </Link>
             </div>
             <div>
-                <Link href="https://signal.me/#eu/9FPcrb365ENjlqBxm5r6JMoFV1rfELOtpmt9KpPrq-rYcS9WgmNCOruEBdTcR_93">
+                <Link href="https://signal.me/#eu/scfqRTLwAkPWy3Bp_-nnIgf1QYKgMSBc5YKsfbU9mbiCBGuF_nBHUbFT0Sq0JoJl">
                     <ToolTip tip="Signal Messenger"><SignalIcon /></ToolTip>
-                    <p>Rijndael.98<Copy text="Rijn.98" /></p>
+                    <p>Rijndael.98<Copy text="Rijndael.98" /></p>
                 </Link>
             </div>
         </div>
