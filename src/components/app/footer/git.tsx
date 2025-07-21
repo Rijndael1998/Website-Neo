@@ -17,8 +17,6 @@ export default async function Git() {
     if (gitStatus.status == Status.INVALID || gitStatus.status == Status.UNSET)
         return <></>;
 
-    console.log(gitStatus)
-
     return <div>
         <Box sx={{
             borderRadius: "100%",
