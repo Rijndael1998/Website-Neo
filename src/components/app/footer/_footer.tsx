@@ -12,8 +12,6 @@ import { DiscordIcon } from "@/components/muiWrappers/customIcons/Discord";
 import Git from "./git";
 
 export default function Footer() {
-
-
     return <footer className={styles.footer}>
         <h4>
             Contact
@@ -53,8 +51,11 @@ export default function Footer() {
             </div>
         </div>
         <Quotes />
-        <div style={{textAlign: "right", width: "100%", margin: "0 unset 0 0", opacity: 0.12}}>
+        <div style={{ display: "flex", flexDirection: "column", textAlign: "right", margin: "0", opacity: 0.12 }}>
             <Git />
+            <Link href={"/debug/"} style={{ fontSize: "0.5em", display: "block", width: "unset" }}>
+                <span>debug</span>
+            </Link>
         </div>
     </footer>
 }
