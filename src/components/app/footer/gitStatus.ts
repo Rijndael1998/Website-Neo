@@ -24,7 +24,7 @@ export class GitStatus {
         this.lastUpdate = Date.now();
 
         // get branch name
-        this.branch = (await executeCommand("git branch | grep \\*") ?? " * !! unknown !!").replace(" *", "");
+        this.branch = (await executeCommand("git branch | grep \\*") ?? " * !! unknown !!").replace("*", ""). trim();
 
         // update git repo
         await executeCommand("git fetch");
@@ -33,6 +33,8 @@ export class GitStatus {
         const hash = await executeCommand("git rev-parse HEAD");
         this.gitHash = hash ?? "";
         this.gitHashShort = this.gitHash.slice(0, 7);
+
+        console.log(this.branch);
 
         // check if the current branch is in dev
         if (this.branch != "main")
