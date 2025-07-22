@@ -14,6 +14,11 @@ export default function CFWarning() {
         return <></>;
     }
 
+    // TODO: Check the domain from the window location and only show this warning if the domain is not the original one.
+    if (window.location.hostname === "baldy.ga") {
+        return <></>;
+    }
+
     const dismissWarning = () => {
         localStorage.setItem("cfWarningDismissed", "true");
         setShow(false);
