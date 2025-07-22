@@ -3,9 +3,17 @@
 import { Button } from "@mui/material";
 
 export default function LocalStorage() {
+    if (typeof window === "undefined") {
+        return <></>;
+    }
+
     return <>
         <Button onClick={() => {
-            localStorage.clear();
+            if (typeof window === "undefined") {
+                return;
+            }
+
+            window.localStorage.clear();
             window.location.reload();
         }}>
             Clear Local Storage

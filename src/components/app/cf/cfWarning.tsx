@@ -3,25 +3,28 @@
 import { Stack, Typography } from "@mui/material";
 import PrivacyTipOutlinedIcon from '@mui/icons-material/PrivacyTipOutlined';
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function CFWarning() {
-    const [show, setShow] = React.useState<boolean>(!localStorage.getItem("cfWarningDismissed"));
+    const [show, setShow] = React.useState<boolean>(false);
     const url = "https://baldy.ga/";
     const urlText = "baldy.ga/";
 
-    if (typeof window === "undefined") {
-        return <></>;
-    }
+    useEffect(() => {
+        if (typeof window === "undefined")
+            return;
 
-    const hn = window.location.hostname;
-    // cf domains, anything else should not show the warning
-    if (hn !== "rijn.pl" && hn !== "rijn.dev") {
-        return <></>;
-    }
+        const hn = window.location.hostname;
+        // cf domains, anything else should not show the warning
+        if (hn !== "rijn.pl" && hn !== "rijn.dev") {
+            return;
+        }
+
+        setShow(!window.localStorage.getItem("cfWarningDismissed"));
+    }, []);
 
     const dismissWarning = () => {
-        localStorage.setItem("cfWarningDismissed", "true");
+        window?.localStorage.setItem("cfWarningDismissed", "true");
         setShow(false);
     };
 
@@ -66,11 +69,11 @@ export default function CFWarning() {
             </Typography>
 
             <Typography variant="body2">
-                This website exists to provide a backup in case my ip address or domains are censored, but it is not the original and does not have the same privacy guarantees. It doesn't inject any trackers like CloudFlare does. CloudFlare is a third-party service that acts as a reverse proxy, which means it can see and log your IP address, browser information, and other metadata about your visit.
+                {"This website exists to provide a backup in case my ip address or domains are censored, but it is not the original and does not have the same privacy guarantees. It doesn't inject any trackers like CloudFlare does. CloudFlare is a third-party service that acts as a reverse proxy, which means it can see and log your IP address, browser information, and other metadata about your visit."}
             </Typography>
 
             <Typography variant="body2">
-                If you value your privacy, please consider visiting the original website instead which doesn't track any of your data.
+                {"If you value your privacy, please consider visiting the original website instead which doesn't track any of your data."}
             </Typography>
 
             <Typography variant="h6" sx={{ textAlign: "center", marginTop: 6 }}>
