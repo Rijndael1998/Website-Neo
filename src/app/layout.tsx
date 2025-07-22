@@ -11,6 +11,7 @@ import { Kanit, Noto_Sans, Noto_Serif, Ubuntu_Mono } from 'next/font/google';
 import { Container } from '@mui/material';
 import FabNav from '@/components/app/nav/fabnav/_fabnav';
 import DarkModeFix from '@/components/muiWrappers/darkModeFix/_darkModeFix';
+import CFWarning from '@/components/app/cf/cfWarning';
 
 
 const ns = Noto_Sans({
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${style.body} ${fontClassStrings}`}>
+        <CFWarning />
         <header>
           <Header>
             <Title text="Lukasz Baldyga" />
