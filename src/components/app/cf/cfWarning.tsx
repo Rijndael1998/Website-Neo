@@ -43,6 +43,7 @@ export default function CFWarning() {
             transform: show ? "translateY(0)" : "translateY(-100%)",
             backdropFilter: "blur(1ch)",
             cursor: "pointer",
+            overflowY: "auto",
         }}
         onClick={() => dismissWarning()}
     >
