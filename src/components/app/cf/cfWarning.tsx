@@ -15,8 +15,8 @@ export default function CFWarning() {
             return;
 
         const hn = window.location.hostname;
-        // cf domains, anything else should not show the warning
-        if (hn !== "rijn.pl" && hn !== "rijn.dev") {
+        // cf domains, anything else should not show the warning, except for testing
+        if (hn !== "rijn.pl" && hn !== "rijn.dev" && hn !== "localhost") {
             return;
         }
 
@@ -65,11 +65,11 @@ export default function CFWarning() {
             </Typography>
 
             <Typography variant="body1">
-                This website you are visiting is mirrored via CloudFlare. I implore you to try to access the original website at <Link href={url}>{urlText}</Link>.
+                This website you are visiting is mirrored via CloudFlare. I implore you to try to access the original website at <Link href={url}>{urlText}</Link>. Keep in mind that it can still be blocked by your country/content blocker, so you may need to continue using this mirror.
             </Typography>
 
             <Typography variant="body2">
-                {"This website exists to provide a backup in case my ip address or domains are censored, but it is not the original and does not have the same privacy guarantees. It doesn't inject any trackers like CloudFlare does. CloudFlare is a third-party service that acts as a reverse proxy, which means it can see and log your IP address, browser information, and other metadata about your visit."}
+                {"This website exists to provide a backup in case my ip address or domains are censored, but it is not the original and does not have the same privacy guarantees. The original domains don't inject any trackers like CloudFlare does. CloudFlare acts as a reverse proxy, which means it can see and log your IP address, browser information, and other metadata about your visit."}
             </Typography>
 
             <Typography variant="body2">
