@@ -66,7 +66,14 @@ export default function CFWarning() {
             </Typography>
 
             <Typography variant="body1">
-                This website you are visiting is mirrored via CloudFlare. I implore you to try to access the original website at <Link href={url}>{urlText}</Link>. Keep in mind that it can still be blocked by your country/content blocker, so you may need to continue using this mirror.
+                {"This website you are visiting is mirrored via CloudFlare. I implore you to try to access the original website at "}
+                <Link href={url} onClick={(e) => {
+                    e.stopPropagation();
+                }}>
+                    {urlText}
+                </Link>.
+
+                Keep in mind that it can still be blocked by your country/content blocker, so you may need to continue using this mirror.
             </Typography>
 
             <Typography variant="body2">
