@@ -14,8 +14,9 @@ export default function CFWarning() {
         return <></>;
     }
 
-    // TODO: Check the domain from the window location and only show this warning if the domain is not the original one.
-    if (window.location.hostname === "baldy.ga") {
+    const hn = window.location.hostname;
+    // cf domains, anything else should not show the warning
+    if (hn !== "rijn.pl" && hn !== "rijn.dev") {
         return <></>;
     }
 
