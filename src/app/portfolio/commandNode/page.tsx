@@ -1,12 +1,15 @@
 "use client";
 
 import { Typography } from "@mui/material";
-import NoOp from "./tools/noOp";
+import FileOutput from "./tools/FileOutput";
+import Dd from "./tools/dd";
 
 export default function commandNode() {
 
-    const noOp = new NoOp();
-    const NO_OP = noOp.generateOutput;
+    const noOp = new FileOutput("/dev/null");
+
+    const dd = new Dd();
+    dd.stdout = noOp;
 
     return <>
         <Typography variant="h1">
@@ -17,7 +20,9 @@ export default function commandNode() {
         </ul>
 
         <div>
-            <NO_OP/>
+            {
+                dd.generateOutput()
+            }
         </div>
     </>
 }
