@@ -16,6 +16,7 @@ import { ToDo } from "./toDo/page.preview";
 import { AS } from "./a-star/page.preview";
 import { Sudoku } from "./sudoku/page.preview";
 import { Langrage } from "./langrage/page.preview";
+import { Penumbra } from "./penumbra/page.preview";
 
 
 export const metadata = {
@@ -53,6 +54,7 @@ const demos: GroupViewArray = [
 ];
 
 const games: GroupViewArray = [
+    Penumbra,
     chalk,
 ];
 
