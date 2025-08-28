@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { AdventOfCodeSolution, solutions } from './advent_of_code/solutions';
+import { AdventOfCodeSolution, solutions } from '../../components/algorithms/advent_of_code/solutions';
 
 export const config = {
     api: {

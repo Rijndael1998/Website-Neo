@@ -16,7 +16,7 @@ export default async function handler(
         if(request > 25 || request < 0 || Number.isNaN(request) || !Number.isSafeInteger(request))
             throw Error("Request out of bounds");
 
-        const filePath = `${process.cwd()}/src/pages/api/advent_of_code/inputs/${request}.txt`;
+        const filePath = `${process.cwd()}/src/components/algorithms/advent_of_code/inputs/${request}.txt`;
 
         fileContents = await fs.readFile(filePath, 'utf8');
     } catch (e) {
