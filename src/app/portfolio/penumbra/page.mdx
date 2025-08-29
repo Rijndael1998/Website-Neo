@@ -2,6 +2,10 @@ import YoutubeEmbed from "@/components/external/youtube/_embed";
 import IFrameEmbed from "@/components/external/iFrameEmbed";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 import image from "./top.png";
+import blender from "./images/blender.png";
+import compositor from "./images/compositor.png";
+import og from "./images/1og.webp";
+import pg from "./images/1.webp";
 
 export const metadata = {
     title: "Penumbra",
@@ -12,7 +16,7 @@ export const metadata = {
 
 <LazyLocalImage src={image} />
 
-It was my first every game jam that I took a part of and I had a lot of fun doing it.
+This game was made for the [GMTK Game Jam 2025](https://itch.io/jam/gmtk-2025). It was my first every game jam that I took a part in and I had a lot of fun doing it as well as playing other people's creations.
 
 # Play
 
@@ -25,7 +29,7 @@ source={"/fun/penumbra/index.html"}
 
 # Game creation
 
-I worked with 5 others on the creation of this game.
+On my team, I worked closely with 5 other people to create this game.
 
 We had some loosely defined roles in the game and links to their itch.io pages:
     - [Jman](https://jman9092.itch.io/): Project management & Music
@@ -38,15 +42,28 @@ We had some loosely defined roles in the game and links to their itch.io pages:
 
 My primary contribution was the code for the game. I worked mainly on the enemies and the drops, but I touched all the bits of code in the game. However, I also managed to create the background sprite for the background.
 
-## Enemies
+## Enemies & Drops
+I more or less single handedly created all of the code that was needed for the drops of the enemies. 
 
-
-## Drops
-
+Motes come from the fallen monsters. Initially, they scatter, take time to appear and become more opaque. When they're at their most opaque, they can then be picked up by the spell the player creates. If they player doesn't pick them up, they lose their physical structure and fade away. The motes in this game are needed to open the portal or buy upgrades.
 
 ## Background
+The background was actually relatively easy to make. I started off with a pretty realistic render of a ocean that looped seamlessly.
+
+<LazyLocalImage src={blender} alt={"Blender window showing the rendering process"} cap />
+
+I applied some compositing effects in a way that would tone down the effects of realism but also look cool.
+
+<LazyLocalImage src={compositor} alt={"Compositing process"} cap />
+
+Here you can see the difference between the raw and composited image.
+
+<LazyLocalImage src={og} alt={"Original image"} cap />
+<LazyLocalImage src={pg} alt={"Final image"} cap />
+
+Here's a small animation of all the frames:
 
 
 ## Source 
-We have a repository of the game [here](https://github.com/alifeee/penumbra) on GitHub. 
+We have a repository of the game [here](https://github.com/alifeee/penumbra) on GitHub. You can also play the game on [itch.io](https://jman9092.itch.io/penumbra).
 
