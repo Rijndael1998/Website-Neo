@@ -1,13 +1,14 @@
 "use client";
 
-import { Button, Grid2, Paper, Stack, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Button, Grid2, Paper, Typography } from "@mui/material";
+import { useState } from "react";
 import { ifTruthy } from "../reactUtils";
 
 export type HideProps = {
     children?: React.ReactNode
     showText?: string,
     externalLink?: string,
+    externalShowText?: string,
     reason?: string,
 };
 
@@ -16,7 +17,7 @@ export enum HideState {
     COMPONENT_MOUNTED,
 }
 
-export default function Hide({ children, showText, externalLink, reason }: HideProps) {
+export default function Hide({ children, showText, externalLink, reason, externalShowText }: HideProps) {
     const [state, setState] = useState<HideState>(HideState.INITIAL);
 
     const padding = state == HideState.INITIAL ? "2em" : "0";
@@ -43,7 +44,7 @@ export default function Hide({ children, showText, externalLink, reason }: HideP
                 </Grid2>
                 {ifTruthy(externalLink,
                     <Grid2 size={4}>
-                        <Button href={externalLink} variant="outlined">External Link</Button>
+                        <Button href={externalLink} variant="outlined">{externalShowText ?? "External Link"}</Button>
                     </Grid2>
                 )}
             </Grid2>
