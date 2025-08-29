@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${style.body} ${fontClassStrings}`}>
-        <CFWarning />
+        {/* <CFWarning /> */}
         <header>
           <Header>
             <Title text="Lukasz Baldyga" />
