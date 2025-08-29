@@ -12,11 +12,12 @@ export type LazyImageProps = {
     className?: string
     cap?: JSX.Element | string | boolean,
     capCol?: string,
+    capRight?: boolean
     quality?: number,
     pixelated?: boolean,
 }
 
-export default function LazyImage({ aspectRatio, src, alt, className, cap, capCol, quality, pixelated }: LazyImageProps) {
+export default function LazyImage({ aspectRatio, src, alt, className, cap, capCol, capRight, quality, pixelated }: LazyImageProps) {
     return <div className={styles.lazyImageWrapper}>
         <div className={classNames(styles.lazyImage, className)} style={{ aspectRatio }}>
             <Image
@@ -27,7 +28,7 @@ export default function LazyImage({ aspectRatio, src, alt, className, cap, capCo
                 src={src}
             />
         </div>
-        <LazyImageCaption cap={cap} capCol={capCol} alt={alt} />
+        <LazyImageCaption cap={cap} capCol={capCol} alt={alt} capRight={capRight} />
     </div>
 }
 
