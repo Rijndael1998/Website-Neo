@@ -27,15 +27,15 @@ export default function Hide({ children, showText, externalLink, reason, externa
     }
 
     if (state == HideState.INITIAL)
-        return <Paper elevation={0} sx={{ padding, transition: "all 0.5s ease", width: "100%", height: "" }}>
-            {ifTruthy(reason, 
-            <Typography>
-                {reason}
-            </Typography>)}
+        return <Paper elevation={0} sx={{ padding, transition: "all 0.5s ease", textAlign: "center" }}>
+            {ifTruthy(reason,
+                <Typography>
+                    {reason}
+                </Typography>)}
             <Grid2 sx={{ justifyContent: "center" }} container gap={1}>
-                <Grid2 display="grid" size={4}>
+                <Grid2 display="grid" size={5}>
                     <Button
-                        sx={{ margin: "auto" }}
+                        sx={{ margin: "auto", height: "100%" }}
                         variant="contained"
                         onClick={clickHandler}
                     >
@@ -43,8 +43,14 @@ export default function Hide({ children, showText, externalLink, reason, externa
                     </Button>
                 </Grid2>
                 {ifTruthy(externalLink,
-                    <Grid2 size={4}>
-                        <Button href={externalLink} variant="outlined">{externalShowText ?? "External Link"}</Button>
+                    <Grid2 size={5}>
+                        <Button
+                            href={externalLink}
+                            variant="outlined"
+                            sx={{ margin: "auto", height: "100%" }}
+                        >
+                            {externalShowText ?? "External Link"}
+                        </Button>
                     </Grid2>
                 )}
             </Grid2>

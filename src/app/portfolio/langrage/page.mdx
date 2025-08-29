@@ -1,5 +1,6 @@
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import GodotEmbed from "@/components/external/GodotEmbed";
 import Link from "next/link";
 
 import logo from "./opengraph-image.png";
@@ -15,6 +16,12 @@ export const metadata = {
 
 ## Demo
 The interactive, full screen demo is <Link href="/fun/lagrange/index.html">here</Link>.
+
+<GodotEmbed
+source={"/fun/lagrange/index.html"}
+external={"/fun/lagrange/index.html"}
+externalShowText={"Play full screen"}
+/>
 
 Tap to create new points. Drag to move existing points.
 
