@@ -1,6 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import { ReactNode } from 'react';
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
+import { ReactCompareSlider } from 'react-compare-slider';
 
 
 export function LazyLocalCompareImage({ src, alt, ar }: { src: StaticImageData, alt: string, ar?: number }) {
