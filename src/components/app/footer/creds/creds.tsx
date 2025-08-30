@@ -89,7 +89,7 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
 }
 
 export default function Creds() {
-    return <Grid2 container columns={{ xs: 1, sm: 3, md: 3 }} width={"100%"}>
+    return <Grid2 container columns={{ xs: 1, sm: 3, md: 3 }}>
         <CredImage img={cpf} alt="Certified Cloud Practitioner (Foundational)" verification="5b755d2aa5324fb3a0116d762f54f2ef" />
         <CredImage img={da} alt="Developer Associate" />
         <CredImage img={sc} alt="Security Specialist" />
