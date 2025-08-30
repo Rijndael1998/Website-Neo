@@ -1,6 +1,8 @@
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import GodotEmbed from "@/components/external/GodotEmbed";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import { LazyLocalCompare, LazyLocalCompareImage } from "@/components/lazy/_lazyLocalCompare";
 import image from "./top.png";
 import blender from "./images/blender.png";
 import compositor from "./images/compositor.png";
@@ -57,8 +59,11 @@ I applied some compositing effects in a way that would tone down the effects of 
 
 Here you can see the difference between the raw and composited image.
 
-<LazyLocalImage src={og} alt={"Original image"} cap />
-<LazyLocalImage src={pg} alt={"Final image"} cap capRight />
+<LazyLocalCompare
+a={<LazyLocalCompareImage src={og} alt={"Original image"} cap />}
+b={<LazyLocalCompareImage src={pg} alt={"Final image"} cap />}
+/>
+
 
 Because we didn't have time to figure out how to embed a webm or mp4 into the game engine and set it as a background, I opted to simply make all of the frames induvidual jpg images. I did also compress all of these images, that's why most of them look rather bad. From these images, you can make an animated sprite. However, Alifeee was not happy about the water asset being 1/4 of the total of our assets, but the assets we made were still really small that it didn't really have a big impact overall. My push with all of these images was the biggest single push in the entire project.
 
