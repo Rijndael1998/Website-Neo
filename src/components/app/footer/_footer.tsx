@@ -12,6 +12,7 @@ export default function Footer() {
         <h4>Contact</h4>
         <Contact />
 
+        <h4>...</h4>
         <Quotes />
         <Debug />
     </footer>
