@@ -14,20 +14,20 @@ const url = "https://aws.amazon.com/verification";
 
 function Body({ award, id }: { award: string, id?: string }) {
     if (!id)
-        return <p style={{ marginTop: 0, marginBottom: 0 }}>
+        return <span style={{ marginTop: 0, marginBottom: 0, display: "block" }}>
             {`I do not currently hold the ${award}, but I am working hard towards obtaining it by the end of 2025.`}
-        </p>
+        </span>
 
     return <>
-        <p style={{ marginTop: 0 }}>
+        <span style={{ marginTop: 0, display: "block" }}>
             {`I hold the AWS ${award} certification.`}
-        </p>
-        <p>
+        </span>
+        <span style={{ display: "block" }}>
             {`Verification is available at `}<Link href={url}>{url}</Link>.
-        </p>
-        <p style={{ marginBottom: 0, fontSize: "0.8em" }}>
+        </span>
+        <span style={{ marginTop: "1em", marginBottom: 0, fontSize: "0.8em", display: "block" }}>
             (Credential ID: <span style={{ fontFamily: "monospace" }}>{id}</span>).
-        </p>
+        </span>
     </>
 }
 
@@ -49,7 +49,7 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
         }
     }, [open]);
 
-    return <Grid2>
+    return <Grid2 size={1} margin={"auto"} padding={"0.5em"}>
         <Box
             onClick={(e) => {
                 setOpen(true);
@@ -57,9 +57,13 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
             }}
             sx={[{
                 "&": {
-                    transition: "all ease 0.2s",
+                    transition: "filter ease 0.2s",
                     cursor: "pointer",
                     filter: verification ? "saturate(1)" : "saturate(0)",
+                    aspectRatio: 1,
+                    maxWidth: "30dvw",
+                    maxHeight: "50dvh",
+                    margin: "auto",
                 },
                 "&:hover": {
                     filter: "saturate(1)",
@@ -73,7 +77,7 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
             title={alt}
             descriptionElementRef={descriptionElementRef}
             body={<Body award={alt} id={verification} />}
-            closeText={undefined}
+            closeText={"Return"}
             link={url}
             linkText={"Official verification"}
         />
@@ -81,7 +85,7 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
 }
 
 export default function Creds() {
-    return <Grid2 container>
+    return <Grid2 container columns={{ xs: 1, sm: 3, md: 3 }} width={"100%"}>
         <CredImage img={cpf} alt="Certified Cloud Practitioner (Foundational)" verification="5b755d2aa5324fb3a0116d762f54f2ef" />
         <CredImage img={da} alt="Developer Associate" />
         <CredImage img={sc} alt="Security Specialist" />
