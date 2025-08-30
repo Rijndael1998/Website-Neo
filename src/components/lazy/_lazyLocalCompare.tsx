@@ -15,6 +15,13 @@ export function LazyLocalCompareImage({ src, alt, ar }: { src: StaticImageData, 
     </div>
 }
 
+const backgroundImage = `
+linear-gradient(45deg, #ccc 25%, transparent 25%),
+linear-gradient(-45deg, #ccc 25%, transparent 25%),
+linear-gradient(45deg, transparent 75%, #ccc 75%),
+linear-gradient(-45deg, transparent 75%, #ccc 75%)
+`;
+
 export function LazyLocalCompare({ a, b }: { a: React.ReactElement, b: React.ReactElement }) {
     return <ReactCompareSlider
         boundsPadding={0}
@@ -25,7 +32,7 @@ export function LazyLocalCompare({ a, b }: { a: React.ReactElement, b: React.Rea
         position={50}
         style={{
             backgroundColor: 'white',
-            backgroundImage: '\n      linear-gradient(45deg, #ccc 25%, transparent 25%),\n      linear-gradient(-45deg, #ccc 25%, transparent 25%),\n      linear-gradient(45deg, transparent 75%, #ccc 75%),\n      linear-gradient(-45deg, transparent 75%, #ccc 75%)',
+            backgroundImage,
             backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
             backgroundSize: '20px 20px',
             width: '100%'
