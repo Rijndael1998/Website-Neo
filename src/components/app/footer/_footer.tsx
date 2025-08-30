@@ -10,12 +10,14 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
 import { DiscordIcon } from "@/components/muiWrappers/customIcons/Discord";
 import Git from "./git";
+import Creds from "./creds/creds";
 
 export default function Footer() {
     return <footer className={styles.footer}>
-        <h4>
-            Contact
-        </h4>
+        <h4>Certifications</h4>
+        <Creds />
+        
+        <h4>Contact</h4>
         <div className={styles.centre}>
             <div>
                 <ToolTip tip="My name"><PersonPinIcon /></ToolTip>
