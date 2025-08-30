@@ -9,21 +9,28 @@ import sc from "./images/security_specialist.png";
 import { DialogBox } from "@/components/muiWrappers/popup/DialogBox";
 import Link from "next/link";
 
-function Body({ award, id }: { award: string, id: string }) {
+
+const url = "https://aws.amazon.com/verification";
+
+function Body({ award, id }: { award: string, id?: string }) {
+    if (!id)
+        return <p style={{ marginTop: 0, marginBottom: 0 }}>
+            {`I do not currently hold the ${award}, but I am working hard towards obtaining it by the end of 2025.`}
+        </p>
+
     return <>
-        <p style={{marginTop: 0}}>
+        <p style={{ marginTop: 0 }}>
             {`I hold the AWS ${award} certification.`}
         </p>
         <p>
             {`Verification is available at `}<Link href={url}>{url}</Link>.
         </p>
-        <p style={{marginBottom: 0, fontSize: "0.8em"}}>
-            (Credential ID: <span style={{fontFamily: "monospace"}}>{id}</span>).
+        <p style={{ marginBottom: 0, fontSize: "0.8em" }}>
+            (Credential ID: <span style={{ fontFamily: "monospace" }}>{id}</span>).
         </p>
     </>
 }
 
-const url = "https://aws.amazon.com/verification";
 export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps["src"], alt: string, verification?: string }) {
     const [open, setOpen] = useState(false);
 
@@ -42,7 +49,7 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
         }
     }, [open]);
 
-    return <>
+    return <Grid2>
         <Box
             onClick={(e) => {
                 setOpen(true);
@@ -65,12 +72,12 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
             handleClose={handleClose}
             title={alt}
             descriptionElementRef={descriptionElementRef}
-            body={verification ? <Body award={alt} id={verification} /> : ""}
+            body={<Body award={alt} id={verification} />}
             closeText={undefined}
             link={url}
             linkText={"Official verification"}
         />
-    </>
+    </Grid2>
 }
 
 export default function Creds() {
