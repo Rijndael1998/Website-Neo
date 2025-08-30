@@ -4,7 +4,7 @@ import { LazyImageProps } from "./_lazyImage";
 
 export type LazyImageCaptionProps = {
     cap: LazyImageProps["cap"],
-    capCol: LazyImageProps["capCol"],
+    capCol?: LazyImageProps["capCol"],
     alt: LazyImageProps["alt"],
     capRight?: LazyImageProps["capRight"],
 }

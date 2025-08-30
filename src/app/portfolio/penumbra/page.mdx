@@ -66,6 +66,8 @@ Here you can see the difference between the raw and composited image.
 <LazyLocalCompare
 a={<LazyLocalCompareImage src={og} alt={"Original image"} cap />}
 b={<LazyLocalCompareImage src={pg} alt={"Final image"} cap />}
+altA={"Original image"}
+altB={"Final image"}
 />
 
 
@@ -75,6 +77,8 @@ Here is a comparison of the two sprites if I had rendered them at a higher quali
 <LazyLocalCompare
 a={<LazyLocalCompareImage src={hq2} alt={"High quality original image"} cap />}
 b={<LazyLocalCompareImage src={hq3} alt={"High quality final image"} cap />}
+altA={"High quality original image"}
+altB={"High quality final image"}
 />
 
 Obviously, if I rendered them at this kind of quality, the game would've balooned in size and would also probably not fit the aesthetic.
