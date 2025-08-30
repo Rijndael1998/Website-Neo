@@ -8,6 +8,10 @@ import blender from "./images/blender.png";
 import compositor from "./images/compositor.png";
 import og from "./images/1og.webp";
 import pg from "./images/1.webp";
+import hq1 from "./images/hq1.webp";
+import hq2 from "./images/hq2.jpg";
+import hq3 from "./images/hq3.webp";
+
 
 export const metadata = {
     title: "Penumbra",
@@ -30,7 +34,7 @@ externalShowText={"Play on Itch.io"}
 
 # Game creation
 
-On my team, I worked closely with 5 other people to create this game.
+On my team, I worked closely with 5 other people to create this game in [Godot](https://godotengine.org/).
 
 We had some loosely defined roles in the game and links to their itch.io pages:
     - [Jman](https://jman9092.itch.io/): Project management & Music
@@ -41,7 +45,7 @@ We had some loosely defined roles in the game and links to their itch.io pages:
     - [Me](https://rijndael1998.itch.io/): Code
 
 
-My primary contribution was the code for the game. I worked mainly on the enemies and the drops, but I touched all the bits of code in the game. However, I also managed to create the background sprite for the background.
+My primary contribution was the code for the game. I worked mainly on the enemies and the drops, but I touched all the bits of code in the game. However, I also managed to create the background sprite for the background, which I think is a lot more interesting than the tweens I did in the game.
 
 ## Enemies & Drops
 I more or less single handedly created all of the code that was needed for the drops of the enemies. 
@@ -66,6 +70,15 @@ b={<LazyLocalCompareImage src={pg} alt={"Final image"} cap />}
 
 
 Because we didn't have time to figure out how to embed a webm or mp4 into the game engine and set it as a background, I opted to simply make all of the frames induvidual jpg images. I did also compress all of these images, that's why most of them look rather bad. From these images, you can make an animated sprite. However, Alifeee was not happy about the water asset being 1/4 of the total of our assets, but the assets we made were still really small that it didn't really have a big impact overall. My push with all of these images was the biggest single push in the entire project.
+
+Here is a comparison of the two sprites if I had rendered them at a higher quality.
+<LazyLocalCompare
+a={<LazyLocalCompareImage src={hq2} alt={"Original image"} cap />}
+b={<LazyLocalCompareImage src={hq3} alt={"Final image"} cap />}
+/>
+
+Obviously, if I rendered them at this kind of quality, the game would've balooned in size and would also probably not fit the aesthetic.
+
 
 Here's a small animation of all the frames:
 <video controls autoPlay muted loop>
