@@ -1,7 +1,7 @@
 "use server";
 
-import { GitCopy } from "./gitCopy";
 import { Box } from "@mui/material";
+import { GitCopy } from "./gitCopy";
 import { GitStatus, Status } from "./gitStatus";
 
 

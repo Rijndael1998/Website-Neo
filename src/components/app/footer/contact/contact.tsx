@@ -1,10 +1,10 @@
-import ToolTip from "@/components/toolTip/_toolTip";
-import { SignalIcon } from "@/components/muiWrappers/customIcons/Signal";
-import PersonPinIcon from '@mui/icons-material/PersonPin';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import EmailIcon from '@mui/icons-material/Email';
 import { DiscordIcon } from "@/components/muiWrappers/customIcons/Discord";
+import { SignalIcon } from "@/components/muiWrappers/customIcons/Signal";
+import ToolTip from "@/components/toolTip/_toolTip";
+import EmailIcon from '@mui/icons-material/Email';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import Link from "next/link";
 import Copy from "../../copy/_copy";
 import styles from "../footer.module.scss";
