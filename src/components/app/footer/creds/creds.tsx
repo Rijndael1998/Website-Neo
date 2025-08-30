@@ -1,13 +1,14 @@
 "use client";
 
 import LazyLocalImage, { LocalLazyImageProps } from "@/components/lazy/_lazyLocalImage";
+import { DialogBox } from "@/components/muiWrappers/popup/DialogBox";
 import { Box, Grid2 } from "@mui/material";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Copy from "../../copy/_copy";
 import cpf from "./images/cloud_practitioner_foundational.png";
 import da from "./images/developer_associate.png";
 import sc from "./images/security_specialist.png";
-import { DialogBox } from "@/components/muiWrappers/popup/DialogBox";
-import Link from "next/link";
 
 
 const url = "https://aws.amazon.com/verification";
@@ -25,8 +26,8 @@ function Body({ award, id }: { award: string, id?: string }) {
         <span style={{ display: "block" }}>
             {`Verification is available at `}<Link href={url}>{url}</Link>.
         </span>
-        <span style={{ marginTop: "1em", marginBottom: 0, fontSize: "0.8em", display: "block" }}>
-            (Credential ID: <span style={{ fontFamily: "monospace" }}>{id}</span>).
+        <span style={{ marginTop: "1em", marginBottom: 0, fontSize: "0.8em", display: "flex", flexDirection: "row", alignItems: "center" }}>
+            (Credential ID: <span style={{ fontFamily: "monospace" }}>{id}</span>). <Copy text={id} />
         </span>
     </>
 }
