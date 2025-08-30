@@ -6,8 +6,8 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
 import { DiscordIcon } from "@/components/muiWrappers/customIcons/Discord";
 import Link from "next/link";
-import Copy from "../copy/_copy";
-import styles from "./footer.module.scss";
+import Copy from "../../copy/_copy";
+import styles from "../footer.module.scss";
 
 export default function Contact() {
     return <div className={styles.centre}>

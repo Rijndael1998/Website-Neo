@@ -1,7 +1,7 @@
 import styles from "./footer.module.scss";
-import Quotes from "./quotes";
+import Quotes from "./quotes/quotes";
 import Creds from "./creds/creds";
-import Contact from "./contact";
+import Contact from "./contact/contact";
 import Debug from "./debug/debug";
 
 export default function Footer() {
