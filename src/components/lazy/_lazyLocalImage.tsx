@@ -7,12 +7,12 @@ import LazyImageCaption from "./_lazyImageCaption";
 
 export type LocalLazyImageProps = Omit<Omit<LazyImageProps, "aspectRatio">, "src"> & { src: StaticImageData };
 
-export default function LazyLocalImage({ src, alt, className, cap, capCol, quality }: LocalLazyImageProps) {
+export default function LazyLocalImage({ src, alt, className, cap, capCol, capRight, quality }: LocalLazyImageProps) {
     return <div className={styles.lazyImageWrapper}>
         <div className={classNames(styles.lazyImage, className)}>
             <Image style={{ width: "100%", height: "auto" }} alt={alt ?? ""} quality={quality ?? DEFAULT_IMAGE_QUALITY} src={src} placeholder="blur"/>
         </div>
-        <LazyImageCaption cap={cap} capCol={capCol} alt={alt} />
+        <LazyImageCaption cap={cap} capCol={capCol} alt={alt} capRight={capRight}/>
     </div>
 }
 

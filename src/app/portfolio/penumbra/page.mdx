@@ -1,0 +1,114 @@
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
+import YoutubeEmbed from "@/components/external/youtube/_embed";
+import GodotEmbed from "@/components/external/GodotEmbed";
+import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import { LazyLocalCompare, LazyLocalCompareImage } from "@/components/lazy/_lazyLocalCompare";
+
+
+import image from "./top.png";
+import blender from "./images/blender.png";
+import compositor from "./images/compositor.png";
+import og from "./images/1og.webp";
+import pg from "./images/1.webp";
+import hq1 from "./images/hq1.webp";
+import hq2 from "./images/hq2.jpg";
+import hq3 from "./images/hq3.webp";
+import godot from "./images/godot.png";
+
+
+export const metadata = {
+    title: "Penumbra",
+    description: "This game was made for the GMTK Game Jam 2025. It was my first every game jam that I took part in and I had a lot of fun doing it as well as playing other people's creations. Despite the fact that this was a four day game jam, we only had two days to deliver a fully finished game.",
+}
+
+# Penumbra
+
+<LazyLocalImage src={image} />
+
+This game was made for the [GMTK Game Jam 2025](https://itch.io/jam/gmtk-2025). It was my first every game jam that I took part in and I had a lot of fun doing it as well as playing other people's creations. Despite the fact that this was a four day game jam, we only had two days to deliver a fully finished game. This is why we only had simple ideas and somewhat rushed work when compared to other submissions for this jam. At release, this game should've been a lot more polished.
+
+# Play
+
+<GodotEmbed
+source={"/fun/penumbra/index.html"}
+external={"https://jman9092.itch.io/penumbra"}
+externalShowText={"Play on itch.io"}
+/>
+
+# People playing our game
+I feel that a lot of people had fun playing our game. When I look at the [comments](https://itch.io/jam/gmtk-2025/rate/3780153) on the game, I feel proud of what we made. It's a shame we couldn't work on the game longer.
+
+My brother and I had a bit of fun competing to see who could survive the longest, with him completely thrashing me. 
+<YoutubeEmbed videoID={"k4JHH0f8rdw"} />
+
+# Game creation
+
+<LazyLocalImage src={godot} alt="Penumbra Godot project" cap />
+
+On my team, I worked closely with five other people to create this game using [Godot](https://godotengine.org/).
+
+We had some loosely defined roles in the team and links to their itch.io pages:
+    - [Jman](https://jman9092.itch.io/): Project management and Music
+    - [Freya](https://nanofreya.itch.io/): Sprites and UI
+    - [Astra Anima](https://astraanima.itch.io/): Sprites, UI and SFX
+    - [Flxli](https://flxli227.itch.io/): Code and UI
+    - [Alifeee](https://alifeee.itch.io/): Code
+    - [Me](https://rijndael1998.itch.io/): Code
+
+
+My primary contribution was coding the game. I worked mainly on the enemies and the drops, but I touched almost every part of the code in the game. However, I also managed to create the animated background, which I think is a lot more interesting than the tweens I did in the game.
+
+## Enemies and Drops
+I more or less single-handedly created all the code for enemy drops. 
+
+Motes come from the defeated monsters. Initially, they scatter, take time to appear and become more opaque. When they're most opaque, they can be picked up by the spell the player casts. If the player doesn't pick them up, they lose their physical form and fade away. The motes in this game are needed to open the portal or buy upgrades.
+
+## Background
+The background was actually relatively easy to make. I started off with a pretty realistic render of an ocean that looped seamlessly.
+
+<LazyLocalImage src={blender} alt={"Blender window showing the rendering process"} cap />
+
+I applied some compositing effects in a way that would tone down the realism while still looking cool.
+
+<LazyLocalImage src={compositor} alt={"Compositing process"} cap />
+
+Here you can see the difference between the raw and composited images.
+
+<LazyLocalCompare
+a={<LazyLocalCompareImage src={og} alt={"Original image"} cap />}
+b={<LazyLocalCompareImage src={pg} alt={"Final image"} cap />}
+altA={"Original image"}
+altB={"Final image"}
+/>
+
+Because we didn't have time to figure out how to embed a WebM or MP4 video in the game engine and set it as the background, I opted to export each frame as an individual JPG. I also compressed these images, which is why many of them look rather rough. From these images, we made an animated sprite. However, Alifeee was not happy about the water asset being a quarter of the total asset size, but the overall asset size was still small, so it didn't have a big impact. That commit was the largest single push in the entire project (~1,000 files).
+
+Here is a comparison of the two sprites if I had rendered them at higher quality.
+<LazyLocalCompare
+a={<LazyLocalCompareImage src={hq2} alt={"High quality original image"} cap />}
+b={<LazyLocalCompareImage src={hq3} alt={"High quality final image"} cap />}
+altA={"High quality original image"}
+altB={"High quality final image"}
+/>
+
+Obviously, if I rendered them at this kind of quality, the game would've ballooned in size and probably wouldn't fit the aesthetic.
+
+
+Here's a small animation of all the frames:
+<video controls autoPlay muted loop>
+<source src="/penumbra_bg.webm" type="video/webm"/>
+</video>
+
+The final adjustments are made in the game engine, and it looks really good, if I say so myself.
+
+<video controls autoPlay muted loop>
+<source src="/penumbra_blank.webm" type="video/webm"/>
+</video>
+
+## Source 
+We have a repository for the game [here](https://github.com/alifeee/penumbra) on GitHub. You can also play the game on [itch.io](https://jman9092.itch.io/penumbra).
+
+I also made a little time-lapse of the Git commit history.
+<YoutubeEmbed videoID={"P8MrvkaZbsI"} />
+
+Just keep in mind that this video doesn't include all 480 imported background frames, which created around 1,000 files in the game engine.
