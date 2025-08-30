@@ -27,7 +27,10 @@ function Body({ award, id }: { award: string, id?: string }) {
             {`Verification is available at `}<Link href={url}>{url}</Link>.
         </span>
         <span style={{ marginTop: "1em", marginBottom: 0, fontSize: "0.8em", display: "flex", flexDirection: "row", alignItems: "center" }}>
-            (Credential ID: <span style={{ fontFamily: "monospace" }}>{id}</span>). <Copy text={id} />
+            <span style={{ display: "flex", flexDirection: "row", alignItems: "baseline" }}>
+                (Credential ID: <span style={{ marginLeft: "0.5ch", marginRight: "0.25ch", fontFamily: "monospace" }}>{id}</span>)<span style={{ marginRight: "0.5ch" }}>.</span>
+            </span>
+            <Copy text={id} />
         </span>
     </>
 }
