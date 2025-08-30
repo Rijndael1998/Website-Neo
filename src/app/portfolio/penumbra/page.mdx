@@ -3,6 +3,8 @@ import YoutubeEmbed from "@/components/external/youtube/_embed";
 import GodotEmbed from "@/components/external/GodotEmbed";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
 import { LazyLocalCompare, LazyLocalCompareImage } from "@/components/lazy/_lazyLocalCompare";
+
+
 import image from "./top.png";
 import blender from "./images/blender.png";
 import compositor from "./images/compositor.png";
@@ -11,6 +13,7 @@ import pg from "./images/1.webp";
 import hq1 from "./images/hq1.webp";
 import hq2 from "./images/hq2.jpg";
 import hq3 from "./images/hq3.webp";
+import godot from "./images/godot.png";
 
 
 export const metadata = {
@@ -33,6 +36,8 @@ externalShowText={"Play on Itch.io"}
 />
 
 # Game creation
+
+<LazyLocalImage src={godot} alt="Penumbra Godot project" cap />
 
 On my team, I worked closely with 5 other people to create this game in [Godot](https://godotengine.org/).
 
@@ -98,3 +103,7 @@ The final adjustments are made in the game engine and it turned out to look real
 ## Source 
 We have a repository of the game [here](https://github.com/alifeee/penumbra) on GitHub. You can also play the game on [itch.io](https://jman9092.itch.io/penumbra).
 
+I also made a little timelapse of the git commit history.
+<YoutubeEmbed videoID={"P8MrvkaZbsI"} />
+
+Just keep in mind that this video excluded all of the 480 imported background frames, which created around 1000 files in the game engine.
