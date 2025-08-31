@@ -16,7 +16,7 @@ const url = "https://aws.amazon.com/verification";
 function Body({ award, id }: { award: string, id?: string }) {
     if (!id)
         return <span style={{ marginTop: 0, marginBottom: 0, display: "block" }}>
-            {`I do not currently hold the ${award}, but I am working hard towards obtaining it by the end of 2025.`}
+            {`I do not currently hold the ${award} certification, but I am working hard towards obtaining it by the end of 2025.`}
         </span>
 
     return <>
