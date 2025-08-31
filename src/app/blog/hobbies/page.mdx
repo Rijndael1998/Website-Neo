@@ -12,14 +12,14 @@ export const metadata = {
 
 ## Music
 <div>
-On occasion, I like to do stuff to do with music. I can play the piano. I can play: 
+Occasionally, I make music and play piano. Pieces I can play include: 
  - [For river (Johnny's Version)](https://www.youtube.com/watch?v=hiW6akLxrCM)
  - [Shelter](https://www.youtube.com/watch?v=ItpJJmZtXL0)
  - [After Dark](https://www.youtube.com/watch?v=CeZW57CMgpo)
  - Others, but probably not as well.
 </div>
 
-The list isn't extensive but I just can't remember what I can play right now. 
+This list isn't exhaustive — I'm just blanking on the rest right now.
 
 <LazyLocalImage
     src={images.fl_studio}
@@ -27,37 +27,36 @@ The list isn't extensive but I just can't remember what I can play right now.
     cap
 />
 
-I have also tried my hand at remixing music, here I am remixing Crab Rave as a ring tone: <audio controls src="/music/crab_rave.mp3" />
+Occasionally, I make music and play piano. Pieces I can play include: <audio controls src="/music/crab_rave.mp3" />
 
-It might sound a little weird because it was specifically designed as a looping ring tone for my phone. When I listen to it on my computer using my headphones, it sounds very empty on the lower frequencies but on the phone, it's a lot better, as the phone has less of an ability to produce lower frequency sounds. It arguably sounds "correct" on a phone.
+It might sound a little odd because it was designed to loop as a phone ringtone. On headphones it can feel light in the low frequencies, but on a phone — which has limited ability to reproduce low end — it sounds more balanced. You could argue it sounds "correct" on a phone.
 
 ## AI
-I tried my hand at AI generation using Open AI's DALL·E. It's how I made the image to go with this portfolio page. I think the way in which the content is rather interesting. It involves a lot of trial and error, and it's not as straight forward as some people imagine, but it's a lot easier than learning to paint or getting someone else to paint your mind.
+I tried AI image generation with OpenAI's DALL·E; it's how I made the image for this portfolio page. I find the process interesting. It involves a lot of trial and error and isn't as straightforward as some people imagine, but it's still easier than learning to paint or hiring someone to paint what's in your head.
 
 ### Prompting
-I started off by doing some basic prompting: 
+I started off with some basic prompting:
 
 <ImageGallery
     aspectRatio={469 / 928}
     images={images.allIs}
 />
 
-As you can see, prompting is a gradual process. It really helps if you understand what the model might be 
-misinterpreting or misunderstanding
+As you can see, prompting is a gradual process. It really helps if you understand what the model might be misinterpreting.
 
 ### Refining
-After prompting, you can pick an image you like and check out its variations, like you can do here:
+After prompting, you can pick an image you like and explore its variations, like you can do here:
 
 <ImageGallery
     aspectRatio={574 / 1281}
     images={[{src: images.mod_1}, {src: images.mod_2}]}
 />
 
-If you're not exactly happy with the image that you have, you can always inpaint the parts that you want to change, then run the image with a prompt. This is what I got when I made this last image:
+If you're not satisfied with an image, you can inpaint the parts you want to change and then run it with a prompt. Here's what I got for the final pass:
 <LazyLocalImage alt="Inpainting" src={images.mod_final} />
 
 ### Finished product
 
-And here's the finished result. Unfortunately, image generation AI still doesn't know how to count. Crabs typically have 10 legs, but the AI generated a crab with 6... That's 4 too fewer. However, the crab in the image reminds me of a poison headcrab from Half Life, so maybe that's the cause?????? Regardless, I liked the picture enough to put it here.
+And here's the finished result. Unfortunately, image-generation AI still doesn't always count reliably. Crabs typically have 10 limbs, but the AI generated a crab with 6 — four too few. The crab in the image reminds me of a poison headcrab from Half-Life, so maybe that's why it looks the way it does. Regardless, I liked the picture enough to put it here.
 
 <LazyLocalImage alt="Final Picture" src={images.crab_rave} />

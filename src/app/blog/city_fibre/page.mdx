@@ -17,23 +17,23 @@ import s6 from "./images/s6.png";
 import s7 from "./images/s7.png";
 
 export const metadata = {
-    title: 'Get OpenWRT 5.15 to work on Octaplus networks',
-    description: "There are a couple of things that Creality support doesn't say about resetting the printer. Here's my quick guide to recovering your Ender-3 V3 SE.",
+    title: 'Get OpenWrt 5.15 working on Octaplus (CityFibre)',
+    description: "A quick guide to configuring OpenWrt 5.15 for Octaplus on CityFibre: VLAN ID 911, PPPoE credentials, and troubleshooting tips.",
 };
 
 <DarkModeFix>
 <Container maxWidth="md">
 
-# Get OpenWRT 5.15 to work on Octaplus networks
+# Get OpenWrt 5.15 working on Octaplus (CityFibre)
 
 <LazyLocalImage src={logo} />
 
-[CityFibre](https://cityfibre.com/) provides fast, fiberoptic internet to the UK. [Octaplus](https://octaplus.co.uk/) is one of the providers for CityFibre but they didn't make it straight forward for me to set up my own router. The only thing that support told me to do was to:
+[CityFibre](https://cityfibre.com/) provides fast, fiber-optic internet in the UK. [Octaplus](https://octaplus.co.uk/) is one of the providers on CityFibre, but they didn't make it straightforward for me to set up my own router. The only things support told me to do were:
  - Tag the VLAN with `911`.
  - Set the username to `firstName_lastName`.
  - Set the password to `london`.
 
-At the time, I was very much new to OpenWRT, and I didn't understand anything (I still don't 100%) about how the system worked. I couldn't get it to work during the support call. However, through trial and error and intense web searching, I managed to do it.
+At the time, I was very new to OpenWRT and didn't fully understand how the system worked. I couldn't get it working during the support call. However, through trial and error and extensive web searching, I managed to set it up.
 
 <div>
     <Accordion>
@@ -46,15 +46,15 @@ At the time, I was very much new to OpenWRT, and I didn't understand anything (I
             Navigate to: Network -> Interfaces -> Devices (tab)
             <LazyLocalImage src={s0} />
 
-            You should end up around here.
+            You should end up here:
             <LazyLocalImage src={s1} />
 
-            Now, add a new device configuration by clicking the "Add device configuration..." button and net up your new device something like this:
+            Now add a new device configuration by clicking the "Add device configuration..." button and set up your new device like this:
             <LazyLocalImage src={s2} />
 
-            Remember to choose the proper base device that is connected to your ISP's provided box. In this example, that device is `eth1`. The most important thing is that the VLAN ID tag is **`911`** and the <u>device type</u> is **`802.1q`**. Every other setting can be left on default. At the time of writing, Octaplus doesn't provide IPv6 addresses, you can disable it if you so choose.
+            Remember to choose the base device that is connected to your ISP's box. In this example, that device is `eth1`. The most important things are that the VLAN ID tag is **`911`** and the <u>device type</u> is **`802.1q`**. Every other setting can be left at its default. At the time of writing, Octaplus doesn't provide IPv6 addresses; you can disable it if you choose.
 
-            At the end, you can save and create the device and you should end up with something looking like this. 
+            When you're done, save and create the device. You should see something like this:
             <LazyLocalImage src={s3} />
 
         </AccordionDetails>
@@ -69,21 +69,21 @@ At the time, I was very much new to OpenWRT, and I didn't understand anything (I
         Navigate to: Network -> Interfaces -> Interfaces (tab)
         <LazyLocalImage src={s0b} />
 
-        I simply reused the default `wan` interface that came with OpenWRT. However, you can create a new interface something like this:
+        I simply reused the default `wan` interface that came with OpenWRT. Alternatively, you can create a new interface like this:
         <LazyLocalImage src={s5} />
-        Make sure to base it on the `eth1.911` device you made previously and select the interface protocol as `PPPoE`.
+        Make sure to base it on the `eth1.911` device you created earlier, and select the interface protocol as `PPPoE`.
 
-        After you made your interface or entered the configuration, you will end up with a form asking for details.
+        After you create your interface or open its configuration, you'll see a form asking for details:
         <LazyLocalImage src={s6} />
-        The CHAP/PAP username is your name with an underscore between you first and last name. For example, if your name is John Doe the username will be `john_doe`.
+        The CHAP/PAP username is your name with an underscore between your first and last name. For example, if your name is John Doe, the username will be `john_doe`.
         The CHAP/PAP password is `london`.
 
-        You might want to ask Octaplus support for your details if your credentials are not working. Their website claims to help you set up your own router, so this should be given to you at the very least.
+        You might want to ask Octaplus support for your details if your credentials are not working. Their website claims to help you set up your own router, so this should be provided to you at the very least.
 
-        If you've created your own interface, remember to add it to the firewall.
+        If you've created your own interface, remember to add it to the firewall:
         <LazyLocalImage src={s7} />
 
-        This is my interface connected successfully with an IP address. Once you set up your interface and save and give it some time, you will see something like this.
+        Once you set up your interface, save, and give it some time, you should see it connect and receive an IP address:
         <LazyLocalImage src={s4} />
 
         </AccordionDetails>
@@ -96,13 +96,13 @@ At the time, I was very much new to OpenWRT, and I didn't understand anything (I
         </AccordionSummary>
         <AccordionDetails>
         <div>
-        Initially setting up all of these things still didn't make it work straight away. I had to take the following steps.
+            Even after setting everything up, it didn't work right away. I had to take the following steps.
 
-        Octaplus support pointed out that regardless that the service is bound to a mac address. To make it fully work, I simply spoofed my previous device's mac address. To change the mac address, you just have to go into Network -> Interfaces -> Devices (tab) and then click on configure under the device that you need to change the mac address on. This step should only be applicable if you have previously set up your router old and set up OpenWRT on a new device.
+            Octaplus support pointed out that the service is bound to a MAC address. To get it working, I spoofed the MAC address of my previous device. To change the MAC address, go to Network -> Interfaces -> Devices (tab), click Configure under the device you need to change, and set the MAC address accordingly. This should only be necessary if you previously used a different router and are now replacing it with a new OpenWRT device.
 
-        You might also need to reset both the router and the termination device. Simply turn the termination device off for around 5 mins, then turn it back on. You can just reboot the OpenWRT instance.
+            You might also need to reset both the router and the termination device. Turn the termination device off for around 5 minutes, then turn it back on. You can simply reboot the OpenWRT instance.
 
-        You can also try and call Octaplus as they have some insight onto what is going on at their end. From time to time, they have outages. Sometimes something is configured wrong on their end. Doesn't hurt to try.
+            You can also call Octaplus, as they can see what's happening on their end. From time to time, they have outages or misconfigurations. It doesn't hurt to ask.
         </div>
         </AccordionDetails>
     </Accordion>

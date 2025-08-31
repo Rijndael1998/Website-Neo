@@ -8,37 +8,37 @@ import * as image from "./images/index.tsx";
 
 export const metadata = {
     title: "Mirror's Edge Render",
-    description: "Mirror's Edge has a special place in my heart. I fell in love with this game instantly when I discovered it when I was around 13 years old. I had a pretty bad laptop back then (think AMD APU R8 graphics) but it still ran fine and I enjoyed the game even on some pretty bad hardware.",
+    description: "Mirror's Edge has a special place in my heart. I fell in love with this game instantly when I discovered it around age 13. I had a pretty bad laptop back then (think AMD APU R8 graphics), but it still ran fine, and I enjoyed the game even on some very modest hardware.",
 };
 
 # Mirror's Edge Render
 
 <LazyLocalImage
     src={image.partial_1x1}
-    alt={"My own render of the Mirror's Edge: Catalyst world in the style of Mirror's Edge's menu screen."}
+    alt={"My render of the Mirror's Edge: Catalyst world in the style of Mirror's Edge's menu screen."}
     cap
     capCol="#64a3c6"
 />
 
-Mirror's Edge, released in 2008, is a truly unique video game that's still standing the test of time. Its unique lighting and simple mechanics turns this game into a stunning experience even today.
+Mirror's Edge, released in 2008, is a truly unique video game that still stands the test of time. Its distinctive lighting and simple mechanics turn it into a stunning experience even today.
 
 <LazyLocalImage
     src={image.screenshot2}
-    alt="Simple architecture mixed with only tones of green."
+    alt="Simple architecture rendered in shades of green only."
     cap
     capCol="#64bd2e"
 />
 
-Mirror's Edge has a special place in my heart. I fell in love with this game instantly when I discovered it when I was around 13 years old. I had a pretty bad laptop back then (think AMD APU R8 graphics) but it still ran fine and I enjoyed the game even on some pretty bad hardware. But this game also connected with me on a deeper level. During the same time, I remember other movement oriented games, mainly the few early Assassin's Creed games and specifically I Am Alive. These games inspired me to try out parkour, through which I met a lot of my then friends.
+Mirror's Edge has a special place in my heart. I fell in love with this game instantly when I discovered it around age 13. I had a pretty bad laptop back then (think AMD APU R8 graphics), but it still ran fine, and I enjoyed the game even on very modest hardware. The game also connected with me on a deeper level. Around the same time, I remember other movement-oriented games—mainly the early Assassin's Creed titles and, specifically, I Am Alive. These games inspired me to try parkour, through which I met many of my friends at the time.
 
 <LazyLocalImage
     src={image.screenshot11}
-    alt="Mirror's Edge: bright primary colors, their shades and simple room designs."
+    alt="Mirror's Edge: bright primary colors, their shades, and simple room designs."
     cap
     capCol="#dd9b04"
 />
 
-The things that I remember the most about this game is its one of a kind visual style that drew me in years later to write this article. Since playing this game as a young teenager, I acquired various skills; some in graphic design, some in 3D modeling and rendering. I decided to replay this game after feeling disappointed by its successor and in order to find inspiration.
+What I remember most about this game is its one-of-a-kind visual style, which drew me back years later to write this article. Since playing it as a young teenager, I've picked up various skills—some in graphic design, some in 3D modeling and rendering. I decided to replay the game after feeling disappointed by its successor and to find inspiration.
 
 <LazyLocalImage
     src={image.screenshot31}
@@ -46,8 +46,7 @@ The things that I remember the most about this game is its one of a kind visual 
     cap
 />
 
-The first thing that inspired me is the start screen depicting the City of Glass, which is what you can see was my final render. It's so serine and simple, but also has impossible stylized lighting and replicating it in Blender was very, very challenging.
-
+The first thing that inspired me is the start screen depicting the City of Glass, which you can see reflected in my final render. It's so serene and simple, yet it also has impossibly stylized lighting, and replicating it in Blender was very, very challenging.
 
 <LazyLocalImage
     src={image.render1}
@@ -55,7 +54,7 @@ The first thing that inspired me is the start screen depicting the City of Glass
     cap
 />
 
-After toying around with the files I got from a user on Reddit, the first thing I tried was to slap a HRDI onto the scene and call it a day. This gave me subpar results. The composited in mist was ruining the scene. The reflections didn't take account of the mist at all. It had to be removed
+After toying around with files I got from a user on Reddit, the first thing I tried was to slap an HDRI onto the scene and call it a day. This gave me subpar results. The composited mist was ruining the scene. The reflections didn't take the mist into account at all, so it had to be removed.
 
 <LazyLocalImage
     src={image.render3}
@@ -63,45 +62,44 @@ After toying around with the files I got from a user on Reddit, the first thing 
     cap
 />
 
-My second attempt seemed to be subpar to me too. The water and sky were blue, and this gave me realistic results, however, notice that this isn't present in the menu of the game. If I was trying recreate a level from Mirror's Edge, I would have been very happy, since Mirror's Edge's levels are full of a vibrant singular primary color. But here this simply won't do.
+My second attempt also felt subpar. The water and sky were blue, which gave me realistic results; however, this isn't present in the game's menu. If I were trying to recreate a level from Mirror's Edge, I would have been very happy, since the levels often feature a vibrant, singular primary color. But here, that simply wouldn't do.
 
 <LazyLocalImage
     src={image.blender_comp}
-    alt="My stylistic color correction compositing process."
+    alt="My stylistic color-correction compositing process."
     cap
 />
 
-What transpired were several sleepless hours trying to figure out how it was even possible to make this scene to begin with. This led me to a long long period of time of learning and getting the grasp of color correction.
+What followed were several sleepless hours trying to figure out how the scene could be made in the first place. This led to a long period of learning and getting a grasp on color correction.
 
 <LazyLocalImage
     src={image.blender_hdri}
-    alt="HDRI Result"
+    alt="HDRI result."
     cap
 />
 <LazyLocalImage
     aspectRatio={2424 / 787}
     src={image.blender_world}
-    alt="My world shader"
+    alt="My world shader."
     cap
 />
 
-I modified the World texture to achieve the pale white skies depicted in the menu. I also wanted to preserve the sun's shape so I isolated the sun from the rest of the image and then reconstructed it with the nodes above.
+I modified the World texture to achieve the pale white skies depicted in the menu. I also wanted to preserve the sun's shape, so I isolated it from the rest of the image and then reconstructed it with the nodes above.
 
 <LazyLocalImage
     aspectRatio={1}
     src={image.blender_raw}
-    alt="Raw Render"
+    alt="Raw render."
     cap
 />
 
 <LazyLocalImage
     aspectRatio={1}
     src={image.blender_final}
-    alt="Processed Render"
+    alt="Processed render."
     cap
 />
 
-This combined with the compositor creates the perfect image in the style of the Mirror's Edge menu and I'm very happy with this result. I even made a little animation in the style of the main menu itself.
+These changes, combined with the compositor, create an image in the style of the Mirror's Edge menu, and I'm very happy with the result. I even made a short animation in the style of the main menu itself.
 
 <YoutubeEmbed videoID={"AOaenVRjcTE"}/>
-
