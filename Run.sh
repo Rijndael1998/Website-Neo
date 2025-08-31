@@ -6,6 +6,7 @@ cd "${0%/*}"
 # Making sure repo is clean
 git fetch --all
 git reset --hard origin/main
+git pull
 
 # Reinit submodules
 git submodule init
