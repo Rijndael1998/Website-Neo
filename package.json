@@ -24,7 +24,7 @@
     "@types/node": "^24.6.0",
     "@types/react": "^18.3.13",
     "@types/react-dom": "^18.3.1",
-    "@xyflow/react": "^12.8.5",
+    "@xyflow/react": "^12.8.6",
     "classnames": "^2.5.1",
     "eslint": "^9.36.0",
     "eslint-config-next": "15.5.4",
