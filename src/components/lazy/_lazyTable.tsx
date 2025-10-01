@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import styles from "./lazy.module.scss";
 import { CSSProperties } from "react";
+import React from "react";
 
 export type LazyTableItemsType = Array<null | Array<string | number | undefined | null>>
 
@@ -18,7 +19,7 @@ export default function LazyTable({ process, style, items, className }: LazyTabl
     return <div className={classNames(styles.lazyTable, className)} style={style}>
         {
             processedItems.map((row, i) => {
-                return <>
+                return <React.Fragment key={i}>
                     {
                         row ? row.map((col, ii) => {
                             return <div key={`${i},${ii}`} className={classNames(col != null && styles.notNull)}>
@@ -29,7 +30,7 @@ export default function LazyTable({ process, style, items, className }: LazyTabl
                         })
                             : <div />
                     }
-                </>
+                </React.Fragment>
             })
         }
     </div>
