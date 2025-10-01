@@ -13,7 +13,7 @@ import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMa
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import GridItem from "../grid/gridItem/_gridItem";
-import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Box, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch, Typography } from "@mui/material";
 import * as React from 'react';
 import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -158,14 +158,22 @@ export default function AStarComponent() {
                 }
             </Alert>
 
-            <div style={{
-                background: "black",
-                width: "100%",
-                minHeight: "5ch",
-                overflowX: "scroll",
-            }}>
+            <Box sx={[{
+                "&": {
+                    display: "flex",
+                    paddingTop: "1em",
+                    paddingBottom: "1em",
+                    width: "100%",
+                    minHeight: "5ch",
+                    overflowX: "scroll",
+                    margin: "auto",
+                },
+                "& > *": {
+                    margin: "auto",
+                }
+            }]}>
                 <Grid className={styles.grid} state={state} callback={callback} />
-            </div>
+            </Box>
 
         </Paper>
 
