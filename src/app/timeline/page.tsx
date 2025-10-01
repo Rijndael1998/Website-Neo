@@ -181,34 +181,33 @@ export default function TimelinePage() {
             {
                 timelineItems.map((item, index) => {
                     const [year, desc, Icon] = item;
-                    return <>
-                        <Grid2 container>
-                            <Grid2 size={yearW}>
-                                <Typography variant='overline'>
-                                    {year}
-                                </Typography>
-                            </Grid2>
-
-                            <Grid2 size={iconW}>
-                                <Icon />
-                            </Grid2>
-
-                            <Grid2 size={12 - yearW - iconW}>
-                                <Typography>
-                                    {desc}
-                                </Typography>
-                            </Grid2>
-                            {
-                                ifTrue(
-                                    index + 1 != timelineItems.length,
-                                    <>
-                                        <Grid2 size={yearW} sx={{ height: "1ch" }} />
-                                        <Grid2 size={iconW} sx={{ height: "1ch" }} />
-                                    </>
-                                )
-                            }
+                    return <Grid2 container key={year + desc}>
+                        <Grid2 size={yearW}>
+                            <Typography variant='overline'>
+                                {year}
+                            </Typography>
                         </Grid2>
-                    </>
+
+                        <Grid2 size={iconW}>
+                            <Icon />
+                        </Grid2>
+
+                        <Grid2 size={12 - yearW - iconW}>
+                            <Typography>
+                                {desc}
+                            </Typography>
+                        </Grid2>
+                        {
+                            ifTrue(
+                                index + 1 != timelineItems.length,
+                                <>
+                                    <Grid2 size={yearW} sx={{ height: "1ch" }} />
+                                    <Grid2 size={iconW} sx={{ height: "1ch" }} />
+                                </>
+                            )
+                        }
+                    </Grid2>
+
                 })
             }
         </Stack>
