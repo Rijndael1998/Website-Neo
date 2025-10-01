@@ -170,6 +170,7 @@ export default function AStarComponent() {
                 },
                 "& > *": {
                     margin: "auto",
+                    border: "solid 0.1em black",
                 }
             }]}>
                 <Grid className={styles.grid} state={state} callback={callback} />
