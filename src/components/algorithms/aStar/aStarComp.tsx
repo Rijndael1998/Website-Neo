@@ -35,14 +35,9 @@ const containerProps: elementPropsType["container"] = {
     sx: {
         padding: "1em 0",
         overflowX: "auto",
-        maxWidth: "calc(100vw - 9em)",
         width: "max-content",
         margin: "auto",
     },
-};
-
-const paperProps: elementPropsType["paper"] = {
-    elevation: 1,
 };
 
 export default function AStarComponent() {
@@ -126,8 +121,8 @@ export default function AStarComponent() {
     const preciseDistance = (canStepReason && canStepReason.length > 1) ? canStepReason[1] : undefined;
     const distance = preciseDistance !== undefined ? Math.round(preciseDistance * 10) / 10 : undefined;
 
-    return <div>
-        <Paper sx={{marginBottom: "2ex"}}>
+    return <>
+        <Paper sx={{ marginBottom: "2ex" }}>
             {/* This could do with better and more specific tweaking */}
             <FormControl sx={smoothOperator}>
                 <FormLabel id="demo-radio-buttons-group-label">Tile Selection</FormLabel>
@@ -163,11 +158,14 @@ export default function AStarComponent() {
                 }
             </Alert>
 
-            <Container {...containerProps}>
-                <Paper {...paperProps}>
-                    <Grid className={styles.grid} state={state} callback={callback} />
-                </Paper>
-            </Container>
+            <div style={{
+                background: "black",
+                width: "100%",
+                minHeight: "5ch",
+                overflowX: "scroll",
+            }}>
+                <Grid className={styles.grid} state={state} callback={callback} />
+            </div>
 
         </Paper>
 
@@ -296,5 +294,5 @@ export default function AStarComponent() {
             </Accordion>
             <AStarText />
         </div>
-    </div>
+    </>
 }
