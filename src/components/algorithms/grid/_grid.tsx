@@ -1,6 +1,5 @@
 import GridItem from "./gridItem/_gridItem";
 import styles from "./grid.module.scss";
-import classNames from "classnames";
 import { CSSProperties } from "react";
 
 export interface StyledGridState {

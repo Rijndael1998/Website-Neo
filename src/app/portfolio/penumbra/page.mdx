@@ -2,6 +2,7 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 import YoutubeEmbed from "@/components/external/youtube/_embed";
 import GodotEmbed from "@/components/external/GodotEmbed";
 import LazyLocalImage from "@/components/lazy/_lazyLocalImage";
+import LazyVideo from "@/components/lazy/_lazyVideo";
 import { LazyLocalCompare, LazyLocalCompareImage } from "@/components/lazy/_lazyLocalCompare";
 
 
@@ -95,15 +96,11 @@ Obviously, if I rendered them at this kind of quality, the game would've balloon
 
 
 Here's a small animation of all the frames:
-<video controls autoPlay muted loop>
-<source src="/penumbra_bg.webm" type="video/webm"/>
-</video>
+<LazyVideo src="/penumbra_bg.webm" type="video/webm" controls autoPlay muted loop/>
 
 The final adjustments are made in the game engine, and it looks really good, if I say so myself.
 
-<video controls autoPlay muted loop>
-<source src="/penumbra_blank.webm" type="video/webm"/>
-</video>
+<LazyVideo src="/penumbra_blank.webm" type="video/webm" controls autoPlay muted loop/>
 
 ## Source 
 We have a repository for the game [here](https://github.com/alifeee/penumbra) on GitHub. You can also play the game on [itch.io](https://jman9092.itch.io/penumbra).

@@ -7,6 +7,9 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
+  images: {
+    qualities: [25, 50, 75, 90, 100],
+  }
 }
 
 const withMDX = createMDX({

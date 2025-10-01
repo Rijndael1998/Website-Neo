@@ -11,10 +11,9 @@ import { elementProps, elementPropsType } from "./sudokuConstants";
 
 const containerProps: elementPropsType["container"] = {
     sx: {
-        padding: "1em 0",
-        overflowX: "auto",
-        maxWidth: "calc(100vw - 10em)",
-        width: "max-content",
+        padding: "1em 0.5em",
+        overflowX: "scroll",
+        width: "100%",
         margin: "auto",
     },
 };

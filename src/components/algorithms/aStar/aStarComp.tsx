@@ -13,7 +13,7 @@ import { AStarStyleMap } from "@/components/algorithms/aStar/styles/aStarStyleMa
 import { AStarStates } from "@/components/algorithms/aStar/utils/aStarStates.enum";
 import { AStarStages } from "@/components/algorithms/aStar/utils/aStarStages.enum";
 import GridItem from "../grid/gridItem/_gridItem";
-import { Accordion, AccordionDetails, AccordionSummary, Alert, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Box, Button, ButtonOwnProps, Card, CardProps, Container, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, Switch, Typography } from "@mui/material";
 import * as React from 'react';
 import { default as MGrid } from '@mui/material/Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -35,14 +35,9 @@ const containerProps: elementPropsType["container"] = {
     sx: {
         padding: "1em 0",
         overflowX: "auto",
-        maxWidth: "calc(100vw - 9em)",
         width: "max-content",
         margin: "auto",
     },
-};
-
-const paperProps: elementPropsType["paper"] = {
-    elevation: 1,
 };
 
 export default function AStarComponent() {
@@ -121,52 +116,67 @@ export default function AStarComponent() {
         variant: "outlined",
     }
 
-    const smoothOperator = { "&, *": { transition: "all 0.5s ease" } };
+    const smoothOperator = { "&, *": { transition: "all 0.5s ease" }, "&": { marginX: "1em", marginTop: "0.5ex" } };
     const reason = (canStepReason && canStepReason[0]) ?? "All ok! Ready to step."
     const preciseDistance = (canStepReason && canStepReason.length > 1) ? canStepReason[1] : undefined;
     const distance = preciseDistance !== undefined ? Math.round(preciseDistance * 10) / 10 : undefined;
 
-    return <div>
-        {/* This could do with better and more specific tweaking */}
-        <FormControl sx={smoothOperator}>
-            <FormLabel id="demo-radio-buttons-group-label">Tile Selection</FormLabel>
-            <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                name="radio-buttons-group"
-                defaultValue={AStarStages.Start}
-                onChange={(_, v) => setStage(Number.parseInt(v))}
-                value={stage}
-            >
-                <Stack spacing={1} direction={"row"} width={"100%"}>
-                    <FormControlLabel value={AStarStages.Start} control={<Radio />} label="Start" />
-                    <FormControlLabel value={AStarStages.End} control={<Radio />} label="End" />
-                    <FormControlLabel value={AStarStages.Wall} control={<Radio />} label="Wall" />
-                </Stack>
-            </RadioGroup>
-        </FormControl>
+    return <>
+        <Paper sx={{ marginBottom: "2ex" }}>
+            {/* This could do with better and more specific tweaking */}
+            <FormControl sx={smoothOperator}>
+                <FormLabel id="demo-radio-buttons-group-label">Tile Selection</FormLabel>
+                <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    name="radio-buttons-group"
+                    defaultValue={AStarStages.Start}
+                    onChange={(_, v) => setStage(Number.parseInt(v))}
+                    value={stage}
+                >
+                    <Stack spacing={1} direction={"row"} width={"100%"}>
+                        <FormControlLabel value={AStarStages.Start} control={<Radio />} label="Start" />
+                        <FormControlLabel value={AStarStages.End} control={<Radio />} label="End" />
+                        <FormControlLabel value={AStarStages.Wall} control={<Radio />} label="Wall" />
+                    </Stack>
+                </RadioGroup>
+            </FormControl>
 
-        <Alert sx={smoothOperator} severity={canStepReason ? (canStepReason[0] == CanContinueReason.FOUND ? "success" : "warning") : "info"}>
-            {reason}
-            {
-                ifTrue(
-                    distance !== undefined,
-                    <>
-                        {" Distance: "}
-                        <ToolTip tip={`Exactly ${preciseDistance} squares`}>
-                            <span>
-                                {`${distance} squares.`}
-                            </span>
-                        </ToolTip>
-                    </>
-                )
-            }
-        </Alert>
+            <Alert sx={smoothOperator} severity={canStepReason ? (canStepReason[0] == CanContinueReason.FOUND ? "success" : "warning") : "info"}>
+                {reason}
+                {
+                    ifTrue(
+                        distance !== undefined,
+                        <>
+                            {" Distance: "}
+                            <ToolTip tip={`Exactly ${preciseDistance} squares`}>
+                                <span>
+                                    {`${distance} squares.`}
+                                </span>
+                            </ToolTip>
+                        </>
+                    )
+                }
+            </Alert>
 
-        <Container {...containerProps}>
-            <Paper {...paperProps}>
+            <Box sx={[{
+                "&": {
+                    display: "flex",
+                    paddingTop: "1em",
+                    paddingBottom: "1em",
+                    width: "100%",
+                    minHeight: "5ch",
+                    overflowX: "scroll",
+                    margin: "auto",
+                },
+                "& > *": {
+                    margin: "auto",
+                    border: "solid 0.1em black",
+                }
+            }]}>
                 <Grid className={styles.grid} state={state} callback={callback} />
-            </Paper>
-        </Container>
+            </Box>
+
+        </Paper>
 
         <div>
             <Accordion>
@@ -293,5 +303,5 @@ export default function AStarComponent() {
             </Accordion>
             <AStarText />
         </div>
-    </div>
+    </>
 }
