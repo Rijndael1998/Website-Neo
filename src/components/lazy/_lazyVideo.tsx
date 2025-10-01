@@ -16,7 +16,7 @@ export default function LazyVideo({ controls, autoPlay, muted, loop, src, type }
     const videoProps = { controls, autoPlay, muted, loop };
     const sourceProps = { src, type };
 
-    return <video {...videoProps}>
+    return <video {...videoProps} style={{maxWidth: "100%"}}>
         <source {...sourceProps} />
     </video>
 }
