@@ -64,7 +64,7 @@ export default function RootLayout({
           </Header>
         </header>
         <DarkModeFix>
-          <Container maxWidth="xl" sx={{fontFamily: "Kanit", width: "100vw"}}>
+          <Container maxWidth="xl" sx={{fontFamily: "Kanit", width: "100%"}}>
             {children}
           </Container>
         </DarkModeFix>
