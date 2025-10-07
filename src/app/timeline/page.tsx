@@ -181,7 +181,7 @@ export default function TimelinePage() {
             {
                 timelineItems.map((item, index) => {
                     const [year, desc, Icon] = item;
-                    return <Grid2 container key={year + desc}>
+                    return <Grid2 container key={`${year}${index}`}>
                         <Grid2 size={yearW}>
                             <Typography variant='overline'>
                                 {year}

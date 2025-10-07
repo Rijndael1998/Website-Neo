@@ -65,7 +65,7 @@ export function CredImage({ img, alt, verification }: { img: LocalLazyImageProps
                     cursor: "pointer",
                     filter: verification ? "saturate(1)" : "saturate(0)",
                     aspectRatio: 1,
-                    maxWidth: "30dvw",
+                    maxWidth: "45dvw",
                     maxHeight: "50dvh",
                     margin: "auto",
                 },
