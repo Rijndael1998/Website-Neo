@@ -853,7 +853,7 @@
   dependencies:
     fast-glob "3.3.1"
 
-"@next/mdx@16.0.3":
+"@next/mdx@^16.0.3":
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-16.0.3.tgz#a76f55546d97f0ea0821b956247438e9c3743975"
   integrity sha512-uVl2JSEGAjBV+EVnpt1cZN88SK3lJ2n7Fc+iqTsgVx2g9+Y6ru+P6nuUgXd38OHPUIwzL6k2V1u4iV3kwuTySQ==
