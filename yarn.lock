@@ -223,10 +223,10 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.28.5"
 
-"@dagrejs/dagre@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@dagrejs/dagre/-/dagre-1.1.8.tgz#fcbee59344c7b4f48b711ba30783543b70029310"
-  integrity sha512-5SEDlndt4W/LaVzPYJW+bSmSEZc9EzTf8rJ20WCKvjS5EAZAN0b+x0Yww7VMT4R3Wootkg+X9bUfUxazYw6Blw==
+"@dagrejs/dagre@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@dagrejs/dagre/-/dagre-2.0.0.tgz#9964dea696e00bc6fd902a39b2ef1f65a12d86f8"
+  integrity sha512-L87v5pFRQDjTSXULl5HbJyMfGZRS2fqvbQsmROt9pmy7CeoC54n7kRBsYs4AmvVnNdChIWuE1F9EEWAL+ZJNGw==
   dependencies:
     "@dagrejs/graphlib" "2.2.4"
 
