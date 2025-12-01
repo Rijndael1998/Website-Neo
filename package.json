@@ -27,7 +27,7 @@
     "@xyflow/react": "^12.9.3",
     "classnames": "^2.5.1",
     "eslint": "^9.39.1",
-    "eslint-config-next": "16.0.5",
+    "eslint-config-next": "16.0.6",
     "micromark-extension-gfm-footnote": "^2.1.0",
     "next": "16.0.5",
     "react": "^18.3.1",
