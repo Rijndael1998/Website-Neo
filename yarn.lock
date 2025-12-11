@@ -853,10 +853,10 @@
   dependencies:
     fast-glob "3.3.1"
 
-"@next/mdx@^16.0.6":
-  version "16.0.6"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-16.0.6.tgz#1cb510e2188091a2428420c356a5490c434b69ad"
-  integrity sha512-NLWJg4mqYHbHr1uyxFIOVuGFn0ACRA0L/JuL8amr8Pos8ZrRQ1/CUw0rUh22D/kPlq5QOyF/vySl9yvuETmDBA==
+"@next/mdx@^16.0.8":
+  version "16.0.8"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-16.0.8.tgz#d773bfe6f4a5faf49e4ec5ec7031df4ba4ed307a"
+  integrity sha512-GPv0ouRVp6T/qaOZj3LJiiIUFputrHvC/FVgyedbCaIsfbXmfu+Ky24KWWjf6uQSvDWQnQTk3UMSHqHb5UMYLw==
   dependencies:
     source-map "^0.7.0"
 
