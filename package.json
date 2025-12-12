@@ -29,7 +29,7 @@
     "eslint": "^9.39.1",
     "eslint-config-next": "16.0.8",
     "micromark-extension-gfm-footnote": "^2.1.0",
-    "next": "16.0.8",
+    "next": "16.0.9",
     "react": "^18.3.1",
     "react-compare-slider": "^3.1.0",
     "react-dom": "^18.3.1",
